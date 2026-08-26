@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "23324451099",
+    "project_id": "habitlyapp-2e392",
+    "storage_bucket": "habitlyapp-2e392.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23324451099:android:bef11deb7c623d3ed1b3be",
+        "android_client_info": {
+          "package_name": "com.kegistech.habitly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTRwuE4bQ9ODcNUZdWR_qgnBZeEj0HEu0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

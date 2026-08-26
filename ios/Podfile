@@ -9,29 +9,73 @@ require Pod::Executable.execute_command('node', ['-p',
 
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
+
+# ============================================
+# MODULAR HEADERS (Required for some RN modules)
+# ============================================
 use_modular_headers!
 
-linkage = ENV['USE_FRAMEWORKS']
-if linkage != nil
-  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
-  use_frameworks! :linkage => linkage.to_sym
-end
+# ============================================
+# FIREBASE REQUIRES STATIC FRAMEWORKS
+# Do NOT use dynamic frameworks with Firebase
+# ============================================
+use_frameworks! :linkage => :static
 
 target 'HabitlyUI' do
   config = use_native_modules!
 
+  # ============================================
+  # REACT NATIVE CORE
+  # ============================================
   use_react_native!(
     :path => config[:reactNativePath],
-    # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  # ============================================
+  # FIREBASE PODS (REQUIRED for Push Notifications)
+  # ============================================
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+
+  # ============================================
+  # POST INSTALL HOOKS
+  # ============================================
   post_install do |installer|
+    # React Native post-install
     react_native_post_install(
       installer,
       config[:reactNativePath],
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    # ============================================
+    # BUILD SETTINGS FIXES
+    # ============================================
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        # Minimum iOS 13.0 (Firebase requirement)
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+        
+        # Required for static frameworks distribution
+        config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+        
+        # Fix for Xcode 15+ C++17 compatibility
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', '_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION']
+        
+        # Swift module fixes for Firebase
+        config.build_settings['DEFINES_MODULE'] = 'YES'
+        config.build_settings['SWIFT_COMPILATION_MODE'] = 'wholemodule'
+        
+        # Apple Silicon simulator fix (if needed)
+        # config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+      end
+    end
+
+    # Project-level build settings
+    installer.pods_project.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+    end
   end
 end

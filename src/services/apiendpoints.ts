@@ -19,3 +19,4 @@ export const upcomingHabitsAPI='Habit/upcoming';
 export const changePasswordAPI = 'Users/change-password';
 export const manageSubscriptionAPI='UserSubscription/manage-subscription';
 export const userProfileSummaryAPI = 'Users/profile-summary';
+export const updateRegisterTokenAPI='Users/register-token';

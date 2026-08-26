@@ -10,10 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@notifee/react-native": "^9.1.8",
     "@react-native-async-storage/async-storage": "^3.1.1",
     "@react-native-community/datetimepicker": "^9.1.0",
-    "@react-native-firebase/analytics": "^26.1.0",
-    "@react-native-firebase/app": "^26.1.0",
+    "@react-native-firebase/analytics": "^26.3.2",
+    "@react-native-firebase/app": "^26.3.2",
+    "@react-native-firebase/messaging": "^26.3.2",
     "@react-native/new-app-screen": "0.86.2",
     "@react-navigation/native": "^7.3.16",
     "@react-navigation/native-stack": "^7.18.8",
