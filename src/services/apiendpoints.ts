@@ -4,6 +4,7 @@ export const countriesAPI = 'Master/countries';
 export const statesAPI = 'Master/states';
 export const updateWakeUpTimeAPI='Users/update-wakeup-time';
 export const updateReflectionTimeAPI='Users/update-reflection-time';
+export const updateRatingAPI='Users/update-rating';
 export const editProfileAPI='Users/edit-profile';
 export const settingUserAPI='Users/update-settings';
 export const notificationsUserAPI='Users/update-notifications';

@@ -9,7 +9,7 @@ export type RootStackParamList = {
   ForgotPassword:undefined;
   WakeUpTime:undefined;
   ReflectionTime:undefined;
-  Dashboard: undefined;
+  Dashboard: {review?:number}|undefined;
   CreateHabit: undefined;
   CreateRegularHabit:{ habitName?: string; habitMasterId?:string | number; habitData?:any } | undefined;
   CreateOneTimeHabit: { habitName?: string; habitMasterId?:string | number; habitData?:any } | undefined;

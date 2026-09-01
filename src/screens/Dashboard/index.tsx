@@ -1,5 +1,5 @@
 // src/screens/Dashboard/TodayScreen.tsx
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,17 +8,20 @@ import {
   ScrollView,
   ActivityIndicator,
   Alert,
+  Platform,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Plus, Minus, CheckCircle2, Activity, Target } from 'lucide-react-native';
+import * as StoreReview from 'react-native-store-review';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import AppLayout from '../AppLayout';
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
-import { getApi, postApi } from '../../services/commonAPIs';
-import { habitsByDateAPI, trackHabitAPI } from '../../services/apiendpoints';
+import { getApi, postApi, putApi } from '../../services/commonAPIs';
+import { habitsByDateAPI, trackHabitAPI, updateRatingAPI } from '../../services/apiendpoints';
 import { useSubscription } from '../../context/SubscriptionContext';
-
+import { useFocusEffect } from '@react-navigation/native';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Dashboard'>;
 
@@ -58,7 +61,7 @@ interface ApiResponse<T> {
   data: T;
 }
 
-const DashboardScreen: React.FC<Props> = ({ navigation }) => {
+const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
   // Dynamically calculate current week (Sunday to Saturday)
   const currentWeekDays: CalendarDay[] = useMemo(() => {
     const today = new Date();
@@ -100,7 +103,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation }) => {
   const [habits, setHabits] = useState<HabitListResponse[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [trackingHabitId, setTrackingHabitId] = useState<number | null>(null);
-  const { userData,refreshProfile } = useSubscription();
+  const { userData, refreshProfile } = useSubscription();
 
   // Helper to check if selected date is in the future relative to today
   const isFutureDate = useMemo(() => {
@@ -112,18 +115,62 @@ const DashboardScreen: React.FC<Props> = ({ navigation }) => {
 
     return checkDate.getTime() > today.getTime();
   }, [selectedDate]);
+
   useEffect(() => {
     refreshProfile();
   }, []);
-  useEffect(() => {
+
+
+  useFocusEffect(
+  useCallback(() => {
     fetchHabitsByDate(selectedDate);
-  }, [selectedDate]);
+  }, [selectedDate])
+);
+
+  // App Store / Play Store Review Prompt Handler
+  useEffect(() => {
+  const triggerReview = async () => {
+    try {
+      const shouldAskReview = route.params?.review === 1;
+
+      if (!shouldAskReview) return;
+
+      // Backend says user already rated
+      if (userData?.isRateGiven) return;
+
+      // Request native review dialog
+      await StoreReview.requestReview();
+         putApi(
+            updateRatingAPI,
+            {},
+            (response: any) => {
+                refreshProfile();
+            },
+            (error: any) => {
+              const serverMsg = error?.response?.data?.message || error?.message || 'Network error occurred.';
+            }
+          );
+          
+      // Remove review param so effect won't trigger again
+      navigation.setParams({
+        review: undefined,
+      });
+
+    } catch (error) {
+      console.log('Review Error:', error);
+    }
+  };
+
+  triggerReview();
+
+}, [route.params?.review, userData?.isRateGiven]);
+ 
 
   const fetchHabitsByDate = async (date: Date) => {
     setIsLoading(true);
     const formattedDate = date.toISOString();
     const endpoint = `${habitsByDateAPI}?date=${encodeURIComponent(formattedDate)}`;
-    
+
     await getApi(
       endpoint,
       (res: ApiResponse<HabitListResponse[]>) => {
@@ -211,32 +258,31 @@ const DashboardScreen: React.FC<Props> = ({ navigation }) => {
   };
 
   const handleAddHabit = () => {
-      // 1. Check if user is Basic and reached limit
+    // 1. Check if user is Basic and reached limit
     if (!userData?.isProUser && (userData?.totalHabits ?? 0) >= 2) {
       Alert.alert(
-        "Limit Reached",
-        "You have reached the free limit of 2 habits. Upgrade to Pro for unlimited access.",
+        'Limit Reached',
+        'You have reached the free limit of 2 habits. Upgrade to Pro for unlimited access.',
         [
-          { text: "Cancel" },
-          { text: "Upgrade", onPress: () => navigation.navigate('Subscription') }
+          { text: 'Cancel' },
+          { text: 'Upgrade', onPress: () => navigation.navigate('Subscription') },
         ]
       );
       return;
     }
 
-       // 2. Check if user is Pro but subscription has expired
-    // We compare the expiry date to current date
+    // 2. Check if user is Pro but subscription has expired
     if (userData?.isProUser && userData?.expiresDate) {
       const expiry = new Date(userData.expiresDate);
       const today = new Date();
 
       if (expiry < today) {
         Alert.alert(
-          "Subscription Expired",
-          "Your Pro subscription has expired. Please renew to continue adding habits.",
+          'Subscription Expired',
+          'Your Pro subscription has expired. Please renew to continue adding habits.',
           [
-            { text: "Cancel" },
-            { text: "Renew", onPress: () => navigation.navigate('Subscription') }
+            { text: 'Cancel' },
+            { text: 'Renew', onPress: () => navigation.navigate('Subscription') },
           ]
         );
         return;
@@ -255,10 +301,10 @@ const DashboardScreen: React.FC<Props> = ({ navigation }) => {
   };
 
   const handleNavigateToDetails = (item: HabitListResponse) => {
-  navigation.navigate('HabitDetails', {
-    habitData: item
-  });
-};
+    navigation.navigate('HabitDetails', {
+      habitData: item,
+    });
+  };
 
   return (
     <AppLayout navigation={navigation} currentRoute="Dashboard" title="Today">
@@ -316,62 +362,62 @@ const DashboardScreen: React.FC<Props> = ({ navigation }) => {
 
             return (
               <View key={item.id} style={styles.habitCard}>
-              <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => handleNavigateToDetails(item)}
-        >
-                {/* Header Row: Icon, Habit Info, Progress Fraction */}
-                <View style={styles.habitCardTop}>
-                  <View style={styles.habitCardLeft}>
-                    <View
-                      style={[
-                        styles.iconContainer,
-                        item.isCompleted && styles.completedIconContainer,
-                      ]}
-                    >
-                    
-                      {item.isCompleted ? (
-                        <CheckCircle2 size={22} color="#00E676" />
-                      ) : (
-                        <Activity size={22} color={item.colorCode?item.colorCode:"#29B6F6"} />
-                      )}
-                    </View>
-                    <View style={styles.habitInfo}>
-                      <Text style={styles.habitTitle}>{item.name}</Text>
-                      {item.description ? (
-                        <Text style={styles.habitDescription} numberOfLines={1}>
-                          {item.description}
-                        </Text>
-                      ) : null}
-                      <View style={styles.badgeContainer}>
-                        <Text style={styles.badgeStar}>★</Text>
-                        <Text style={styles.badgeText}>{item.goalTypeName || 'Daily'}</Text>
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  onPress={() => handleNavigateToDetails(item)}
+                >
+                  {/* Header Row: Icon, Habit Info, Progress Fraction */}
+                  <View style={styles.habitCardTop}>
+                    <View style={styles.habitCardLeft}>
+                      <View
+                        style={[
+                          styles.iconContainer,
+                          item.isCompleted && styles.completedIconContainer,
+                        ]}
+                      >
+                        {item.isCompleted ? (
+                          <CheckCircle2 size={22} color="#00E676" />
+                        ) : (
+                          <Activity size={22} color={item.colorCode ? item.colorCode : '#29B6F6'} />
+                        )}
+                      </View>
+                      <View style={styles.habitInfo}>
+                        <Text style={styles.habitTitle}>{item.name}</Text>
+                        {item.description ? (
+                          <Text style={styles.habitDescription} numberOfLines={1}>
+                            {item.description}
+                          </Text>
+                        ) : null}
+                        <View style={styles.badgeContainer}>
+                          <Text style={styles.badgeStar}>★</Text>
+                          <Text style={styles.badgeText}>{item.goalTypeName || 'Daily'}</Text>
+                        </View>
                       </View>
                     </View>
+
+                    <View style={styles.habitCardRight}>
+                      <Text style={styles.progressCounter}>
+                        <Text style={styles.currentProgress}>{item.completedValue}</Text>/
+                        {item.targetValue}
+                      </Text>
+                      <Text style={styles.progressUnit}>
+                        {item.valueTypeName || 'times'}
+                      </Text>
+                    </View>
                   </View>
 
-                  <View style={styles.habitCardRight}>
-                    <Text style={styles.progressCounter}>
-                      <Text style={styles.currentProgress}>{item.completedValue}</Text>/
-                      {item.targetValue}
-                    </Text>
-                    <Text style={styles.progressUnit}>
-                      {item.valueTypeName || 'times'}
-                    </Text>
+                  {/* Visual Progress Bar */}
+                  <View style={styles.progressBarBackground}>
+                    <View
+                      style={[
+                        styles.progressBarFill,
+                        { width: `${progressPercent}%` },
+                        item.isCompleted && styles.progressBarFillCompleted,
+                      ]}
+                    />
                   </View>
-                </View>
+                </TouchableOpacity>
 
-                {/* Visual Progress Bar */}
-                <View style={styles.progressBarBackground}>
-                  <View
-                    style={[
-                      styles.progressBarFill,
-                      { width: `${progressPercent}%` },
-                      item.isCompleted && styles.progressBarFillCompleted,
-                    ]}
-                  />
-                </View>
-</TouchableOpacity>
                 {/* Tracker Actions Row */}
                 <View style={styles.trackerRow}>
                   <Text style={styles.trackingLabel}>

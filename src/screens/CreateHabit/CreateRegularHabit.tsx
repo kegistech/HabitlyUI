@@ -296,7 +296,7 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
             Alert.alert('Success', 'Habit updated successfully.', [
-              { text: 'OK', onPress: () => navigation.navigate('Dashboard') },
+              { text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 }) },
             ]);
           } else {
             Alert.alert('Error', res?.message || 'Failed to update habit.');
@@ -315,7 +315,7 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
             Alert.alert('Success', 'Habit created successfully.', [
-              { text: 'OK', onPress: () => navigation.navigate('Dashboard') },
+              { text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 }) },
             ]);
           } else {
             Alert.alert('Error', res?.message || 'Failed to create habit.');

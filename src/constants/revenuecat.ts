@@ -4,7 +4,7 @@ The API key for your app from the RevenueCat dashboard: https://app.revenuecat.c
 */
 export const API_KEY = Platform.select({
    ios: 'appl_oltTYzeQYGkGTwhEZLXHIyZEHPX', //'test_JOBTYntgMJUWEQcWXnmfqwKYfFR',
-   android: 'test_JOBTYntgMJUWEQcWXnmfqwKYfFR',
+   android: 'goog_nwCJgNwFXNqVwVNnqNkhduarZMe',
 });
 
 /*

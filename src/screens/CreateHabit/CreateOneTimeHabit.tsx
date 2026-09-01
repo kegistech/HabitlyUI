@@ -239,7 +239,7 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
             Alert.alert('Success', 'One-time task updated successfully.', [
-              { text: 'OK', onPress: () => navigation.navigate('Dashboard')},
+              { text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 })},
             ]);
           } else {
             Alert.alert('Error', res?.message || 'Failed to update task.');
@@ -258,7 +258,7 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
             Alert.alert('Success', 'One-time task created successfully.', [
-              { text: 'OK', onPress: () => navigation.navigate('Dashboard')  },
+              { text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 })  },
             ]);
           } else {
             Alert.alert('Error', res?.message || 'Failed to create task.');
