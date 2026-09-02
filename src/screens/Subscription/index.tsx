@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { X } from 'lucide-react-native';
+import { X, Check } from 'lucide-react-native';
 import Purchases, { PurchasesPackage, PURCHASES_ERROR_CODE } from 'react-native-purchases';
 
 import { RootStackParamList } from '../../navigation/navigation';
@@ -25,8 +25,17 @@ import { postApi } from '../../services/commonAPIs';
 import { useSubscription } from '../../context/SubscriptionContext';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Subscription'>;
-
 type PlanType = 'YEARLY' | 'MONTHLY';
+
+// Replace these URLs with your actual policy links
+const PRIVACY_POLICY_URL = 'https://www.kegistech.com/habitly-privacy-policy.html';
+const EULA_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
+
+const FEATURES = [
+  'Unlimited Habit Tracking & Reminders',
+  'Advanced Analytics & Progress Insights',
+  'Ad-Free Premium Experience',
+];
 
 const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
   const { userData } = useSubscription();
@@ -40,7 +49,6 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
     fetchOfferings();
   }, []);
 
-  // Fetch offerings from RevenueCat
   const fetchOfferings = async () => {
     try {
       const offerings = await Purchases.getOfferings();
@@ -58,9 +66,19 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
     }
   };
 
-  /**
-   * Sync tracking with C# backend endpoint
-   */
+  const openWebLink = async (url: string) => {
+    try {
+      const supported = await Linking.canOpenURL(url);
+      if (supported) {
+        await Linking.openURL(url);
+      } else {
+        Alert.alert('Error', 'Cannot open the link: ' + url);
+      }
+    } catch (error) {
+      Alert.alert('Error', 'Failed to open link.');
+    }
+  };
+
   const trackSubscriptionStatus = async (
     status: number,
     pkg: PurchasesPackage,
@@ -69,7 +87,6 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
     forceEventType?: string
   ) => {
     const months = selectedPlan === 'YEARLY' ? 12 : 1;
-
     let eventType = forceEventType;
 
     if (!eventType) {
@@ -104,9 +121,7 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
     );
   };
 
-  // Handle Purchase Flow via RevenueCat
   const handlePurchase = async () => {
- 
     const packageToBuy = selectedPlan === 'YEARLY' ? packages.yearly : packages.monthly;
 
     if (!packageToBuy) {
@@ -116,9 +131,8 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
 
     setProcessing(true);
     try {
-   
       const { customerInfo } = await Purchases.purchasePackage(packageToBuy);
- 
+
       if (customerInfo.entitlements.active['Habitly Pro']?.isActive) {
         await trackSubscriptionStatus(1, packageToBuy, customerInfo);
 
@@ -138,7 +152,6 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
     }
   };
 
-  // Handle Restore Flow
   const handleRestore = async () => {
     setProcessing(true);
     try {
@@ -156,11 +169,10 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
     }
   };
 
-  // Handle Cancel / Subscription Settings Link
   const handleCancelSubscription = async () => {
     Alert.alert(
       'Manage Subscription',
-      'You will be redirected to the App Store/Play Store settings to manage or cancel your plan.',
+      'You will be redirected to subscription settings to manage or cancel your plan.',
       [
         { text: 'Cancel', style: 'cancel' },
         {
@@ -190,6 +202,14 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
         },
       ]
     );
+  };
+
+  // Helper to format monthly equivalent for yearly price
+  const getYearlyMonthlyEquivalent = (): string => {
+    if (!packages.yearly) return '';
+    const monthlyCost = packages.yearly.product.price / 12;
+    const currencySymbol = packages.yearly.product.priceString.replace(/[\d.,\s]/g, '');
+    return `${currencySymbol}${monthlyCost.toFixed(2)}/month`;
   };
 
   if (loading) {
@@ -231,7 +251,17 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
         </View>
 
         {/* Hero Title */}
-        <Text style={styles.heroTitle}>Elevate Your Efficiency with Habitly</Text>
+        <Text style={styles.heroTitle}>Elevate Your Efficiency</Text>
+
+        {/* Mandatory Apple Requirement: Feature Breakdown */}
+        <View style={styles.featuresContainer}>
+          {FEATURES.map((feature, index) => (
+            <View key={index} style={styles.featureItem}>
+              <Check size={moderateScale(18)} color="#3B82F6" style={styles.featureIcon} />
+              <Text style={styles.featureText}>{feature}</Text>
+            </View>
+          ))}
+        </View>
 
         {/* Pricing Options */}
         <View style={styles.plansContainer}>
@@ -253,13 +283,14 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
             <View style={styles.planCardContent}>
               <View style={styles.planTitleGroup}>
                 <Text style={styles.planTitle}>Yearly</Text>
-
                 <Text style={styles.planPriceMain}>
                   {packages.yearly ? `${packages.yearly.product.priceString}` : 'Loading...'}
                 </Text>
               </View>
 
-              <Text style={styles.planSubtitle}>1 Year Access • Best Value</Text>
+              <Text style={styles.planSubtitle}>
+                1 Year Access • {getYearlyMonthlyEquivalent()}
+              </Text>
             </View>
           </TouchableOpacity>
 
@@ -281,7 +312,6 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        {/* Optional Existing User Cancel/Manage Subscription Action */}
         {userData?.isProUser && (
           <TouchableOpacity
             style={{ marginTop: moderateScale(12), alignItems: 'center' }}
@@ -293,7 +323,7 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
         )}
       </ScrollView>
 
-      {/* Bottom Sticky CTA Bar */}
+      {/* Bottom Sticky Section with Auto-Renewal & Legal Info */}
       <View style={styles.bottomBar}>
         <TouchableOpacity
           activeOpacity={0.85}
@@ -318,9 +348,25 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
             ? `${packages.monthly.product.priceString}/month`
             : 'Monthly Plan'}
         </Text>
+
         <Text style={styles.disclaimerText}>
           {Platform.OS === 'ios' ? 'SECURE PAYMENT VIA APP STORE' : 'SECURE PAYMENT VIA GOOGLE PLAY'}
         </Text>
+
+        {/* Mandatory Apple Disclosures & Links */}
+        <Text style={styles.autoRenewText}>
+          Subscription automatically renews unless cancelled at least 24 hours before the end of the current period.
+        </Text>
+
+        <View style={styles.legalLinksContainer}>
+          <TouchableOpacity onPress={() => openWebLink(EULA_URL)}>
+            <Text style={styles.legalLinkText}>Terms of Use (EULA)</Text>
+          </TouchableOpacity>
+          <Text style={styles.legalDivider}>•</Text>
+          <TouchableOpacity onPress={() => openWebLink(PRIVACY_POLICY_URL)}>
+            <Text style={styles.legalLinkText}>Privacy Policy</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -367,25 +413,44 @@ const styles = StyleSheet.create({
   /* Logo Graphic */
   logoContainer: {
     alignItems: 'center',
-    marginBottom: scaleHeight(24),
+    marginBottom: scaleHeight(16),
   },
   logoImage: {
-    width: scaleWidth(80),
-    height: scaleWidth(80),
+    width: scaleWidth(70),
+    height: scaleWidth(70),
   },
 
   /* Hero Title */
   heroTitle: {
-    fontSize: moderateScale(28),
+    fontSize: moderateScale(24),
     fontWeight: '800',
     color: '#FFFFFF',
-    lineHeight: moderateScale(34),
-    marginBottom: scaleHeight(32),
+    lineHeight: moderateScale(30),
+    marginBottom: scaleHeight(20),
+    textAlign: 'center',
+  },
+
+  /* Feature List Styling */
+  featuresContainer: {
+    marginBottom: scaleHeight(24),
+    gap: scaleHeight(10),
+  },
+  featureItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  featureIcon: {
+    marginRight: scaleWidth(10),
+  },
+  featureText: {
+    fontSize: moderateScale(14),
+    color: '#D1D5DB',
+    fontWeight: '500',
   },
 
   /* Pricing Options Container */
   plansContainer: {
-    gap: scaleHeight(16),
+    gap: scaleHeight(14),
     marginBottom: scaleHeight(16),
   },
 
@@ -407,7 +472,7 @@ const styles = StyleSheet.create({
   },
   bestOfferBadge: {
     backgroundColor: '#3B82F6',
-    paddingVertical: scaleHeight(6),
+    paddingVertical: scaleHeight(5),
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -420,7 +485,7 @@ const styles = StyleSheet.create({
 
   planCardContent: {
     paddingHorizontal: scaleWidth(18),
-    paddingVertical: scaleHeight(18),
+    paddingVertical: scaleHeight(16),
   },
   planTitleGroup: {
     flexDirection: 'row',
@@ -428,7 +493,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   planTitle: {
-    fontSize: moderateScale(20),
+    fontSize: moderateScale(18),
     fontWeight: '800',
     color: '#FFFFFF',
   },
@@ -441,7 +506,7 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(13),
     fontWeight: '600',
     color: '#8E93A6',
-    marginTop: scaleHeight(6),
+    marginTop: scaleHeight(4),
   },
 
   manageSubscriptionText: {
@@ -454,7 +519,7 @@ const styles = StyleSheet.create({
   bottomBar: {
     paddingHorizontal: scaleWidth(20),
     paddingTop: scaleHeight(12),
-    paddingBottom: scaleHeight(20),
+    paddingBottom: scaleHeight(16),
     backgroundColor: '#0B0C10',
     alignItems: 'center',
   },
@@ -462,27 +527,50 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#3B82F6',
     borderRadius: moderateScale(28),
-    height: scaleHeight(54),
+    height: scaleHeight(50),
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: scaleHeight(12),
+    marginBottom: scaleHeight(8),
   },
   continueButtonText: {
-    fontSize: moderateScale(18),
+    fontSize: moderateScale(17),
     fontWeight: '800',
     color: '#FFFFFF',
   },
   priceSummaryText: {
-    fontSize: moderateScale(15),
+    fontSize: moderateScale(14),
     fontWeight: '700',
     color: '#FFFFFF',
-    marginBottom: scaleHeight(6),
+    marginBottom: scaleHeight(4),
   },
   disclaimerText: {
     fontSize: moderateScale(10),
     fontWeight: '700',
     color: '#8E93A6',
     letterSpacing: 0.5,
+    marginBottom: scaleHeight(8),
+  },
+  autoRenewText: {
+    fontSize: moderateScale(10),
+    color: '#6B7280',
+    textAlign: 'center',
+    marginBottom: scaleHeight(8),
+    paddingHorizontal: scaleWidth(10),
+  },
+  legalLinksContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  legalLinkText: {
+    fontSize: moderateScale(11),
+    color: '#8E93A6',
+    textDecorationLine: 'underline',
+  },
+  legalDivider: {
+    fontSize: moderateScale(11),
+    color: '#8E93A6',
+    marginHorizontal: scaleWidth(8),
   },
 });
 
