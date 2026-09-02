@@ -15,6 +15,8 @@ import {
   setupNotificationListeners,
 } from './services/notificationService';
 
+
+
 const App = (): React.JSX.Element => {
   const [isReady, setIsReady] = useState(false);
   const cleanupRef = useRef<(() => void) | null>(null);
@@ -56,9 +58,10 @@ const App = (): React.JSX.Element => {
     <SafeAreaProvider>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
       <SubscriptionProvider>
-        <NavigationContainer>
-          <SafeAreaView style={styles.safeAreaContainer} edges={['top', 'left', 'right']}>
-            {isReady && <RootNavigator />}
+      <NavigationContainer>
+        <SafeAreaView style={styles.safeAreaContainer} edges={['top', 'left', 'right']}>
+            
+           {isReady && <RootNavigator />}
           </SafeAreaView>
         </NavigationContainer>
       </SubscriptionProvider>
