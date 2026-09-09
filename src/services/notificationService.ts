@@ -3,6 +3,8 @@ import {
   getToken,
   onTokenRefresh,
   onMessage,
+  registerDeviceForRemoteMessages,
+  isDeviceRegisteredForRemoteMessages,
 } from '@react-native-firebase/messaging';
 import notifee, { AndroidImportance, EventType } from '@notifee/react-native';
 import { Platform } from 'react-native';
@@ -40,19 +42,22 @@ export const requestNotificationPermission = async (): Promise<boolean> => {
 
       return requestStatus === RESULTS.GRANTED;
     } else {
-      // Safely access POST_NOTIFICATIONS using type casting
-      const postNotificationsPermission =
-        (PERMISSIONS.ANDROID as any).POST_NOTIFICATIONS ||
-        'android.permission.POST_NOTIFICATIONS';
+      // Handle Android 13+ POST_NOTIFICATIONS permission
+      if (Platform.Version as number >= 33) {
+        const postNotificationsPermission =
+          (PERMISSIONS.ANDROID as any).POST_NOTIFICATIONS ||
+          'android.permission.POST_NOTIFICATIONS';
 
-      const currentStatus = await check(postNotificationsPermission as Permission);
+        const currentStatus = await check(postNotificationsPermission as Permission);
 
-      if (currentStatus === RESULTS.GRANTED) {
-        return true;
+        if (currentStatus === RESULTS.GRANTED) {
+          return true;
+        }
+
+        const requestStatus = await request(postNotificationsPermission as Permission);
+        return requestStatus === RESULTS.GRANTED;
       }
-
-      const requestStatus = await request(postNotificationsPermission as Permission);
-      return requestStatus === RESULTS.GRANTED;
+      return true;
     }
   } catch (error) {
     console.error('Failed to request notification permission:', error);
@@ -90,6 +95,16 @@ export const createNotificationChannels = async (): Promise<void> => {
 export const syncFCMTokenWithBackend = async (fcmToken?: string): Promise<void> => {
   try {
     const messagingInstance = getMessaging();
+
+    // Fix for iOS [messaging/unregistered] error:
+    // Device must register for APNs remote messages before fetching FCM token
+    if (Platform.OS === 'ios') {
+      const isRegistered = isDeviceRegisteredForRemoteMessages(messagingInstance);
+      if (!isRegistered) {
+        await registerDeviceForRemoteMessages(messagingInstance);
+      }
+    }
+
     const token = fcmToken || (await getToken(messagingInstance));
     if (!token) return;
 
