@@ -206,33 +206,7 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
         console.error('Failed to read notifications from local storage:', cacheErr);
       }
 
-      // B. Fetch fresh data from backend API
-      await getApi(
-        notificationsUserAPI,
-        async (res: any) => {
-          setIsLoading(false);
-          const freshData = res?.data || res;
-          if (freshData) {
-            applyNotificationData(freshData);
-
-            // Update local storage cache
-            const storedUserData = await AsyncStorage.getItem('userData');
-            if (storedUserData) {
-              const parsed = JSON.parse(storedUserData);
-              const updatedStorage = {
-                ...parsed,
-                notifications: freshData,
-                ...freshData,
-              };
-              await AsyncStorage.setItem('userData', JSON.stringify(updatedStorage));
-            }
-          }
-        },
-        (err: any) => {
-          setIsLoading(false);
-          console.error('API Error fetching notifications:', err);
-        }
-      );
+    
     };
 
     loadNotificationSettings();

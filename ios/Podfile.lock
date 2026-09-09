@@ -2226,6 +2226,28 @@ PODS:
   - RNPaywalls (10.8.1):
     - PurchasesHybridCommonUI (= 18.33.1)
     - React-Core
+  - RNPermissions (5.6.1):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - Yoga
   - RNPurchases (10.8.1):
     - PurchasesHybridCommon (= 18.33.1)
     - React-Core
@@ -2605,6 +2627,7 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNNotifee (from `../node_modules/@notifee/react-native`)"
   - RNPaywalls (from `../node_modules/react-native-purchases-ui`)
+  - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNPurchases (from `../node_modules/react-native-purchases`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -2807,6 +2830,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@notifee/react-native"
   RNPaywalls:
     :path: "../node_modules/react-native-purchases-ui"
+  RNPermissions:
+    :path: "../node_modules/react-native-permissions"
   RNPurchases:
     :path: "../node_modules/react-native-purchases"
   RNReanimated:
@@ -2926,6 +2951,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: 85a831012468d1b9af177debae2030d64b4bb610
   RNNotifee: 5e3b271e8ea7456a36eec994085543c9adca9168
   RNPaywalls: 3f00ea06f77a22d3d1c08733605387aa3cd2ca71
+  RNPermissions: acaec9a5c663de127980054fa2a9b559669896f8
   RNPurchases: d3601e9d241046f8ef3837505b62ce7bd3057720
   RNReanimated: c57ef141c7843c2849531e7556236d7223b7db1a
   RNScreens: b2e46935230f4877eed4985c259e52bbe0b03aa7
@@ -2934,6 +2960,6 @@ SPEC CHECKSUMS:
   RNWorklets: 479a8693aef79a20a12a83c6d97858b3a58faecb
   Yoga: 542a30dafe5b0f5f1d9f185ea7b2a3811ac54801
 
-PODFILE CHECKSUM: e6219f521680ed3c5c7d84fd9bae24a2764cc502
+PODFILE CHECKSUM: 09f20b369961ce45b740001436c677233f604577
 
 COCOAPODS: 1.16.2
