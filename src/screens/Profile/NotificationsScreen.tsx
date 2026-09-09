@@ -20,7 +20,7 @@ import { ArrowLeft, Clock, Pencil } from 'lucide-react-native';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
-import { putApi } from '../../services/commonAPIs'; 
+import { getApi, putApi } from '../../services/commonAPIs';
 import { notificationsUserAPI } from '../../services/apiendpoints';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Notifications'>;
@@ -109,21 +109,21 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
       id: 'morning_plan',
       title: 'Morning plan ☀️',
       description: '"You have 5 habits for this morning and 2 more you can do."',
-      isEnabled: false,
+      isEnabled: true,
       time: '08:00 am',
     },
     {
       id: 'afternoon_plan',
       title: 'Afternoon plan 🌤️',
       description: '"You have 1 habit for this afternoon and 2 more you can do."',
-      isEnabled: false,
+      isEnabled: true,
       time: '01:00 pm',
     },
     {
       id: 'evening_plan',
       title: 'Evening plan 🌙',
       description: '"You have 6 habits for this evening and 2 more you can do."',
-      isEnabled: false,
+      isEnabled: true,
       time: '07:00 pm',
     },
     {
@@ -135,61 +135,104 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
     },
   ]);
 
-  // 1. Hydrate from AsyncStorage on Mount
+  // Map raw API / Storage data into component state
+  const applyNotificationData = (notifData: any) => {
+    if (!notifData) return;
+
+    setNotifications((prev) =>
+      prev.map((item) => {
+        switch (item.id) {
+          case 'todays_plan':
+            return {
+              ...item,
+              isEnabled: typeof notifData.todaysPlanNotification === 'boolean'
+                ? notifData.todaysPlanNotification
+                : item.isEnabled,
+              time: convertTimeOnlyToDisplay(notifData.todaysPlanTime, item.time),
+            };
+          case 'morning_plan':
+            return {
+              ...item,
+              isEnabled: typeof notifData.morningPlanNotification === 'boolean'
+                ? notifData.morningPlanNotification
+                : item.isEnabled,
+              time: convertTimeOnlyToDisplay(notifData.morningPlanTime, item.time),
+            };
+          case 'afternoon_plan':
+            return {
+              ...item,
+              isEnabled: typeof notifData.afternoonPlanNotification === 'boolean'
+                ? notifData.afternoonPlanNotification
+                : item.isEnabled,
+              time: convertTimeOnlyToDisplay(notifData.afternoonPlanTime, item.time),
+            };
+          case 'evening_plan':
+            return {
+              ...item,
+              isEnabled: typeof notifData.eveningPlanNotification === 'boolean'
+                ? notifData.eveningPlanNotification
+                : item.isEnabled,
+              time: convertTimeOnlyToDisplay(notifData.eveningPlanTime, item.time),
+            };
+          case 'today_results':
+            return {
+              ...item,
+              isEnabled: typeof notifData.todaysResultNotification === 'boolean'
+                ? notifData.todaysResultNotification
+                : item.isEnabled,
+              time: convertTimeOnlyToDisplay(notifData.todaysResultTime, item.time),
+            };
+          default:
+            return item;
+        }
+      })
+    );
+  };
+
+  // 1. Fetch from API first, fallback to AsyncStorage cache
   useEffect(() => {
     const loadNotificationSettings = async () => {
+      setIsLoading(true);
+
+      // A. Load cached data from local storage immediately
       try {
         const storedUserData = await AsyncStorage.getItem('userData');
         if (storedUserData) {
           const parsed = JSON.parse(storedUserData);
-          const notifData = parsed;
-
-          if (notifData) {
-            setNotifications((prev) =>
-              prev.map((item) => {
-                switch (item.id) {
-                  case 'todays_plan':
-                    return {
-                      ...item,
-                      isEnabled: notifData.todaysPlanNotification ?? item.isEnabled,
-                      time: convertTimeOnlyToDisplay(notifData.todaysPlanTime, item.time),
-                    };
-                  case 'morning_plan':
-                    return {
-                      ...item,
-                      isEnabled: notifData.morningPlanNotification ?? item.isEnabled,
-                      time: convertTimeOnlyToDisplay(notifData.morningPlanTime, item.time),
-                    };
-                  case 'afternoon_plan':
-                    return {
-                      ...item,
-                      isEnabled: notifData.afternoonPlanNotification ?? item.isEnabled,
-                      time: convertTimeOnlyToDisplay(notifData.afternoonPlanTime, item.time),
-                    };
-                  case 'evening_plan':
-                    return {
-                      ...item,
-                      isEnabled: notifData.eveningPlanNotification ?? item.isEnabled,
-                      time: convertTimeOnlyToDisplay(notifData.eveningPlanTime, item.time),
-                    };
-                  case 'today_results':
-                    return {
-                      ...item,
-                      isEnabled: notifData.todaysResultNotification ?? item.isEnabled,
-                      time: convertTimeOnlyToDisplay(notifData.todaysResultTime, item.time),
-                    };
-                  default:
-                    return item;
-                }
-              })
-            );
-          }
+         // const cachedNotifs = parsed.notifications || parsed;
+          applyNotificationData(parsed);
         }
-      } catch (error) {
-        console.error('Failed to load notifications from storage:', error);
-      } finally {
-        setIsLoading(false);
+      } catch (cacheErr) {
+        console.error('Failed to read notifications from local storage:', cacheErr);
       }
+
+      // B. Fetch fresh data from backend API
+      await getApi(
+        notificationsUserAPI,
+        async (res: any) => {
+          setIsLoading(false);
+          const freshData = res?.data || res;
+          if (freshData) {
+            applyNotificationData(freshData);
+
+            // Update local storage cache
+            const storedUserData = await AsyncStorage.getItem('userData');
+            if (storedUserData) {
+              const parsed = JSON.parse(storedUserData);
+              const updatedStorage = {
+                ...parsed,
+                notifications: freshData,
+                ...freshData,
+              };
+              await AsyncStorage.setItem('userData', JSON.stringify(updatedStorage));
+            }
+          }
+        },
+        (err: any) => {
+          setIsLoading(false);
+          console.error('API Error fetching notifications:', err);
+        }
+      );
     };
 
     loadNotificationSettings();
@@ -206,15 +249,15 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
     const todaysResult = findItem('today_results');
 
     return {
-      todaysPlanNotification: todaysPlan?.isEnabled ?? true,
+      todaysPlanNotification: todaysPlan?.isEnabled ?? false,
       todaysPlanTime: convertDisplayToTimeOnly(todaysPlan?.time || '07:30 am'),
-      morningPlanNotification: morningPlan?.isEnabled ?? true,
+      morningPlanNotification: morningPlan?.isEnabled ?? false,
       morningPlanTime: convertDisplayToTimeOnly(morningPlan?.time || '08:00 am'),
-      afternoonPlanNotification: afternoonPlan?.isEnabled ?? true,
+      afternoonPlanNotification: afternoonPlan?.isEnabled ?? false,
       afternoonPlanTime: convertDisplayToTimeOnly(afternoonPlan?.time || '01:00 pm'),
-      eveningPlanNotification: eveningPlan?.isEnabled ?? true,
+      eveningPlanNotification: eveningPlan?.isEnabled ?? false,
       eveningPlanTime: convertDisplayToTimeOnly(eveningPlan?.time || '07:00 pm'),
-      todaysResultNotification: todaysResult?.isEnabled ?? true,
+      todaysResultNotification: todaysResult?.isEnabled ?? false,
       todaysResultTime: convertDisplayToTimeOnly(todaysResult?.time || '08:45 pm'),
     };
   };
@@ -228,6 +271,7 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
         const payload = buildApiPayload(updatedList);
         const updatedData = {
           ...parsed,
+          ...payload,
           notifications: payload,
         };
         await AsyncStorage.setItem('userData', JSON.stringify(updatedData));
@@ -253,7 +297,7 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
         setUpdatingId(null);
         await updateLocalStorage(updatedList);
       },
-      (err:any) => {
+      (err: any) => {
         setUpdatingId(null);
         revertCallback();
         Alert.alert('Error', err?.message || 'Failed to update notification settings.');

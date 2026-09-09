@@ -35,6 +35,7 @@ const App = (): React.JSX.Element => {
 
         // Push Notification Setup
         const granted = await requestNotificationPermission();
+               
         if (granted) {
           await createNotificationChannels();
           await syncFCMTokenWithBackend();

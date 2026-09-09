@@ -1,31 +1,71 @@
 import {
   getMessaging,
   getToken,
-  requestPermission,
   onTokenRefresh,
   onMessage,
-  AuthorizationStatus,
 } from '@react-native-firebase/messaging';
 import notifee, { AndroidImportance, EventType } from '@notifee/react-native';
-import { Alert, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  check,
+  request,
+  checkNotifications,
+  requestNotifications,
+  PERMISSIONS,
+  RESULTS,
+  Permission,
+} from 'react-native-permissions';
+
 import { getUserId, putApi } from './commonAPIs';
 import { updateRegisterTokenAPI } from './apiendpoints';
 
-
+/**
+ * 1. Request Notification Permissions using react-native-permissions
+ */
 export const requestNotificationPermission = async (): Promise<boolean> => {
-  const messagingInstance = getMessaging();
-  const authStatus = await requestPermission(messagingInstance);
-  
-  return (
-    authStatus === AuthorizationStatus.AUTHORIZED ||
-    authStatus === AuthorizationStatus.PROVISIONAL
-  );
+  try {
+    if (Platform.OS === 'ios') {
+      const { status } = await checkNotifications();
+
+      if (status === RESULTS.GRANTED) {
+        return true;
+      }
+
+      const { status: requestStatus } = await requestNotifications([
+        'alert',
+        'sound',
+        'badge',
+      ]);
+
+      return requestStatus === RESULTS.GRANTED;
+    } else {
+      // Safely access POST_NOTIFICATIONS using type casting
+      const postNotificationsPermission =
+        (PERMISSIONS.ANDROID as any).POST_NOTIFICATIONS ||
+        'android.permission.POST_NOTIFICATIONS';
+
+      const currentStatus = await check(postNotificationsPermission as Permission);
+
+      if (currentStatus === RESULTS.GRANTED) {
+        return true;
+      }
+
+      const requestStatus = await request(postNotificationsPermission as Permission);
+      return requestStatus === RESULTS.GRANTED;
+    }
+  } catch (error) {
+    console.error('Failed to request notification permission:', error);
+    return false;
+  }
 };
 
+/**
+ * 2. Create Notification Channels for Android
+ */
 export const createNotificationChannels = async (): Promise<void> => {
   if (Platform.OS === 'android') {
-    // 1. Personalized Habit Channel (Custom sound)
+    // Personalized Habit Channel (Custom sound)
     await notifee.createChannel({
       id: 'personalized_habits',
       name: 'Habit Reminders',
@@ -34,7 +74,7 @@ export const createNotificationChannels = async (): Promise<void> => {
       vibration: true,
     });
 
-    // 2. Global Announcements Channel (Default system sound)
+    // Global Announcements Channel (Default system sound)
     await notifee.createChannel({
       id: 'common_announcements',
       name: 'Announcements',
@@ -44,6 +84,9 @@ export const createNotificationChannels = async (): Promise<void> => {
   }
 };
 
+/**
+ * 3. Sync FCM Token with Remote Backend
+ */
 export const syncFCMTokenWithBackend = async (fcmToken?: string): Promise<void> => {
   try {
     const messagingInstance = getMessaging();
@@ -51,43 +94,54 @@ export const syncFCMTokenWithBackend = async (fcmToken?: string): Promise<void> 
     if (!token) return;
 
     const userId = await getUserId();
-    const isValidUserId = userId && userId !== 'null' && userId !== 'undefined' && userId !== '';
+    const isValidUserId =
+      userId && userId !== 'null' && userId !== 'undefined' && userId !== '';
     if (!isValidUserId) return;
 
     const storedToken = await AsyncStorage.getItem('fcm_token');
     if (storedToken === token) return;
 
-
-   const payload = {
+    const payload = {
       deviceToken: token,
       platform: Platform.OS,
     };
-       putApi(
-          updateRegisterTokenAPI,
-          payload,
-          async (response: any) => {
-          
-            if (response && (response.succeeded || response.isSuccess || response.status === 200)) {
-            await AsyncStorage.setItem('fcm_token', token);
-            } 
-          },
-          (error: any) => {
-           
-            const serverMsg =
-              error?.response?.data?.message || error?.message || 'Network error occurred.';
-console.log(serverMsg);
-          }
-        );
 
+    // Promisified or properly handled callback response
+    await new Promise<void>((resolve, reject) => {
+      putApi(
+        updateRegisterTokenAPI,
+        payload,
+        async (response: any) => {
+          if (
+            response &&
+            (response.succeeded || response.isSuccess || response.status === 200)
+          ) {
+            await AsyncStorage.setItem('fcm_token', token);
+          }
+          resolve();
+        },
+        (error: any) => {
+          const serverMsg =
+            error?.response?.data?.message ||
+            error?.message ||
+            'Network error occurred while syncing token.';
+          console.error('FCM Token Sync Error:', serverMsg);
+          reject(error);
+        }
+      );
+    });
   } catch (error) {
     console.error('Failed to sync FCM Token:', error);
   }
 };
 
+/**
+ * 4. Setup Listeners for Refreshes, Foreground Messages & Press Actions
+ */
 export const setupNotificationListeners = () => {
   const messagingInstance = getMessaging();
 
-  // Listen to Token Refreshes (SDK level updates)
+  // Listen to Token Refreshes
   const unsubscribeToken = onTokenRefresh(messagingInstance, (token) => {
     syncFCMTokenWithBackend(token);
   });
@@ -113,7 +167,7 @@ export const setupNotificationListeners = () => {
     });
   });
 
-  // Handle Push Interactions (User clicks on banner)
+  // Handle Push Interactions (User clicks on notification banner)
   const unsubscribePress = notifee.onForegroundEvent(({ type, detail }) => {
     if (type === EventType.PRESS) {
       console.log('User interacted with notification:', detail.notification);

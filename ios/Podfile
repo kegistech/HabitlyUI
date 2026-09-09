@@ -10,6 +10,13 @@ require Pod::Executable.execute_command('node', [
   __dir__
 ]).strip
 
+# ============================================
+# REACT NATIVE PERMISSIONS SETUP
+# Node script required to load requested native permission modules
+# ============================================
+permissions_path = '../node_modules/react-native-permissions/ios'
+require_relative "#{permissions_path}/setup"
+
 platform :ios, '15.1'
 prepare_react_native_project!
 
@@ -26,6 +33,14 @@ use_frameworks! :linkage => :static
 
 target 'HabitlyUI' do
   config = use_native_modules!
+
+  # ============================================
+  # DECLARE REQUIRED PERMISSIONS HERE
+  # Enables native iOS code for Notifications
+  # ============================================
+  setup_permissions([
+    'Notifications',
+  ])
 
   # ============================================
   # REACT NATIVE CORE

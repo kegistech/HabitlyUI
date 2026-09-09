@@ -8,12 +8,10 @@ import {
   ScrollView,
   ActivityIndicator,
   Alert,
-  Platform,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Plus, Minus, CheckCircle2, Activity, Target } from 'lucide-react-native';
 import * as StoreReview from 'react-native-store-review';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import AppLayout from '../AppLayout';
 import { RootStackParamList } from '../../navigation/navigation';
@@ -22,6 +20,7 @@ import { getApi, postApi, putApi } from '../../services/commonAPIs';
 import { habitsByDateAPI, trackHabitAPI, updateRatingAPI } from '../../services/apiendpoints';
 import { useSubscription } from '../../context/SubscriptionContext';
 import { useFocusEffect } from '@react-navigation/native';
+
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Dashboard'>;
 
@@ -257,8 +256,9 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
     );
   };
 
-  const handleAddHabit = () => {
+  const handleAddHabit = async() => {
     // 1. Check if user is Basic and reached limit
+  
     if (!userData?.isProUser && (userData?.totalHabits ?? 0) >= 2) {
       Alert.alert(
         'Limit Reached',
@@ -269,24 +269,6 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
         ]
       );
       return;
-    }
-
-    // 2. Check if user is Pro but subscription has expired
-    if (userData?.isProUser && userData?.expiresDate) {
-      const expiry = new Date(userData.expiresDate);
-      const today = new Date();
-
-      if (expiry < today) {
-        Alert.alert(
-          'Subscription Expired',
-          'Your Pro subscription has expired. Please renew to continue adding habits.',
-          [
-            { text: 'Cancel' },
-            { text: 'Renew', onPress: () => navigation.navigate('Subscription') },
-          ]
-        );
-        return;
-      }
     }
 
     navigation.navigate('CreateHabit');

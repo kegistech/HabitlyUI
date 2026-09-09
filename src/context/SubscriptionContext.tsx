@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getApi } from '../services/commonAPIs'; 
 import { userProfileSummaryAPI } from '../services/apiendpoints';
+import Purchases from 'react-native-purchases';
 import { Alert } from 'react-native';
 
 
@@ -22,9 +23,14 @@ export const SubscriptionProvider = ({ children }: any) => {
                 return;
             }
 
-            getApi(`/${userProfileSummaryAPI}/${userId}`, (res: any) => {
+             getApi(`/${userProfileSummaryAPI}/${userId}`, async (res: any) => {
                 if (res.succeeded) {
-                    setUserData(res.data);
+                    const customerInfo = await Purchases.getCustomerInfo();
+                      const isPro = typeof customerInfo.entitlements.active['Habitly Pro'] !== 'undefined';
+                      setUserData({
+                    ...res.data,
+                    isProUser: isPro,
+                    });
                 }
                 setLoading(false);
             }, (err: any) => {
