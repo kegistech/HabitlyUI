@@ -201,9 +201,11 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
           const parsed = JSON.parse(storedUserData);
          // const cachedNotifs = parsed.notifications || parsed;
           applyNotificationData(parsed);
+          setIsLoading(false);
         }
       } catch (cacheErr) {
         console.error('Failed to read notifications from local storage:', cacheErr);
+          setIsLoading(false);
       }
 
     
