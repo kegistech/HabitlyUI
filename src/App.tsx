@@ -45,6 +45,7 @@ const App = (): React.JSX.Element => {
         setIsReady(true);
       } catch (error) {
         console.error('Initialization error:', error);
+        setIsReady(true);
       }
     };
 

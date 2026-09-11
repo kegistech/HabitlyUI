@@ -37,7 +37,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 // App Details & URLs
 const PRIVACY_POLICY_URL = 'https://kegistech.com/habitly-privacy-policy.html';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.kegistech.habitly';
-const APP_STORE_URL = 'https://apps.apple.com/app/id6400000000'; // Replace with your exact App Store ID
+const APP_STORE_URL = 'https://apps.apple.com/in/app/consistent-habit-tracker/id6804195230'; 
 
 const SettingsScreen: React.FC<Props> = ({ navigation }) => {
   // Settings States

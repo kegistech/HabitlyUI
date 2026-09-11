@@ -7,7 +7,7 @@ import {
   isDeviceRegisteredForRemoteMessages,
 } from '@react-native-firebase/messaging';
 import notifee, { AndroidImportance, EventType } from '@notifee/react-native';
-import { Platform } from 'react-native';
+import { Alert, Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   check,
@@ -114,6 +114,7 @@ export const syncFCMTokenWithBackend = async (fcmToken?: string): Promise<void> 
     if (!isValidUserId) return;
 
     const storedToken = await AsyncStorage.getItem('fcm_token');
+
     if (storedToken === token) return;
 
     const payload = {
