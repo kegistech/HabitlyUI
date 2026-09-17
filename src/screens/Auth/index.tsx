@@ -113,14 +113,10 @@ const AuthScreen: React.FC<Props> = ({ navigation }) => {
     navigation.replace('Login');
   };
 
-  const openTerms = () => {
-    Linking.openURL('https://example.com/terms').catch((err) =>
-      console.warn('Could not open URL', err)
-    );
-  };
+
 
   const openPrivacy = () => {
-    Linking.openURL('https://example.com/privacy').catch((err) =>
+    Linking.openURL('https://www.kegistech.com/habitly-privacy-policy.html').catch((err) =>
       console.warn('Could not open URL', err)
     );
   };
@@ -253,12 +249,8 @@ const AuthScreen: React.FC<Props> = ({ navigation }) => {
             <View style={styles.legalFooter}>
               <Text style={styles.termsText}>
                 By signing up, you agree to our{' '}
-                <Text style={styles.linkText} onPress={openTerms}>
-                  Terms of Service
-                </Text>{' '}
-                and{' '}
                 <Text style={styles.linkText} onPress={openPrivacy}>
-                  Privacy Policy
+                  Terms of Service and Privacy Policy
                 </Text>
               </Text>
             </View>

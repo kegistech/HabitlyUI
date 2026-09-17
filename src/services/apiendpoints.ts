@@ -1,5 +1,8 @@
 export const accessAPI = 'Auth/signup';
 export const loginAPI='Auth/login';
+export const forgotPasswordAPI='Auth/forgot-password';
+export const verifyForgotPasswordOtpAPI='Auth/verify-forgot-password-otp';
+export const resetPasswordAPI='Auth/reset-password';
 export const countriesAPI = 'Master/countries';
 export const statesAPI = 'Master/states';
 export const updateWakeUpTimeAPI='Users/update-wakeup-time';

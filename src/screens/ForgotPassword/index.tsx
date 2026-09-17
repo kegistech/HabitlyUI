@@ -23,10 +23,12 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/responsive';
-
-// --- API Service Configuration ---
-// Adjust BASE_URL to match your API config/environment variables
-const BASE_URL = 'https://your-api-domain.com/api';
+import { postApi } from '../../services/commonAPIs';
+import {
+  forgotPasswordAPI,
+  verifyForgotPasswordOtpAPI,
+  resetPasswordAPI,
+} from '../../services/apiendpoints';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ForgotPassword'>;
 type Step = 'EMAIL' | 'OTP' | 'NEW_PASSWORD';
@@ -34,8 +36,8 @@ type Step = 'EMAIL' | 'OTP' | 'NEW_PASSWORD';
 const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
   // --- Flow State ---
   const [currentStep, setCurrentStep] = useState<Step>('EMAIL');
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [generalError, setGeneralError] = useState('');
 
   // Form Fields
   const [email, setEmail] = useState('');
@@ -44,9 +46,11 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  // Resend Timer State
-  const [timer, setTimer] = useState(30);
-  const [canResend, setCanResend] = useState(false);
+  // Field Errors
+  const [emailError, setEmailError] = useState('');
+  const [otpError, setOtpError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
   // Focus States
   const [emailFocused, setEmailFocused] = useState(false);
@@ -54,13 +58,16 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
   const [passFocused, setPassFocused] = useState(false);
   const [confirmFocused, setConfirmFocused] = useState(false);
 
+  // Resend Timer State
+  const [timer, setTimer] = useState(30);
+  const [canResend, setCanResend] = useState(false);
+
   // --- Animation Setup ---
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const slideAnim = useRef(new Animated.Value(0)).current;
 
-  // Handles smooth transition between steps
   const animateStepTransition = (nextStep: Step) => {
-    setErrorMessage('');
+    setGeneralError('');
     Animated.timing(fadeAnim, {
       toValue: 0,
       duration: 200,
@@ -71,6 +78,7 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
         Animated.timing(fadeAnim, {
           toValue: 1,
           duration: 400,
+          easing: Easing.out(Easing.quad),
           useNativeDriver: true,
         }),
         Animated.timing(slideAnim, {
@@ -94,161 +102,189 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
     return () => clearInterval(interval);
   }, [currentStep, timer]);
 
-  // --- Validation Helpers ---
-  const isValidEmail = (emailStr: string) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(emailStr.trim());
+  // --- Step Validations ---
+  const validateEmailStep = (): boolean => {
+    setEmailError('');
+    setGeneralError('');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email.trim()) {
+      setEmailError('Email address is required.');
+      return false;
+    }
+    if (!emailRegex.test(email.trim())) {
+      setEmailError('Please enter a valid email address.');
+      return false;
+    }
+    return true;
   };
 
-  // --- API Handlers ---
-
-  // STEP 1: Request OTP for Email
-  const handleSendOtp = async () => {
-    const trimmedEmail = email.trim();
-    if (!trimmedEmail) {
-      setErrorMessage('Please enter your email address.');
-      return;
+  const validateOtpStep = (): boolean => {
+    setOtpError('');
+    setGeneralError('');
+    if (!otp.trim()) {
+      setOtpError('OTP code is required.');
+      return false;
     }
-    if (!isValidEmail(trimmedEmail)) {
-      setErrorMessage('Please enter a valid email address.');
-      return;
+    if (otp.trim().length < 4) {
+      setOtpError('Please enter a valid OTP code.');
+      return false;
+    }
+    return true;
+  };
+
+  const validatePasswordStep = (): boolean => {
+    setPasswordError('');
+    setConfirmPasswordError('');
+    setGeneralError('');
+    let isValid = true;
+
+    if (!newPassword) {
+      setPasswordError('New password is required.');
+      isValid = false;
+    } else if (newPassword.length < 8) {
+      setPasswordError('Password must be at least 8 characters long.');
+      isValid = false;
     }
 
-    setLoading(true);
-    setErrorMessage('');
+    if (!confirmPassword) {
+      setConfirmPasswordError('Please confirm your new password.');
+      isValid = false;
+    } else if (newPassword !== confirmPassword) {
+      setConfirmPasswordError('Passwords do not match.');
+      isValid = false;
+    }
 
-    try {
-      const response = await fetch(`${BASE_URL}/Auth/forgot-password`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: trimmedEmail }),
-      });
+    return isValid;
+  };
 
-      const data = await response.json();
+  // --- API Handlers Using postApi ---
 
-      if (response.ok) {
-        setTimer(30);
-        setCanResend(false);
-        animateStepTransition('OTP');
-      } else {
-        setErrorMessage(data?.message || 'Failed to send OTP code. Please try again.');
+  // STEP 1: Request OTP
+  const handleSendOtp = () => {
+    if (!validateEmailStep()) return;
+
+    Keyboard.dismiss();
+    setIsLoading(true);
+
+    const payload = { email: email.trim() };
+
+    postApi(
+      forgotPasswordAPI,
+      payload,
+      (response: any) => {
+        setIsLoading(false);
+        if (response && (response.succeeded || response.isSuccess || response.status === 200 || response.success)) {
+          setTimer(30);
+          setCanResend(false);
+          animateStepTransition('OTP');
+        } else {
+          setGeneralError(response?.message || 'Failed to send OTP code. Please try again.');
+        }
+      },
+      (error: any) => {
+        setIsLoading(false);
+        const serverMsg = error?.response?.data?.message || error?.message || 'Network error. Please try again.';
+        setGeneralError(serverMsg);
       }
-    } catch (err) {
-      setErrorMessage('Network error. Please check your connection.');
-    } finally {
-      setLoading(false);
-    }
+    );
   };
 
   // STEP 2: Verify OTP
-  const handleVerifyOtp = async () => {
-    const trimmedOtp = otp.trim();
-    if (!trimmedOtp || trimmedOtp.length < 4) {
-      setErrorMessage('Please enter a valid OTP code.');
-      return;
-    }
+  const handleVerifyOtp = () => {
+    if (!validateOtpStep()) return;
 
-    setLoading(true);
-    setErrorMessage('');
+    Keyboard.dismiss();
+    setIsLoading(true);
 
-    try {
-      const response = await fetch(`${BASE_URL}/Auth/verify-forgot-password-otp`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: email.trim(),
-          otp: trimmedOtp,
-        }),
-      });
+    const payload = {
+      email: email.trim(),
+      otp: otp.trim(),
+    };
 
-      const data = await response.json();
-
-      if (response.ok) {
-        animateStepTransition('NEW_PASSWORD');
-      } else {
-        setErrorMessage(data?.message || 'Invalid or expired OTP. Please try again.');
+    postApi(
+      verifyForgotPasswordOtpAPI,
+      payload,
+      (response: any) => {
+        setIsLoading(false);
+        if (response && (response.succeeded || response.isSuccess || response.status === 200 || response.success)) {
+          animateStepTransition('NEW_PASSWORD');
+        } else {
+          setGeneralError(response?.message || 'Invalid or expired OTP code.');
+        }
+      },
+      (error: any) => {
+        setIsLoading(false);
+        const serverMsg = error?.response?.data?.message || error?.message || 'Invalid OTP code. Please try again.';
+        setGeneralError(serverMsg);
       }
-    } catch (err) {
-      setErrorMessage('Network error. Please check your connection.');
-    } finally {
-      setLoading(false);
-    }
+    );
   };
 
   // STEP 3: Reset Password
-  const handleUpdatePassword = async () => {
-    if (!newPassword || newPassword.length < 8) {
-      setErrorMessage('Password must be at least 8 characters long.');
-      return;
-    }
-    if (newPassword !== confirmPassword) {
-      setErrorMessage('Passwords do not match.');
-      return;
-    }
+  const handleUpdatePassword = () => {
+    if (!validatePasswordStep()) return;
 
-    setLoading(true);
-    setErrorMessage('');
+    Keyboard.dismiss();
+    setIsLoading(true);
 
-    try {
-      const response = await fetch(`${BASE_URL}/Auth/reset-password`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: email.trim(),
-          otp: otp.trim(),
-          newPassword: newPassword,
-        }),
-      });
+    const payload = {
+      email: email.trim(),
+      otp: otp.trim(),
+      newPassword: newPassword,
+    };
 
-      const data = await response.json();
-
-      if (response.ok) {
-        Alert.alert('Success', 'Password updated successfully!', [
-          { text: 'Login', onPress: () => navigation.navigate('Login') },
-        ]);
-      } else {
-        setErrorMessage(data?.message || 'Failed to update password. Please try again.');
+    postApi(
+      resetPasswordAPI,
+      payload,
+      (response: any) => {
+        setIsLoading(false);
+        if (response && (response.succeeded || response.isSuccess || response.status === 200 || response.success)) {
+          Alert.alert('Success', 'Your password has been updated successfully!', [
+            { text: 'Login Now', onPress: () => navigation.navigate('Login') },
+          ]);
+        } else {
+          setGeneralError(response?.message || 'Failed to update password. Please try again.');
+        }
+      },
+      (error: any) => {
+        setIsLoading(false);
+        const serverMsg = error?.response?.data?.message || error?.message || 'Failed to reset password. Please try again.';
+        setGeneralError(serverMsg);
       }
-    } catch (err) {
-      setErrorMessage('Network error. Please check your connection.');
-    } finally {
-      setLoading(false);
-    }
+    );
   };
 
-  // Resend OTP Action
-  const handleResendOtp = async () => {
-    if (!canResend || loading) return;
+  // Resend OTP Helper
+  const handleResendOtp = () => {
+    if (!canResend || isLoading) return;
 
-    setLoading(true);
-    setErrorMessage('');
+    setIsLoading(true);
+    setGeneralError('');
 
-    try {
-      const response = await fetch(`${BASE_URL}/Auth/forgot-password`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim() }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setTimer(30);
-        setCanResend(false);
-      } else {
-        setErrorMessage(data?.message || 'Failed to resend OTP code.');
+    postApi(
+      forgotPasswordAPI,
+      { email: email.trim() },
+      (response: any) => {
+        setIsLoading(false);
+        if (response && (response.succeeded || response.isSuccess || response.status === 200 || response.success)) {
+          setTimer(30);
+          setCanResend(false);
+        } else {
+          setGeneralError(response?.message || 'Failed to resend OTP code.');
+        }
+      },
+      (error: any) => {
+        setIsLoading(false);
+        setGeneralError(error?.response?.data?.message || error?.message || 'Failed to resend OTP.');
       }
-    } catch (err) {
-      setErrorMessage('Network error. Please check your connection.');
-    } finally {
-      setLoading(false);
-    }
+    );
   };
 
   return (
     <LinearGradient
-      colors={['#050814', '#0A1228', '#02040A']}
-      locations={[0, 0.55, 1]}
+      colors={['#0F172A', '#1E1B4B', '#312E81']}
+      locations={[0, 0.5, 1]}
       style={styles.container}
     >
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
@@ -267,7 +303,7 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
               showsVerticalScrollIndicator={false}
               bounces={false}
             >
-              {/* Back to Login Button */}
+              {/* Back to Login Action */}
               <TouchableOpacity
                 onPress={() => navigation.goBack()}
                 style={styles.backButton}
@@ -276,13 +312,20 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                 <Text style={styles.backButtonText}>← Back to Login</Text>
               </TouchableOpacity>
 
-              {/* Dynamic Header */}
+              {/* Header Info */}
               <Animated.View
                 style={[
                   styles.headerContainer,
-                  { opacity: fadeAnim, transform: [{ translateY: slideAnim }] },
+                  {
+                    opacity: fadeAnim,
+                    transform: [{ translateY: slideAnim }],
+                  },
                 ]}
               >
+                <View style={styles.tagBadge}>
+                  <Text style={styles.tagBadgeText}>ACCOUNT RECOVERY</Text>
+                </View>
+
                 <Text style={styles.welcomeText}>
                   {currentStep === 'EMAIL' && 'Reset Password 🔒'}
                   {currentStep === 'OTP' && 'Verify OTP 💬'}
@@ -298,21 +341,24 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                 </Text>
               </Animated.View>
 
-              {/* Global Error Banner */}
-              {!!errorMessage && (
-                <View style={styles.errorContainer}>
-                  <Text style={styles.errorText}>{errorMessage}</Text>
+              {/* General Error Banner */}
+              {generalError ? (
+                <View style={styles.errorBanner}>
+                  <Text style={styles.errorBannerText}>{generalError}</Text>
                 </View>
-              )}
+              ) : null}
 
-              {/* Form Content Steps */}
+              {/* Form Section */}
               <Animated.View
                 style={[
                   styles.formContainer,
-                  { opacity: fadeAnim, transform: [{ translateY: slideAnim }] },
+                  {
+                    opacity: fadeAnim,
+                    transform: [{ translateY: slideAnim }],
+                  },
                 ]}
               >
-                {/* STEP 1: EMAIL ADDRESS */}
+                {/* STEP 1: EMAIL */}
                 {currentStep === 'EMAIL' && (
                   <>
                     <View style={styles.inputWrapper}>
@@ -321,42 +367,53 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                         style={[
                           styles.inputContainer,
                           emailFocused && styles.inputFocused,
+                          !!emailError && styles.inputErrorBorder,
                         ]}
                       >
                         <TextInput
                           style={styles.textInput}
                           placeholder="name@example.com"
-                          placeholderTextColor="rgba(255, 255, 255, 0.35)"
+                          placeholderTextColor="rgba(226, 232, 240, 0.35)"
                           value={email}
-                          onChangeText={(text) => {
-                            setEmail(text);
-                            if (errorMessage) setErrorMessage('');
+                          onChangeText={(val) => {
+                            setEmail(val);
+                            if (emailError) setEmailError('');
+                            if (generalError) setGeneralError('');
                           }}
                           keyboardType="email-address"
                           autoCapitalize="none"
+                          autoCorrect={false}
                           onFocus={() => setEmailFocused(true)}
                           onBlur={() => setEmailFocused(false)}
-                          editable={!loading}
+                          editable={!isLoading}
                         />
                       </View>
+                      {emailError ? <Text style={styles.fieldErrorText}>{emailError}</Text> : null}
                     </View>
 
                     <TouchableOpacity
                       activeOpacity={0.85}
-                      style={[styles.actionButton, loading && styles.actionButtonDisabled]}
+                      style={styles.actionButton}
                       onPress={handleSendOtp}
-                      disabled={loading}
+                      disabled={isLoading}
                     >
-                      {loading ? (
-                        <ActivityIndicator color="#040914" />
-                      ) : (
-                        <Text style={styles.actionButtonText}>GENERATE OTP</Text>
-                      )}
+                      <LinearGradient
+                        colors={['#10B981', '#059669']}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={styles.buttonGradient}
+                      >
+                        {isLoading ? (
+                          <ActivityIndicator color="#FFFFFF" size="small" />
+                        ) : (
+                          <Text style={styles.actionButtonText}>GENERATE OTP</Text>
+                        )}
+                      </LinearGradient>
                     </TouchableOpacity>
                   </>
                 )}
 
-                {/* STEP 2: OTP VERIFICATION */}
+                {/* STEP 2: OTP */}
                 {currentStep === 'OTP' && (
                   <>
                     <View style={styles.inputWrapper}>
@@ -365,24 +422,27 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                         style={[
                           styles.inputContainer,
                           otpFocused && styles.inputFocused,
+                          !!otpError && styles.inputErrorBorder,
                         ]}
                       >
                         <TextInput
                           style={[styles.textInput, styles.otpInput]}
                           placeholder="• • • • • •"
-                          placeholderTextColor="rgba(255, 255, 255, 0.35)"
+                          placeholderTextColor="rgba(226, 232, 240, 0.35)"
                           value={otp}
-                          onChangeText={(text) => {
-                            setOtp(text);
-                            if (errorMessage) setErrorMessage('');
+                          onChangeText={(val) => {
+                            setOtp(val);
+                            if (otpError) setOtpError('');
+                            if (generalError) setGeneralError('');
                           }}
                           keyboardType="number-pad"
                           maxLength={6}
                           onFocus={() => setOtpFocused(true)}
                           onBlur={() => setOtpFocused(false)}
-                          editable={!loading}
+                          editable={!isLoading}
                         />
                       </View>
+                      {otpError ? <Text style={styles.fieldErrorText}>{otpError}</Text> : null}
                     </View>
 
                     {/* Resend Timer */}
@@ -390,15 +450,10 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                       <Text style={styles.resendText}>Didn't receive the code? </Text>
                       <TouchableOpacity
                         onPress={handleResendOtp}
-                        disabled={!canResend || loading}
+                        disabled={!canResend || isLoading}
                         activeOpacity={0.7}
                       >
-                        <Text
-                          style={[
-                            styles.resendLink,
-                            (!canResend || loading) && styles.disabledLink,
-                          ]}
-                        >
+                        <Text style={[styles.resendLink, (!canResend || isLoading) && styles.disabledLink]}>
                           {canResend ? 'Resend Code' : `Resend in ${timer}s`}
                         </Text>
                       </TouchableOpacity>
@@ -406,15 +461,22 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
 
                     <TouchableOpacity
                       activeOpacity={0.85}
-                      style={[styles.actionButton, loading && styles.actionButtonDisabled]}
+                      style={styles.actionButton}
                       onPress={handleVerifyOtp}
-                      disabled={loading}
+                      disabled={isLoading}
                     >
-                      {loading ? (
-                        <ActivityIndicator color="#040914" />
-                      ) : (
-                        <Text style={styles.actionButtonText}>VERIFY OTP</Text>
-                      )}
+                      <LinearGradient
+                        colors={['#10B981', '#059669']}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={styles.buttonGradient}
+                      >
+                        {isLoading ? (
+                          <ActivityIndicator color="#FFFFFF" size="small" />
+                        ) : (
+                          <Text style={styles.actionButtonText}>VERIFY OTP</Text>
+                        )}
+                      </LinearGradient>
                     </TouchableOpacity>
                   </>
                 )}
@@ -428,21 +490,23 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                         style={[
                           styles.inputContainer,
                           passFocused && styles.inputFocused,
+                          !!passwordError && styles.inputErrorBorder,
                         ]}
                       >
                         <TextInput
                           style={styles.textInput}
                           placeholder="Minimum 8 characters"
-                          placeholderTextColor="rgba(255, 255, 255, 0.35)"
+                          placeholderTextColor="rgba(226, 232, 240, 0.35)"
                           secureTextEntry={!isPasswordVisible}
                           value={newPassword}
-                          onChangeText={(text) => {
-                            setNewPassword(text);
-                            if (errorMessage) setErrorMessage('');
+                          onChangeText={(val) => {
+                            setNewPassword(val);
+                            if (passwordError) setPasswordError('');
+                            if (generalError) setGeneralError('');
                           }}
                           onFocus={() => setPassFocused(true)}
                           onBlur={() => setPassFocused(false)}
-                          editable={!loading}
+                          editable={!isLoading}
                         />
                         <TouchableOpacity
                           onPress={() => setIsPasswordVisible(!isPasswordVisible)}
@@ -454,6 +518,7 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                           </Text>
                         </TouchableOpacity>
                       </View>
+                      {passwordError ? <Text style={styles.fieldErrorText}>{passwordError}</Text> : null}
                     </View>
 
                     <View style={styles.inputWrapper}>
@@ -462,36 +527,48 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                         style={[
                           styles.inputContainer,
                           confirmFocused && styles.inputFocused,
+                          !!confirmPasswordError && styles.inputErrorBorder,
                         ]}
                       >
                         <TextInput
                           style={styles.textInput}
                           placeholder="Re-enter password"
-                          placeholderTextColor="rgba(255, 255, 255, 0.35)"
+                          placeholderTextColor="rgba(226, 232, 240, 0.35)"
                           secureTextEntry={!isPasswordVisible}
                           value={confirmPassword}
-                          onChangeText={(text) => {
-                            setConfirmPassword(text);
-                            if (errorMessage) setErrorMessage('');
+                          onChangeText={(val) => {
+                            setConfirmPassword(val);
+                            if (confirmPasswordError) setConfirmPasswordError('');
+                            if (generalError) setGeneralError('');
                           }}
                           onFocus={() => setConfirmFocused(true)}
                           onBlur={() => setConfirmFocused(false)}
-                          editable={!loading}
+                          editable={!isLoading}
                         />
                       </View>
+                      {confirmPasswordError ? (
+                        <Text style={styles.fieldErrorText}>{confirmPasswordError}</Text>
+                      ) : null}
                     </View>
 
                     <TouchableOpacity
                       activeOpacity={0.85}
-                      style={[styles.actionButton, loading && styles.actionButtonDisabled]}
+                      style={styles.actionButton}
                       onPress={handleUpdatePassword}
-                      disabled={loading}
+                      disabled={isLoading}
                     >
-                      {loading ? (
-                        <ActivityIndicator color="#040914" />
-                      ) : (
-                        <Text style={styles.actionButtonText}>UPDATE PASSWORD</Text>
-                      )}
+                      <LinearGradient
+                        colors={['#10B981', '#059669']}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={styles.buttonGradient}
+                      >
+                        {isLoading ? (
+                          <ActivityIndicator color="#FFFFFF" size="small" />
+                        ) : (
+                          <Text style={styles.actionButtonText}>UPDATE PASSWORD</Text>
+                        )}
+                      </LinearGradient>
                     </TouchableOpacity>
                   </>
                 )}
@@ -527,65 +604,83 @@ const styles = StyleSheet.create({
     width: scaleWidth(280),
     height: scaleWidth(280),
     borderRadius: 1000,
-    backgroundColor: 'rgba(0, 230, 118, 0.08)',
-    shadowColor: '#00E676',
+    backgroundColor: 'rgba(16, 185, 129, 0.12)',
+    shadowColor: '#10B981',
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.8,
-    shadowRadius: 60,
+    shadowRadius: 70,
+    elevation: 20,
   },
 
-  // Navigation
+  // Back Link
   backButton: {
-    marginBottom: scaleHeight(24),
+    marginBottom: scaleHeight(20),
     alignSelf: 'flex-start',
   },
   backButtonText: {
-    color: '#00E676',
+    color: '#34D399',
     fontSize: moderateScale(14),
     fontWeight: '700',
   },
 
   // Header
   headerContainer: {
-    marginBottom: scaleHeight(20),
+    marginBottom: scaleHeight(28),
+  },
+  tagBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: 'rgba(16, 185, 129, 0.15)',
+    paddingHorizontal: scaleWidth(14),
+    paddingVertical: scaleHeight(6),
+    borderRadius: moderateScale(20),
+    borderWidth: 1,
+    borderColor: 'rgba(16, 185, 129, 0.35)',
+    marginBottom: scaleHeight(14),
+  },
+  tagBadgeText: {
+    color: '#34D399',
+    fontSize: moderateScale(11),
+    fontWeight: '900',
+    letterSpacing: 1.5,
   },
   welcomeText: {
-    fontSize: moderateScale(isTablet ? 38 : 28),
+    fontSize: moderateScale(isTablet ? 38 : 30),
     fontWeight: '900',
     color: '#FFFFFF',
     marginBottom: scaleHeight(8),
   },
   subText: {
     fontSize: moderateScale(isTablet ? 18 : 15),
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: 'rgba(226, 232, 240, 0.75)',
     lineHeight: moderateScale(22),
   },
 
-  // Errors
-  errorContainer: {
-    backgroundColor: 'rgba(255, 82, 82, 0.12)',
-    borderColor: 'rgba(255, 82, 82, 0.4)',
-    borderWidth: 1,
+  // Banner Error
+  errorBanner: {
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
     borderRadius: moderateScale(12),
-    padding: scaleWidth(12),
-    marginBottom: scaleHeight(16),
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.35)',
+    padding: scaleHeight(12),
+    paddingHorizontal: scaleWidth(16),
+    marginBottom: scaleHeight(20),
   },
-  errorText: {
-    color: '#FF5252',
+  errorBannerText: {
+    color: '#F87171',
     fontSize: moderateScale(13),
     fontWeight: '600',
     textAlign: 'center',
   },
 
-  // Form Fields
+  // Form
   formContainer: {
     width: '100%',
   },
   inputWrapper: {
-    marginBottom: scaleHeight(20),
+    marginBottom: scaleHeight(18),
   },
   inputLabel: {
-    color: 'rgba(255, 255, 255, 0.6)',
+    color: 'rgba(226, 232, 240, 0.65)',
     fontSize: moderateScale(11),
     fontWeight: '800',
     letterSpacing: 1.2,
@@ -594,7 +689,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+    backgroundColor: 'rgba(15, 23, 42, 0.5)',
     borderRadius: moderateScale(14),
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.12)',
@@ -602,8 +697,11 @@ const styles = StyleSheet.create({
     height: scaleHeight(54),
   },
   inputFocused: {
-    borderColor: '#00E676',
-    backgroundColor: 'rgba(0, 230, 118, 0.04)',
+    borderColor: '#34D399',
+    backgroundColor: 'rgba(16, 185, 129, 0.08)',
+  },
+  inputErrorBorder: {
+    borderColor: '#EF4444',
   },
   textInput: {
     flex: 1,
@@ -622,10 +720,16 @@ const styles = StyleSheet.create({
     paddingVertical: scaleHeight(8),
   },
   eyeButtonText: {
-    color: '#00E676',
+    color: '#34D399',
     fontSize: moderateScale(11),
     fontWeight: '800',
     letterSpacing: 1,
+  },
+  fieldErrorText: {
+    color: '#F87171',
+    fontSize: moderateScale(12),
+    marginTop: scaleHeight(6),
+    fontWeight: '500',
   },
 
   // Resend Timer
@@ -635,38 +739,40 @@ const styles = StyleSheet.create({
     marginBottom: scaleHeight(20),
   },
   resendText: {
-    color: 'rgba(255, 255, 255, 0.6)',
+    color: 'rgba(226, 232, 240, 0.65)',
     fontSize: moderateScale(13),
   },
   resendLink: {
-    color: '#00E676',
+    color: '#34D399',
     fontSize: moderateScale(13),
     fontWeight: '700',
   },
   disabledLink: {
-    color: 'rgba(255, 255, 255, 0.4)',
+    color: 'rgba(226, 232, 240, 0.35)',
   },
 
   // Actions
   actionButton: {
     width: '100%',
-    backgroundColor: '#00E676',
     height: scaleHeight(54),
     borderRadius: moderateScale(16),
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#00E676',
+    overflow: 'hidden',
+    shadowColor: '#10B981',
     shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.35,
     shadowRadius: 10,
     elevation: 8,
     marginTop: scaleHeight(8),
+    marginBottom: scaleHeight(12),
   },
-  actionButtonDisabled: {
-    opacity: 0.6,
+  buttonGradient: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   actionButtonText: {
-    color: '#040914',
+    color: '#FFFFFF',
     fontSize: moderateScale(15),
     fontWeight: '900',
     letterSpacing: 1.2,

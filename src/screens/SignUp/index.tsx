@@ -182,14 +182,10 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
     navigation.navigate('Login');
   };
 
-  const openTerms = () => {
-    Linking.openURL('https://example.com/terms').catch((err) =>
-      console.warn('Could not open URL', err)
-    );
-  };
+
 
   const openPrivacy = () => {
-    Linking.openURL('https://example.com/privacy').catch((err) =>
+    Linking.openURL('https://www.kegistech.com/habitly-privacy-policy.html').catch((err) =>
       console.warn('Could not open URL', err)
     );
   };
@@ -376,12 +372,8 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
                 <View style={styles.legalFooter}>
                   <Text style={styles.termsText}>
                     By creating an account, you agree to our{' '}
-                    <Text style={styles.linkText} onPress={openTerms}>
-                      Terms
-                    </Text>{' '}
-                    and{' '}
                     <Text style={styles.linkText} onPress={openPrivacy}>
-                      Privacy Policy
+                      Terms and  Privacy Policy
                     </Text>
                   </Text>
                 </View>
