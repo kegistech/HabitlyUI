@@ -643,7 +643,12 @@
         "title": "Vietnamese 🇻🇳",
         "nativeTitle": "Tiếng Việt",
         "description": "將應用程式語言設定為越南文"
-      }
+      },
+      "hi": {
+  "title": "Hindi 🇮🇳",
+  "nativeTitle": "हिन्दी",
+  "description": "將應用語言設置為印地語"
+}
     },
     "alerts": {
       "errorTitle": "錯誤",

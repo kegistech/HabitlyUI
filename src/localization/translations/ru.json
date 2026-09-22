@@ -649,7 +649,12 @@
         "title": "Vietnamese 🇻🇳",
         "nativeTitle": "Tiếng Việt",
         "description": "Установить язык приложения: вьетнамский"
-      }
+      },
+      "hi": {
+  "title": "Hindi 🇮🇳",
+  "nativeTitle": "हिन्दी",
+  "description": "Установить язык приложения на хинди"
+}
     },
     "alerts": {
       "errorTitle": "Ошибка",

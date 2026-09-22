@@ -643,7 +643,12 @@
         "title": "Vietnamese 🇻🇳",
         "nativeTitle": "Tiếng Việt",
         "description": "Uygulama dilini Vietnamca olarak ayarla"
-      }
+      },
+      "hi": {
+  "title": "Hindi 🇮🇳",
+  "nativeTitle": "हिन्दी",
+  "description": "Uygulama dilini Hintçe olarak ayarla"
+}
     },
     "alerts": {
       "errorTitle": "Hata",

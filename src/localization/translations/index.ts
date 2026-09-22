@@ -17,7 +17,7 @@ import tr from './tr.json';
 import vi from './vi.json';
 import zhTW from './zh-TW.json';
 import zhHant from './zh-Hant.json';
-
+import hi from './hi.json';
 
 export const resources = {
   en: { translation: en },
@@ -25,6 +25,7 @@ export const resources = {
   de: { translation: de },
   es: { translation: es },
   fr: { translation: fr },
+  hi: { translation: hi },
   id: { translation: id },
   it: { translation: it },
   ja: { translation: ja },

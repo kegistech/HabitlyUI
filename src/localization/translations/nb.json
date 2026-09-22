@@ -644,7 +644,12 @@
         "title": "Vietnamese 🇻🇳",
         "nativeTitle": "Tiếng Việt",
         "description": "Sett appspråk til vietnamesisk"
-      }
+      },
+      "hi": {
+  "title": "Hindi 🇮🇳",
+  "nativeTitle": "हिन्दी",
+  "description": "Sett app-språk til hindi"
+}
     },
     "alerts": {
       "errorTitle": "Feil",

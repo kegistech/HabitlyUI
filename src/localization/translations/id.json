@@ -644,7 +644,12 @@
         "title": "Vietnamese 🇻🇳",
         "nativeTitle": "Tiếng Việt",
         "description": "Atur bahasa aplikasi ke Bahasa Vietnam"
-      }
+      },
+     "hi": {
+  "title": "Hindi 🇮🇳",
+  "nativeTitle": "हिन्दी",
+  "description": "Atur bahasa aplikasi ke Bahasa Hindi"
+}
     },
     "alerts": {
       "errorTitle": "Kesalahan",

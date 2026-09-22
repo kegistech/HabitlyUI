@@ -643,7 +643,12 @@
         "title": "Vietnamese 🇻🇳",
         "nativeTitle": "Tiếng Việt",
         "description": "ตั้งค่าภาษาของแอปเป็น ภาษาเวียดนาม"
-      }
+      },
+      "hi": {
+  "title": "Hindi 🇮🇳",
+  "nativeTitle": "हिन्दी",
+  "description": "ตั้งค่าภาษาของแอปเป็นภาษาฮินดี"
+}
     },
     "alerts": {
       "errorTitle": "ข้อผิดพลาด",

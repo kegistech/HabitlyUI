@@ -145,6 +145,12 @@ const AVAILABLE_LANGUAGES: LanguageOption[] = [
     nativeTitleKey: 'languageSelector.languages.vi.nativeTitle',
     descriptionKey: 'languageSelector.languages.vi.description',
   },
+  {
+  code: 'hi',
+  titleKey: 'languageSelector.languages.hi.title',
+  nativeTitleKey: 'languageSelector.languages.hi.nativeTitle',
+  descriptionKey: 'languageSelector.languages.hi.description',
+}
 ];
 
 const LanguageSelectorScreen: React.FC<Props> = ({ navigation }) => {

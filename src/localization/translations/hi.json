@@ -1,0 +1,711 @@
+{
+"auth": {
+"tagBadge": "आदत निर्माता",
+"title": "छोटी आदतें।\nशानदार परिणाम।",
+"subtitle": "अपनी दैनिक दिनचर्या को जीवनभर की निरंतरता में बदलें। अपने दिन पर अभी नियंत्रण पाएं।",
+"getStartedFree": "मुफ्त में शुरू करें",
+"alreadyHaveAccount": "मेरा पहले से एक खाता है।",
+"signIn": "साइन इन करें",
+"termsNotice": "साइन अप करके, आप हमारी सहमति देते हैं",
+"termsAndPrivacy": "सेवा की शर्तें और गोपनीयता नीति"
+},
+"login": {
+"tagBadge": "वापसी पर स्वागत है",
+"welcomeText": "साइन इन करें",
+"subText": "अपनी निरंतरता जारी रखें और आज की प्रगति को ट्रैक करें।",
+"emailLabel": "ईमेल पता",
+"emailPlaceholder": "name@example.com",
+"passwordLabel": "पासवर्ड",
+"passwordPlaceholder": "अपना पासवर्ड दर्ज करें",
+"hide": "छिपाएं",
+"show": "दिखाएं",
+"forgotPassword": "पासवर्ड भूल गए?",
+"signInButton": "साइन इन करें",
+"dontHaveAccount": "खाता नहीं है?",
+"signUp": "साइन अप करें",
+"errors": {
+"emailRequired": "ईमेल पता आवश्यक है।",
+"emailInvalid": "कृपया एक मान्य ईमेल पता दर्ज करें।",
+"passwordRequired": "पासवर्ड आवश्यक है।",
+"loginFailed": "लॉगिन विफल रहा। कृपया अपने क्रेडेंशियल सत्यापित करें।",
+"loginError": "अमान्य ईमेल या पासवर्ड। कृपया पुनः प्रयास करें।"
+}
+},
+"forgotPassword": {
+"tag": "खाता पुनर्प्राप्ति",
+"backToLogin": "लॉगिन पर वापस जाएं",
+"back": "वापस",
+"success": "सफलता",
+"hide": "छिपाएं",
+"show": "दिखाएं",
+"titleEmail": "पासवर्ड रीसेट करें 🔒",
+"titleOtp": "OTP सत्यापित करें 💬",
+"titlePassword": "नया पासवर्ड 🔑",
+"subEmail": "अपना ईमेल पता दर्ज करें और हम आपको एक OTP कोड भेजेंगे।",
+"subOtp": "को भेजा गया सत्यापन कोड दर्ज करें",
+"subPassword": "अपने खाते की सुरक्षा के लिए एक मजबूत नया पासवर्ड सेट करें।",
+"noOtp": "कोड प्राप्त नहीं हुआ?",
+"successMsg": "आपका पासवर्ड सफलतापूर्वक अपडेट कर दिया गया है!",
+"loginNow": "अभी लॉगिन करें",
+"labels": {
+"email": "ईमेल पता",
+"otp": "OTP कोड दर्ज करें",
+"newPassword": "नया पासवर्ड",
+"confirmPassword": "नए पासवर्ड की पुष्टि करें"
+},
+"placeholders": {
+"email": "name@example.com",
+"otp": "• • • • • •",
+"minPassword": "न्यूनतम 8 वर्ण",
+"reEnterPassword": "पासवर्ड पुनः दर्ज करें"
+},
+"buttons": {
+"generateOtp": "OTP जनरेट करें",
+"verifyOtp": "OTP सत्यापित करें",
+"updatePassword": "पासवर्ड अपडेट करें",
+"resend": "कोड पुनः भेजें",
+"resendIn": "पुनः भेजें"
+},
+"errors": {
+"emailRequired": "ईमेल पता आवश्यक है।",
+"invalidEmail": "कृपया एक मान्य ईमेल पता दर्ज करें।",
+"otpRequired": "OTP कोड आवश्यक है।",
+"invalidOtp": "कृपया एक मान्य OTP कोड दर्ज करें।",
+"passwordRequired": "नया पासवर्ड आवश्यक है।",
+"passwordLength": "पासवर्ड कम से कम 8 वर्णों का होना चाहिए।",
+"confirmPasswordRequired": "कृपया अपने नए पासवर्ड की पुष्टि करें।",
+"passwordsMismatch": "पासवर्ड मेल नहीं खाते।",
+"sendOtpFailed": "OTP कोड भेजने में विफल। कृपया पुनः प्रयास करें।",
+"updatePasswordFailed": "पासवर्ड अपडेट करने में विफल। कृपया पुनः प्रयास करें।",
+"resendFailed": "OTP कोड पुनः भेजने में विफल।",
+"networkError": "नेटवर्क त्रुटि। कृपया पुनः प्रयास करें।"
+}
+},
+"signUp": {
+"badge": "शुरू करें",
+"title": "खाता बनाएं 🚀",
+"subtitle": "आज से ही बेहतर दैनिक दिनचर्या बनाना शुरू करें।",
+"hide": "छिपाएं",
+"show": "दिखाएं",
+"loadingCountries": "देश लोड हो रहे हैं...",
+"labels": {
+"fullName": "पूरा नाम",
+"email": "ईमेल पता",
+"password": "पासवर्ड",
+"country": "देश"
+},
+"placeholders": {
+"fullName": "जॉन दो",
+"email": "name@example.com",
+"password": "न्यूनतम 8 वर्ण",
+"selectCountry": "अपना देश चुनें"
+},
+"buttons": {
+"createAccount": "मेरा खाता बनाएं",
+"creatingAccount": "खाता बनाया जा रहा है..."
+},
+"legal": {
+"prefix": "खाता बनाकर, आप हमारी सहमति देते हैं ",
+"termsAndPrivacy": "शर्तें और गोपनीयता नीति"
+},
+"footer": {
+"alreadyHaveAccount": "पहले से ही खाता है? ",
+"signIn": "साइन इन करें"
+},
+"modal": {
+"title": "देश चुनें",
+"done": "हो गया"
+},
+"errors": {
+"requiredFields": "कृपया सभी आवश्यक फ़ील्ड भरें।",
+"invalidEmail": "कृपया एक मान्य ईमेल पता दर्ज करें।",
+"passwordLength": "पासवर्ड कम से कम 8 वर्णों का होना चाहिए।",
+"registrationFailed": "पंजीकरण विफल रहा। कृपया पुनः प्रयास करें।",
+"networkError": "नेटवर्क त्रुटि हुई।"
+}
+},
+"wakeUpTime": {
+"badge": "सुबह की दिनचर्या",
+"title": "आप आमतौर पर किस समय\nसोकर उठते हैं? 🌅",
+"subtitle": "हम इसका उपयोग आपकी दैनिक दिनचर्या को अनुकूलित करने और अलर्ट शेड्यूल करने के लिए करेंगे।",
+"buttons": {
+"continue": "जारी रखें"
+},
+"errors": {
+"updateFailed": "उठने का समय अपडेट करने में विफल। कृपया पुनः प्रयास करें।",
+"networkError": "नेटवर्क त्रुटि हुई।"
+}
+},
+"reflectionTime": {
+"badge": "शाम का अवलोकन",
+"title": "आप अपने दिन का अवलोकन\nकिस समय करना चाहते हैं? 🌙",
+"subtitle": "शाम का एक त्वरित अवलोकन सफलताओं का जश्न मनाने और निरंतरता बनाए रखने में मदद करता है।",
+"buttons": {
+"continue": "जारी रखें"
+},
+"errors": {
+"updateFailed": "अवलोकन का समय अपडेट करने में विफल। कृपया पुनः प्रयास करें।",
+"networkError": "नेटवर्क त्रुटि हुई।"
+}
+},
+"dashboard": {
+"title": "आज",
+"sectionTitle": "कार्य और आदतें",
+"emptyHabits": "इस तिथि के लिए कोई आदत निर्धारित नहीं है।",
+"defaults": {
+"goalType": "दैनिक",
+"valueType": "बार"
+},
+"tracking": {
+"disabledFuture": "भविष्य की तिथियों के लिए ट्रैकिंग अक्षम है",
+"trackToday": "आज की गतिविधि को ट्रैक करें"
+},
+"alerts": {
+"errorTitle": "त्रुटि",
+"fetchError": "चयनित तिथि के लिए आदतें प्राप्त करने में विफल।",
+"trackError": "आदत की प्रगति को अपडेट करने में विफल।",
+"connectError": "ट्रैकर से कनेक्ट करने में विफल।",
+"futureDateTitle": "अनुमति नहीं है",
+"futureDateMessage": "आप भविष्य की तिथियों के लिए गतिविधि को ट्रैक नहीं कर सकते।",
+"goalReachedTitle": "लक्ष्य प्राप्त हुआ",
+"goalReachedMessage": "आप इस आदत का लक्ष्य पहले ही पूरा कर चुके हैं।",
+"minLimitTitle": "न्यूनतम सीमा",
+"minLimitMessage": "पूर्ण की गई गतिविधि 0 से कम नहीं हो सकती।",
+"limitReachedTitle": "सीमा समाप्त",
+"limitReachedMessage": "आप 2 आदतों की मुफ्त सीमा तक पहुंच चुके हैं। असीमित पहुंच के लिए प्रो में अपग्रेड करें।",
+"cancel": "रद्द करें",
+"upgrade": "अपग्रेड करें"
+}
+},
+"createHabitMenu": {
+"headerTitle": "आदत बनाएं",
+"regularHabit": "नियमित आदत",
+"oneTimeTask": "एक बार का कार्य",
+"sectionHeader": "या इन श्रेणियों में से चुनें",
+"defaultCategorySubtitle": "नई आदतों को खोजें और बनाएं",
+"alerts": {
+"noticeTitle": "सूचना",
+"fetchError": "श्रेणियां प्राप्त करने में विफल।",
+"errorTitle": "त्रुटि",
+"connectError": "सर्वर से कनेक्ट करने में विफल।"
+}
+},
+"categoryHabits": {
+"defaultCategoryTitle": "आदतें",
+"habitsCount": "{{count}} आदत",
+"habitsCount_plural": "{{count}} आदतें",
+"emptyState": "इस श्रेणी के लिए कोई आदत टेम्प्लेट नहीं मिला।",
+"alerts": {
+"noticeTitle": "सूचना",
+"fetchError": "आदत टेम्प्लेट प्राप्त करने में विफल।",
+"errorTitle": "त्रुटि",
+"connectError": "सर्वर से कनेक्ट करने में विफल।"
+}
+},
+"createOneTimeHabit": {
+"headerTitleEdit": "कार्य संपादित करें",
+"headerTitleCreate": "एक बार का कार्य",
+"save": "सहेजें",
+"habitNamePlaceholder": "अपनी आदत का नाम दें",
+"selectColor": "रंग चुनें",
+"todayPrefix": "आज, {{date}}",
+"getReminders": "रिमाइंडर प्राप्त करें",
+"addReminderTime": "रिमाइंडर का समय जोड़ें",
+"validation": {
+"title": "सत्यापन त्रुटि",
+"emptyName": "कृपया आदत का नाम दर्ज करें।"
+},
+"alerts": {
+"errorTitle": "त्रुटि",
+"successTitle": "सफलता",
+"fetchColorsFailed": "रंग प्राप्त करने में विफल।",
+"updateSuccess": "एक बार का कार्य सफलतापूर्वक अपडेट किया गया।",
+"updateFailed": "कार्य अपडेट करने में विफल।",
+"updateError": "अपडेट करते समय एक त्रुटि हुई।",
+"createSuccess": "एक बार का कार्य सफलतापूर्वक बनाया गया।",
+"createFailed": "कार्य बनाने में विफल।",
+"createError": "बनाते समय एक त्रुटि हुई।",
+"ok": "ठीक है"
+}
+},
+"createRegularHabit": {
+"headerTitleEdit": "आदत संपादित करें",
+"headerTitleNew": "नई आदत",
+"save": "सहेजें",
+"placeholderName": "अपनी आदत का नाम दें",
+"selectColor": "रंग चुनें",
+"goalForHabit": "आदत के लिए लक्ष्य",
+"numberOfTimes": "बार की संख्या",
+"time": "समय",
+"timesSuffix": "बार",
+"minutesSuffix": "मिनट",
+"frequencies": {
+"daily": "दैनिक",
+"weekly": "साप्ताहिक",
+"monthly": "मासिक"
+},
+"repeatEveryDay": "हर दिन दोहराएं",
+"repeatDailyIn": "दैनिक रूप से इसमें दोहराएं:",
+"timesOfDay": {
+"morning": "सुबह",
+"afternoon": "दोपहर",
+"evening": "शाम"
+},
+"daysOfWeek": {
+"sunday": "र",
+"monday": "सो",
+"tuesday": "मं",
+"wednesday": "बु",
+"thursday": "गु",
+"friday": "शु",
+"saturday": "श"
+},
+"getReminders": "रिमाइंडर प्राप्त करें",
+"addReminderTime": "रिमाइंडर का समय जोड़ें",
+"alerts": {
+"errorTitle": "त्रुटि",
+"successTitle": "सफलता",
+"validationTitle": "सत्यापन त्रुटि",
+"enterHabitName": "कृपया आदत का नाम दर्ज करें।",
+"fetchColorsFailed": "रंग प्राप्त करने में विफल।",
+"habitUpdatedSuccess": "आदत सफलतापूर्वक अपडेट की गई।",
+"habitCreatedSuccess": "आदत सफलतापूर्वक बनाई गई।",
+"habitUpdateFailed": "आदत अपडेट करने में विफल।",
+"habitCreateFailed": "आदत बनाने में विफल।",
+"updateError": "अपडेट करते समय एक त्रुटि हुई।",
+"createError": "बनाते समय एक त्रुटि हुई।"
+}
+},
+"common": {
+"error": "त्रुटि",
+"success": "सफलता",
+"cancel": "रद्द करें",
+"goBack": "वापस जाएं"
+},
+"habitDetails": {
+"currentStreak": "आपकी वर्तमान निरंतरता",
+"longestStreak": "आपकी सबसे लंबी निरंतरता",
+"completionRate": "आदत पूरा होने की दर",
+"totalTimesCompleted": "कुल बार पूरा किया गया",
+"dayCount_one": "{{count}} दिन",
+"dayCount_other": "{{count}} दिन",
+"actions": {
+"edit": "संपादित करें",
+"archive": "अभिलेखागार में डालें"
+},
+"alerts": {
+"archiveTitle": "आदत को आर्काइव करें",
+"archiveMessage": "क्या आप निश्चित रूप से \"{{name}}\" को आर्काइव करना चाहते हैं?",
+"archiveSuccess": "आदत सफलतापूर्वक आर्काइव की गई।",
+"archiveFailed": "आदत को आर्काइव करने में विफल।",
+"fetchFailed": "आदत के आंकड़े लोड करने में विफल।"
+},
+"daysOfWeek": ["र", "सो", "मं", "बु", "गु", "शु", "श"],
+"monthNames": [
+"जनवरी",
+"फरवरी",
+"मार्च",
+"अप्रैल",
+"मई",
+"जून",
+"जुलाई",
+"अगस्त",
+"सितंबर",
+"अक्टूबर",
+"नवंबर",
+"दिसंबर"
+]
+},
+"stats": {
+"title": "आपके आंकड़े",
+"months": [
+"जनवरी",
+"फरवरी",
+"मार्च",
+"अप्रैल",
+"मई",
+"जून",
+"जुलाई",
+"अगस्त",
+"सितंबर",
+"अक्टूबर",
+"नवंबर",
+"दिसंबर"
+],
+"daysOfWeek": {
+"sun": "र",
+"mon": "सो",
+"tue": "मं",
+"wed": "बु",
+"thu": "गु",
+"fri": "शु",
+"sat": "श"
+},
+"legend": {
+"allComplete": "सभी पूर्ण",
+"someComplete": "कुछ पूर्ण"
+},
+"quote": "पहला कदम सबसे कठिन होता है। बिना झिझक — आप इसे कर सकते हैं।",
+"currentStreak": "आपकी वर्तमान निरंतरता",
+"longestStreak": "आपकी सबसे लंबी निरंतरता",
+"days": "{{count}} दिन",
+"days_one": "{{count}} दिन",
+"days_other": "{{count}} दिन",
+"totalPerfectDays": "कुल सही दिन",
+"totalTimesCompleted": "कुल बार पूरा किया गया",
+"habitCompletionRate": "आदत पूरा होने की दर",
+"averagePerDaily": "औसत प्रति दिन",
+"errors": {
+"fetchFailedTitle": "त्रुटि",
+"fetchFailedMessage": "आदत के आंकड़े लोड करने में विफल।"
+}
+},
+"subscription": {
+"restore": "पुनर्प्राप्त करें",
+"heroTitle": "अपनी कार्यकुशलता बढ़ाएं",
+"loading": "लोड हो रहा है...",
+"features": [
+"असीमित आदत ट्रैकिंग और रिमाइंडर",
+"उन्नत विश्लेषण और प्रगति रिपोर्ट",
+"विज्ञापन-मुक्त प्रीमियम अनुभव"
+],
+"yearly": {
+"bestOffer": "सर्वश्रेष्ठ ऑफर",
+"title": "वार्षिक",
+"subtitle": "1 वर्ष की पहुंच • {{price}}"
+},
+"monthly": {
+"title": "मासिक",
+"priceFormat": "{{price}}/महीना"
+},
+"cancelOrManage": "सदस्यता रद्द करें या प्रबंधित करें",
+"continue": "जारी रखें",
+"plans": {
+"yearlyPlan": "वार्षिक योजना",
+"monthlyPlan": "मासिक योजना",
+"yearlyPrice": "{{price}}/वर्ष",
+"monthlyPrice": "{{price}}/महीना"
+},
+"securePayment": {
+"ios": "एप स्टोर के माध्यम से सुरक्षित भुगतान",
+"android": "गूगल प्ले के माध्यम से सुरक्षित भुगतान"
+},
+"autoRenewDisclaimer": "सदस्यता स्वतः नवीनीकृत हो जाती है जब तक कि वर्तमान अवधि समाप्त होने से कम से कम 24 घंटे पहले इसे रद्द न किया जाए।",
+"legal": {
+"termsOfUse": "उपयोग की शर्तें (EULA)",
+"privacyPolicy": "गोपनीयता नीति"
+},
+"alerts": {
+"storeErrorTitle": "स्टोर त्रुटि",
+"storeErrorMessage": "सदस्यता पैकेज लोड नहीं किए जा सके।",
+"errorTitle": "त्रुटि",
+"cannotOpenLink": "लिंक नहीं खोला जा सकता: {{url}}",
+"failedOpenLink": "लिंक खोलने में विफल।",
+"planUnavailable": "चयनित योजना वर्तमान में उपलब्ध नहीं है।",
+"successTitle": "सफलता!",
+"upgradedMessage": "आपका खाता अपग्रेड कर दिया गया है।",
+"continueBtn": "जारी रखें",
+"paymentFailedTitle": "भुगतान विफल रहा",
+"unexpectedError": "एक अप्रत्याशित त्रुटि हुई।",
+"restoredTitle": "पुनर्प्राप्त किया गया",
+"restoredMessage": "आपकी सदस्यता सफलतापूर्वक पुनर्प्राप्त कर ली गई थी।",
+"noSubscriptionTitle": "कोई सदस्यता नहीं",
+"noSubscriptionMessage": "हमें पुनर्प्राप्त करने के लिए कोई सक्रिय सदस्यता नहीं मिली।",
+"restoreFailedPrefix": "पुनर्प्राप्ति विफल: ",
+"manageTitle": "सदस्यता प्रबंधित करें",
+"manageMessage": "आपको अपनी योजना को प्रबंधित या रद्द करने के लिए सदस्यता सेटिंग्स पर पुनर्निर्देशित किया जाएगा।",
+"cancelBtn": "रद्द करें",
+"openSettingsBtn": "सेटिंग्स खोलें",
+"cannotOpenSettings": "सदस्यता सेटिंग्स नहीं खोली जा सकीं।"
+}
+},
+"appLayout": {
+"tryPro": "प्रो आज़माएं",
+"routes": {
+"dashboard": "आज",
+"stats": "आंकड़े",
+"profile": "प्रोफ़ाइल"
+}
+},
+"profile": {
+"screenTitle": "प्रोफ़ाइल",
+"edit": "संपादित करें",
+"allHabits": "सभी आदतें",
+"notifications": "सूचनाएं",
+"changeLanguage": "भाषा बदलें",
+"settings": "सेटिंग्स",
+"tryForFree": "मुफ्त में आज़माएं",
+"pro": "प्रो",
+"signOut": "साइन आउट",
+"signOutAlert": {
+"title": "साइन आउट करें",
+"message": "क्या आप निश्चित रूप से साइन आउट करना चाहते हैं?",
+"cancel": "रद्द करें",
+"confirm": "साइन आउट"
+}
+},
+"allHabits": {
+"screenTitle": "सभी आदतें",
+"tabs": {
+"regular": "नियमित आदतें",
+"oneTime": "एक बार के कार्य"
+},
+"emptyState": {
+"regular": "कोई नियमित आदत नहीं मिली।",
+"oneTime": "कोई एक बार का कार्य नहीं मिला।"
+},
+"defaults": {
+"daily": "दैनिक",
+"times": "बार"
+},
+"alerts": {
+"errorTitle": "त्रुटि",
+"fetchFailed": "आगामी आदतें प्राप्त करने में विफल।"
+}
+},
+"changePassword": {
+"screenTitle": "पासवर्ड बदलें",
+"infoCard": {
+"title": "सुरक्षा अपडेट करें",
+"subtitle": "कम से कम 8 वर्णों का एक मजबूत पासवर्ड चुनें।"
+},
+"labels": {
+"currentPassword": "वर्तमान पासवर्ड",
+"newPassword": "नया पासवर्ड",
+"confirmPassword": "नए पासवर्ड की पुष्टि करें"
+},
+"placeholders": {
+"currentPassword": "वर्तमान पासवर्ड दर्ज करें",
+"newPassword": "नया पासवर्ड दर्ज करें",
+"confirmPassword": "नया पासवर्ड पुनः दर्ज करें"
+},
+"buttons": {
+"updatePassword": "पासवर्ड अपडेट करें"
+},
+"validation": {
+"errorTitle": "सत्यापन त्रुटि",
+"currentPasswordRequired": "कृपया अपना वर्तमान पासवर्ड दर्ज करें।",
+"newPasswordRequired": "कृपया एक नया पासवर्ड दर्ज करें।",
+"minLength": "नया पासवर्ड कम से कम 8 वर्णों का होना चाहिए।",
+"sameAsCurrent": "नया पासवर्ड वर्तमान पासवर्ड के समान नहीं हो सकता।",
+"passwordMismatch": "नया पासवर्ड और पुष्टि पासवर्ड मेल नहीं खाते।"
+},
+"alerts": {
+"successTitle": "सफलता",
+"successMessage": "पासवर्ड सफलतापूर्वक बदल दिया गया!",
+"errorTitle": "त्रुटि",
+"fetchFailed": "पासवर्ड बदलने में विफल।",
+"genericError": "कुछ गलत हो गया। कृपया पुनः प्रयास करें।"
+}
+},
+"editProfile": {
+"screenTitle": "प्रोफ़ाइल संपादित करें",
+"labels": {
+"fullName": "पूरा नाम",
+"country": "देश",
+"state": "राज्य / क्षेत्र"
+},
+"placeholders": {
+"fullName": "अपना नाम दर्ज करें",
+"country": "देश चुनें",
+"state": "राज्य चुनें",
+"selectCountryFirst": "पहले देश चुनें"
+},
+"buttons": {
+"saveChanges": "परिवर्तन सहेजें"
+},
+"validation": {
+"nameRequired": "कृपया अपना पूरा नाम दर्ज करें।"
+},
+"alerts": {
+"successTitle": "सफलता",
+"successMessage": "प्रोफ़ाइल सफलतापूर्वक अपडेट की गई!",
+"errorTitle": "त्रुटि",
+"updateFailed": "प्रोफ़ाइल अपडेट करने में विफल।",
+"genericError": "प्रोफ़ाइल सहेजते समय एक त्रुटि हुई।"
+}
+},
+"help": {
+"screenTitle": "सहायता और सहायता",
+"infoCard": {
+"title": "हम आपकी क्या सहायता कर सकते हैं?",
+"subtitle": "यदि आपके पास कोई प्रश्न, प्रतिक्रिया है या सहायता की आवश्यकता है, तो बेझिझक हमसे संपर्क करें।"
+},
+"sectionHeader": "संपर्क जानकारी",
+"contact": {
+"emailLabel": "हमें ईमेल करें",
+"websiteLabel": "वेबसाइट देखें"
+},
+"alerts": {
+"errorTitle": "त्रुटि",
+"emailError": "ईमेल क्लाइंट खोलने में असमर्थ।",
+"emailGenericError": "ईमेल भेजने का प्रयास करते समय एक त्रुटि हुई।",
+"browserError": "ब्राउज़र खोलने में असमर्थ।",
+"websiteGenericError": "वेबसाइट खोलते समय एक त्रुटि हुई।"
+}
+},
+"languageSelector": {
+"screenTitle": "भाषा",
+"topNotice": "नीचे अपनी पसंदीदा ऐप प्रदर्शन भाषा चुनें।",
+"bottomNotice": "भाषा बदलने से पूरे ऐप में इंटरफ़ेस लेबल अपने आप अपडेट हो जाएंगे और आपके खाते में सहेजे जाएंगे।",
+"activeLanguage": "सक्रिय भाषा",
+"languages": {
+"en": {
+"title": "English 🇬🇧",
+"nativeTitle": "English",
+"description": "Set app language to English"
+},
+"da": {
+"title": "Danish 🇩🇰",
+"nativeTitle": "Dansk",
+"description": "Indstil app-sprog til dansk"
+},
+"fr": {
+"title": "French 🇫🇷",
+"nativeTitle": "Français",
+"description": "Définir la langue de l'application en français"
+},
+"de": {
+"title": "German 🇩🇪",
+"nativeTitle": "Deutsch",
+"description": "App-Sprache auf Deutsch stellen"
+},
+"id": {
+"title": "Indonesian 🇮🇩",
+"nativeTitle": "Bahasa Indonesia",
+"description": "Atur bahasa aplikasi ke Bahasa Indonesia"
+},
+"it": {
+"title": "Italian 🇮🇹",
+"nativeTitle": "Italiano",
+"description": "Imposta la lingua dell'app su Italiano"
+},
+"ja": {
+"title": "Japanese 🇯🇵",
+"nativeTitle": "日本語",
+"description": "アプリの言語を日本語に設定"
+},
+"ko": {
+"title": "Korean 🇰🇷",
+"nativeTitle": "한국어",
+"description": "앱 언어를 한국어로 설정"
+},
+"nb": {
+"title": "Norwegian Bokmål 🇳🇴",
+"nativeTitle": "Norsk bokmål",
+"description": "Sett app-språk til norsk bokmål"
+},
+"pl": {
+"title": "Polish 🇵🇱",
+"nativeTitle": "Polski",
+"description": "Ustaw język aplikacji na polski"
+},
+"pt": {
+"title": "Portuguese 🇵🇹",
+"nativeTitle": "Português",
+"description": "Definir idioma do aplicativo para português"
+},
+"ru": {
+"title": "Russian 🇷🇺",
+"nativeTitle": "Русский",
+"description": "Установить язык приложения на русский"
+},
+"zh-Hans": {
+"title": "Simplified Chinese 🇨🇳",
+"nativeTitle": "简体中文",
+"description": "将应用语言设置为简体中文"
+},
+"es": {
+"title": "Spanish 🇪🇸",
+"nativeTitle": "Español",
+"description": "Establecer el idioma de la aplicación en español"
+},
+"sv": {
+"title": "Swedish 🇸🇪",
+"nativeTitle": "Svenska",
+"description": "Ställ in appspråk till svenska"
+},
+"th": {
+"title": "Thai 🇹🇭",
+"nativeTitle": "ไทย",
+"description": "ตั้งค่าภาษาของแอปเป็นภาษาไทย"
+},
+"zh-Hant": {
+"title": "Traditional Chinese 🇹🇼",
+"nativeTitle": "繁體中文",
+"description": "將應用語言設置為繁體中文"
+},
+"tr": {
+"title": "Turkish 🇹🇷",
+"nativeTitle": "Türkçe",
+"description": "Uygulama dilini Türkçe olarak ayarla"
+},
+"vi": {
+"title": "Vietnamese 🇻🇳",
+"nativeTitle": "Tiếng Việt",
+"description": "Đặt ngôn ngữ ứng dụng thành Tiếng Việt"
+},
+"hi": {
+  "title": "Hindi 🇮🇳",
+  "nativeTitle": "हिन्दी",
+  "description": "ऐप की भाषा हिंदी में सेट करें"
+}
+},
+"alerts": {
+"errorTitle": "त्रुटि",
+"genericUpdateError": "सर्वर पर भाषा अपडेट करने में विफल।"
+}
+},
+"notifications": {
+"screenTitle": "सूचनाएं",
+"topNotice": "आदत पूरा होने की जानकारी प्राप्त करने के लिए सूचनाएं सेट करें।",
+"bottomNotice": "आप व्यक्तिगत आदतों के लिए उनकी सेटिंग्स में रिमाइंडर भी सेट कर सकते हैं।",
+"items": {
+"todays_plan": {
+"title": "आज की योजना 📋",
+"description": "सुबह: 5 आदतें, दोपहर: 1 आदत, शाम: 6 आदतें, कभी भी करें: 2 आदतें"
+},
+"morning_plan": {
+"title": "सुबह की योजना ☀️",
+"description": "आपके पास आज सुबह के लिए 5 आदतें हैं और 2 अन्य हैं जिन्हें आप कर सकते हैं।"
+},
+"afternoon_plan": {
+"title": "दोपहर की योजना 🌤️",
+"description": "आपके पास आज दोपहर के लिए 1 आदत है और 2 अन्य हैं जिन्हें आप कर सकते हैं।"
+},
+"evening_plan": {
+"title": "शाम की योजना 🌙",
+"description": "आपके पास आज शाम के लिए 6 आदतें हैं और 2 अन्य हैं जिन्हें आप कर सकते हैं।"
+},
+"today_results": {
+"title": "आज के आपके परिणाम 🎉",
+"description": "3 आदतें पूरी हुईं, 1 आदत छोड़ी गई, 14 आदतें बची हैं"
+}
+},
+"alerts": {
+"errorTitle": "त्रुटि",
+"genericUpdateError": "अधिसूचना सेटिंग्स अपडेट करने में विफल।"
+}
+},
+"settings": {
+"headerTitle": "सेटिंग्स",
+"generalTitle": "सामान्य",
+"sound": "ध्वनि",
+"vacationMode": "छुट्टी का मोड",
+"vacationSubtitle": "आदतों को रोकें, और अपने आंकड़े सुरक्षित रखें",
+"changePassword": "पासवर्ड बदलें",
+"help": "सहायता",
+"privacyPolicy": "गोपनीयता और नीति",
+"rateUs": "हमें रेटिंग दें",
+"shareApp": "ऐप शेयर करें",
+"shareMessage": "Habitly आज़माएं! यह आपकी दैनिक आदतों को ट्रैक करने और आपके लक्ष्यों को प्राप्त करने में मदद करता है।\n\n📱 एंड्रॉइड के लिए डाउनलोड करें: {{playStoreUrl}}\n🍏 आईओएस के लिए डाउनलोड करें: {{appStoreUrl}}",
+"errors": {
+"failedUpdate": "सेटिंग्स अपडेट करने में विफल। कृपया पुनः प्रयास करें।",
+"unexpectedNetwork": "एक अप्रत्याशित नेटवर्क त्रुटि हुई।",
+"privacyPolicy": "गोपनीयता नीति वेबपेज खोलने में असमर्थ।",
+"appStore": "ऐप स्टोर पेज खोलने में असमर्थ।",
+"whatsapp": "व्हाट्सएप इस डिवाइस पर इंस्टॉल या उपलब्ध नहीं है।",
+"genericLink": "लिंक खोलने का प्रयास करते समय एक अप्रत्याशित त्रुटि हुई।"
+}
+}
+}

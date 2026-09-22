@@ -644,7 +644,12 @@
         "title": "Vietnamese 🇻🇳",
         "nativeTitle": "Tiếng Việt",
         "description": "Imposta la lingua dell'app su Vietnamita"
-      }
+      },
+      "hi": {
+  "title": "Hindi 🇮🇳",
+  "nativeTitle": "हिन्दी",
+  "description": "Imposta la lingua dell'app su Hindi"
+}
     },
     "alerts": {
       "errorTitle": "Errore",
