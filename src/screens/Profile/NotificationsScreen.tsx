@@ -17,6 +17,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import { ArrowLeft, Clock, Pencil } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
@@ -34,8 +35,8 @@ type NotificationKey =
 
 interface NotificationSetting {
   id: NotificationKey;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   isEnabled: boolean;
   time: string; // Display format (e.g., "07:30 am")
 }
@@ -76,7 +77,10 @@ const convertDisplayToTimeOnly = (timeStr: string): string => {
   return `${h}:${m}:00`;
 };
 
-const convertTimeOnlyToDisplay = (timeOnlyStr?: string, defaultFallback: string = '08:00 am'): string => {
+const convertTimeOnlyToDisplay = (
+  timeOnlyStr?: string,
+  defaultFallback: string = '08:00 am'
+): string => {
   if (!timeOnlyStr) return defaultFallback;
   try {
     const [hStr, mStr] = timeOnlyStr.split(':');
@@ -89,6 +93,7 @@ const convertTimeOnlyToDisplay = (timeOnlyStr?: string, defaultFallback: string 
 };
 
 const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
 
@@ -100,36 +105,36 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
   const [notifications, setNotifications] = useState<NotificationSetting[]>([
     {
       id: 'todays_plan',
-      title: "Today's plan 📋",
-      description: '"Morning: 5 habits, Afternoon: 1 habit, Evening: 6 habits, Do anytime: 2 habits"',
+      titleKey: 'notifications.items.todays_plan.title',
+      descriptionKey: 'notifications.items.todays_plan.description',
       isEnabled: true,
       time: '07:30 am',
     },
     {
       id: 'morning_plan',
-      title: 'Morning plan ☀️',
-      description: '"You have 5 habits for this morning and 2 more you can do."',
+      titleKey: 'notifications.items.morning_plan.title',
+      descriptionKey: 'notifications.items.morning_plan.description',
       isEnabled: true,
       time: '08:00 am',
     },
     {
       id: 'afternoon_plan',
-      title: 'Afternoon plan 🌤️',
-      description: '"You have 1 habit for this afternoon and 2 more you can do."',
+      titleKey: 'notifications.items.afternoon_plan.title',
+      descriptionKey: 'notifications.items.afternoon_plan.description',
       isEnabled: true,
       time: '01:00 pm',
     },
     {
       id: 'evening_plan',
-      title: 'Evening plan 🌙',
-      description: '"You have 6 habits for this evening and 2 more you can do."',
+      titleKey: 'notifications.items.evening_plan.title',
+      descriptionKey: 'notifications.items.evening_plan.description',
       isEnabled: true,
       time: '07:00 pm',
     },
     {
       id: 'today_results',
-      title: 'Your results for today 🎉',
-      description: '"3 habits completed, 1 habit skipped, 14 habits left"',
+      titleKey: 'notifications.items.today_results.title',
+      descriptionKey: 'notifications.items.today_results.description',
       isEnabled: true,
       time: '08:45 pm',
     },
@@ -145,41 +150,46 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
           case 'todays_plan':
             return {
               ...item,
-              isEnabled: typeof notifData.todaysPlanNotification === 'boolean'
-                ? notifData.todaysPlanNotification
-                : item.isEnabled,
+              isEnabled:
+                typeof notifData.todaysPlanNotification === 'boolean'
+                  ? notifData.todaysPlanNotification
+                  : item.isEnabled,
               time: convertTimeOnlyToDisplay(notifData.todaysPlanTime, item.time),
             };
           case 'morning_plan':
             return {
               ...item,
-              isEnabled: typeof notifData.morningPlanNotification === 'boolean'
-                ? notifData.morningPlanNotification
-                : item.isEnabled,
+              isEnabled:
+                typeof notifData.morningPlanNotification === 'boolean'
+                  ? notifData.morningPlanNotification
+                  : item.isEnabled,
               time: convertTimeOnlyToDisplay(notifData.morningPlanTime, item.time),
             };
           case 'afternoon_plan':
             return {
               ...item,
-              isEnabled: typeof notifData.afternoonPlanNotification === 'boolean'
-                ? notifData.afternoonPlanNotification
-                : item.isEnabled,
+              isEnabled:
+                typeof notifData.afternoonPlanNotification === 'boolean'
+                  ? notifData.afternoonPlanNotification
+                  : item.isEnabled,
               time: convertTimeOnlyToDisplay(notifData.afternoonPlanTime, item.time),
             };
           case 'evening_plan':
             return {
               ...item,
-              isEnabled: typeof notifData.eveningPlanNotification === 'boolean'
-                ? notifData.eveningPlanNotification
-                : item.isEnabled,
+              isEnabled:
+                typeof notifData.eveningPlanNotification === 'boolean'
+                  ? notifData.eveningPlanNotification
+                  : item.isEnabled,
               time: convertTimeOnlyToDisplay(notifData.eveningPlanTime, item.time),
             };
           case 'today_results':
             return {
               ...item,
-              isEnabled: typeof notifData.todaysResultNotification === 'boolean'
-                ? notifData.todaysResultNotification
-                : item.isEnabled,
+              isEnabled:
+                typeof notifData.todaysResultNotification === 'boolean'
+                  ? notifData.todaysResultNotification
+                  : item.isEnabled,
               time: convertTimeOnlyToDisplay(notifData.todaysResultTime, item.time),
             };
           default:
@@ -189,32 +199,27 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
     );
   };
 
-  // 1. Fetch from API first, fallback to AsyncStorage cache
+  // Load cached data from local storage on mount
   useEffect(() => {
     const loadNotificationSettings = async () => {
       setIsLoading(true);
-
-      // A. Load cached data from local storage immediately
       try {
         const storedUserData = await AsyncStorage.getItem('userData');
         if (storedUserData) {
           const parsed = JSON.parse(storedUserData);
-         // const cachedNotifs = parsed.notifications || parsed;
           applyNotificationData(parsed);
-          setIsLoading(false);
         }
       } catch (cacheErr) {
         console.error('Failed to read notifications from local storage:', cacheErr);
-          setIsLoading(false);
+      } finally {
+        setIsLoading(false);
       }
-
-    
     };
 
     loadNotificationSettings();
   }, []);
 
-  // 2. Build API Request Payload
+  // Build API Request Payload
   const buildApiPayload = (updatedList: NotificationSetting[]) => {
     const findItem = (id: NotificationKey) => updatedList.find((x) => x.id === id);
 
@@ -238,7 +243,7 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
     };
   };
 
-  // 3. Sync to AsyncStorage
+  // Sync to AsyncStorage
   const updateLocalStorage = async (updatedList: NotificationSetting[]) => {
     try {
       const storedUserData = await AsyncStorage.getItem('userData');
@@ -257,7 +262,7 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
     }
   };
 
-  // 4. API Dispatch Helper
+  // API Dispatch Helper
   const syncNotificationSettings = async (
     updatedList: NotificationSetting[],
     targetId: string,
@@ -276,7 +281,10 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
       (err: any) => {
         setUpdatingId(null);
         revertCallback();
-        Alert.alert('Error', err?.message || 'Failed to update notification settings.');
+        Alert.alert(
+          t('notifications.alerts.errorTitle'),
+          err?.message || t('notifications.alerts.genericUpdateError')
+        );
       }
     );
   };
@@ -314,7 +322,9 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
       );
 
       setNotifications(updatedList);
-      syncNotificationSettings(updatedList, selectedItemForTime.id, () => setNotifications(previousState));
+      syncNotificationSettings(updatedList, selectedItemForTime.id, () =>
+        setNotifications(previousState)
+      );
     }
   };
 
@@ -332,34 +342,32 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
           <ArrowLeft size={moderateScale(22)} color="#FFFFFF" />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>Notifications</Text>
+        <Text style={styles.headerTitle}>{t('notifications.screenTitle')}</Text>
         <View style={styles.headerRightPlaceholder} />
       </View>
 
       {isLoading ? (
         <View style={styles.loaderContainer}>
-          <ActivityIndicator size="large" color="#2558D8" />
+          <ActivityIndicator size="large" color="#29B6F6" />
         </View>
       ) : (
         <ScrollView
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-          <Text style={styles.topNoticeText}>
-            Set notifications to get habit completion information.
-          </Text>
+          <Text style={styles.topNoticeText}>{t('notifications.topNotice')}</Text>
 
           {/* Cards List */}
           <View style={styles.cardsContainer}>
             {notifications.map((item) => (
               <View key={item.id} style={styles.card}>
                 <View style={styles.cardHeaderRow}>
-                  <Text style={styles.cardTitle}>{item.title}</Text>
+                  <Text style={styles.cardTitle}>{t(item.titleKey)}</Text>
                   {updatingId === item.id ? (
-                    <ActivityIndicator size="small" color="#2558D8" />
+                    <ActivityIndicator size="small" color="#29B6F6" />
                   ) : (
                     <Switch
-                      trackColor={{ false: '#2C303E', true: '#2558D8' }}
+                      trackColor={{ false: '#2C303E', true: '#29B6F6' }}
                       thumbColor={item.isEnabled ? '#FFFFFF' : '#8E93A6'}
                       ios_backgroundColor="#2C303E"
                       onValueChange={() => toggleSwitch(item.id)}
@@ -368,7 +376,7 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
                   )}
                 </View>
 
-                <Text style={styles.cardDescription}>{item.description}</Text>
+                <Text style={styles.cardDescription}>{t(item.descriptionKey)}</Text>
 
                 {item.isEnabled && item.time && (
                   <View style={styles.timeContainer}>
@@ -390,9 +398,7 @@ const NotificationsScreen: React.FC<Props> = ({ navigation }) => {
             ))}
           </View>
 
-          <Text style={styles.bottomNoticeText}>
-            You can also set reminders for individual habits in their settings.
-          </Text>
+          <Text style={styles.bottomNoticeText}>{t('notifications.bottomNotice')}</Text>
         </ScrollView>
       )}
 

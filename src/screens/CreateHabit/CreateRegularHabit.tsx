@@ -17,6 +17,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { X, Check, Plus, Trash2, Clock } from 'lucide-react-native';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
+import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
@@ -76,22 +77,16 @@ interface HabitEditData {
   reminders?: string[];
 }
 
-const DAILY_DAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const WEEKLY_OPTIONS = ['1', '2', '3', '4', '5', '6'];
 const MONTHLY_OPTIONS = ['1', '2', '3'];
-const FREQUENCIES: { label: string; value: GoalTypeEnum }[] = [
-  { label: 'Daily', value: GoalTypeEnum.Daily },
-  { label: 'Weekly', value: GoalTypeEnum.Weekly },
-  { label: 'Monthly', value: GoalTypeEnum.Monthly },
-];
-const TIME_OF_DAY = ['Morning', 'Afternoon', 'Evening'];
 
 const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
+  const { t } = useTranslation();
 
   const initialHabitData: HabitEditData | undefined = route.params?.habitData;
 
   const [habitName, setHabitName] = useState(route.params?.habitName || initialHabitData?.name || '');
-  const [habitMasterId, setHabitMasterId] = useState<number |string | null>(
+  const [habitMasterId, setHabitMasterId] = useState<number | string | null>(
     route.params?.habitMasterId || initialHabitData?.habitMasterId || null
   );
 
@@ -115,14 +110,34 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
   const [selectedDays, setSelectedDays] = useState<number[]>([0, 1, 2, 3, 4, 5, 6]);
   const [goalRepeatAmount, setGoalRepeatAmount] = useState<number>(initialHabitData?.goalRepeatAmount || 1);
 
-
   const [selectedTimesOfDay, setSelectedTimesOfDay] = useState<string[]>([]);
-
 
   const [remindersEnabled, setRemindersEnabled] = useState(initialHabitData?.isSetReminder ?? false);
   const [reminders, setReminders] = useState<Date[]>([]);
   const [showPicker, setShowPicker] = useState<boolean>(false);
   const [pickerTime, setPickerTime] = useState<Date>(new Date());
+
+  const dailyDays = [
+    t('createRegularHabit.daysOfWeek.sunday'),
+    t('createRegularHabit.daysOfWeek.monday'),
+    t('createRegularHabit.daysOfWeek.tuesday'),
+    t('createRegularHabit.daysOfWeek.wednesday'),
+    t('createRegularHabit.daysOfWeek.thursday'),
+    t('createRegularHabit.daysOfWeek.friday'),
+    t('createRegularHabit.daysOfWeek.saturday'),
+  ];
+
+  const frequencies: { label: string; value: GoalTypeEnum }[] = [
+    { label: t('createRegularHabit.frequencies.daily'), value: GoalTypeEnum.Daily },
+    { label: t('createRegularHabit.frequencies.weekly'), value: GoalTypeEnum.Weekly },
+    { label: t('createRegularHabit.frequencies.monthly'), value: GoalTypeEnum.Monthly },
+  ];
+
+  const timeOfDayList = [
+    { key: 'Morning', label: t('createRegularHabit.timesOfDay.morning') },
+    { key: 'Afternoon', label: t('createRegularHabit.timesOfDay.afternoon') },
+    { key: 'Evening', label: t('createRegularHabit.timesOfDay.evening') },
+  ];
 
   // Fetch color codes and bind edit data
   useEffect(() => {
@@ -150,7 +165,10 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
       },
       (err: any) => {
         setIsColorsLoading(false);
-        Alert.alert('Error', err?.message || 'Failed to fetch colors.');
+        Alert.alert(
+          t('createRegularHabit.alerts.errorTitle'),
+          err?.message || t('createRegularHabit.alerts.fetchColorsFailed')
+        );
       }
     );
   };
@@ -210,7 +228,7 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
       updatedDays = [...selectedDays, index];
     }
     setSelectedDays(updatedDays);
-    setRepeatEveryDay(updatedDays.length === DAILY_DAYS.length);
+    setRepeatEveryDay(updatedDays.length === dailyDays.length);
   };
 
   const handleRepeatEveryDayToggle = () => {
@@ -219,11 +237,11 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
     setSelectedDays(nextState ? [0, 1, 2, 3, 4, 5, 6] : []);
   };
 
-  const toggleTimeOfDay = (time: string) => {
-    if (selectedTimesOfDay.includes(time)) {
-      setSelectedTimesOfDay(selectedTimesOfDay.filter((t) => t !== time));
+  const toggleTimeOfDay = (timeKey: string) => {
+    if (selectedTimesOfDay.includes(timeKey)) {
+      setSelectedTimesOfDay(selectedTimesOfDay.filter((t) => t !== timeKey));
     } else {
-      setSelectedTimesOfDay([...selectedTimesOfDay, time]);
+      setSelectedTimesOfDay([...selectedTimesOfDay, timeKey]);
     }
   };
 
@@ -256,7 +274,10 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
 
   const handleSave = async () => {
     if (!habitName.trim()) {
-      Alert.alert('Validation Error', 'Please enter a habit name.');
+      Alert.alert(
+        t('createRegularHabit.alerts.validationTitle'),
+        t('createRegularHabit.alerts.enterHabitName')
+      );
       return;
     }
 
@@ -295,16 +316,24 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
         (res: ApiResponse<any>) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
-            Alert.alert('Success', 'Habit updated successfully.', [
-              { text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 }) },
-            ]);
+            Alert.alert(
+              t('createRegularHabit.alerts.successTitle'),
+              t('createRegularHabit.alerts.habitUpdatedSuccess'),
+              [{ text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 }) }]
+            );
           } else {
-            Alert.alert('Error', res?.message || 'Failed to update habit.');
+            Alert.alert(
+              t('createRegularHabit.alerts.errorTitle'),
+              res?.message || t('createRegularHabit.alerts.habitUpdateFailed')
+            );
           }
         },
         (err: any) => {
           setIsSubmitting(false);
-          Alert.alert('Error', err?.message || 'An error occurred while updating.');
+          Alert.alert(
+            t('createRegularHabit.alerts.errorTitle'),
+            err?.message || t('createRegularHabit.alerts.updateError')
+          );
         }
       );
     } else {
@@ -314,16 +343,24 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
         (res: ApiResponse<any>) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
-            Alert.alert('Success', 'Habit created successfully.', [
-              { text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 }) },
-            ]);
+            Alert.alert(
+              t('createRegularHabit.alerts.successTitle'),
+              t('createRegularHabit.alerts.habitCreatedSuccess'),
+              [{ text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 }) }]
+            );
           } else {
-            Alert.alert('Error', res?.message || 'Failed to create habit.');
+            Alert.alert(
+              t('createRegularHabit.alerts.errorTitle'),
+              res?.message || t('createRegularHabit.alerts.habitCreateFailed')
+            );
           }
         },
         (err: any) => {
           setIsSubmitting(false);
-          Alert.alert('Error', err?.message || 'An error occurred while creating.');
+          Alert.alert(
+            t('createRegularHabit.alerts.errorTitle'),
+            err?.message || t('createRegularHabit.alerts.createError')
+          );
         }
       );
     }
@@ -339,13 +376,19 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
           <X size={moderateScale(22)} color="#FFFFFF" />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>{initialHabitData ? 'Edit habit' : 'New habit'}</Text>
+        <Text style={styles.headerTitle}>
+          {initialHabitData
+            ? t('createRegularHabit.headerTitleEdit')
+            : t('createRegularHabit.headerTitleNew')}
+        </Text>
 
         <TouchableOpacity activeOpacity={0.7} onPress={handleSave} disabled={isSubmitting}>
           {isSubmitting ? (
             <ActivityIndicator size="small" color={selectedColorHex} />
           ) : (
-            <Text style={[styles.saveText, { color: selectedColorHex }]}>SAVE</Text>
+            <Text style={[styles.saveText, { color: selectedColorHex }]}>
+              {t('createRegularHabit.save')}
+            </Text>
           )}
         </TouchableOpacity>
       </View>
@@ -360,7 +403,7 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
           <View style={[styles.inputContainer, { borderBottomColor: selectedColorHex }]}>
             <TextInput
               style={styles.textInput}
-              placeholder="Name your habit"
+              placeholder={t('createRegularHabit.placeholderName')}
               placeholderTextColor="#8E93A6"
               value={habitName}
               onChangeText={setHabitName}
@@ -369,7 +412,7 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
 
           {/* Color Selection */}
           <View style={styles.colorSectionContainer}>
-            <Text style={styles.sectionTitleLabel}>Select Color</Text>
+            <Text style={styles.sectionTitleLabel}>{t('createRegularHabit.selectColor')}</Text>
             {isColorsLoading ? (
               <ActivityIndicator size="small" color="#1E88E5" style={{ alignSelf: 'flex-start' }} />
             ) : (
@@ -404,7 +447,7 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
 
           {/* Goal Section */}
           <View style={styles.goalContainer}>
-            <Text style={styles.sectionTitle}>Goal for Habit</Text>
+            <Text style={styles.sectionTitle}>{t('createRegularHabit.goalForHabit')}</Text>
 
             <View style={styles.enumToggleContainer}>
               <TouchableOpacity
@@ -415,7 +458,7 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
                 ]}
                 onPress={() => setValueType(ValueTypeEnum.NumberOfTimes)}
               >
-                <Text style={styles.enumChipText}># of times</Text>
+                <Text style={styles.enumChipText}>{t('createRegularHabit.numberOfTimes')}</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
@@ -426,7 +469,7 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
                 ]}
                 onPress={() => setValueType(ValueTypeEnum.TimeInMinutes)}
               >
-                <Text style={styles.enumChipText}>Time</Text>
+                <Text style={styles.enumChipText}>{t('createRegularHabit.time')}</Text>
               </TouchableOpacity>
             </View>
 
@@ -440,7 +483,9 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
                 placeholderTextColor="#8E93A6"
               />
               <Text style={styles.goalInputSuffix}>
-                {valueType === ValueTypeEnum.NumberOfTimes ? 'times' : 'minutes'}
+                {valueType === ValueTypeEnum.NumberOfTimes
+                  ? t('createRegularHabit.timesSuffix')
+                  : t('createRegularHabit.minutesSuffix')}
               </Text>
             </View>
           </View>
@@ -449,7 +494,7 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
 
           {/* Frequency Options */}
           <View style={styles.frequencyRow}>
-            {FREQUENCIES.map((item) => (
+            {frequencies.map((item) => (
               <TouchableOpacity
                 key={item.value}
                 activeOpacity={0.8}
@@ -467,7 +512,7 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
           {goalTypeId === GoalTypeEnum.Daily && (
             <>
               <View style={styles.rowBetween}>
-                <Text style={styles.sectionTitle}>Repeat every day</Text>
+                <Text style={styles.sectionTitle}>{t('createRegularHabit.repeatEveryDay')}</Text>
                 <TouchableOpacity
                   activeOpacity={0.7}
                   onPress={handleRepeatEveryDayToggle}
@@ -481,7 +526,7 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
               </View>
 
               <View style={styles.optionsRow}>
-                {DAILY_DAYS.map((day, index) => {
+                {dailyDays.map((day, index) => {
                   const isSelected = selectedDays.includes(index);
                   return (
                     <TouchableOpacity
@@ -547,33 +592,33 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
 
           {/* Repeat Daily In */}
           <View style={styles.rowBetween}>
-            <Text style={styles.sectionTitle}>Repeat daily in the:</Text>
-
+            <Text style={styles.sectionTitle}>{t('createRegularHabit.repeatDailyIn')}</Text>
           </View>
 
           <View style={styles.timeOfDayRow}>
-            {TIME_OF_DAY.map((time) => {
-              const isSelected = selectedTimesOfDay.includes(time);
+            {timeOfDayList.map((time) => {
+              const isSelected = selectedTimesOfDay.includes(time.key);
               return (
                 <TouchableOpacity
-                  key={time}
+                  key={time.key}
                   activeOpacity={0.8}
                   style={[
                     styles.timeChip,
                     isSelected && { backgroundColor: selectedColorHex },
                   ]}
-                  onPress={() => toggleTimeOfDay(time)}
+                  onPress={() => toggleTimeOfDay(time.key)}
                 >
-                  <Text style={styles.timeChipText}>{time}</Text>
+                  <Text style={styles.timeChipText}>{time.label}</Text>
                 </TouchableOpacity>
               );
             })}
           </View>
 
           <View style={styles.divider} />
+
           {/* Reminders Toggle */}
           <View style={styles.rowBetween}>
-            <Text style={styles.sectionTitle}>Get reminders</Text>
+            <Text style={styles.sectionTitle}>{t('createRegularHabit.getReminders')}</Text>
             <Switch
               trackColor={{ false: '#2C303E', true: selectedColorHex }}
               thumbColor={remindersEnabled ? '#FFFFFF' : '#8E93A6'}
@@ -606,7 +651,9 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
                 onPress={handleAddReminderPress}
               >
                 <Plus size={moderateScale(18)} color={selectedColorHex} strokeWidth={2.5} />
-                <Text style={[styles.addReminderText, { color: selectedColorHex }]}>Add reminder time</Text>
+                <Text style={[styles.addReminderText, { color: selectedColorHex }]}>
+                  {t('createRegularHabit.addReminderTime')}
+                </Text>
               </TouchableOpacity>
             </View>
           )}

@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Mail, Globe, HelpCircle, ChevronRight } from 'lucide-react-native';
 
 import { RootStackParamList } from '../../navigation/navigation';
@@ -21,8 +22,11 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Help'>;
 
 const EMAIL_ADDRESS = 'info@kegistech.com';
 const WEBSITE_URL = 'https://www.kegistech.com';
+const DISPLAY_WEBSITE_URL = 'www.kegistech.com';
 
 const HelpScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
+
   const handleOpenEmail = async () => {
     const mailtoUrl = `mailto:${EMAIL_ADDRESS}`;
     try {
@@ -30,10 +34,10 @@ const HelpScreen: React.FC<Props> = ({ navigation }) => {
       if (canOpen) {
         await Linking.openURL(mailtoUrl);
       } else {
-        Alert.alert('Error', 'Unable to open email client.');
+        Alert.alert(t('help.alerts.errorTitle'), t('help.alerts.emailError'));
       }
     } catch (error) {
-      Alert.alert('Error', 'An error occurred while trying to send an email.');
+      Alert.alert(t('help.alerts.errorTitle'), t('help.alerts.emailGenericError'));
     }
   };
 
@@ -43,10 +47,10 @@ const HelpScreen: React.FC<Props> = ({ navigation }) => {
       if (canOpen) {
         await Linking.openURL(WEBSITE_URL);
       } else {
-        Alert.alert('Error', 'Unable to open browser.');
+        Alert.alert(t('help.alerts.errorTitle'), t('help.alerts.browserError'));
       }
     } catch (error) {
-      Alert.alert('Error', 'An error occurred while opening the website.');
+      Alert.alert(t('help.alerts.errorTitle'), t('help.alerts.websiteGenericError'));
     }
   };
 
@@ -64,7 +68,7 @@ const HelpScreen: React.FC<Props> = ({ navigation }) => {
           <ArrowLeft size={moderateScale(22)} color="#FFFFFF" />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>Help & Support</Text>
+        <Text style={styles.headerTitle}>{t('help.screenTitle')}</Text>
 
         <View style={styles.headerRightPlaceholder} />
       </View>
@@ -79,16 +83,14 @@ const HelpScreen: React.FC<Props> = ({ navigation }) => {
             <HelpCircle size={moderateScale(26)} color="#29B6F6" />
           </View>
           <View style={styles.infoTextContainer}>
-            <Text style={styles.infoTitle}>How can we help?</Text>
-            <Text style={styles.infoSubtitle}>
-              If you have any questions, feedback, or need assistance, feel free to reach out to us.
-            </Text>
+            <Text style={styles.infoTitle}>{t('help.infoCard.title')}</Text>
+            <Text style={styles.infoSubtitle}>{t('help.infoCard.subtitle')}</Text>
           </View>
         </View>
 
         {/* Contact Options */}
         <View style={styles.sectionContainer}>
-          <Text style={styles.sectionHeader}>CONTACT INFORMATION</Text>
+          <Text style={styles.sectionHeader}>{t('help.sectionHeader')}</Text>
 
           {/* Email Option */}
           <TouchableOpacity
@@ -101,7 +103,7 @@ const HelpScreen: React.FC<Props> = ({ navigation }) => {
                 <Mail size={moderateScale(20)} color="#29B6F6" />
               </View>
               <View style={styles.contactTextContainer}>
-                <Text style={styles.contactLabel}>Email Us</Text>
+                <Text style={styles.contactLabel}>{t('help.contact.emailLabel')}</Text>
                 <Text style={styles.contactValue}>{EMAIL_ADDRESS}</Text>
               </View>
             </View>
@@ -119,8 +121,8 @@ const HelpScreen: React.FC<Props> = ({ navigation }) => {
                 <Globe size={moderateScale(20)} color="#29B6F6" />
               </View>
               <View style={styles.contactTextContainer}>
-                <Text style={styles.contactLabel}>Visit Website</Text>
-                <Text style={styles.contactValue}>www.kegistech.com</Text>
+                <Text style={styles.contactLabel}>{t('help.contact.websiteLabel')}</Text>
+                <Text style={styles.contactValue}>{DISPLAY_WEBSITE_URL}</Text>
               </View>
             </View>
             <ChevronRight size={moderateScale(18)} color="#8E93A6" />
@@ -144,6 +146,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: scaleWidth(16),
     paddingVertical: scaleHeight(12),
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255, 255, 255, 0.05)',
   },
   backButton: {
     width: scaleWidth(40),

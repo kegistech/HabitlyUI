@@ -11,6 +11,7 @@ import {
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
 import {
   ListTodo,
   Bell,
@@ -19,6 +20,7 @@ import {
   LogOut,
   Pencil,
   ChevronRight,
+  RefreshCw,
 } from 'lucide-react-native';
 
 import AppLayout from '../AppLayout';
@@ -29,6 +31,8 @@ import { clearAuthToken } from '../../services/commonAPIs';
 type Props = NativeStackScreenProps<RootStackParamList, 'Profile'>;
 
 const ProfileScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
+
   // State for dynamic user profile data
   const [userName, setUserName] = useState('User');
   const [userEmail, setUserEmail] = useState('');
@@ -61,15 +65,15 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
   // Sign Out Handler Logic
   const handleSignOut = () => {
     Alert.alert(
-      'Sign Out',
-      'Are you sure you want to sign out?',
+      t('profile.signOutAlert.title'),
+      t('profile.signOutAlert.message'),
       [
         {
-          text: 'Cancel',
+          text: t('profile.signOutAlert.cancel'),
           style: 'cancel',
         },
         {
-          text: 'Sign Out',
+          text: t('profile.signOutAlert.confirm'),
           style: 'destructive',
           onPress: async () => {
             try {
@@ -78,7 +82,6 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
 
               // 2. Clear stored user details
               await AsyncStorage.removeItem('userData');
-
               await AsyncStorage.removeItem('id');
 
               // 3. Reset navigation to Login screen
@@ -97,23 +100,16 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
   };
 
   return (
-    <AppLayout navigation={navigation} currentRoute="Profile" title="Profile">
+    <AppLayout
+      navigation={navigation}
+      currentRoute="Profile"
+      title={t('profile.screenTitle')}
+    >
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {/* 1. Top Streak Hero Card */}
-        {/* <View style={styles.streakHeroCard}>
-          <View style={styles.streakInnerContent}>
-            <Text style={styles.streakHeroSubtitle}>
-              Start a new streak by completing habits
-            </Text>
-            <Text style={styles.streakHeroValue}>{currentStreak} days</Text>
-            <Text style={styles.streakHeroLabel}>Your current streak</Text>
-          </View>
-        </View> */}
-
-        {/* 2. User Info Card (Dynamic Name & Email) */}
+        {/* 1. User Info Card (Dynamic Name & Email) */}
         <View style={styles.profileCard}>
           <View style={styles.userDetails}>
             <Text style={styles.userName}>{userName}</Text>
@@ -126,11 +122,11 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
             onPress={() => navigation.navigate('EditProfile')}
           >
             <Pencil size={moderateScale(14)} color="#29B6F6" />
-            <Text style={styles.editButtonText}>Edit</Text>
+            <Text style={styles.editButtonText}>{t('profile.edit')}</Text>
           </TouchableOpacity>
         </View>
 
-        {/* 3. Menu Options List */}
+        {/* 2. Menu Options List */}
         <View style={styles.menuCard}>
           {/* All Habits */}
           <TouchableOpacity
@@ -140,7 +136,7 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
           >
             <View style={styles.menuItemLeft}>
               <ListTodo size={moderateScale(22)} color="#29B6F6" />
-              <Text style={styles.menuItemText}>All habits</Text>
+              <Text style={styles.menuItemText}>{t('profile.allHabits')}</Text>
             </View>
             <ChevronRight
               size={moderateScale(18)}
@@ -156,7 +152,27 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
           >
             <View style={styles.menuItemLeft}>
               <Bell size={moderateScale(22)} color="#29B6F6" />
-              <Text style={styles.menuItemText}>Notifications</Text>
+              <Text style={styles.menuItemText}>
+                {t('profile.notifications')}
+              </Text>
+            </View>
+            <ChevronRight
+              size={moderateScale(18)}
+              color="rgba(255, 255, 255, 0.3)"
+            />
+          </TouchableOpacity>
+
+          {/* Change Language */}
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={styles.menuItem}
+            onPress={() => navigation.navigate('LanguageSelector')}
+          >
+            <View style={styles.menuItemLeft}>
+              <RefreshCw size={moderateScale(22)} color="#29B6F6" />
+              <Text style={styles.menuItemText}>
+                {t('profile.changeLanguage')}
+              </Text>
             </View>
             <ChevronRight
               size={moderateScale(18)}
@@ -172,7 +188,7 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
           >
             <View style={styles.menuItemLeft}>
               <Settings size={moderateScale(22)} color="#29B6F6" />
-              <Text style={styles.menuItemText}>Settings</Text>
+              <Text style={styles.menuItemText}>{t('profile.settings')}</Text>
             </View>
             <ChevronRight
               size={moderateScale(18)}
@@ -189,11 +205,11 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
             <View style={styles.menuItemLeft}>
               <Crown size={moderateScale(22)} color="#FFB300" />
               <Text style={[styles.menuItemText, styles.proMenuText]}>
-                Try for free
+                {t('profile.tryForFree')}
               </Text>
             </View>
             <View style={styles.proBadge}>
-              <Text style={styles.proBadgeText}>PRO</Text>
+              <Text style={styles.proBadgeText}>{t('profile.pro')}</Text>
             </View>
           </TouchableOpacity>
 
@@ -206,7 +222,7 @@ const ProfileScreen: React.FC<Props> = ({ navigation }) => {
             <View style={styles.menuItemLeft}>
               <LogOut size={moderateScale(22)} color="#FF5252" />
               <Text style={[styles.menuItemText, styles.signOutText]}>
-                Sign out
+                {t('profile.signOut')}
               </Text>
             </View>
           </TouchableOpacity>
@@ -221,36 +237,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: scaleWidth(16),
     paddingTop: scaleHeight(12),
     paddingBottom: scaleHeight(100),
-  },
-
-  /* Top Streak Hero Card */
-  streakHeroCard: {
-    backgroundColor: '#2558D8',
-    borderRadius: moderateScale(20),
-    paddingHorizontal: scaleWidth(20),
-    paddingVertical: scaleHeight(18),
-    marginBottom: scaleHeight(16),
-  },
-  streakInnerContent: {
-    justifyContent: 'center',
-  },
-  streakHeroSubtitle: {
-    fontSize: moderateScale(13),
-    fontWeight: '600',
-    color: '#FFFFFF',
-    marginBottom: scaleHeight(6),
-  },
-  streakHeroValue: {
-    fontSize: moderateScale(32),
-    fontWeight: '900',
-    color: '#FFFFFF',
-    lineHeight: moderateScale(38),
-  },
-  streakHeroLabel: {
-    fontSize: moderateScale(12),
-    fontWeight: '600',
-    color: 'rgba(255, 255, 255, 0.8)',
-    marginTop: scaleHeight(4),
   },
 
   /* User Profile Card */

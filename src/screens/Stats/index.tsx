@@ -21,6 +21,7 @@ import {
   BarChart2,
   Star,
 } from 'lucide-react-native';
+import { useTranslation } from 'react-i18next';
 
 import AppLayout from '../AppLayout';
 import { RootStackParamList } from '../../navigation/navigation';
@@ -29,12 +30,6 @@ import { getApi } from '../../services/commonAPIs';
 import { habitStatsAPI } from '../../services/apiendpoints';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Stats'>;
-
-const DAYS_OF_WEEK = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-const MONTH_NAMES = [
-  'January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December'
-];
 
 export interface CalendarDayStat {
   date: string;
@@ -64,36 +59,56 @@ interface ApiResponse<T> {
 }
 
 const StatsScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
+
+  const daysOfWeek = [
+    t('stats.daysOfWeek.sun'),
+    t('stats.daysOfWeek.mon'),
+    t('stats.daysOfWeek.tue'),
+    t('stats.daysOfWeek.wed'),
+    t('stats.daysOfWeek.thu'),
+    t('stats.daysOfWeek.fri'),
+    t('stats.daysOfWeek.sat'),
+  ];
+
+  const monthNames = t('stats.months', { returnObjects: true }) as string[];
+
   // Default to current Month and Year
   const today = new Date();
   const [selectedMonth, setSelectedMonth] = useState<number>(today.getMonth() + 1); // 1-12
   const [selectedYear, setSelectedYear] = useState<number>(today.getFullYear());
-  
+
   const [statsData, setStatsData] = useState<HabitStatsData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Fetch Stats API
-  const fetchStats = useCallback(async (month: number, year: number) => {
-    setIsLoading(true);
-    const endpoint = `${habitStatsAPI}?month=${month}&year=${year}`;
+  const fetchStats = useCallback(
+    async (month: number, year: number) => {
+      setIsLoading(true);
+      const endpoint = `${habitStatsAPI}?month=${month}&year=${year}`;
 
-    await getApi(
-      endpoint,
-      (res: ApiResponse<HabitStatsData>) => {
-        setIsLoading(false);
-        if (res?.succeeded && res.data) {
-          setStatsData(res.data);
-        } else {
+      await getApi(
+        endpoint,
+        (res: ApiResponse<HabitStatsData>) => {
+          setIsLoading(false);
+          if (res?.succeeded && res.data) {
+            setStatsData(res.data);
+          } else {
+            setStatsData(null);
+          }
+        },
+        (err: any) => {
+          setIsLoading(false);
           setStatsData(null);
+          Alert.alert(
+            t('stats.errors.fetchFailedTitle'),
+            err?.message || t('stats.errors.fetchFailedMessage')
+          );
         }
-      },
-      (err: any) => {
-        setIsLoading(false);
-        setStatsData(null);
-        Alert.alert('Error', err?.message || 'Failed to load habit statistics.');
-      }
-    );
-  }, []);
+      );
+    },
+    [t]
+  );
 
   useEffect(() => {
     fetchStats(selectedMonth, selectedYear);
@@ -123,7 +138,7 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
     if (!statsData || !statsData.calendarDays) return null;
 
     const days = [];
-    
+
     // Determine start day index for offset (0: Sun, 1: Mon, ..., 6: Sat)
     const firstDayOfMonth = new Date(selectedYear, selectedMonth - 1, 1).getDay();
 
@@ -163,7 +178,7 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
   };
 
   return (
-    <AppLayout navigation={navigation} currentRoute="Stats" title="Your stats">
+    <AppLayout navigation={navigation} currentRoute="Stats" title={t('stats.title')}>
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
@@ -177,7 +192,7 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
             </TouchableOpacity>
 
             <Text style={styles.monthTitle}>
-              {`${MONTH_NAMES[selectedMonth - 1]} ${selectedYear}`}
+              {`${monthNames[selectedMonth - 1]} ${selectedYear}`}
             </Text>
 
             <TouchableOpacity activeOpacity={0.7} onPress={handleNextMonth}>
@@ -187,7 +202,7 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
 
           {/* Days of Week Header */}
           <View style={styles.weekHeader}>
-            {DAYS_OF_WEEK.map((day, idx) => (
+            {daysOfWeek.map((day, idx) => (
               <Text key={idx} style={styles.weekDayText}>
                 {day}
               </Text>
@@ -207,21 +222,19 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
           <View style={styles.legendContainer}>
             <View style={styles.legendItem}>
               <View style={[styles.legendDot, { backgroundColor: '#00E676' }]} />
-              <Text style={styles.legendText}>All complete</Text>
+              <Text style={styles.legendText}>{t('stats.legend.allComplete')}</Text>
             </View>
 
             <View style={styles.legendItem}>
               <View style={[styles.legendRing, { borderColor: '#00E676' }]} />
-              <Text style={styles.legendText}>Some complete</Text>
+              <Text style={styles.legendText}>{t('stats.legend.someComplete')}</Text>
             </View>
           </View>
         </View>
 
         {/* 2. Motivational Speech Banner */}
         <View style={styles.quoteCard}>
-          <Text style={styles.quoteText}>
-            The first step is the hardest. No hesitations — you can make it.
-          </Text>
+          <Text style={styles.quoteText}>{t('stats.quote')}</Text>
         </View>
 
         {/* 3. Streak Banner Card */}
@@ -229,9 +242,9 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
           {/* Left Text Content */}
           <View style={styles.streakTextContainer}>
             <Text style={styles.streakValue}>
-              {statsData ? `${statsData.currentStreak} days` : '0 days'}
+              {t('stats.days', { count: statsData?.currentStreak ?? 0 })}
             </Text>
-            <Text style={styles.streakLabel}>Your current streak</Text>
+            <Text style={styles.streakLabel}>{t('stats.currentStreak')}</Text>
 
             <View style={styles.longestStreakRow}>
               <Trophy
@@ -240,10 +253,10 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
                 style={{ marginRight: scaleWidth(6) }}
               />
               <Text style={styles.longestStreakValue}>
-                {statsData ? `${statsData.longestStreak} days` : '0 days'}
+                {t('stats.days', { count: statsData?.longestStreak ?? 0 })}
               </Text>
             </View>
-            <Text style={styles.longestStreakLabel}>Your longest streak</Text>
+            <Text style={styles.longestStreakLabel}>{t('stats.longestStreak')}</Text>
           </View>
 
           {/* Right Graphic / Medal Art */}
@@ -263,9 +276,9 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
             <View style={[styles.card, styles.gridCard]}>
               <Calendar size={moderateScale(22)} color="#AB47BC" />
               <Text style={styles.gridStatValue}>
-                {statsData ? `${statsData.totalPerfectDays} days` : '0 days'}
+                {t('stats.days', { count: statsData?.totalPerfectDays ?? 0 })}
               </Text>
-              <Text style={styles.gridStatLabel}>Total perfect days</Text>
+              <Text style={styles.gridStatLabel}>{t('stats.totalPerfectDays')}</Text>
             </View>
 
             {/* Total Times Completed */}
@@ -274,7 +287,9 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
               <Text style={styles.gridStatValue}>
                 {statsData ? statsData.totalTimesCompleted : 0}
               </Text>
-              <Text style={styles.gridStatLabel}>Total times completed</Text>
+              <Text style={styles.gridStatLabel}>
+                {t('stats.totalTimesCompleted')}
+              </Text>
             </View>
           </View>
 
@@ -286,7 +301,9 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
               <Text style={styles.gridStatValue}>
                 {statsData ? `${statsData.habitCompletionRate}%` : '0%'}
               </Text>
-              <Text style={styles.gridStatLabel}>Habit completion rate</Text>
+              <Text style={styles.gridStatLabel}>
+                {t('stats.habitCompletionRate')}
+              </Text>
             </View>
 
             {/* Average Per Daily */}
@@ -295,7 +312,7 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
               <Text style={styles.gridStatValue}>
                 {statsData ? statsData.averagePerDaily.toFixed(1) : '0.0'}
               </Text>
-              <Text style={styles.gridStatLabel}>Average per daily</Text>
+              <Text style={styles.gridStatLabel}>{t('stats.averagePerDaily')}</Text>
             </View>
           </View>
         </View>

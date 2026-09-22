@@ -17,6 +17,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { X, Plus, Calendar, Clock, Trash2, Check } from 'lucide-react-native';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
+import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
@@ -68,11 +69,12 @@ interface HabitEditData {
 }
 
 const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
+  const { t } = useTranslation();
 
   const initialHabitData: HabitEditData | undefined = route.params?.habitData;
 
   const [habitName, setHabitName] = useState(route.params?.habitName || initialHabitData?.name || '');
-  const [habitMasterId, setHabitMasterId] = useState<number| string | null>(
+  const [habitMasterId, setHabitMasterId] = useState<number | string | null>(
     route.params?.habitMasterId || initialHabitData?.habitMasterId || null
   );
 
@@ -121,7 +123,10 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
       },
       (err: any) => {
         setIsColorsLoading(false);
-        Alert.alert('Error', err?.message || 'Failed to fetch colors.');
+        Alert.alert(
+          t('createOneTimeHabit.alerts.errorTitle'),
+          err?.message || t('createOneTimeHabit.alerts.fetchColorsFailed')
+        );
       }
     );
   };
@@ -167,7 +172,9 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
       year: 'numeric',
     });
 
-    return isToday ? `Today, ${formattedDate}` : formattedDate;
+    return isToday
+      ? t('createOneTimeHabit.todayPrefix', { date: formattedDate })
+      : formattedDate;
   };
 
   // Reminder handlers
@@ -200,7 +207,10 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
 
   const handleSave = async () => {
     if (!habitName.trim()) {
-      Alert.alert('Validation Error', 'Please enter a habit name.');
+      Alert.alert(
+        t('createOneTimeHabit.validation.title'),
+        t('createOneTimeHabit.validation.emptyName')
+      );
       return;
     }
 
@@ -238,16 +248,29 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
         (res: ApiResponse<any>) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
-            Alert.alert('Success', 'One-time task updated successfully.', [
-              { text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 })},
-            ]);
+            Alert.alert(
+              t('createOneTimeHabit.alerts.successTitle'),
+              t('createOneTimeHabit.alerts.updateSuccess'),
+              [
+                {
+                  text: t('createOneTimeHabit.alerts.ok'),
+                  onPress: () => navigation.navigate('Dashboard', { review: 1 }),
+                },
+              ]
+            );
           } else {
-            Alert.alert('Error', res?.message || 'Failed to update task.');
+            Alert.alert(
+              t('createOneTimeHabit.alerts.errorTitle'),
+              res?.message || t('createOneTimeHabit.alerts.updateFailed')
+            );
           }
         },
         (err: any) => {
           setIsSubmitting(false);
-          Alert.alert('Error', err?.message || 'An error occurred while updating.');
+          Alert.alert(
+            t('createOneTimeHabit.alerts.errorTitle'),
+            err?.message || t('createOneTimeHabit.alerts.updateError')
+          );
         }
       );
     } else {
@@ -257,16 +280,29 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
         (res: ApiResponse<any>) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
-            Alert.alert('Success', 'One-time task created successfully.', [
-              { text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 })  },
-            ]);
+            Alert.alert(
+              t('createOneTimeHabit.alerts.successTitle'),
+              t('createOneTimeHabit.alerts.createSuccess'),
+              [
+                {
+                  text: t('createOneTimeHabit.alerts.ok'),
+                  onPress: () => navigation.navigate('Dashboard', { review: 1 }),
+                },
+              ]
+            );
           } else {
-            Alert.alert('Error', res?.message || 'Failed to create task.');
+            Alert.alert(
+              t('createOneTimeHabit.alerts.errorTitle'),
+              res?.message || t('createOneTimeHabit.alerts.createFailed')
+            );
           }
         },
         (err: any) => {
           setIsSubmitting(false);
-          Alert.alert('Error', err?.message || 'An error occurred while creating.');
+          Alert.alert(
+            t('createOneTimeHabit.alerts.errorTitle'),
+            err?.message || t('createOneTimeHabit.alerts.createError')
+          );
         }
       );
     }
@@ -286,13 +322,19 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
           <X size={moderateScale(22)} color="#FFFFFF" />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>{initialHabitData?.id ? 'Edit task' : 'One-time task'}</Text>
+        <Text style={styles.headerTitle}>
+          {initialHabitData?.id
+            ? t('createOneTimeHabit.headerTitleEdit')
+            : t('createOneTimeHabit.headerTitleCreate')}
+        </Text>
 
         <TouchableOpacity activeOpacity={0.7} onPress={handleSave} disabled={isSubmitting}>
           {isSubmitting ? (
             <ActivityIndicator size="small" color={selectedColorHex} />
           ) : (
-            <Text style={[styles.saveText, { color: selectedColorHex }]}>SAVE</Text>
+            <Text style={[styles.saveText, { color: selectedColorHex }]}>
+              {t('createOneTimeHabit.save')}
+            </Text>
           )}
         </TouchableOpacity>
       </View>
@@ -307,7 +349,7 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
           <View style={[styles.inputContainer, { borderBottomColor: selectedColorHex }]}>
             <TextInput
               style={styles.textInput}
-              placeholder="Name your habit"
+              placeholder={t('createOneTimeHabit.habitNamePlaceholder')}
               placeholderTextColor="#8E93A6"
               value={habitName}
               onChangeText={setHabitName}
@@ -316,7 +358,7 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
 
           {/* Color Code Selection */}
           <View style={styles.colorSectionContainer}>
-            <Text style={styles.sectionTitleLabel}>Select Color</Text>
+            <Text style={styles.sectionTitleLabel}>{t('createOneTimeHabit.selectColor')}</Text>
             {isColorsLoading ? (
               <ActivityIndicator size="small" color={selectedColorHex} style={{ alignSelf: 'flex-start' }} />
             ) : (
@@ -374,7 +416,7 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
 
           {/* Reminders Toggle */}
           <View style={styles.rowBetween}>
-            <Text style={styles.sectionTitle}>Get reminders</Text>
+            <Text style={styles.sectionTitle}>{t('createOneTimeHabit.getReminders')}</Text>
             <Switch
               trackColor={{ false: '#2C303E', true: selectedColorHex }}
               thumbColor={remindersEnabled ? '#FFFFFF' : '#8E93A6'}
@@ -408,7 +450,9 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
                 onPress={handleAddReminderPress}
               >
                 <Plus size={moderateScale(18)} color={selectedColorHex} strokeWidth={2.5} />
-                <Text style={[styles.addReminderText, { color: selectedColorHex }]}>Add reminder time</Text>
+                <Text style={[styles.addReminderText, { color: selectedColorHex }]}>
+                  {t('createOneTimeHabit.addReminderTime')}
+                </Text>
               </TouchableOpacity>
             </View>
           )}

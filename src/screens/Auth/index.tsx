@@ -8,11 +8,11 @@ import {
   StatusBar,
   Animated,
   Easing,
-  Linking,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/responsive';
@@ -20,6 +20,8 @@ import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/r
 type Props = NativeStackScreenProps<RootStackParamList, 'Auth'>;
 
 const AuthScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
+
   // --- Multi-Layer Animation References ---
   const pulseAnim = useRef(new Animated.Value(0)).current; // For ambient glowing orbs
   const ringScale = useRef(new Animated.Value(0.8)).current; // For concentric habit rings
@@ -113,14 +115,6 @@ const AuthScreen: React.FC<Props> = ({ navigation }) => {
     navigation.replace('Login');
   };
 
-
-
-  const openPrivacy = () => {
-    Linking.openURL('https://www.kegistech.com/habitly-privacy-policy.html').catch((err) =>
-      console.warn('Could not open URL', err)
-    );
-  };
-
   return (
     <LinearGradient
       colors={['#0F172A', '#1E1B4B', '#312E81']}
@@ -196,19 +190,26 @@ const AuthScreen: React.FC<Props> = ({ navigation }) => {
             ]}
           >
             <View style={styles.tagBadge}>
-              <Text style={styles.tagBadgeText}>HABIT BUILDER</Text>
+              <Text style={styles.tagBadgeText}>
+                {t('auth.tagBadge', 'HABIT BUILDER')}
+              </Text>
             </View>
 
-            <Text style={styles.title}>Small habits.{'\n'}Remarkable wins.</Text>
+            <Text style={styles.title}>
+              {t('auth.title', 'Small habits.\nRemarkable wins.')}
+            </Text>
             <Text style={styles.subtitle}>
-              Transform your daily routines into lifelong streaks. Take control of your day now.
+              {t(
+                'auth.subtitle',
+                'Transform your daily routines into lifelong streaks. Take control of your day now.'
+              )}
             </Text>
           </Animated.View>
 
           {/* Spacer to keep layout balanced */}
           <View style={styles.flexibleSpacer} />
 
-          {/* Action Buttons & Legal Footer */}
+          {/* Action Buttons Section */}
           <Animated.View
             style={[
               styles.bottomContainer,
@@ -218,7 +219,7 @@ const AuthScreen: React.FC<Props> = ({ navigation }) => {
               },
             ]}
           >
-            {/* Primary Action Button */}
+            {/* Primary Action Button (Sign Up) */}
             <TouchableOpacity
               activeOpacity={0.85}
               style={styles.primaryButton}
@@ -230,30 +231,22 @@ const AuthScreen: React.FC<Props> = ({ navigation }) => {
                 end={{ x: 1, y: 0 }}
                 style={styles.buttonGradient}
               >
-                <Text style={styles.primaryButtonText}>GET STARTED FREE</Text>
+                <Text style={styles.primaryButtonText}>
+                  {t('auth.getStartedFree', 'GET STARTED FREE')}
+                </Text>
               </LinearGradient>
             </TouchableOpacity>
 
-            {/* Secondary Action */}
+            {/* Secondary Action Button (Sign In) */}
             <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={handleSignIn}
+              activeOpacity={0.8}
               style={styles.secondaryButton}
+              onPress={handleSignIn}
             >
               <Text style={styles.secondaryButtonText}>
-                I already have an account. <Text style={styles.boldSignIn}>Sign In</Text>
+                {t('auth.signIn', 'Sign In')}
               </Text>
             </TouchableOpacity>
-
-            {/* Privacy Policy & Terms Footer */}
-            <View style={styles.legalFooter}>
-              <Text style={styles.termsText}>
-                By signing up, you agree to our{' '}
-                <Text style={styles.linkText} onPress={openPrivacy}>
-                  Terms of Service and Privacy Policy
-                </Text>
-              </Text>
-            </View>
           </Animated.View>
         </View>
       </SafeAreaView>
@@ -379,12 +372,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bottomContainer: {
-    marginBottom: scaleHeight(12),
+    marginBottom: scaleHeight(24),
     alignItems: 'center',
+    gap: scaleHeight(12),
   },
   primaryButton: {
     width: '100%',
-    height: scaleHeight(54),
+    height: scaleHeight(52),
     borderRadius: moderateScale(16),
     overflow: 'hidden',
     shadowColor: '#10B981',
@@ -402,36 +396,24 @@ const styles = StyleSheet.create({
   primaryButtonText: {
     color: '#FFFFFF',
     fontSize: moderateScale(15),
-    fontWeight: '900',
+    fontWeight: '800',
     letterSpacing: 1.2,
   },
   secondaryButton: {
-    marginTop: scaleHeight(18),
-    marginBottom: scaleHeight(20),
-    paddingVertical: scaleHeight(6),
+    width: '100%',
+    height: scaleHeight(52),
+    borderRadius: moderateScale(16),
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.15)',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   secondaryButtonText: {
-    color: 'rgba(226, 232, 240, 0.7)',
-    fontSize: moderateScale(14),
-    fontWeight: '400',
-  },
-  boldSignIn: {
-    color: '#34D399',
-    fontWeight: '800',
-  },
-  legalFooter: {
-    paddingHorizontal: scaleWidth(10),
-  },
-  termsText: {
-    color: 'rgba(226, 232, 240, 0.5)',
-    fontSize: moderateScale(11),
-    textAlign: 'center',
-    lineHeight: moderateScale(16),
-  },
-  linkText: {
-    color: '#34D399',
-    fontWeight: '600',
-    textDecorationLine: 'underline',
+    color: '#FFFFFF',
+    fontSize: moderateScale(15),
+    fontWeight: '700',
+    letterSpacing: 0.5,
   },
 });
 

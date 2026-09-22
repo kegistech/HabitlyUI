@@ -1,0 +1,706 @@
+{
+  "auth": {
+    "tagBadge": "PEMBANGUN KEBIASAAN",
+    "title": "Kebiasaan kecil.\nHasil yang besar.",
+    "subtitle": "Ubah rutinitas harian Anda menjadi kebiasaan seumur hidup. Ambil kendali atas hari Anda sekarang.",
+    "getStartedFree": "MULAI GRATIS",
+    "alreadyHaveAccount": "Sudah punya akun?",
+    "signIn": "Masuk",
+    "termsNotice": "Dengan mendaftar, Anda menyetujui",
+    "termsAndPrivacy": "Ketentuan Layanan & Kebijakan Privasi kami"
+  },
+  "login": {
+    "tagBadge": "SELAMAT DATANG",
+    "welcomeText": "Masuk",
+    "subText": "Lanjutkan tren kebiasaan Anda dan pantau kemajuan hari ini.",
+    "emailLabel": "EMAIL",
+    "emailPlaceholder": "nama@contoh.com",
+    "passwordLabel": "KATA SANDI",
+    "passwordPlaceholder": "Masukkan kata sandi Anda",
+    "hide": "SEMBUNYIKAN",
+    "show": "TAMPILKAN",
+    "forgotPassword": "Lupa Kata Sandi?",
+    "signInButton": "MASUK",
+    "dontHaveAccount": "Belum punya akun?",
+    "signUp": "Daftar",
+    "errors": {
+      "emailRequired": "Email wajib diisi.",
+      "emailInvalid": "Harap masukkan email yang valid.",
+      "passwordRequired": "Kata sandi wajib diisi.",
+      "loginFailed": "Gagal masuk. Harap periksa kredensial Anda.",
+      "loginError": "Email atau kata sandi salah. Silakan coba lagi."
+    }
+  },
+  "forgotPassword": {
+    "tag": "PEMULIHAN AKUN",
+    "backToLogin": "Kembali ke Masuk",
+    "back": "Kembali",
+    "success": "Berhasil",
+    "hide": "SEMBUNYIKAN",
+    "show": "TAMPILKAN",
+    "titleEmail": "Atur Ulang Kata Sandi 🔒",
+    "titleOtp": "Verifikasi OTP 💬",
+    "titlePassword": "Kata Sandi Baru 🔑",
+    "subEmail": "Masukkan email Anda dan kami akan mengirimkan kode OTP.",
+    "subOtp": "Masukkan kode verifikasi yang dikirim ke",
+    "subPassword": "Buat kata sandi baru yang aman untuk melindungi akun Anda.",
+    "noOtp": "Tidak menerima kode?",
+    "successMsg": "Kata sandi Anda telah berhasil diperbarui!",
+    "loginNow": "Masuk Sekarang",
+    "labels": {
+      "email": "EMAIL",
+      "otp": "MASUKKAN KODE OTP",
+      "newPassword": "KATA SANDI BARU",
+      "confirmPassword": "KONFIRMASI KATA SANDI BARU"
+    },
+    "placeholders": {
+      "email": "nama@contoh.com",
+      "otp": "• • • • • •",
+      "minPassword": "Minimal 8 karakter",
+      "reEnterPassword": "Masukkan kembali kata sandi"
+    },
+    "buttons": {
+      "generateOtp": "BUAT OTP",
+      "verifyOtp": "VERIFIKASI OTP",
+      "updatePassword": "PERBARUI KATA SANDI",
+      "resend": "Kirim Ulang Kode",
+      "resendIn": "Kirim ulang dalam"
+    },
+    "errors": {
+      "emailRequired": "Email wajib diisi.",
+      "invalidEmail": "Harap masukkan email yang valid.",
+      "otpRequired": "Kode OTP wajib diisi.",
+      "invalidOtp": "Harap masukkan kode OTP yang valid.",
+      "passwordRequired": "Kata sandi baru wajib diisi.",
+      "passwordLength": "Kata sandi harus minimal 8 karakter.",
+      "confirmPasswordRequired": "Harap konfirmasi kata sandi baru Anda.",
+      "passwordsMismatch": "Kata sandi tidak cocok.",
+      "sendOtpFailed": "Gagal mengirim OTP. Silakan coba lagi.",
+      "updatePasswordFailed": "Gagal memperbarui kata sandi. Silakan coba lagi.",
+      "resendFailed": "Gagal mengirim ulang kode OTP.",
+      "networkError": "Kesalahan jaringan. Silakan coba lagi."
+    }
+  },
+  "signUp": {
+    "badge": "MULAI",
+    "title": "Buat Akun 🚀",
+    "subtitle": "Mulai bangun rutinitas harian yang lebih baik dari hari ini.",
+    "hide": "SEMBUNYIKAN",
+    "show": "TAMPILKAN",
+    "loadingCountries": "Memuat negara...",
+    "labels": {
+      "fullName": "NAMA LENGKAP",
+      "email": "EMAIL",
+      "password": "KATA SANDI",
+      "country": "NEGARA"
+    },
+    "placeholders": {
+      "fullName": "Budi Santoso",
+      "email": "nama@contoh.com",
+      "password": "Minimal 8 karakter",
+      "selectCountry": "Pilih negara Anda"
+    },
+    "buttons": {
+      "createAccount": "BUAT AKUN SAYA",
+      "creatingAccount": "MEMBUAT AKUN..."
+    },
+    "legal": {
+      "prefix": "Dengan membuat akun, Anda menyetujui ",
+      "termsAndPrivacy": "Ketentuan & Kebijakan Privasi kami"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Sudah punya akun? ",
+      "signIn": "Masuk"
+    },
+    "modal": {
+      "title": "Pilih Negara",
+      "done": "Selesai"
+    },
+    "errors": {
+      "requiredFields": "Harap isi semua kolom yang wajib diisi.",
+      "invalidEmail": "Harap masukkan email yang valid.",
+      "passwordLength": "Kata sandi harus minimal 8 karakter.",
+      "registrationFailed": "Pendaftaran gagal. Silakan coba lagi.",
+      "networkError": "Terjadi kesalahan jaringan."
+    }
+  },
+  "wakeUpTime": {
+    "badge": "RUTINITAS PAGI",
+    "title": "Jam berapa Anda\nbiasanya bangun? 🌅",
+    "subtitle": "Kami akan menggunakannya untuk mengoptimalkan hari Anda dan menjadwalkan pengingat motivasi.",
+    "buttons": {
+      "continue": "LANJUTKAN"
+    },
+    "errors": {
+      "updateFailed": "Gagal memperbarui waktu bangun. Silakan coba lagi.",
+      "networkError": "Terjadi kesalahan jaringan."
+    }
+  },
+  "reflectionTime": {
+    "badge": "REFLEKSI MALAM",
+    "title": "Kapan Anda ingin\nmerefleksikan hari Anda? 🌙",
+    "subtitle": "Evaluasi cepat di malam hari membantu merayakan pencapaian dan menjaga konsistensi.",
+    "buttons": {
+      "continue": "LANJUTKAN"
+    },
+    "errors": {
+      "updateFailed": "Gagal memperbarui waktu refleksi. Silakan coba lagi.",
+      "networkError": "Terjadi kesalahan jaringan."
+    }
+  },
+  "dashboard": {
+    "title": "Hari Ini",
+    "sectionTitle": "TUGAS & KEBIASAAN",
+    "emptyHabits": "Tidak ada kebiasaan yang dijadwalkan untuk tanggal ini.",
+    "defaults": {
+      "goalType": "Harian",
+      "valueType": "kali"
+    },
+    "tracking": {
+      "disabledFuture": "Pelacakan dinonaktifkan untuk tanggal mendatang",
+      "trackToday": "Lacak aktivitas hari ini"
+    },
+    "alerts": {
+      "errorTitle": "Kesalahan",
+      "fetchError": "Gagal mengambil kebiasaan untuk tanggal yang dipilih.",
+      "trackError": "Gagal memperbarui kemajuan kebiasaan.",
+      "connectError": "Gagal terhubung ke pelacak.",
+      "futureDateTitle": "Tindakan Tidak Diizinkan",
+      "futureDateMessage": "Anda tidak dapat mencatat aktivitas untuk tanggal mendatang.",
+      "goalReachedTitle": "Target Tercapai",
+      "goalReachedMessage": "Anda telah menyelesaikan target untuk kebiasaan ini.",
+      "minLimitTitle": "Batas Minimum",
+      "minLimitMessage": "Aktivitas yang diselesaikan tidak boleh kurang dari 0.",
+      "limitReachedTitle": "Batas Tercapai",
+      "limitReachedMessage": "Anda telah mencapai batas gratis 2 kebiasaan. Tingkatkan ke Pro untuk akses tanpa batas.",
+      "cancel": "Batal",
+      "upgrade": "Tingkatkan"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "Buat Kebiasaan",
+    "regularHabit": "Kebiasaan Rutin",
+    "oneTimeTask": "Tugas Sekali Jalan",
+    "sectionHeader": "ATAU PILIH DARI KATEGORI INI",
+    "defaultCategorySubtitle": "Temukan dan bangun kebiasaan baru",
+    "alerts": {
+      "noticeTitle": "Pemberitahuan",
+      "fetchError": "Gagal mengambil kategori.",
+      "errorTitle": "Kesalahan",
+      "connectError": "Gagal terhubung ke server."
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "Kebiasaan",
+    "habitsCount": "{{count}} kebiasaan",
+    "habitsCount_plural": "{{count}} kebiasaan",
+    "emptyState": "Tidak ada templat kebiasaan yang ditemukan untuk kategori ini.",
+    "alerts": {
+      "noticeTitle": "Pemberitahuan",
+      "fetchError": "Gagal mengambil templat kebiasaan.",
+      "errorTitle": "Kesalahan",
+      "connectError": "Gagal terhubung ke server."
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "Edit Tugas",
+    "headerTitleCreate": "Tugas Sekali Jalan",
+    "save": "SIMPAN",
+    "habitNamePlaceholder": "Beri nama kebiasaan Anda",
+    "selectColor": "Pilih Warna",
+    "todayPrefix": "Hari ini, {{date}}",
+    "getReminders": "Dapatkan Pengingat",
+    "addReminderTime": "Tambah Waktu Pengingat",
+    "validation": {
+      "title": "Kesalahan Validasi",
+      "emptyName": "Harap masukkan nama kebiasaan."
+    },
+    "alerts": {
+      "errorTitle": "Kesalahan",
+      "successTitle": "Berhasil",
+      "fetchColorsFailed": "Gagal mengambil warna.",
+      "updateSuccess": "Tugas sekali jalan berhasil diperbarui.",
+      "updateFailed": "Gagal memperbarui tugas.",
+      "updateError": "Terjadi kesalahan saat memperbarui.",
+      "createSuccess": "Tugas sekali jalan berhasil dibuat.",
+      "createFailed": "Gagal membuat tugas.",
+      "createError": "Terjadi kesalahan saat membuat.",
+      "ok": "OK"
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "Edit Kebiasaan",
+    "headerTitleNew": "Kebiasaan Baru",
+    "save": "SIMPAN",
+    "placeholderName": "Beri nama kebiasaan Anda",
+    "selectColor": "Pilih Warna",
+    "goalForHabit": "Target Kebiasaan",
+    "numberOfTimes": "Jumlah Kali",
+    "time": "Durasi",
+    "timesSuffix": "kali",
+    "minutesSuffix": "menit",
+    "frequencies": {
+      "daily": "Harian",
+      "weekly": "Mingguan",
+      "monthly": "Bulanan"
+    },
+    "repeatEveryDay": "Ulangi Setiap Hari",
+    "repeatDailyIn": "Ulangi Setiap Hari Pada:",
+    "timesOfDay": {
+      "morning": "Pagi",
+      "afternoon": "Siang",
+      "evening": "Malam"
+    },
+    "daysOfWeek": {
+      "sunday": "M",
+      "monday": "S",
+      "tuesday": "S",
+      "wednesday": "R",
+      "thursday": "K",
+      "friday": "J",
+      "saturday": "S"
+    },
+    "getReminders": "Dapatkan Pengingat",
+    "addReminderTime": "Tambah Waktu Pengingat",
+    "alerts": {
+      "errorTitle": "Kesalahan",
+      "successTitle": "Berhasil",
+      "validationTitle": "Kesalahan Validasi",
+      "enterHabitName": "Harap masukkan nama kebiasaan.",
+      "fetchColorsFailed": "Gagal mengambil warna.",
+      "habitUpdatedSuccess": "Kebiasaan berhasil diperbarui.",
+      "habitCreatedSuccess": "Kebiasaan berhasil dibuat.",
+      "habitUpdateFailed": "Gagal memperbarui kebiasaan.",
+      "habitCreateFailed": "Gagal membuat kebiasaan.",
+      "updateError": "Terjadi kesalahan saat memperbarui.",
+      "createError": "Terjadi kesalahan saat membuat."
+    }
+  },
+  "common": {
+    "error": "Kesalahan",
+    "success": "Berhasil",
+    "cancel": "Batal",
+    "goBack": "Kembali"
+  },
+  "habitDetails": {
+    "currentStreak": "Runtunan Saat Ini",
+    "longestStreak": "Runtunan Terpanjang",
+    "completionRate": "Tingkat Penyelesaian",
+    "totalTimesCompleted": "Total Selesai",
+    "dayCount_one": "{{count}} hari",
+    "dayCount_other": "{{count}} hari",
+    "actions": {
+      "edit": "Edit",
+      "archive": "Arsipkan"
+    },
+    "alerts": {
+      "archiveTitle": "Arsipkan Kebiasaan",
+      "archiveMessage": "Apakah Anda yakin ingin mengarsipkan \"{{name}}\"?",
+      "archiveSuccess": "Kebiasaan berhasil diarsipkan.",
+      "archiveFailed": "Gagal mengarsipkan kebiasaan.",
+      "fetchFailed": "Gagal memuat statistik kebiasaan."
+    },
+    "daysOfWeek": ["M", "S", "S", "R", "K", "J", "S"],
+    "monthNames": [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember"
+    ]
+  },
+  "stats": {
+    "title": "Statistik Anda",
+    "months": [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember"
+    ],
+    "daysOfWeek": {
+      "sun": "M",
+      "mon": "S",
+      "tue": "S",
+      "wed": "R",
+      "thu": "K",
+      "fri": "J",
+      "sat": "S"
+    },
+    "legend": {
+      "allComplete": "Semua Selesai",
+      "someComplete": "Sebagian Selesai"
+    },
+    "quote": "Langkah pertama adalah yang tersulit. Anda pasti bisa melakukannya!",
+    "currentStreak": "Runtunan Saat Ini",
+    "longestStreak": "Runtunan Terpanjang",
+    "days": "{{count}} hari",
+    "days_one": "{{count}} hari",
+    "days_other": "{{count}} hari",
+    "totalPerfectDays": "Total Hari Sempurna",
+    "totalTimesCompleted": "Total Selesai",
+    "habitCompletionRate": "Tingkat Penyelesaian Kebiasaan",
+    "averagePerDaily": "Rata-Rata Harian",
+    "errors": {
+      "fetchFailedTitle": "Kesalahan",
+      "fetchFailedMessage": "Gagal memuat statistik kebiasaan."
+    }
+  },
+  "subscription": {
+    "restore": "PULIHKAN",
+    "heroTitle": "Tingkatkan Efisiensi Anda",
+    "loading": "Memuat...",
+    "features": [
+      "Pelacakan kebiasaan & pengingat tanpa batas",
+      "Analisis mendalam & wawasan kemajuan",
+      "Pengalaman Premium tanpa iklan"
+    ],
+    "yearly": {
+      "bestOffer": "PENAWARAN TERBAIK",
+      "title": "Tahunan",
+      "subtitle": "Akses 1 Tahun • {{price}}"
+    },
+    "monthly": {
+      "title": "Bulanan",
+      "priceFormat": "{{price}}/Bulan"
+    },
+    "cancelOrManage": "Batalkan atau Kelola Berlangganan",
+    "continue": "Lanjutkan",
+    "plans": {
+      "yearlyPlan": "Paket Tahunan",
+      "monthlyPlan": "Paket Bulanan",
+      "yearlyPrice": "{{price}}/tahun",
+      "monthlyPrice": "{{price}}/bulan"
+    },
+    "securePayment": {
+      "ios": "PEMBAYARAN AMAN MELALUI APP STORE",
+      "android": "PEMBAYARAN AMAN MELALUI GOOGLE PLAY"
+    },
+    "autoRenewDisclaimer": "Langganan diperbarui secara otomatis kecuali dibatalkan setidaknya 24 jam sebelum akhir periode berjalan.",
+    "legal": {
+      "termsOfUse": "Ketentuan Penggunaan (EULA)",
+      "privacyPolicy": "Kebijakan Privasi"
+    },
+    "alerts": {
+      "storeErrorTitle": "Kesalahan Toko",
+      "storeErrorMessage": "Gagal memuat paket berlangganan.",
+      "errorTitle": "Kesalahan",
+      "cannotOpenLink": "Tidak dapat membuka tautan: {{url}}",
+      "failedOpenLink": "Gagal membuka tautan.",
+      "planUnavailable": "Paket yang dipilih saat ini tidak tersedia.",
+      "successTitle": "Berhasil!",
+      "upgradedMessage": "Akun Anda telah ditingkatkan.",
+      "continueBtn": "Lanjutkan",
+      "paymentFailedTitle": "Pembayaran Gagal",
+      "unexpectedError": "Terjadi kesalahan yang tidak terduga.",
+      "restoredTitle": "Dipulihkan",
+      "restoredMessage": "Langganan Anda berhasil dipulihkan.",
+      "noSubscriptionTitle": "Tidak Ada Langganan",
+      "noSubscriptionMessage": "Kami tidak dapat menemukan langganan aktif untuk dipulihkan.",
+      "restoreFailedPrefix": "Gagal memulihkan: ",
+      "manageTitle": "Kelola Langganan",
+      "manageMessage": "Anda akan diarahkan ke pengaturan langganan untuk mengelola atau membatalkan paket Anda.",
+      "cancelBtn": "Batal",
+      "openSettingsBtn": "Buka Pengaturan",
+      "cannotOpenSettings": "Tidak dapat membuka pengaturan langganan."
+    }
+  },
+  "appLayout": {
+    "tryPro": "COBA PRO",
+    "routes": {
+      "dashboard": "Hari Ini",
+      "stats": "Statistik",
+      "profile": "Profil"
+    }
+  },
+  "profile": {
+    "screenTitle": "Profil",
+    "edit": "Edit",
+    "allHabits": "Semua Kebiasaan",
+    "notifications": "Notifikasi",
+    "changeLanguage": "Ubah Bahasa",
+    "settings": "Pengaturan",
+    "tryForFree": "Coba Gratis",
+    "pro": "PRO",
+    "signOut": "Keluar",
+    "signOutAlert": {
+      "title": "Keluar",
+      "message": "Apakah Anda yakin ingin keluar?",
+      "cancel": "Batal",
+      "confirm": "Keluar"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "Semua Kebiasaan",
+    "tabs": {
+      "regular": "KEBIASAAN RUTIN",
+      "oneTime": "TUGAS SEKALI JALAN"
+    },
+    "emptyState": {
+      "regular": "Tidak ada kebiasaan rutin yang ditemukan.",
+      "oneTime": "Tidak ada tugas sekali jalan yang ditemukan."
+    },
+    "defaults": {
+      "daily": "Harian",
+      "times": "kali"
+    },
+    "alerts": {
+      "errorTitle": "Kesalahan",
+      "fetchFailed": "Gagal mengambil kebiasaan mendatang."
+    }
+  },
+  "changePassword": {
+    "screenTitle": "Ubah Kata Sandi",
+    "infoCard": {
+      "title": "Tingkatkan Keamanan",
+      "subtitle": "Pilih kata sandi yang kuat dengan minimal 8 karakter."
+    },
+    "labels": {
+      "currentPassword": "KATA SANDI SAAT INI",
+      "newPassword": "KATA SANDI BARU",
+      "confirmPassword": "KONFIRMASI KATA SANDI BARU"
+    },
+    "placeholders": {
+      "currentPassword": "Masukkan kata sandi saat ini",
+      "newPassword": "Masukkan kata sandi baru",
+      "confirmPassword": "Masukkan kembali kata sandi baru"
+    },
+    "buttons": {
+      "updatePassword": "Perbarui Kata Sandi"
+    },
+    "validation": {
+      "errorTitle": "Kesalahan Validasi",
+      "currentPasswordRequired": "Harap masukkan kata sandi Anda saat ini.",
+      "newPasswordRequired": "Harap masukkan kata sandi baru.",
+      "minLength": "Kata sandi baru harus minimal 8 karakter.",
+      "sameAsCurrent": "Kata sandi baru tidak boleh sama dengan kata sandi saat ini.",
+      "passwordMismatch": "Kata sandi baru dan konfirmasi tidak cocok."
+    },
+    "alerts": {
+      "successTitle": "Berhasil",
+      "successMessage": "Kata sandi berhasil diubah!",
+      "errorTitle": "Kesalahan",
+      "fetchFailed": "Gagal mengubah kata sandi.",
+      "genericError": "Terjadi kesalahan. Silakan coba lagi."
+    }
+  },
+  "editProfile": {
+    "screenTitle": "Edit Profil",
+    "labels": {
+      "fullName": "Nama Lengkap",
+      "country": "Negara",
+      "state": "Provinsi / Wilayah"
+    },
+    "placeholders": {
+      "fullName": "Masukkan nama Anda",
+      "country": "Pilih Negara",
+      "state": "Pilih Provinsi",
+      "selectCountryFirst": "Pilih negara terlebih dahulu"
+    },
+    "buttons": {
+      "saveChanges": "Simpan Perubahan"
+    },
+    "validation": {
+      "nameRequired": "Harap masukkan nama lengkap Anda."
+    },
+    "alerts": {
+      "successTitle": "Berhasil",
+      "successMessage": "Profil berhasil diperbarui!",
+      "errorTitle": "Kesalahan",
+      "updateFailed": "Gagal memperbarui profil.",
+      "genericError": "Terjadi kesalahan saat menyimpan profil."
+    }
+  },
+  "help": {
+    "screenTitle": "Bantuan & Dukungan",
+    "infoCard": {
+      "title": "Ada yang bisa kami bantu?",
+      "subtitle": "Jika Anda memiliki pertanyaan, masukan, atau membutuhkan bantuan, jangan ragu untuk menghubungi kami."
+    },
+    "sectionHeader": "INFORMASI KONTAK",
+    "contact": {
+      "emailLabel": "Kirim Email ke Kami",
+      "websiteLabel": "Kunjungi Situs Web"
+    },
+    "alerts": {
+      "errorTitle": "Kesalahan",
+      "emailError": "Tidak dapat membuka aplikasi email.",
+      "emailGenericError": "Terjadi kesalahan saat mencoba mengirim email.",
+      "browserError": "Tidak dapat membuka peramban web.",
+      "websiteGenericError": "Terjadi kesalahan saat membuka situs web."
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "Bahasa",
+    "topNotice": "Pilih bahasa yang Anda inginkan untuk aplikasi di bawah ini.",
+    "bottomNotice": "Mengubah bahasa akan memperbarui label antarmuka secara otomatis di seluruh aplikasi dan akan disimpan ke akun Anda.",
+    "activeLanguage": "BAHASA AKTIF",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "Atur bahasa aplikasi ke Bahasa Inggris"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "Atur bahasa aplikasi ke Bahasa Denmark"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "Atur bahasa aplikasi ke Bahasa Prancis"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "Atur bahasa aplikasi ke Bahasa Jerman"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "Atur bahasa aplikasi ke Bahasa Indonesia"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "Atur bahasa aplikasi ke Bahasa Italia"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "Atur bahasa aplikasi ke Bahasa Jepang"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "Atur bahasa aplikasi ke Bahasa Korea"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "Atur bahasa aplikasi ke Bahasa Norwegia Bokmål"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "Atur bahasa aplikasi ke Bahasa Polandia"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "Atur bahasa aplikasi ke Bahasa Portugis"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "Atur bahasa aplikasi ke Bahasa Rusia"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "Atur bahasa aplikasi ke Bahasa Mandarin Sederhana"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "Atur bahasa aplikasi ke Bahasa Spanyol"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "Atur bahasa aplikasi ke Bahasa Swedia"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "Atur bahasa aplikasi ke Bahasa Thailand"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "Atur bahasa aplikasi ke Bahasa Mandarin Tradisional"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "Atur bahasa aplikasi ke Bahasa Turki"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "Atur bahasa aplikasi ke Bahasa Vietnam"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Kesalahan",
+      "genericUpdateError": "Gagal memperbarui bahasa di server."
+    }
+  },
+  "notifications": {
+    "screenTitle": "Notifikasi",
+    "topNotice": "Konfigurasikan notifikasi Anda untuk membantu Anda memantau kebiasaan Anda.",
+    "bottomNotice": "Anda juga dapat mengatur pengingat untuk kebiasaan individu di pengaturannya masing-masing.",
+    "items": {
+      "todays_plan": {
+        "title": "Rencana Hari Ini 📋",
+        "description": "\"Pagi: 5 kebiasaan, Siang: 1 kebiasaan, Malam: 6 kebiasaan, Kapan saja: 2 kebiasaan\""
+      },
+      "morning_plan": {
+        "title": "Rencana Pagi ☀️",
+        "description": "\"Anda memiliki 5 kebiasaan pagi ini dan 2 kebiasaan lain yang bisa dilakukan.\""
+      },
+      "afternoon_plan": {
+        "title": "Rencana Siang 🌤️",
+        "description": "\"Anda memiliki 1 kebiasaan siang ini dan 2 kebiasaan lain yang bisa dilakukan.\""
+      },
+      "evening_plan": {
+        "title": "Rencana Malam 🌙",
+        "description": "\"Anda memiliki 6 kebiasaan malam ini dan 2 kebiasaan lain yang bisa dilakukan.\""
+      },
+      "today_results": {
+        "title": "Hasil Hari Ini 🎉",
+        "description": "\"3 kebiasaan selesai, 1 kebiasaan dilewati, 14 kebiasaan tersisa\""
+      }
+    },
+    "alerts": {
+      "errorTitle": "Kesalahan",
+      "genericUpdateError": "Gagal memperbarui pengaturan notifikasi."
+    }
+  },
+  "settings": {
+    "headerTitle": "Pengaturan",
+    "generalTitle": "UMUM",
+    "sound": "Suara",
+    "vacationMode": "Mode Liburan",
+    "vacationSubtitle": "Istirahatkan kebiasaan Anda dan pertahankan runtunan Anda",
+    "changePassword": "Ubah Kata Sandi",
+    "help": "Bantuan",
+    "privacyPolicy": "Kebijakan Privasi",
+    "rateUs": "Beri Kami Nilai",
+    "shareApp": "Bagikan Aplikasi",
+    "shareMessage": "Coba Habitly! Aplikasi ini membantu Anda memantau kebiasaan harian dan mencapai target Anda.\n\n📱 Unduh untuk Android: {{playStoreUrl}}\n🍏 Unduh untuk iOS: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "Gagal memperbarui pengaturan. Silakan coba lagi.",
+      "unexpectedNetwork": "Terjadi kesalahan jaringan yang tidak terduga.",
+      "privacyPolicy": "Tidak dapat membuka halaman web kebijakan privasi.",
+      "appStore": "Tidak dapat membuka halaman toko aplikasi.",
+      "whatsapp": "WhatsApp tidak terpasang atau tidak tersedia di perangkat ini.",
+      "genericLink": "Terjadi kesalahan yang tidak terduga saat mencoba membuka tautan."
+    }
+  }
+}

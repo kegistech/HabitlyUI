@@ -1,0 +1,711 @@
+{
+  "auth": {
+    "tagBadge": "Трекер привычек",
+    "title": "Маленькие привычки ведут\nк большим результатам.",
+    "subtitle": "Превратите повседневные действия в привычки на всю жизнь. Возьмите контроль над своим днем прямо сейчас.",
+    "getStartedFree": "Начать бесплатно",
+    "alreadyHaveAccount": "Уже есть аккаунт?",
+    "signIn": "Войти",
+    "termsNotice": "Регистрируясь, вы соглашаетесь с нашими",
+    "termsAndPrivacy": "Условиями использования и Политикой конфиденциальности"
+  },
+  "login": {
+    "tagBadge": "С возвращением",
+    "welcomeText": "Вход в аккаунт",
+    "subText": "Поддерживайте свою серию и отслеживайте сегодняшний прогресс.",
+    "emailLabel": "Адрес эл. почты",
+    "emailPlaceholder": "name@example.com",
+    "passwordLabel": "Пароль",
+    "passwordPlaceholder": "Введите ваш пароль",
+    "hide": "Скрыть",
+    "show": "Показать",
+    "forgotPassword": "Забыли пароль?",
+    "signInButton": "Войти",
+    "dontHaveAccount": "Нет аккаунта?",
+    "signUp": "Зарегистрироваться",
+    "errors": {
+      "emailRequired": "Эл. почта обязательна.",
+      "emailInvalid": "Введите корректный адрес эл. почты.",
+      "passwordRequired": "Пароль обязателен.",
+      "loginFailed": "Не удалось войти. Проверьте введенные данные.",
+      "loginError": "Неверный e-mail или пароль."
+    }
+  },
+  "forgotPassword": {
+    "tag": "Восстановление аккаунта",
+    "backToLogin": "Вернуться ко входу",
+    "back": "Назад",
+    "success": "Успешно",
+    "hide": "Скрыть",
+    "show": "Показать",
+    "titleEmail": "Сброс пароля 🔒",
+    "titleOtp": "Проверка OTP 💬",
+    "titlePassword": "Новый пароль 🔑",
+    "subEmail": "Введите вашу эл. почту, и мы отправим код подтверждения.",
+    "subOtp": "Введите код подтверждения, отправленный на:",
+    "subPassword": "Создайте новый надежный пароль для защиты вашего аккаунта.",
+    "noOtp": "Не получили код?",
+    "successMsg": "Ваш пароль успешно обновлен!",
+    "loginNow": "Войти сейчас",
+    "labels": {
+      "email": "Адрес эл. почты",
+      "otp": "Введите код OTP",
+      "newPassword": "Новый пароль",
+      "confirmPassword": "Подтвердите новый пароль"
+    },
+    "placeholders": {
+      "email": "name@example.com",
+      "otp": "• • • • • •",
+      "minPassword": "Не менее 8 символов",
+      "reEnterPassword": "Повторите новый пароль"
+    },
+    "buttons": {
+      "generateOtp": "Отправить код OTP",
+      "verifyOtp": "Проверить OTP",
+      "updatePassword": "Обновить пароль",
+      "resend": "Отправить код повторно",
+      "resendIn": "Повторная отправка через"
+    },
+    "errors": {
+      "emailRequired": "Эл. почта обязательна.",
+      "invalidEmail": "Введите корректный адрес эл. почты.",
+      "otpRequired": "Код OTP обязателен.",
+      "invalidOtp": "Введите корректный код OTP.",
+      "passwordRequired": "Новый пароль обязателен.",
+      "passwordLength": "Пароль должен содержать минимум 8 символов.",
+      "confirmPasswordRequired": "Подтвердите новый пароль.",
+      "passwordsMismatch": "Пароли не совпадают.",
+      "sendOtpFailed": "Не удалось отправить код OTP. Попробуйте еще раз.",
+      "updatePasswordFailed": "Не удалось обновить пароль. Попробуйте еще раз.",
+      "resendFailed": "Не удалось отправить код повторно.",
+      "networkError": "Ошибка сети. Попробуйте еще раз."
+    }
+  },
+  "signUp": {
+    "badge": "Начало работы",
+    "title": "Создать аккаунт 🚀",
+    "subtitle": "Начните формировать полезные ежедневные привычки уже сегодня.",
+    "hide": "Скрыть",
+    "show": "Показать",
+    "loadingCountries": "Загрузка стран...",
+    "labels": {
+      "fullName": "Имя и фамилия",
+      "email": "Адрес эл. почты",
+      "password": "Пароль",
+      "country": "Страна"
+    },
+    "placeholders": {
+      "fullName": "Иван Иванов",
+      "email": "name@example.com",
+      "password": "Не менее 8 символов",
+      "selectCountry": "Выберите страну"
+    },
+    "buttons": {
+      "createAccount": "Создать аккаунт",
+      "creatingAccount": "Создание аккаунта..."
+    },
+    "legal": {
+      "prefix": "Создавая аккаунт, вы соглашаетесь с нашими ",
+      "termsAndPrivacy": "Условиями использования и Политикой конфиденциальности"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Уже есть аккаунт? ",
+      "signIn": "Войти"
+    },
+    "modal": {
+      "title": "Выберите страну",
+      "done": "Готово"
+    },
+    "errors": {
+      "requiredFields": "Пожалуйста, заполните все обязательные поля.",
+      "invalidEmail": "Введите корректный адрес эл. почты.",
+      "passwordLength": "Пароль должен содержать минимум 8 символов.",
+      "registrationFailed": "Ошибка регистрации. Попробуйте еще раз.",
+      "networkError": "Произошла ошибка сети."
+    }
+  },
+  "wakeUpTime": {
+    "badge": "Утренний распорядок",
+    "title": "Во сколько вы обычно\nпросыпаетесь? 🌅",
+    "subtitle": "Используется для оптимизации дня и планирования мотивирующих напоминаний.",
+    "buttons": {
+      "continue": "Продолжить"
+    },
+    "errors": {
+      "updateFailed": "Не удалось обновить время подъема. Попробуйте еще раз.",
+      "networkError": "Произошла ошибка сети."
+    }
+  },
+  "reflectionTime": {
+    "badge": "Вечерняя подведение итогов",
+    "title": "Во сколько вы предпочитаете\nподводить итоги дня? 🌙",
+    "subtitle": "Короткий вечерний обзор помогает отслеживать прогресс и сохранять регулярность.",
+    "buttons": {
+      "continue": "Продолжить"
+    },
+    "errors": {
+      "updateFailed": "Не удалось обновить время подведения итогов. Попробуйте еще раз.",
+      "networkError": "Произошла ошибка сети."
+    }
+  },
+  "dashboard": {
+    "title": "Сегодня",
+    "sectionTitle": "Задачи и привычки",
+    "emptyHabits": "На этот день привычек не запланировано.",
+    "defaults": {
+      "goalType": "Ежедневно",
+      "valueType": "раз"
+    },
+    "tracking": {
+      "disabledFuture": "Отслеживание будущих дат отключено",
+      "trackToday": "Отметить на сегодня"
+    },
+    "alerts": {
+      "errorTitle": "Ошибка",
+      "fetchError": "Не удалось загрузить привычки для выбранной даты.",
+      "trackError": "Не удалось обновить прогресс привычки.",
+      "connectError": "Не удалось подключиться к модулю отслеживания.",
+      "futureDateTitle": "Действие недоступно",
+      "futureDateMessage": "Вы не можете отмечать выполнение на будущие даты.",
+      "goalReachedTitle": "Цель достигнута",
+      "goalReachedMessage": "Вы уже достигли цели по этой привычке.",
+      "minLimitTitle": "Минимальный лимит",
+      "minLimitMessage": "Количество выполнений не может быть меньше 0.",
+      "limitReachedTitle": "Лимит достигнут",
+      "limitReachedMessage": "Вы достигли лимита бесплатного тарифного плана (2 привычки). Перейдите на Pro для безлимитного доступа.",
+      "cancel": "Отмена",
+      "upgrade": "Разблокировать Pro"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "Создать привычку",
+    "regularHabit": "Регулярная привычка",
+    "oneTimeTask": "Разовая задача",
+    "sectionHeader": "Или выберите из категорий",
+    "defaultCategorySubtitle": "Исследуйте и развивайте новые привычки",
+    "alerts": {
+      "noticeTitle": "Уведомление",
+      "fetchError": "Не удалось загрузить категории.",
+      "errorTitle": "Ошибка",
+      "connectError": "Не удалось подключиться к серверу."
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "Привычки",
+    "habitsCount": "{{count}} привычка",
+    "habitsCount_few": "{{count}} привычки",
+    "habitsCount_many": "{{count}} привычек",
+    "habitsCount_plural": "{{count}} привычек",
+    "emptyState": "В этой категории шаблоны привычек не найдены.",
+    "alerts": {
+      "noticeTitle": "Уведомление",
+      "fetchError": "Не удалось загрузить шаблоны привычек.",
+      "errorTitle": "Ошибка",
+      "connectError": "Не удалось подключиться к серверу."
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "Редактировать задачу",
+    "headerTitleCreate": "Разовая задача",
+    "save": "Сохранить",
+    "habitNamePlaceholder": "Введите название привычки",
+    "selectColor": "Выберите цвет",
+    "todayPrefix": "Сегодня, {{date}}",
+    "getReminders": "Получать напоминания",
+    "addReminderTime": "Добавить время напоминания",
+    "validation": {
+      "title": "Ошибка валидации",
+      "emptyName": "Пожалуйста, введите название привычки."
+    },
+    "alerts": {
+      "errorTitle": "Ошибка",
+      "successTitle": "Успешно",
+      "fetchColorsFailed": "Не удалось загрузить цвета.",
+      "updateSuccess": "Разовая задача успешно обновлена.",
+      "updateFailed": "Не удалось обновить задачу.",
+      "updateError": "Произошла ошибка при обновлении.",
+      "createSuccess": "Разовая задача успешно создана.",
+      "createFailed": "Не удалось создать задачу.",
+      "createError": "Произошла ошибка при создании."
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "Редактировать привычку",
+    "headerTitleNew": "Новая привычка",
+    "save": "Сохранить",
+    "placeholderName": "Введите название привычки",
+    "selectColor": "Выберите цвет",
+    "goalForHabit": "Цель привычки",
+    "numberOfTimes": "Количество раз",
+    "time": "Время",
+    "timesSuffix": "раз",
+    "minutesSuffix": "мин",
+    "frequencies": {
+      "daily": "Ежедневно",
+      "weekly": "Еженедельно",
+      "monthly": "Ежемесячно"
+    },
+    "repeatEveryDay": "Повторять каждый день",
+    "repeatDailyIn": "Повторять ежедневно в:",
+    "timesOfDay": {
+      "morning": "Утром",
+      "afternoon": "Днем",
+      "evening": "Вечером"
+    },
+    "daysOfWeek": {
+      "sunday": "Вс",
+      "monday": "Пн",
+      "tuesday": "Вт",
+      "wednesday": "Ср",
+      "thursday": "Чт",
+      "friday": "Пт",
+      "saturday": "Сб"
+    },
+    "getReminders": "Получать напоминания",
+    "addReminderTime": "Добавить время напоминания",
+    "alerts": {
+      "errorTitle": "Ошибка",
+      "successTitle": "Успешно",
+      "validationTitle": "Ошибка валидации",
+      "enterHabitName": "Пожалуйста, введите название привычки.",
+      "fetchColorsFailed": "Не удалось загрузить цвета.",
+      "habitUpdatedSuccess": "Привычка успешно обновлена.",
+      "habitCreatedSuccess": "Привычка успешно создана.",
+      "habitUpdateFailed": "Не удалось обновить привычку.",
+      "habitCreateFailed": "Не удалось создать привычку.",
+      "updateError": "Произошла ошибка при обновлении.",
+      "createError": "Произошла ошибка при создании."
+    }
+  },
+  "common": {
+    "error": "Ошибка",
+    "success": "Успешно",
+    "cancel": "Отмена",
+    "goBack": "Назад"
+  },
+  "habitDetails": {
+    "currentStreak": "Текущая серия",
+    "longestStreak": "Рекордная серия",
+    "completionRate": "Процент выполнения",
+    "totalTimesCompleted": "Всего выполнено",
+    "dayCount_one": "{{count}} день",
+    "dayCount_few": "{{count}} дня",
+    "dayCount_many": "{{count}} дней",
+    "dayCount_other": "{{count}} дней",
+    "actions": {
+      "edit": "Редактировать",
+      "archive": "В архив"
+    },
+    "alerts": {
+      "archiveTitle": "Архивировать привычку",
+      "archiveMessage": "Вы уверены, что хотите архивировать «{{name}}»?",
+      "archiveSuccess": "Привычка успешно архивирована.",
+      "archiveFailed": "Не удалось архивировать привычку.",
+      "fetchFailed": "Не удалось загрузить статистику привычки."
+    },
+    "daysOfWeek": ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+    "monthNames": [
+      "Январь",
+      "Февраль",
+      "Март",
+      "Апрель",
+      "Май",
+      "Июнь",
+      "Июль",
+      "Август",
+      "Сентябрь",
+      "Октябрь",
+      "Ноябрь",
+      "Декабрь"
+    ]
+  },
+  "stats": {
+    "title": "Статистика",
+    "months": [
+      "Январь",
+      "Февраль",
+      "Март",
+      "Апрель",
+      "Май",
+      "Июнь",
+      "Июль",
+      "Август",
+      "Сентябрь",
+      "Октябрь",
+      "Ноябрь",
+      "Декабрь"
+    ],
+    "daysOfWeek": {
+      "sun": "Вс",
+      "mon": "Пн",
+      "tue": "Вт",
+      "wed": "Ср",
+      "thu": "Чт",
+      "fri": "Пт",
+      "sat": "Сб"
+    },
+    "legend": {
+      "allComplete": "Все выполнено",
+      "someComplete": "Частично выполнено"
+    },
+    "quote": "Первый шаг всегда самый трудный, но у вас все получится!",
+    "currentStreak": "Текущая серия",
+    "longestStreak": "Рекордная серия",
+    "days": "{{count}} дней",
+    "days_one": "{{count}} день",
+    "days_few": "{{count}} дня",
+    "days_many": "{{count}} дней",
+    "days_other": "{{count}} дней",
+    "totalPerfectDays": "Идеальных дней всего",
+    "totalTimesCompleted": "Всего выполнено",
+    "habitCompletionRate": "Процент выполнения привычек",
+    "averagePerDaily": "В среднем за день",
+    "errors": {
+      "fetchFailedTitle": "Ошибка",
+      "fetchFailedMessage": "Не удалось загрузить статистику привычек."
+    }
+  },
+  "subscription": {
+    "restore": "Восстановить покупки",
+    "heroTitle": "Повысьте свою продуктивность",
+    "loading": "Загрузка...",
+    "features": [
+      "Безлимитный трекинг привычек и напоминания",
+      "Подробная аналитика и динамика прогресса",
+      "Премиум-доступ без рекламы"
+    ],
+    "yearly": {
+      "bestOffer": "Выгодное предложение",
+      "title": "Годовой план",
+      "subtitle": "Доступ на 1 год • {{price}}"
+    },
+    "monthly": {
+      "title": "Месячный план",
+      "priceFormat": "{{price}}/месяц"
+    },
+    "cancelOrManage": "Отменить или управлять подпиской",
+    "continue": "Продолжить",
+    "plans": {
+      "yearlyPlan": "Годовой план",
+      "monthlyPlan": "Месячный план",
+      "yearlyPrice": "{{price}}/год",
+      "monthlyPrice": "{{price}}/месяц"
+    },
+    "securePayment": {
+      "ios": "Безопасная оплата через App Store",
+      "android": "Безопасная оплата через Google Play"
+    },
+    "autoRenewDisclaimer": "Подписка продлевается автоматически, если она не была отменена по крайней мере за 24 часа до окончания текущего периода.",
+    "legal": {
+      "termsOfUse": "Условия использования (EULA)",
+      "privacyPolicy": "Политика конфиденциальности"
+    },
+    "alerts": {
+      "storeErrorTitle": "Ошибка магазина",
+      "storeErrorMessage": "Не удалось загрузить варианты подписок.",
+      "errorTitle": "Ошибка",
+      "cannotOpenLink": "Невозможно открыть ссылку: {{url}}",
+      "failedOpenLink": "Не удалось открыть ссылку.",
+      "planUnavailable": "Выбранный тарифный план сейчас недоступен.",
+      "successTitle": "Успешно!",
+      "upgradedMessage": "Ваш аккаунт был успешно обновлен.",
+      "continueBtn": "Продолжить",
+      "paymentFailedTitle": "Ошибка оплаты",
+      "unexpectedError": "Произошла непредвиденная ошибка.",
+      "restoredTitle": "Восстановлено",
+      "restoredMessage": "Ваша подписка успешно восстановлена.",
+      "noSubscriptionTitle": "Нет подписки",
+      "noSubscriptionMessage": "Активных подписок для восстановления не найдено.",
+      "restoreFailedPrefix": "Не удалось восстановить: ",
+      "manageTitle": "Управление подпиской",
+      "manageMessage": "Перенаправление в настройки подписок для управления или отмены вашего плана.",
+      "cancelBtn": "Отмена",
+      "openSettingsBtn": "Открыть настройки",
+      "cannotOpenSettings": "Не удалось открыть настройки подписок."
+    }
+  },
+  "appLayout": {
+    "tryPro": "Попробовать PRO",
+    "routes": {
+      "dashboard": "Сегодня",
+      "stats": "Статистика",
+      "profile": "Профиль"
+    }
+  },
+  "profile": {
+    "screenTitle": "Профиль",
+    "edit": "Изменить",
+    "allHabits": "Все привычки",
+    "notifications": "Уведомления",
+    "changeLanguage": "Сменить язык",
+    "settings": "Настройки",
+    "tryForFree": "Попробовать бесплатно",
+    "pro": "PRO",
+    "signOut": "Выйти из аккаунта",
+    "signOutAlert": {
+      "title": "Выход",
+      "message": "Вы уверены, что хотите выйти из аккаунта?",
+      "cancel": "Отмена",
+      "confirm": "Выйти"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "Все привычки",
+    "tabs": {
+      "regular": "Регулярные привычки",
+      "oneTime": "Разовые задачи"
+    },
+    "emptyState": {
+      "regular": "Регулярные привычки не найдены.",
+      "oneTime": "Разовые задачи не найдены."
+    },
+    "defaults": {
+      "daily": "Ежедневно",
+      "times": "раз"
+    },
+    "alerts": {
+      "errorTitle": "Ошибка",
+      "fetchFailed": "Не удалось загрузить предстоящие привычки."
+    }
+  },
+  "changePassword": {
+    "screenTitle": "Сменить пароль",
+    "infoCard": {
+      "title": "Повысьте безопасность",
+      "subtitle": "Выберите надежный пароль длиною не менее 8 символов."
+    },
+    "labels": {
+      "currentPassword": "Текущий пароль",
+      "newPassword": "Новый пароль",
+      "confirmPassword": "Подтвердите новый пароль"
+    },
+    "placeholders": {
+      "currentPassword": "Введите текущий пароль",
+      "newPassword": "Введите новый пароль",
+      "confirmPassword": "Повторите новый пароль"
+    },
+    "buttons": {
+      "updatePassword": "Обновить пароль"
+    },
+    "validation": {
+      "errorTitle": "Ошибка валидации",
+      "currentPasswordRequired": "Пожалуйста, введите текущий пароль.",
+      "newPasswordRequired": "Пожалуйста, введите новый пароль.",
+      "minLength": "Новый пароль должен содержать минимум 8 символов.",
+      "sameAsCurrent": "Новый пароль не может совпадать с текущим.",
+      "passwordMismatch": "Новый пароль и его подтверждение не совпадают."
+    },
+    "alerts": {
+      "successTitle": "Успешно",
+      "successMessage": "Ваш пароль успешно изменен!",
+      "errorTitle": "Ошибка",
+      "fetchFailed": "Не удалось изменить пароль.",
+      "genericError": "Что-то пошло не так. Попробуйте еще раз."
+    }
+  },
+  "editProfile": {
+    "screenTitle": "Редактировать профиль",
+    "labels": {
+      "fullName": "Имя и фамилия",
+      "country": "Страна",
+      "state": "Область / Регион"
+    },
+    "placeholders": {
+      "fullName": "Введите ваше имя и фамилию",
+      "country": "Выберите страну",
+      "state": "Выберите область/регион",
+      "selectCountryFirst": "Сначала выберите страну"
+    },
+    "buttons": {
+      "saveChanges": "Сохранить изменения"
+    },
+    "validation": {
+      "nameRequired": "Пожалуйста, введите ваше имя и фамилию."
+    },
+    "alerts": {
+      "successTitle": "Успешно",
+      "successMessage": "Ваш профиль успешно обновлен!",
+      "errorTitle": "Ошибка",
+      "updateFailed": "Не удалось обновить профиль.",
+      "genericError": "Произошла ошибка при сохранении профиля."
+    }
+  },
+  "help": {
+    "screenTitle": "Помощь и поддержка",
+    "infoCard": {
+      "title": "Чем мы можем помочь?",
+      "subtitle": "Если у вас есть вопросы, отзывы или предложения, свяжитесь с нами."
+    },
+    "sectionHeader": "Контактная информация",
+    "contact": {
+      "emailLabel": "Написать нам на e-mail",
+      "websiteLabel": "Посетить наш сайт"
+    },
+    "alerts": {
+      "errorTitle": "Ошибка",
+      "emailError": "Не удалось открыть почтовое приложение.",
+      "emailGenericError": "Произошла ошибка при запуске почтового клиента.",
+      "browserError": "Не удалось открыть веб-браузер.",
+      "websiteGenericError": "Произошла ошибка при открытии сайта."
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "Язык",
+    "topNotice": "Выберите предпочитаемый язык приложения ниже.",
+    "bottomNotice": "Смена языка автоматически обновит надписи в интерфейсе и сохранится в вашем аккаунте.",
+    "activeLanguage": "Текущий язык",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "Установить язык приложения: английский"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "Установить язык приложения: датский"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "Установить язык приложения: французский"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "Установить язык приложения: немецкий"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "Установить язык приложения: индонезийский"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "Установить язык приложения: итальянский"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "Установить язык приложения: японский"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "Установить язык приложения: корейский"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "Установить язык приложения: норвежский (букмол)"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "Установить язык приложения: польский"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "Установить язык приложения: португальский"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "Установить язык приложения: русский"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "Установить язык приложения: китайский (упрощенный)"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "Установить язык приложения: испанский"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "Установить язык приложения: шведский"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "Установить язык приложения: тайский"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "Установить язык приложения: китайский (традиционный)"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "Установить язык приложения: турецкий"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "Установить язык приложения: вьетнамский"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Ошибка",
+      "genericUpdateError": "Не удалось обновить настройки языка на сервере."
+    }
+  },
+  "notifications": {
+    "screenTitle": "Уведомления",
+    "topNotice": "Настройте напоминания, чтобы не сбиваться с пути в формировании привычек.",
+    "bottomNotice": "Напоминания для конкретных привычек также можно настраивать в их индивидуальных параметрах.",
+    "items": {
+      "todays_plan": {
+        "title": "План на сегодня 📋",
+        "description": "«Утром: 5 привычек, Днем: 1 привычка, Вечером: 6 привычек, В любое время: 2 привычки»"
+      },
+      "morning_plan": {
+        "title": "Утренний план ☀️",
+        "description": "«Этим утром запланировано 5 привычек и 2 привычки без привязки ко времени.»"
+      },
+      "afternoon_plan": {
+        "title": "Дневной план 🌤️",
+        "description": "«Этим днем запланирована 1 привычка и 2 привычки без привязки ко времени.»"
+      },
+      "evening_plan": {
+        "title": "Вечерний план 🌙",
+        "description": "«Этим вечером запланировано 6 привычек и 2 привычки без привязки ко времени.»"
+      },
+      "today_results": {
+        "title": "Результаты дня 🎉",
+        "description": "«Выполнено: 3, Пропущено: 1, Осталось: 14 привычек»"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Ошибка",
+      "genericUpdateError": "Не удалось обновить настройки уведомлений."
+    }
+  },
+  "settings": {
+    "headerTitle": "Настройки",
+    "generalTitle": "Основные",
+    "sound": "Звуки",
+    "vacationMode": "Режим отпуска",
+    "vacationSubtitle": "Приостановить привычки и сохранить серию",
+    "changePassword": "Сменить пароль",
+    "help": "Помощь",
+    "privacyPolicy": "Политика конфиденциальности",
+    "rateUs": "Оценить нас",
+    "shareApp": "Поделиться приложением",
+    "shareMessage": "Попробуйте Habitly! Приложение помогает отслеживать ежедневные привычки и достигать целей.\n\n📱 Скачать для Android: {{playStoreUrl}}\n🍏 Скачать для iOS: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "Не удалось обновить настройки. Попробуйте еще раз.",
+      "unexpectedNetwork": "Произошла непредвиденная ошибка сети.",
+      "privacyPolicy": "Не удалось открыть страницу политики конфиденциальности.",
+      "appStore": "Не удалось открыть страницу магазина приложений.",
+      "whatsapp": "Приложение WhatsApp не установлено или недоступно на этом устройстве.",
+      "genericLink": "Произошла непредвиденная ошибка при открытии ссылки."
+    }
+  }
+}

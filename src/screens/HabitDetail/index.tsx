@@ -6,15 +6,14 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  Platform,
   ActivityIndicator,
   Alert,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 import {
   ArrowLeft,
   Pencil,
-  Pause,
   Trash2,
   ChevronLeft,
   ChevronRight,
@@ -28,16 +27,10 @@ import {
 import AppLayout from '../AppLayout';
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
-import { getApi, postApi, putApi } from '../../services/commonAPIs';
+import { getApi, putApi } from '../../services/commonAPIs';
 import { habitStatsAPI, archiveHabitAPI } from '../../services/apiendpoints';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'HabitDetails'>;
-
-const DAYS_OF_WEEK = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-const MONTH_NAMES = [
-  'January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December'
-];
 
 export interface CalendarDayStat {
   date: string;
@@ -65,6 +58,7 @@ interface ApiResponse<T> {
 }
 
 const HabitDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
+  const { t } = useTranslation();
   const { habitData } = route.params;
 
   const today = new Date();
@@ -74,28 +68,37 @@ const HabitDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
   const [statsData, setStatsData] = useState<HabitStatsData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // Fetch Stats API for Specific Habit
-  const fetchHabitStats = useCallback(async (month: number, year: number) => {
-    setIsLoading(true);
-    const endpoint = `${habitStatsAPI}?habitId=${habitData?.id}&month=${month}&year=${year}`;
+  const daysOfWeek = t('habitDetails.daysOfWeek', { returnObjects: true }) as string[];
+  const monthNames = t('habitDetails.monthNames', { returnObjects: true }) as string[];
 
-    await getApi(
-      endpoint,
-      (res: ApiResponse<HabitStatsData>) => {
-        setIsLoading(false);
-        if (res?.succeeded && res.data) {
-          setStatsData(res.data);
-        } else {
+  // Fetch Stats API for Specific Habit
+  const fetchHabitStats = useCallback(
+    async (month: number, year: number) => {
+      setIsLoading(true);
+      const endpoint = `${habitStatsAPI}?habitId=${habitData?.id}&month=${month}&year=${year}`;
+
+      await getApi(
+        endpoint,
+        (res: ApiResponse<HabitStatsData>) => {
+          setIsLoading(false);
+          if (res?.succeeded && res.data) {
+            setStatsData(res.data);
+          } else {
+            setStatsData(null);
+          }
+        },
+        (err: any) => {
+          setIsLoading(false);
           setStatsData(null);
+          Alert.alert(
+            t('common.error'),
+            err?.message || t('habitDetails.alerts.fetchFailed')
+          );
         }
-      },
-      (err: any) => {
-        setIsLoading(false);
-        setStatsData(null);
-        Alert.alert('Error', err?.message || 'Failed to load habit statistics.');
-      }
-    );
-  }, [habitData]);
+      );
+    },
+    [habitData, t]
+  );
 
   useEffect(() => {
     fetchHabitStats(selectedMonth, selectedYear);
@@ -103,34 +106,38 @@ const HabitDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
 
   // Action Handlers
   const handleEdit = () => {
-    if (habitData?.habitType==1){
-    navigation.navigate('CreateRegularHabit', { habitData :habitData});
+    if (habitData?.habitType === 1) {
+      navigation.navigate('CreateRegularHabit', { habitData });
+    } else if (habitData?.habitType === 2) {
+      navigation.navigate('CreateOneTimeHabit', { habitData });
     }
-    else if (habitData?.habitType==2){
-          navigation.navigate('CreateOneTimeHabit', { habitData :habitData});
-    }
-
   };
 
   const handleArchive = () => {
     Alert.alert(
-      'Archive Habit',
-      `Are you sure you want to archive "${habitData?.name}"?`,
+      t('habitDetails.alerts.archiveTitle'),
+      t('habitDetails.alerts.archiveMessage', { name: habitData?.name }),
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         {
-          text: 'Archive',
+          text: t('habitDetails.actions.archive'),
           style: 'destructive',
           onPress: async () => {
             await putApi(
               `${archiveHabitAPI}/${habitData?.id}`,
               {},
-              (res: any) => {
-                Alert.alert('Success', 'Habit archived successfully.');
+              (_res: any) => {
+                Alert.alert(
+                  t('common.success'),
+                  t('habitDetails.alerts.archiveSuccess')
+                );
                 navigation.goBack();
               },
               (err: any) => {
-                Alert.alert('Error', err?.message || 'Failed to archive habit.');
+                Alert.alert(
+                  t('common.error'),
+                  err?.message || t('habitDetails.alerts.archiveFailed')
+                );
               }
             );
           },
@@ -138,7 +145,6 @@ const HabitDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
       ]
     );
   };
-
 
   // Month Nav
   const handlePrevMonth = () => {
@@ -217,7 +223,9 @@ const HabitDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
 
           <Text style={styles.progressText}>
             <Text style={styles.completedCount}>{habitData?.completedValue}</Text>
-            <Text style={styles.targetCount}>/{habitData?.targetValue} {habitData?.valueTypeName}</Text>
+            <Text style={styles.targetCount}>
+              /{habitData?.targetValue} {habitData?.valueTypeName}
+            </Text>
           </Text>
         </View>
 
@@ -229,7 +237,7 @@ const HabitDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
             </TouchableOpacity>
 
             <Text style={styles.monthTitle}>
-              {`${MONTH_NAMES[selectedMonth - 1]} ${selectedYear}`}
+              {`${monthNames[selectedMonth - 1]} ${selectedYear}`}
             </Text>
 
             <TouchableOpacity activeOpacity={0.7} onPress={handleNextMonth}>
@@ -238,11 +246,12 @@ const HabitDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
           </View>
 
           <View style={styles.weekHeader}>
-            {DAYS_OF_WEEK.map((day, idx) => (
-              <Text key={idx} style={styles.weekDayText}>
-                {day}
-              </Text>
-            ))}
+            {Array.isArray(daysOfWeek) &&
+              daysOfWeek.map((day, idx) => (
+                <Text key={idx} style={styles.weekDayText}>
+                  {day}
+                </Text>
+              ))}
           </View>
 
           {isLoading ? (
@@ -258,17 +267,17 @@ const HabitDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
         <View style={styles.streakCard}>
           <View style={styles.streakTextContainer}>
             <Text style={styles.streakValue}>
-              {statsData ? `${statsData.currentStreak} day` : '0 day'}
+              {t('habitDetails.dayCount', { count: statsData?.currentStreak ?? 0 })}
             </Text>
-            <Text style={styles.streakLabel}>Your current streak</Text>
+            <Text style={styles.streakLabel}>{t('habitDetails.currentStreak')}</Text>
 
             <View style={styles.longestStreakRow}>
               <Trophy size={moderateScale(16)} color="#FFC107" style={{ marginRight: scaleWidth(6) }} />
               <Text style={styles.longestStreakValue}>
-                {statsData ? `${statsData.longestStreak} day` : '0 day'}
+                {t('habitDetails.dayCount', { count: statsData?.longestStreak ?? 0 })}
               </Text>
             </View>
-            <Text style={styles.longestStreakLabel}>Your longest streak</Text>
+            <Text style={styles.longestStreakLabel}>{t('habitDetails.longestStreak')}</Text>
           </View>
 
           <View style={styles.streakGraphicContainer}>
@@ -287,7 +296,7 @@ const HabitDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
             <Text style={styles.gridStatValue}>
               {statsData ? `${statsData.habitCompletionRate}%` : '0%'}
             </Text>
-            <Text style={styles.gridStatLabel}>Habit completion rate</Text>
+            <Text style={styles.gridStatLabel}>{t('habitDetails.completionRate')}</Text>
           </View>
 
           {/* Total Times Completed */}
@@ -296,7 +305,7 @@ const HabitDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
             <Text style={styles.gridStatValue}>
               {statsData ? statsData.totalTimesCompleted : 0}
             </Text>
-            <Text style={styles.gridStatLabel}>Total times completed</Text>
+            <Text style={styles.gridStatLabel}>{t('habitDetails.totalTimesCompleted')}</Text>
           </View>
         </View>
       </ScrollView>

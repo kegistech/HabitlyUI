@@ -16,6 +16,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/responsive';
@@ -32,6 +33,8 @@ const MINUTES = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, '0'))
 const PERIODS = ['AM', 'PM'];
 
 const ReflectionTimeScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
+
   // Time selection state (Default: 07:30 PM)
   const [selectedHour, setSelectedHour] = useState('07');
   const [selectedMinute, setSelectedMinute] = useState('30');
@@ -96,12 +99,13 @@ const ReflectionTimeScreen: React.FC<Props> = ({ navigation }) => {
         if (response && (response.succeeded || response.isSuccess || response.status === 200)) {
           navigation.navigate('Dashboard');
         } else {
-          setErrorMessage(response?.message || 'Failed to update reflection time. Please try again.');
+          setErrorMessage(response?.message || t('reflectionTime.errors.updateFailed'));
         }
       },
       (error: any) => {
         setIsLoading(false);
-        const serverMsg = error?.response?.data?.message || error?.message || 'Network error occurred.';
+        const serverMsg =
+          error?.response?.data?.message || error?.message || t('reflectionTime.errors.networkError');
         setErrorMessage(serverMsg);
       }
     );
@@ -195,15 +199,11 @@ const ReflectionTimeScreen: React.FC<Props> = ({ navigation }) => {
           {/* Main Question Title & Badge */}
           <View style={styles.headerContainer}>
             <View style={styles.tagBadge}>
-              <Text style={styles.tagBadgeText}>EVENING REFLECTION</Text>
+              <Text style={styles.tagBadgeText}>{t('reflectionTime.badge')}</Text>
             </View>
 
-            <Text style={styles.questionText}>
-              When do you want to{'\n'}reflect on your day? 🌙
-            </Text>
-            <Text style={styles.subText}>
-              A quick evening check-in helps celebrate wins and stay consistent.
-            </Text>
+            <Text style={styles.questionText}>{t('reflectionTime.title')}</Text>
+            <Text style={styles.subText}>{t('reflectionTime.subtitle')}</Text>
           </View>
 
           {/* Time Picker Wheel Section */}
@@ -250,7 +250,7 @@ const ReflectionTimeScreen: React.FC<Props> = ({ navigation }) => {
                 {isLoading ? (
                   <ActivityIndicator color="#FFFFFF" size="small" />
                 ) : (
-                  <Text style={styles.continueButtonText}>CONTINUE</Text>
+                  <Text style={styles.continueButtonText}>{t('reflectionTime.buttons.continue')}</Text>
                 )}
               </LinearGradient>
             </TouchableOpacity>

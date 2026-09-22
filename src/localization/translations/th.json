@@ -1,0 +1,705 @@
+{
+  "auth": {
+    "tagBadge": "แอปติดตามนิสัย",
+    "title": "นิสัยเล็กๆ นำไปสู่\nผลลัพธ์ที่ยิ่งใหญ่",
+    "subtitle": "เปลี่ยนการกระทำในชีวิตประจำวันให้เป็นนิสัยตลอดชีวิต เริ่มสร้างวินัยและจัดระเบียบชีวิตของคุณตั้งแต่วันนี้",
+    "getStartedFree": "เริ่มต้นใช้งานฟรี",
+    "alreadyHaveAccount": "มีบัญชีอยู่แล้ว?",
+    "signIn": "เข้าสู่ระบบ",
+    "termsNotice": "ในการลงทะเบียน แสดงว่าคุณยอมรับ",
+    "termsAndPrivacy": "ข้อตกลงการใช้งาน และ นโยบายความเป็นส่วนตัว"
+  },
+  "login": {
+    "tagBadge": "ยินดีต้อนรับกลับมา",
+    "welcomeText": "เข้าสู่ระบบ",
+    "subText": "รักษาความต่อเนื่องและติดตามความก้าวหน้าของคุณในวันนี้",
+    "emailLabel": "อีเมล",
+    "emailPlaceholder": "name@example.com",
+    "passwordLabel": "รหัสผ่าน",
+    "passwordPlaceholder": "กรอกรหัสผ่านของคุณ",
+    "hide": "ซ่อน",
+    "show": "แสดง",
+    "forgotPassword": "ลืมรหัสผ่าน?",
+    "signInButton": "เข้าสู่ระบบ",
+    "dontHaveAccount": "ยังไม่มีบัญชี?",
+    "signUp": "ลงทะเบียน",
+    "errors": {
+      "emailRequired": "จำเป็นต้องกรอกอีเมล",
+      "emailInvalid": "โปรดกรอกรูปแบบอีเมลให้ถูกต้อง",
+      "passwordRequired": "จำเป็นต้องกรอกรหัสผ่าน",
+      "loginFailed": "เข้าสู่ระบบไม่สำเร็จ โปรดตรวจสอบข้อมูลของคุณ",
+      "loginError": "อีเมลหรือรหัสผ่านไม่ถูกต้อง"
+    }
+  },
+  "forgotPassword": {
+    "tag": "กู้คืนบัญชี",
+    "backToLogin": "กลับไปหน้าเข้าสู่ระบบ",
+    "back": "ย้อนกลับ",
+    "success": "สำเร็จ",
+    "hide": "ซ่อน",
+    "show": "แสดง",
+    "titleEmail": "รีเซ็ตรหัสผ่าน 🔒",
+    "titleOtp": "ยืนยันรหัส OTP 💬",
+    "titlePassword": "ตั้งรหัสผ่านใหม่ 🔑",
+    "subEmail": "กรอกอีเมลของคุณเพื่อรับรหัสยืนยัน",
+    "subOtp": "กรอกรหัสยืนยันที่ส่งไปยัง:",
+    "subPassword": "สร้างรหัสผ่านใหม่ที่ปลอดภัยเพื่อปกป้องบัญชีของคุณ",
+    "noOtp": "ไม่ได้รับรหัส?",
+    "successMsg": "อัปเดตรหัสผ่านของคุณเรียบร้อยแล้ว!",
+    "loginNow": "เข้าสู่ระบบทันที",
+    "labels": {
+      "email": "อีเมล",
+      "otp": "กรอกรหัส OTP",
+      "newPassword": "รหัสผ่านใหม่",
+      "confirmPassword": "ยืนยันรหัสผ่านใหม่"
+    },
+    "placeholders": {
+      "email": "name@example.com",
+      "otp": "• • • • • •",
+      "minPassword": "อย่างน้อย 8 ตัวอักษร",
+      "reEnterPassword": "กรอกรหัสผ่านใหม่อีกครั้ง"
+    },
+    "buttons": {
+      "generateOtp": "ส่งรหัส OTP",
+      "verifyOtp": "ยืนยัน OTP",
+      "updatePassword": "อัปเดตรหัสผ่าน",
+      "resend": "ส่งอีกครั้ง",
+      "resendIn": "ส่งอีกครั้งใน"
+    },
+    "errors": {
+      "emailRequired": "จำเป็นต้องกรอกอีเมล",
+      "invalidEmail": "โปรดกรอกรูปแบบอีเมลให้ถูกต้อง",
+      "otpRequired": "จำเป็นต้องกรอกรหัส OTP",
+      "invalidOtp": "โปรดกรอกรหัส OTP ให้ถูกต้อง",
+      "passwordRequired": "จำเป็นต้องกรอกรหัสผ่านใหม่",
+      "passwordLength": "รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร",
+      "confirmPasswordRequired": "โปรดยืนยันรหัสผ่านใหม่ของคุณ",
+      "passwordsMismatch": "รหัสผ่านไม่ตรงกัน",
+      "sendOtpFailed": "ไม่สามารถส่งรหัส OTP ได้ โปรดลองอีกครั้ง",
+      "updatePasswordFailed": "ไม่สามารถอัปเดตรหัสผ่านได้ โปรดลองอีกครั้ง",
+      "resendFailed": "ไม่สามารถส่งรหัสอีกครั้งได้",
+      "networkError": "เกิดข้อผิดพลาดในการเชื่อมต่อเครือข่าย โปรดลองอีกครั้ง"
+    }
+  },
+  "signUp": {
+    "badge": "เริ่มต้นใช้งาน",
+    "title": "สร้างบัญชีใหม่ 🚀",
+    "subtitle": "เริ่มสร้างนิสัยที่ดีในชีวิตประจำวันของคุณตั้งแต่วันนี้",
+    "hide": "ซ่อน",
+    "show": "แสดง",
+    "loadingCountries": "กำลังโหลดรายชื่อประเทศ...",
+    "labels": {
+      "fullName": "ชื่อ-นามสกุล",
+      "email": "อีเมล",
+      "password": "รหัสผ่าน",
+      "country": "ประเทศ"
+    },
+    "placeholders": {
+      "fullName": "สมชาย ใจดี",
+      "email": "name@example.com",
+      "password": "อย่างน้อย 8 ตัวอักษร",
+      "selectCountry": "เลือกประเทศ"
+    },
+    "buttons": {
+      "createAccount": "สร้างบัญชี",
+      "creatingAccount": "กำลังสร้างบัญชี..."
+    },
+    "legal": {
+      "prefix": "ในการสร้างบัญชี แสดงว่าคุณยอมรับ ",
+      "termsAndPrivacy": "ข้อตกลงการใช้งาน และ นโยบายความเป็นส่วนตัว"
+    },
+    "footer": {
+      "alreadyHaveAccount": "มีบัญชีอยู่แล้ว? ",
+      "signIn": "เข้าสู่ระบบ"
+    },
+    "modal": {
+      "title": "เลือกประเทศ",
+      "done": "เสร็จสิ้น"
+    },
+    "errors": {
+      "requiredFields": "โปรดกรอกข้อมูลในช่องที่จำเป็นให้ครบถ้วน",
+      "invalidEmail": "โปรดกรอกรูปแบบอีเมลให้ถูกต้อง",
+      "passwordLength": "รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร",
+      "registrationFailed": "การลงทะเบียนล้มเหลว โปรดลองอีกครั้ง",
+      "networkError": "เกิดข้อผิดพลาดเกี่ยวกับเครือข่าย"
+    }
+  },
+  "wakeUpTime": {
+    "badge": "กิจวัตรตื่นนอน",
+    "title": "ปกติคุณตื่นนอน\nกี่โมง? 🌅",
+    "subtitle": "ใช้เพื่อวางแผนวันของคุณให้มีประสิทธิภาพและตั้งเวลาการแจ้งเตือนที่สร้างแรงบันดาลใจ",
+    "buttons": {
+      "continue": "ถัดไป"
+    },
+    "errors": {
+      "updateFailed": "ไม่สามารถอัปเดตเวลาตื่นนอนได้ โปรดลองอีกครั้ง",
+      "networkError": "เกิดข้อผิดพลาดเกี่ยวกับเครือข่าย"
+    }
+  },
+  "reflectionTime": {
+    "badge": "การทบทวนช่วงเย็น",
+    "title": "คุณสะดวกทบทวน\nตัวเองเวลาไหน? 🌙",
+    "subtitle": "การทบทวนสั้นๆ ในช่วงเย็นช่วยให้คุณติดตามความก้าวหน้าและรักษาวินัยได้อย่างต่อเนื่อง",
+    "buttons": {
+      "continue": "ถัดไป"
+    },
+    "errors": {
+      "updateFailed": "ไม่สามารถอัปเดตเวลาทบทวนได้ โปรดลองอีกครั้ง",
+      "networkError": "เกิดข้อผิดพลาดเกี่ยวกับเครือข่าย"
+    }
+  },
+  "dashboard": {
+    "title": "วันนี้",
+    "sectionTitle": "งานและนิสัย",
+    "emptyHabits": "ไม่มีนิสัยที่วางแผนไว้สำหรับวันนี้",
+    "defaults": {
+      "goalType": "รายวัน",
+      "valueType": "ครั้ง"
+    },
+    "tracking": {
+      "disabledFuture": "ปิดการบันทึกสำหรับวันที่ในอนาคต",
+      "trackToday": "บันทึกสำหรับวันนี้"
+    },
+    "alerts": {
+      "errorTitle": "ข้อผิดพลาด",
+      "fetchError": "ไม่สามารถโหลดนิสัยสำหรับวันที่เลือกได้",
+      "trackError": "ไม่สามารถอัปเดตความก้าวหน้าของนิสัยได้",
+      "connectError": "ไม่สามารถเชื่อมต่อกับตัวบันทึกนิสัยได้",
+      "futureDateTitle": "ไม่อนุญาตให้ดำเนินการ",
+      "futureDateMessage": "คุณไม่สามารถบันทึกการทำนิสัยล่วงหน้าสำหรับวันในอนาคตได้",
+      "goalReachedTitle": "บรรลุเป้าหมายแล้ว",
+      "goalReachedMessage": "คุณทำตามเป้าหมายของนิสัยนี้ครบถ้วนแล้ว",
+      "minLimitTitle": "ขีดจำกัดขั้นต่ำ",
+      "minLimitMessage": "จำนวนครั้งในการทำกิจกรรมต้องไม่น้อยกว่า 0",
+      "limitReachedTitle": "ครบขีดจำกัดแล้ว",
+      "limitReachedMessage": "คุณใช้งานครบขีดจำกัด 2 นิสัยของแพ็กเกจฟรีแล้ว อัปเกรดเป็น Pro เพื่อใช้งานแบบไม่จำกัด",
+      "cancel": "ยกเลิก",
+      "upgrade": "ปลดล็อก Pro"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "สร้างนิสัย",
+    "regularHabit": "นิสัยประจำ",
+    "oneTimeTask": "งานครั้งเดียว",
+    "sectionHeader": "หรือเลือกจากหมวดหมู่",
+    "defaultCategorySubtitle": "สำรวจและพัฒนานิสัยใหม่ๆ",
+    "alerts": {
+      "noticeTitle": "แจ้งเตือน",
+      "fetchError": "ไม่สามารถดึงข้อมูลหมวดหมู่ได้",
+      "errorTitle": "ข้อผิดพลาด",
+      "connectError": "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้"
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "นิสัย",
+    "habitsCount": "{{count}} นิสัย",
+    "habitsCount_plural": "{{count}} นิสัย",
+    "emptyState": "ไม่พบแม่แบบนิสัยในหมวดหมู่นี้",
+    "alerts": {
+      "noticeTitle": "แจ้งเตือน",
+      "fetchError": "ไม่สามารถดึงข้อมูลแม่แบบนิสัยได้",
+      "errorTitle": "ข้อผิดพลาด",
+      "connectError": "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้"
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "แก้ไขงาน",
+    "headerTitleCreate": "งานครั้งเดียว",
+    "save": "บันทึก",
+    "habitNamePlaceholder": "กรอกชื่อนิสัย",
+    "selectColor": "เลือกสี",
+    "todayPrefix": "วันนี้, {{date}}",
+    "getReminders": "รับการแจ้งเตือน",
+    "addReminderTime": "เพิ่มเวลาแจ้งเตือน",
+    "validation": {
+      "title": "ข้อมูลไม่ถูกต้อง",
+      "emptyName": "โปรดกรอกชื่อนิสัย"
+    },
+    "alerts": {
+      "errorTitle": "ข้อผิดพลาด",
+      "successTitle": "สำเร็จ",
+      "fetchColorsFailed": "ไม่สามารถดึงข้อมูลสีได้",
+      "updateSuccess": "อัปเดตงานครั้งเดียวเรียบร้อยแล้ว",
+      "updateFailed": "ไม่สามารถอัปเดตงานได้",
+      "updateError": "เกิดข้อผิดพลาดขณะอัปเดต",
+      "createSuccess": "สร้างงานครั้งเดียวเรียบร้อยแล้ว",
+      "createFailed": "ไม่สามารถสร้างงานได้",
+      "createError": "เกิดข้อผิดพลาดขณะสร้าง"
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "แก้ไขนิสัย",
+    "headerTitleNew": "นิสัยใหม่",
+    "save": "บันทึก",
+    "placeholderName": "กรอกชื่อนิสัย",
+    "selectColor": "เลือกสี",
+    "goalForHabit": "เป้าหมายของนิสัย",
+    "numberOfTimes": "จำนวนครั้ง",
+    "time": "เวลา",
+    "timesSuffix": "ครั้ง",
+    "minutesSuffix": "นาที",
+    "frequencies": {
+      "daily": "ทุกวัน",
+      "weekly": "ทุกสัปดาห์",
+      "monthly": "ทุกเดือน"
+    },
+    "repeatEveryDay": "ทำซ้ำทุกวัน",
+    "repeatDailyIn": "ทำซ้ำทุกวันในช่วง:",
+    "timesOfDay": {
+      "morning": "เช้า",
+      "afternoon": "บ่าย",
+      "evening": "เย็น"
+    },
+    "daysOfWeek": {
+      "sunday": "อา",
+      "monday": "จ",
+      "tuesday": "อ",
+      "wednesday": "พ",
+      "thursday": "พฤ",
+      "friday": "ศ",
+      "saturday": "ส"
+    },
+    "getReminders": "รับการแจ้งเตือน",
+    "addReminderTime": "เพิ่มเวลาแจ้งเตือน",
+    "alerts": {
+      "errorTitle": "ข้อผิดพลาด",
+      "successTitle": "สำเร็จ",
+      "validationTitle": "ข้อมูลไม่ถูกต้อง",
+      "enterHabitName": "โปรดกรอกชื่อนิสัย",
+      "fetchColorsFailed": "ไม่สามารถดึงข้อมูลสีได้",
+      "habitUpdatedSuccess": "อัปเดตนิสัยเรียบร้อยแล้ว",
+      "habitCreatedSuccess": "สร้างนิสัยเรียบร้อยแล้ว",
+      "habitUpdateFailed": "ไม่สามารถอัปเดตนิสัยได้",
+      "habitCreateFailed": "ไม่สามารถสร้างนิสัยได้",
+      "updateError": "เกิดข้อผิดพลาดขณะอัปเดต",
+      "createError": "เกิดข้อผิดพลาดขณะสร้าง"
+    }
+  },
+  "common": {
+    "error": "ข้อผิดพลาด",
+    "success": "สำเร็จ",
+    "cancel": "ยกเลิก",
+    "goBack": "ย้อนกลับ"
+  },
+  "habitDetails": {
+    "currentStreak": "ทำต่อเนื่องปัจจุบัน",
+    "longestStreak": "สถิติทำต่อเนื่องสูงสุด",
+    "completionRate": "อัตราการทำสำเร็จ",
+    "totalTimesCompleted": "จำนวนครั้งที่ทำสำเร็จทั้งหมด",
+    "dayCount_one": "{{count}} วัน",
+    "dayCount_other": "{{count}} วัน",
+    "actions": {
+      "edit": "แก้ไข",
+      "archive": "เก็บจัดเก็บ"
+    },
+    "alerts": {
+      "archiveTitle": "ย้ายนิสัยไปที่คลังจัดเก็บ",
+      "archiveMessage": "คุณแน่ใจหรือไม่ว่าต้องการย้าย \"{{name}}\" ไปยังคลังจัดเก็บ?",
+      "archiveSuccess": "ย้ายนิสัยไปที่คลังจัดเก็บเรียบร้อยแล้ว",
+      "archiveFailed": "ไม่สามารถย้ายนิสัยไปที่คลังจัดเก็บได้",
+      "fetchFailed": "ไม่สามารถโหลดสถิติของนิสัยได้"
+    },
+    "daysOfWeek": ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+    "monthNames": [
+      "มกราคม",
+      "กุมภาพันธ์",
+      "มีนาคม",
+      "เมษายน",
+      "พฤษภาคม",
+      "มิถุนายน",
+      "กรกฎาคม",
+      "สิงหาคม",
+      "กันยายน",
+      "ตุลาคม",
+      "พฤศจิกายน",
+      "ธันวาคม"
+    ]
+  },
+  "stats": {
+    "title": "สถิติ",
+    "months": [
+      "มกราคม",
+      "กุมภาพันธ์",
+      "มีนาคม",
+      "เมษายน",
+      "พฤษภาคม",
+      "มิถุนายน",
+      "กรกฎาคม",
+      "สิงหาคม",
+      "กันยายน",
+      "ตุลาคม",
+      "พฤศจิกายน",
+      "ธันวาคม"
+    ],
+    "daysOfWeek": {
+      "sun": "อา",
+      "mon": "จ",
+      "tue": "อ",
+      "wed": "พ",
+      "thu": "พฤ",
+      "fri": "ศ",
+      "sat": "ส"
+    },
+    "legend": {
+      "allComplete": "ทำสำเร็จทั้งหมด",
+      "someComplete": "ทำสำเร็จบางส่วน"
+    },
+    "quote": "ก้าวแรกยากที่สุดเสมอ แต่คุณทำได้อย่างแน่นอน!",
+    "currentStreak": "ทำต่อเนื่องปัจจุบัน",
+    "longestStreak": "สถิติทำต่อเนื่องสูงสุด",
+    "days": "{{count}} วัน",
+    "days_one": "{{count}} วัน",
+    "days_other": "{{count}} วัน",
+    "totalPerfectDays": "จำนวนวันที่สมบูรณ์แบบทั้งหมด",
+    "totalTimesCompleted": "จำนวนครั้งที่ทำสำเร็จทั้งหมด",
+    "habitCompletionRate": "อัตราการทำนิสัยสำเร็จ",
+    "averagePerDaily": "เฉลี่ยต่อวัน",
+    "errors": {
+      "fetchFailedTitle": "ข้อผิดพลาด",
+      "fetchFailedMessage": "ไม่สามารถโหลดสถิตินิสัยได้"
+    }
+  },
+  "subscription": {
+    "restore": "กู้คืนการซื้อ",
+    "heroTitle": "ยกระดับประสิทธิภาพการทำงานของคุณ",
+    "loading": "กำลังโหลด...",
+    "features": [
+      "ติดตามนิสัยและการแจ้งเตือนแบบไม่จำกัด",
+      "สถิติและข้อมูลความก้าวหน้าโดยละเอียด",
+      "ประสบการณ์พรีเมียมแบบไม่มีโฆษณา"
+    ],
+    "yearly": {
+      "bestOffer": "คุ้มค่าที่สุด",
+      "title": "แพ็กเกจรายปี",
+      "subtitle": "เข้าถึงได้ 1 ปี • {{price}}"
+    },
+    "monthly": {
+      "title": "แพ็กเกจรายเดือน",
+      "priceFormat": "{{price}}/เดือน"
+    },
+    "cancelOrManage": "ยกเลิกหรือจัดการการสมัครรับข้อมูล",
+    "continue": "ดำเนินการต่อ",
+    "plans": {
+      "yearlyPlan": "แพ็กเกจรายปี",
+      "monthlyPlan": "แพ็กเกจรายเดือน",
+      "yearlyPrice": "{{price}}/ปี",
+      "monthlyPrice": "{{price}}/เดือน"
+    },
+    "securePayment": {
+      "ios": "ชำระเงินอย่างปลอดภัยผ่าน App Store",
+      "android": "ชำระเงินอย่างปลอดภัยผ่าน Google Play"
+    },
+    "autoRenewDisclaimer": "การสมัครรับข้อมูลจะต่ออายุโดยอัตโนมัติ เว้นแต่จะยกเลิกอย่างน้อย 24 ชั่วโมงก่อนสิ้นสุดระยะเวลาปัจจุบัน",
+    "legal": {
+      "termsOfUse": "ข้อตกลงการใช้งาน (EULA)",
+      "privacyPolicy": "นโยบายความเป็นส่วนตัว"
+    },
+    "alerts": {
+      "storeErrorTitle": "ข้อผิดพลาดจากร้านค้า",
+      "storeErrorMessage": "ไม่สามารถดึงข้อมูลตัวเลือกการสมัครรับข้อมูลได้",
+      "errorTitle": "ข้อผิดพลาด",
+      "cannotOpenLink": "ไม่สามารถเปิดลิงก์: {{url}}",
+      "failedOpenLink": "ไม่สามารถเปิดลิงก์ได้",
+      "planUnavailable": "แพ็กเกจที่เลือกไม่พร้อมใช้งานในขณะนี้",
+      "successTitle": "สำเร็จ!",
+      "upgradedMessage": "บัญชีของคุณได้รับการอัปเกรดเรียบร้อยแล้ว",
+      "continueBtn": "ดำเนินการต่อ",
+      "paymentFailedTitle": "การชำระเงินล้มเหลว",
+      "unexpectedError": "เกิดข้อผิดพลาดที่ไม่คาดคิด",
+      "restoredTitle": "กู้คืนสำเร็จ",
+      "restoredMessage": "กู้คืนการสมัครรับข้อมูลของคุณเรียบร้อยแล้ว",
+      "noSubscriptionTitle": "ไม่มีรายการสมัครรับข้อมูล",
+      "noSubscriptionMessage": "ไม่พบรายการสมัครรับข้อมูลที่ใช้งานอยู่เพื่อกู้คืน",
+      "restoreFailedPrefix": "การกู้คืนล้มเหลว: ",
+      "manageTitle": "จัดการการสมัครรับข้อมูล",
+      "manageMessage": "กำลังนำคุณไปยังหน้าการตั้งค่าการสมัครรับข้อมูลเพื่อจัดการหรือยกเลิกแพ็กเกจของคุณ",
+      "cancelBtn": "ยกเลิก",
+      "openSettingsBtn": "เปิดการตั้งค่า",
+      "cannotOpenSettings": "ไม่สามารถเปิดหน้าการตั้งค่าการสมัครรับข้อมูลได้"
+    }
+  },
+  "appLayout": {
+    "tryPro": "ทดลองใช้ PRO",
+    "routes": {
+      "dashboard": "วันนี้",
+      "stats": "สถิติ",
+      "profile": "โปรไฟล์"
+    }
+  },
+  "profile": {
+    "screenTitle": "โปรไฟล์",
+    "edit": "แก้ไข",
+    "allHabits": "นิสัยทั้งหมด",
+    "notifications": "การแจ้งเตือน",
+    "changeLanguage": "เปลี่ยนภาษา",
+    "settings": "การตั้งค่า",
+    "tryForFree": "ทดลองใช้ฟรี",
+    "pro": "PRO",
+    "signOut": "ออกจากระบบ",
+    "signOutAlert": {
+      "title": "ออกจากระบบ",
+      "message": "คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบ?",
+      "cancel": "ยกเลิก",
+      "confirm": "ออกจากระบบ"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "นิสัยทั้งหมด",
+    "tabs": {
+      "regular": "นิสัยประจำ",
+      "oneTime": "งานครั้งเดียว"
+    },
+    "emptyState": {
+      "regular": "ไม่พบนิสัยประจำ",
+      "oneTime": "ไม่พบงานครั้งเดียว"
+    },
+    "defaults": {
+      "daily": "ทุกวัน",
+      "times": "ครั้ง"
+    },
+    "alerts": {
+      "errorTitle": "ข้อผิดพลาด",
+      "fetchFailed": "ไม่สามารถดึงข้อมูลนิสัยที่กำลังจะมาถึงได้"
+    }
+  },
+  "changePassword": {
+    "screenTitle": "เปลี่ยนรหัสผ่าน",
+    "infoCard": {
+      "title": "เพิ่มความปลอดภัยของคุณ",
+      "subtitle": "เลือกรหัสผ่านใหม่ที่ปลอดภัยและมีความยาวอย่างน้อย 8 ตัวอักษร"
+    },
+    "labels": {
+      "currentPassword": "รหัสผ่านปัจจุบัน",
+      "newPassword": "รหัสผ่านใหม่",
+      "confirmPassword": "ยืนยันรหัสผ่านใหม่"
+    },
+    "placeholders": {
+      "currentPassword": "กรอกรหัสผ่านปัจจุบัน",
+      "newPassword": "กรอกรหัสผ่านใหม่",
+      "confirmPassword": "กรอกรหัสผ่านใหม่อีกครั้ง"
+    },
+    "buttons": {
+      "updatePassword": "อัปเดตรหัสผ่าน"
+    },
+    "validation": {
+      "errorTitle": "ข้อมูลไม่ถูกต้อง",
+      "currentPasswordRequired": "โปรดกรอกรหัสผ่านปัจจุบันของคุณ",
+      "newPasswordRequired": "โปรดกรอกรหัสผ่านใหม่ของคุณ",
+      "minLength": "รหัสผ่านใหม่ต้องมีความยาวอย่างน้อย 8 ตัวอักษร",
+      "sameAsCurrent": "รหัสผ่านใหม่ต้องไม่ซ้ำกับรหัสผ่านปัจจุบัน",
+      "passwordMismatch": "รหัสผ่านใหม่และการยืนยันรหัสผ่านไม่ตรงกัน"
+    },
+    "alerts": {
+      "successTitle": "สำเร็จ",
+      "successMessage": "เปลี่ยนรหัสผ่านของคุณเรียบร้อยแล้ว!",
+      "errorTitle": "ข้อผิดพลาด",
+      "fetchFailed": "ไม่สามารถเปลี่ยนรหัสผ่านได้",
+      "genericError": "เกิดข้อผิดพลาดบางอย่าง โปรดลองอีกครั้ง"
+    }
+  },
+  "editProfile": {
+    "screenTitle": "แก้ไขโปรไฟล์",
+    "labels": {
+      "fullName": "ชื่อ-นามสกุล",
+      "country": "ประเทศ",
+      "state": "จังหวัด / รัฐ"
+    },
+    "placeholders": {
+      "fullName": "กรอกชื่อ-นามสกุลของคุณ",
+      "country": "เลือกประเทศ",
+      "state": "เลือกจังหวัด/รัฐ",
+      "selectCountryFirst": "โปรดเลือกประเทศก่อน"
+    },
+    "buttons": {
+      "saveChanges": "บันทึกการเปลี่ยนแปลง"
+    },
+    "validation": {
+      "nameRequired": "โปรดกรอกชื่อ-นามสกุลของคุณ"
+    },
+    "alerts": {
+      "successTitle": "สำเร็จ",
+      "successMessage": "อัปเดตโปรไฟล์ของคุณเรียบร้อยแล้ว!",
+      "errorTitle": "ข้อผิดพลาด",
+      "updateFailed": "ไม่สามารถอัปเดตโปรไฟล์ได้",
+      "genericError": "เกิดข้อผิดพลาดขณะบันทึกโปรไฟล์"
+    }
+  },
+  "help": {
+    "screenTitle": "ความช่วยเหลือและสนับสนุน",
+    "infoCard": {
+      "title": "มีอะไรให้เราช่วยเหลือไหม?",
+      "subtitle": "หากคุณมีคำถาม ข้อเสนอแนะ หรือคำติชม โปรดติดต่อเราได้ตลอดเวลา"
+    },
+    "sectionHeader": "ข้อมูลการติดต่อ",
+    "contact": {
+      "emailLabel": "ส่งอีเมลถึงเรา",
+      "websiteLabel": "เยี่ยมชมเว็บไซต์ของเรา"
+    },
+    "alerts": {
+      "errorTitle": "ข้อผิดพลาด",
+      "emailError": "ไม่สามารถเปิดแอปอีเมลได้",
+      "emailGenericError": "เกิดข้อผิดพลาดขณะเปิดแอปอีเมล",
+      "browserError": "ไม่สามารถเปิดเว็บเบราว์เซอร์ได้",
+      "websiteGenericError": "เกิดข้อผิดพลาดขณะเปิดเว็บไซต์"
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "ภาษา",
+    "topNotice": "เลือกภาษาสำหรับแอปพลิเคชันที่คุณต้องการด้านล่าง",
+    "bottomNotice": "การเปลี่ยนภาษาจะอัปเดตข้อความในแอปพลิเคชันโดยอัตโนมัติและบันทึกลงในบัญชีของคุณ",
+    "activeLanguage": "ภาษาที่ใช้งานอยู่",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาอังกฤษ"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาเดนมาร์ก"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาฝรั่งเศส"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาเยอรมัน"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาอินโดนีเซีย"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาอิตาลี"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาญี่ปุ่น"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาเกาหลี"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษานอร์เวย์บุคมอล"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาโปแลนด์"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาโปรตุเกส"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษารัสเซีย"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาจีนตัวย่อ"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาสเปน"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาสวีเดน"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาไทย"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาจีนตัวเต็ม"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาตุรกี"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "ตั้งค่าภาษาของแอปเป็น ภาษาเวียดนาม"
+      }
+    },
+    "alerts": {
+      "errorTitle": "ข้อผิดพลาด",
+      "genericUpdateError": "ไม่สามารถอัปเดตการตั้งค่าภาษาบนเซิร์ฟเวอร์ได้"
+    }
+  },
+  "notifications": {
+    "screenTitle": "การแจ้งเตือน",
+    "topNotice": "ปรับแต่งการแจ้งเตือนของคุณเพื่อรักษาวินัยการทำนิสัยให้เป็นไปตามแผน",
+    "bottomNotice": "การแจ้งเตือนสำหรับแต่ละนิสัยสามารถจัดการแยกต่างหากได้ในการตั้งค่าของนิสัยนั้นๆ",
+    "items": {
+      "todays_plan": {
+        "title": "แผนสำหรับวันนี้ 📋",
+        "description": "“ช่วงเช้า: 5 นิสัย, ช่วงบ่าย: 1 นิสัย, ช่วงเย็น: 6 นิสัย, เวลาใดก็ได้: 2 นิสัย”"
+      },
+      "morning_plan": {
+        "title": "แผนช่วงเช้า ☀️",
+        "description": "“คุณมี 5 นิสัยที่ต้องทำในเช้านี้ และอีก 2 นิสัยที่ทำเวลาใดก็ได้”"
+      },
+      "afternoon_plan": {
+        "title": "แผนช่วงบ่าย 🌤️",
+        "description": "“คุณมี 1 นิสัยที่ต้องทำในบ่ายนี้ และอีก 2 นิสัยที่ทำเวลาใดก็ได้”"
+      },
+      "evening_plan": {
+        "title": "แผนช่วงเย็น 🌙",
+        "description": "“คุณมี 6 นิสัยที่ต้องทำในเย็นนี้ และอีก 2 นิสัยที่ทำเวลาใดก็ได้”"
+      },
+      "today_results": {
+        "title": "สรุปผลวันนี้ 🎉",
+        "description": "“ทำเสร็จ: 3, ข้าม: 1, คงเหลือ: 14 นิสัย”"
+      }
+    },
+    "alerts": {
+      "errorTitle": "ข้อผิดพลาด",
+      "genericUpdateError": "ไม่สามารถอัปเดตการตั้งค่าการแจ้งเตือนได้"
+    }
+  },
+  "settings": {
+    "headerTitle": "การตั้งค่า",
+    "generalTitle": "ทั่วไป",
+    "sound": "เสียง",
+    "vacationMode": "โหมดลาพักร้อน",
+    "vacationSubtitle": "หยุดพักนิสัยชั่วคราวโดยไม่เสียสถิติความต่อเนื่อง",
+    "changePassword": "เปลี่ยนรหัสผ่าน",
+    "help": "ความช่วยเหลือ",
+    "privacyPolicy": "นโยบายความเป็นส่วนตัว",
+    "rateUs": "ให้คะแนนเรา",
+    "shareApp": "แชร์แอปนี้",
+    "shareMessage": "ลองใช้ Habitly สิ! แอปช่วยติดตามนิสัยประจำวันและบรรลุเป้าหมายของคุณ\n\n📱 ดาวน์โหลดสำหรับ Android: {{playStoreUrl}}\n🍏 ดาวน์โหลดสำหรับ iOS: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "ไม่สามารถอัปเดตการตั้งค่าได้ โปรดลองอีกครั้ง",
+      "unexpectedNetwork": "เกิดข้อผิดพลาดในการเชื่อมต่อเครือข่ายที่ไม่คาดคิด",
+      "privacyPolicy": "ไม่สามารถเปิดหน้านโยบายความเป็นส่วนตัวได้",
+      "appStore": "ไม่สามารถเปิดหน้าร้านค้าแอปพลิเคชันได้",
+      "whatsapp": "ไม่ได้ติดตั้ง WhatsApp หรือไม่สามารถใช้งานได้บนอุปกรณ์นี้",
+      "genericLink": "เกิดข้อผิดพลาดที่ไม่คาดคิดขณะเปิดลิงก์"
+    }
+  }
+}

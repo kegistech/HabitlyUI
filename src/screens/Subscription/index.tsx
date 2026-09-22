@@ -17,6 +17,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { X, Check } from 'lucide-react-native';
 import Purchases, { PurchasesPackage, PURCHASES_ERROR_CODE } from 'react-native-purchases';
+import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
@@ -31,19 +32,16 @@ type PlanType = 'YEARLY' | 'MONTHLY';
 const PRIVACY_POLICY_URL = 'https://www.kegistech.com/habitly-privacy-policy.html';
 const EULA_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
 
-const FEATURES = [
-  'Unlimited Habit Tracking & Reminders',
-  'Advanced Analytics & Progress Insights',
-  'Ad-Free Premium Experience',
-];
-
 const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
   const { userData } = useSubscription();
 
   const [selectedPlan, setSelectedPlan] = useState<PlanType>('YEARLY');
   const [loading, setLoading] = useState<boolean>(true);
   const [processing, setProcessing] = useState<boolean>(false);
   const [packages, setPackages] = useState<{ yearly?: PurchasesPackage; monthly?: PurchasesPackage }>({});
+
+  const features = t('subscription.features', { returnObjects: true }) as string[];
 
   useEffect(() => {
     fetchOfferings();
@@ -60,7 +58,10 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
       }
     } catch (error) {
       console.error('Error fetching offerings:', error);
-      Alert.alert('Store Error', 'Could not load subscription packages.');
+      Alert.alert(
+        t('subscription.alerts.storeErrorTitle'),
+        t('subscription.alerts.storeErrorMessage')
+      );
     } finally {
       setLoading(false);
     }
@@ -72,10 +73,16 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
       if (supported) {
         await Linking.openURL(url);
       } else {
-        Alert.alert('Error', 'Cannot open the link: ' + url);
+        Alert.alert(
+          t('subscription.alerts.errorTitle'),
+          t('subscription.alerts.cannotOpenLink', { url })
+        );
       }
     } catch (error) {
-      Alert.alert('Error', 'Failed to open link.');
+      Alert.alert(
+        t('subscription.alerts.errorTitle'),
+        t('subscription.alerts.failedOpenLink')
+      );
     }
   };
 
@@ -125,7 +132,10 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
     const packageToBuy = selectedPlan === 'YEARLY' ? packages.yearly : packages.monthly;
 
     if (!packageToBuy) {
-      Alert.alert('Error', 'Selected plan is currently unavailable.');
+      Alert.alert(
+        t('subscription.alerts.errorTitle'),
+        t('subscription.alerts.planUnavailable')
+      );
       return;
     }
 
@@ -136,16 +146,26 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
       if (customerInfo.entitlements.active['Habitly Pro']?.isActive) {
         await trackSubscriptionStatus(1, packageToBuy, customerInfo);
 
-        Alert.alert('Success!', 'Your account has been upgraded.', [
-          { text: 'Continue', onPress: () => navigation.replace('Profile') },
-        ]);
+        Alert.alert(
+          t('subscription.alerts.successTitle'),
+          t('subscription.alerts.upgradedMessage'),
+          [
+            {
+              text: t('subscription.alerts.continueBtn'),
+              onPress: () => navigation.replace('Profile'),
+            },
+          ]
+        );
       }
     } catch (error: any) {
       if (error.code === PURCHASES_ERROR_CODE.PURCHASE_CANCELLED_ERROR) {
         await trackSubscriptionStatus(2, packageToBuy);
       } else {
         await trackSubscriptionStatus(3, packageToBuy, undefined, error.message);
-        Alert.alert('Payment Failed', error.message || 'An unexpected error occurred.');
+        Alert.alert(
+          t('subscription.alerts.paymentFailedTitle'),
+          error.message || t('subscription.alerts.unexpectedError')
+        );
       }
     } finally {
       setProcessing(false);
@@ -157,13 +177,22 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
     try {
       const customerInfo = await Purchases.restorePurchases();
       if (customerInfo.entitlements.active['Habitly Pro']?.isActive) {
-        Alert.alert('Restored', 'Your subscription was successfully restored.');
+        Alert.alert(
+          t('subscription.alerts.restoredTitle'),
+          t('subscription.alerts.restoredMessage')
+        );
         navigation.replace('Profile');
       } else {
-        Alert.alert('No Subscription', "We couldn't find an active subscription to restore.");
+        Alert.alert(
+          t('subscription.alerts.noSubscriptionTitle'),
+          t('subscription.alerts.noSubscriptionMessage')
+        );
       }
     } catch (e: any) {
-      Alert.alert('Error', 'Restore failed: ' + e.message);
+      Alert.alert(
+        t('subscription.alerts.errorTitle'),
+        `${t('subscription.alerts.restoreFailedPrefix')}${e.message}`
+      );
     } finally {
       setProcessing(false);
     }
@@ -171,12 +200,12 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
 
   const handleCancelSubscription = async () => {
     Alert.alert(
-      'Manage Subscription',
-      'You will be redirected to subscription settings to manage or cancel your plan.',
+      t('subscription.alerts.manageTitle'),
+      t('subscription.alerts.manageMessage'),
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: t('subscription.alerts.cancelBtn'), style: 'cancel' },
         {
-          text: 'Open Settings',
+          text: t('subscription.alerts.openSettingsBtn'),
           onPress: async () => {
             try {
               if (Platform.OS === 'ios') {
@@ -196,7 +225,10 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
                 );
               }
             } catch (err) {
-              Alert.alert('Error', 'Could not open subscription settings.');
+              Alert.alert(
+                t('subscription.alerts.errorTitle'),
+                t('subscription.alerts.cannotOpenSettings')
+              );
             }
           },
         },
@@ -236,7 +268,7 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={handleRestore} disabled={processing}>
-          <Text style={styles.restoreText}>RESTORE</Text>
+          <Text style={styles.restoreText}>{t('subscription.restore')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -251,11 +283,11 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
         </View>
 
         {/* Hero Title */}
-        <Text style={styles.heroTitle}>Elevate Your Efficiency</Text>
+        <Text style={styles.heroTitle}>{t('subscription.heroTitle')}</Text>
 
         {/* Mandatory Apple Requirement: Feature Breakdown */}
         <View style={styles.featuresContainer}>
-          {FEATURES.map((feature, index) => (
+          {features.map((feature, index) => (
             <View key={index} style={styles.featureItem}>
               <Check size={moderateScale(18)} color="#3B82F6" style={styles.featureIcon} />
               <Text style={styles.featureText}>{feature}</Text>
@@ -277,19 +309,19 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
             disabled={processing}
           >
             <View style={styles.bestOfferBadge}>
-              <Text style={styles.bestOfferText}>BEST OFFER</Text>
+              <Text style={styles.bestOfferText}>{t('subscription.yearly.bestOffer')}</Text>
             </View>
 
             <View style={styles.planCardContent}>
               <View style={styles.planTitleGroup}>
-                <Text style={styles.planTitle}>Yearly</Text>
+                <Text style={styles.planTitle}>{t('subscription.yearly.title')}</Text>
                 <Text style={styles.planPriceMain}>
-                  {packages.yearly ? `${packages.yearly.product.priceString}` : 'Loading...'}
+                  {packages.yearly ? `${packages.yearly.product.priceString}` : t('subscription.loading')}
                 </Text>
               </View>
 
               <Text style={styles.planSubtitle}>
-                1 Year Access • {getYearlyMonthlyEquivalent()}
+                {t('subscription.yearly.subtitle', { price: getYearlyMonthlyEquivalent() })}
               </Text>
             </View>
           </TouchableOpacity>
@@ -303,9 +335,11 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
           >
             <View style={styles.planCardContent}>
               <View style={styles.planTitleGroup}>
-                <Text style={styles.planTitle}>Monthly</Text>
+                <Text style={styles.planTitle}>{t('subscription.monthly.title')}</Text>
                 <Text style={styles.planPriceMain}>
-                  {packages.monthly ? `${packages.monthly.product.priceString}/Month` : 'Loading...'}
+                  {packages.monthly
+                    ? t('subscription.monthly.priceFormat', { price: packages.monthly.product.priceString })
+                    : t('subscription.loading')}
                 </Text>
               </View>
             </View>
@@ -318,7 +352,7 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
             onPress={handleCancelSubscription}
             disabled={processing}
           >
-            <Text style={styles.manageSubscriptionText}>Cancel or Manage Subscription</Text>
+            <Text style={styles.manageSubscriptionText}>{t('subscription.cancelOrManage')}</Text>
           </TouchableOpacity>
         )}
       </ScrollView>
@@ -334,7 +368,7 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
           {processing ? (
             <ActivityIndicator color="#FFFFFF" />
           ) : (
-            <Text style={styles.continueButtonText}>Continue</Text>
+            <Text style={styles.continueButtonText}>{t('subscription.continue')}</Text>
           )}
         </TouchableOpacity>
 
@@ -342,29 +376,31 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
         <Text style={styles.priceSummaryText}>
           {selectedPlan === 'YEARLY'
             ? packages.yearly
-              ? `${packages.yearly.product.priceString}/year`
-              : 'Yearly Plan'
+              ? t('subscription.plans.yearlyPrice', { price: packages.yearly.product.priceString })
+              : t('subscription.plans.yearlyPlan')
             : packages.monthly
-            ? `${packages.monthly.product.priceString}/month`
-            : 'Monthly Plan'}
+            ? t('subscription.plans.monthlyPrice', { price: packages.monthly.product.priceString })
+            : t('subscription.plans.monthlyPlan')}
         </Text>
 
         <Text style={styles.disclaimerText}>
-          {Platform.OS === 'ios' ? 'SECURE PAYMENT VIA APP STORE' : 'SECURE PAYMENT VIA GOOGLE PLAY'}
+          {Platform.OS === 'ios'
+            ? t('subscription.securePayment.ios')
+            : t('subscription.securePayment.android')}
         </Text>
 
         {/* Mandatory Apple Disclosures & Links */}
         <Text style={styles.autoRenewText}>
-          Subscription automatically renews unless cancelled at least 24 hours before the end of the current period.
+          {t('subscription.autoRenewDisclaimer')}
         </Text>
 
         <View style={styles.legalLinksContainer}>
           <TouchableOpacity onPress={() => openWebLink(EULA_URL)}>
-            <Text style={styles.legalLinkText}>Terms of Use (EULA)</Text>
+            <Text style={styles.legalLinkText}>{t('subscription.legal.termsOfUse')}</Text>
           </TouchableOpacity>
           <Text style={styles.legalDivider}>•</Text>
           <TouchableOpacity onPress={() => openWebLink(PRIVACY_POLICY_URL)}>
-            <Text style={styles.legalLinkText}>Privacy Policy</Text>
+            <Text style={styles.legalLinkText}>{t('subscription.legal.privacyPolicy')}</Text>
           </TouchableOpacity>
         </View>
       </View>

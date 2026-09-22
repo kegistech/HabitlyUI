@@ -1,0 +1,705 @@
+{
+  "auth": {
+    "tagBadge": "習慣追蹤應用程式",
+    "title": "微小的習慣，\n巨大的成就",
+    "subtitle": "將日常行動轉化為持久的習慣。從今天開始培養自律，打造有條不紊的生活。",
+    "getStartedFree": "免費開始使用",
+    "alreadyHaveAccount": "已經有帳號？",
+    "signIn": "登入",
+    "termsNotice": "註冊即表示您同意我們的",
+    "termsAndPrivacy": "服務條款與隱私權政策"
+  },
+  "login": {
+    "tagBadge": "歡迎回來",
+    "welcomeText": "登入",
+    "subText": "維持您的連續紀錄，今天也繼續追蹤進度吧。",
+    "emailLabel": "電子郵件",
+    "emailPlaceholder": "name@example.com",
+    "passwordLabel": "密碼",
+    "passwordPlaceholder": "請輸入您的密碼",
+    "hide": "隱藏",
+    "show": "顯示",
+    "forgotPassword": "忘記密碼？",
+    "signInButton": "登入",
+    "dontHaveAccount": "還沒有帳號？",
+    "signUp": "註冊",
+    "errors": {
+      "emailRequired": "請輸入電子郵件。",
+      "emailInvalid": "請輸入有效的電子郵件地址。",
+      "passwordRequired": "請輸入密碼。",
+      "loginFailed": "登入失敗，請檢查您的憑證。",
+      "loginError": "電子郵件或密碼不正確。"
+    }
+  },
+  "forgotPassword": {
+    "tag": "帳號復原",
+    "backToLogin": "返回登入",
+    "back": "返回",
+    "success": "成功",
+    "hide": "隱藏",
+    "show": "顯示",
+    "titleEmail": "重設密碼 🔒",
+    "titleOtp": "OTP 驗證 💬",
+    "titlePassword": "設定新密碼 🔑",
+    "subEmail": "請輸入您的電子郵件以接收驗證碼。",
+    "subOtp": "請輸入已發送至下列地址的驗證碼：",
+    "subPassword": "建立安全的新密碼以保護您的帳號。",
+    "noOtp": "沒有收到驗證碼？",
+    "successMsg": "您的密碼已成功更新！",
+    "loginNow": "立即登入",
+    "labels": {
+      "email": "電子郵件",
+      "otp": "輸入 OTP 驗證碼",
+      "newPassword": "新密碼",
+      "confirmPassword": "確認新密碼"
+    },
+    "placeholders": {
+      "email": "name@example.com",
+      "otp": "• • • • • •",
+      "minPassword": "至少 8 個字元",
+      "reEnterPassword": "再次輸入新密碼"
+    },
+    "buttons": {
+      "generateOtp": "發送 OTP",
+      "verifyOtp": "驗證 OTP",
+      "updatePassword": "更新密碼",
+      "resend": "重新發送",
+      "resendIn": "重新發送倒數"
+    },
+    "errors": {
+      "emailRequired": "請輸入電子郵件。",
+      "invalidEmail": "請輸入有效的電子郵件地址。",
+      "otpRequired": "請輸入 OTP 驗證碼。",
+      "invalidOtp": "請輸入有效的 OTP 驗證碼。",
+      "passwordRequired": "請輸入新密碼。",
+      "passwordLength": "密碼長度必須至少為 8 個字元。",
+      "confirmPasswordRequired": "請確認您的新密碼。",
+      "passwordsMismatch": "兩次輸入的密碼不一致。",
+      "sendOtpFailed": "發送 OTP 失敗，請重試。",
+      "updatePasswordFailed": "更新密碼失敗，請重試。",
+      "resendFailed": "重新發送驗證碼失敗。",
+      "networkError": "發生網路錯誤，請重試。"
+    }
+  },
+  "signUp": {
+    "badge": "開始使用",
+    "title": "建立帳號 🚀",
+    "subtitle": "從今天開始培養良好的日常習慣。",
+    "hide": "隱藏",
+    "show": "顯示",
+    "loadingCountries": "正在載入國家列表...",
+    "labels": {
+      "fullName": "全名",
+      "email": "電子郵件",
+      "password": "密碼",
+      "country": "國家/地區"
+    },
+    "placeholders": {
+      "fullName": "王小明",
+      "email": "name@example.com",
+      "password": "至少 8 個字元",
+      "selectCountry": "選擇國家/地區"
+    },
+    "buttons": {
+      "createAccount": "建立帳號",
+      "creatingAccount": "正在建立帳號..."
+    },
+    "legal": {
+      "prefix": "建立帳號即表示您同意我們的 ",
+      "termsAndPrivacy": "服務條款與隱私權政策"
+    },
+    "footer": {
+      "alreadyHaveAccount": "已經有帳號？ ",
+      "signIn": "登入"
+    },
+    "modal": {
+      "title": "選擇國家/地區",
+      "done": "完成"
+    },
+    "errors": {
+      "requiredFields": "請填寫所有必填欄位。",
+      "invalidEmail": "請輸入有效的電子郵件地址。",
+      "passwordLength": "密碼長度必須至少為 8 個字元。",
+      "registrationFailed": "註冊失敗，請重試。",
+      "networkError": "發生網路錯誤。"
+    }
+  },
+  "wakeUpTime": {
+    "badge": "晨間習慣",
+    "title": "您通常幾點起床？ 🌅",
+    "subtitle": "這將用於幫助您有效規劃每一天，並設定充滿動力的提醒。",
+    "buttons": {
+      "continue": "繼續"
+    },
+    "errors": {
+      "updateFailed": "更新起床時間失敗，請重試。",
+      "networkError": "發生網路錯誤。"
+    }
+  },
+  "reflectionTime": {
+    "badge": "晚間反思",
+    "title": "您希望何時進行反思？ 🌙",
+    "subtitle": "晚上花幾分鐘回顧，有助於追蹤進度並持之以恆。",
+    "buttons": {
+      "continue": "繼續"
+    },
+    "errors": {
+      "updateFailed": "更新反思時間失敗，請重試。",
+      "networkError": "發生網路錯誤。"
+    }
+  },
+  "dashboard": {
+    "title": "今天",
+    "sectionTitle": "任務與習慣",
+    "emptyHabits": "今天沒有排定的習慣。",
+    "defaults": {
+      "goalType": "每日",
+      "valueType": "次"
+    },
+    "tracking": {
+      "disabledFuture": "未來日期已停用追蹤",
+      "trackToday": "追蹤今天"
+    },
+    "alerts": {
+      "errorTitle": "錯誤",
+      "fetchError": "無法載入所選日期的習慣。",
+      "trackError": "無法更新習慣進度。",
+      "connectError": "無法連線至習慣追蹤伺服器。",
+      "futureDateTitle": "操作不允許",
+      "futureDateMessage": "您無法追蹤未來的習慣。",
+      "goalReachedTitle": "已達成目標",
+      "goalReachedMessage": "您已完成此習慣的目標。",
+      "minLimitTitle": "已達最小值",
+      "minLimitMessage": "完成次數不能小於 0。",
+      "limitReachedTitle": "已達上限",
+      "limitReachedMessage": "您已達到免費方案的 2 個習慣上限。升級至 Pro 即可享有無限制存取。",
+      "cancel": "取消",
+      "upgrade": "解鎖 Pro"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "建立習慣",
+    "regularHabit": "常規習慣",
+    "oneTimeTask": "單次任務",
+    "sectionHeader": "或從分類中選擇",
+    "defaultCategorySubtitle": "探索並養成新習慣",
+    "alerts": {
+      "noticeTitle": "提示",
+      "fetchError": "無法載入分類。",
+      "errorTitle": "錯誤",
+      "connectError": "無法連線至伺服器。"
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "習慣",
+    "habitsCount": "{{count}} 個習慣",
+    "habitsCount_plural": "{{count}} 個習慣",
+    "emptyState": "此分類中找不到習慣範本。",
+    "alerts": {
+      "noticeTitle": "提示",
+      "fetchError": "無法載入習慣範本。",
+      "errorTitle": "錯誤",
+      "connectError": "無法連線至伺服器。"
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "編輯任務",
+    "headerTitleCreate": "單次任務",
+    "save": "儲存",
+    "habitNamePlaceholder": "輸入習慣名稱",
+    "selectColor": "選擇顏色",
+    "todayPrefix": "今天，{{date}}",
+    "getReminders": "開啟提醒",
+    "addReminderTime": "新增提醒時間",
+    "validation": {
+      "title": "驗證錯誤",
+      "emptyName": "請輸入習慣名稱"
+    },
+    "alerts": {
+      "errorTitle": "錯誤",
+      "successTitle": "成功",
+      "fetchColorsFailed": "無法載入顏色列表。",
+      "updateSuccess": "單次任務更新成功",
+      "updateFailed": "更新任務失敗",
+      "updateError": "更新過程中發生錯誤",
+      "createSuccess": "單次任務建立成功",
+      "createFailed": "建立任務失敗",
+      "createError": "建立過程中發生錯誤"
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "編輯習慣",
+    "headerTitleNew": "新增習慣",
+    "save": "儲存",
+    "placeholderName": "輸入習慣名稱",
+    "selectColor": "選擇顏色",
+    "goalForHabit": "習慣目標",
+    "numberOfTimes": "次數",
+    "time": "時長",
+    "timesSuffix": "次",
+    "minutesSuffix": "分鐘",
+    "frequencies": {
+      "daily": "每日",
+      "weekly": "每週",
+      "monthly": "每月"
+    },
+    "repeatEveryDay": "每天重複",
+    "repeatDailyIn": "重複時段：",
+    "timesOfDay": {
+      "morning": "早晨",
+      "afternoon": "午後",
+      "evening": "傍晚"
+    },
+    "daysOfWeek": {
+      "sunday": "日",
+      "monday": "一",
+      "tuesday": "二",
+      "wednesday": "三",
+      "thursday": "四",
+      "friday": "五",
+      "saturday": "六"
+    },
+    "getReminders": "開啟提醒",
+    "addReminderTime": "新增提醒時間",
+    "alerts": {
+      "errorTitle": "錯誤",
+      "successTitle": "成功",
+      "validationTitle": "驗證錯誤",
+      "enterHabitName": "請輸入習慣名稱",
+      "fetchColorsFailed": "無法載入顏色列表。",
+      "habitUpdatedSuccess": "習慣更新成功",
+      "habitCreatedSuccess": "習慣建立成功",
+      "habitUpdateFailed": "更新習慣失敗",
+      "habitCreateFailed": "建立習慣失敗",
+      "updateError": "更新過程中發生錯誤",
+      "createError": "建立過程中發生錯誤"
+    }
+  },
+  "common": {
+    "error": "錯誤",
+    "success": "成功",
+    "cancel": "取消",
+    "goBack": "返回"
+  },
+  "habitDetails": {
+    "currentStreak": "目前連續",
+    "longestStreak": "最長連續",
+    "completionRate": "完成率",
+    "totalTimesCompleted": "累計完成次數",
+    "dayCount_one": "{{count}} 天",
+    "dayCount_other": "{{count}} 天",
+    "actions": {
+      "edit": "編輯",
+      "archive": "封存"
+    },
+    "alerts": {
+      "archiveTitle": "封存習慣",
+      "archiveMessage": "您確定要封存「{{name}}」嗎？",
+      "archiveSuccess": "習慣封存成功",
+      "archiveFailed": "封存習慣失敗",
+      "fetchFailed": "無法載入習慣統計數據。"
+    },
+    "daysOfWeek": ["日", "一", "二", "三", "四", "五", "六"],
+    "monthNames": [
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月"
+    ]
+  },
+  "stats": {
+    "title": "統計數據",
+    "months": [
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月"
+    ],
+    "daysOfWeek": {
+      "sun": "日",
+      "mon": "一",
+      "tue": "二",
+      "wed": "三",
+      "thu": "四",
+      "fri": "五",
+      "sat": "六"
+    },
+    "legend": {
+      "allComplete": "全部完成",
+      "someComplete": "部分完成"
+    },
+    "quote": "跨出第一步總是孤單且艱難的，但您一定能做到！",
+    "currentStreak": "目前連續",
+    "longestStreak": "最長連續",
+    "days": "{{count}} 天",
+    "days_one": "{{count}} 天",
+    "days_other": "{{count}} 天",
+    "totalPerfectDays": "完美達成天數",
+    "totalTimesCompleted": "累計完成次數",
+    "habitCompletionRate": "習慣完成率",
+    "averagePerDaily": "每日平均完成",
+    "errors": {
+      "fetchFailedTitle": "錯誤",
+      "fetchFailedMessage": "無法載入習慣統計數據。"
+    }
+  },
+  "subscription": {
+    "restore": "還原購買",
+    "heroTitle": "極致提升您的生產力",
+    "loading": "載入中...",
+    "features": [
+      "無限制追蹤習慣與設定提醒",
+      "深入分析與詳細的進度統計",
+      "享受零廣告的高級體驗"
+    ],
+    "yearly": {
+      "bestOffer": "最佳超值超選",
+      "title": "年度方案",
+      "subtitle": "1 年無限存取 • {{price}}"
+    },
+    "monthly": {
+      "title": "月度方案",
+      "priceFormat": "{{price}}/月"
+    },
+    "cancelOrManage": "取消或管理訂閱",
+    "continue": "繼續",
+    "plans": {
+      "yearlyPlan": "年度方案",
+      "monthlyPlan": "月度方案",
+      "yearlyPrice": "{{price}}/年",
+      "monthlyPrice": "{{price}}/月"
+    },
+    "securePayment": {
+      "ios": "通過 App Store 安全支付",
+      "android": "通過 Google Play 安全支付"
+    },
+    "autoRenewDisclaimer": "除非在當期訂閱結束前至少 24 小時取消，否則訂閱將自動續訂。",
+    "legal": {
+      "termsOfUse": "使用條款 (EULA)",
+      "privacyPolicy": "隱私權政策"
+    },
+    "alerts": {
+      "storeErrorTitle": "商店錯誤",
+      "storeErrorMessage": "無法載入訂閱選項。",
+      "errorTitle": "錯誤",
+      "cannotOpenLink": "無法開啟連結：{{url}}",
+      "failedOpenLink": "開啟連結失敗",
+      "planUnavailable": "所選方案目前無法使用。",
+      "successTitle": "成功！",
+      "upgradedMessage": "您的帳號已成功升級。",
+      "continueBtn": "繼續",
+      "paymentFailedTitle": "付款失敗",
+      "unexpectedError": "發生未知的錯誤。",
+      "restoredTitle": "已還原",
+      "restoredMessage": "您的訂閱已成功還原。",
+      "noSubscriptionTitle": "未找到訂閱",
+      "noSubscriptionMessage": "未找到可還原的有效訂閱。",
+      "restoreFailedPrefix": "還原失敗：",
+      "manageTitle": "管理訂閱",
+      "manageMessage": "正在將您重新導向至訂閱設定以進行管理或取消。",
+      "cancelBtn": "取消",
+      "openSettingsBtn": "開啟設定",
+      "cannotOpenSettings": "無法開啟訂閱設定頁面。"
+    }
+  },
+  "appLayout": {
+    "tryPro": "試用 PRO",
+    "routes": {
+      "dashboard": "今天",
+      "stats": "統計",
+      "profile": "個人檔案"
+    }
+  },
+  "profile": {
+    "screenTitle": "個人檔案",
+    "edit": "編輯",
+    "allHabits": "所有習慣",
+    "notifications": "通知",
+    "changeLanguage": "變更語言",
+    "settings": "設定",
+    "tryForFree": "免費試用",
+    "pro": "PRO",
+    "signOut": "登出",
+    "signOutAlert": {
+      "title": "登出",
+      "message": "您確定要登出嗎？",
+      "cancel": "取消",
+      "confirm": "登出"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "所有習慣",
+    "tabs": {
+      "regular": "常規習慣",
+      "oneTime": "單次任務"
+    },
+    "emptyState": {
+      "regular": "未找到常規習慣。",
+      "oneTime": "未找到單次任務。"
+    },
+    "defaults": {
+      "daily": "每日",
+      "times": "次"
+    },
+    "alerts": {
+      "errorTitle": "錯誤",
+      "fetchFailed": "無法載入未來的習慣列表。"
+    }
+  },
+  "changePassword": {
+    "screenTitle": "變更密碼",
+    "infoCard": {
+      "title": "強化您的安全性",
+      "subtitle": "請選擇一個至少 8 個字元的新安全密碼。"
+    },
+    "labels": {
+      "currentPassword": "目前密碼",
+      "newPassword": "新密碼",
+      "confirmPassword": "確認新密碼"
+    },
+    "placeholders": {
+      "currentPassword": "輸入目前密碼",
+      "newPassword": "輸入新密碼",
+      "confirmPassword": "再次輸入新密碼"
+    },
+    "buttons": {
+      "updatePassword": "更新密碼"
+    },
+    "validation": {
+      "errorTitle": "驗證錯誤",
+      "currentPasswordRequired": "請輸入您目前的密碼。",
+      "newPasswordRequired": "請輸入您的新密碼。",
+      "minLength": "新密碼長度必須至少為 8 個字元。",
+      "sameAsCurrent": "新密碼不能與目前密碼相同。",
+      "passwordMismatch": "新密碼與確認密碼不一致。"
+    },
+    "alerts": {
+      "successTitle": "成功",
+      "successMessage": "您的密碼已成功變更！",
+      "errorTitle": "錯誤",
+      "fetchFailed": "無法變更密碼。",
+      "genericError": "發生錯誤，請重試。"
+    }
+  },
+  "editProfile": {
+    "screenTitle": "編輯個人檔案",
+    "labels": {
+      "fullName": "全名",
+      "country": "國家/地區",
+      "state": "州/省/縣市"
+    },
+    "placeholders": {
+      "fullName": "輸入您的全名",
+      "country": "選擇國家/地區",
+      "state": "選擇州/省/縣市",
+      "selectCountryFirst": "請先選擇國家/地區"
+    },
+    "buttons": {
+      "saveChanges": "儲存變更"
+    },
+    "validation": {
+      "nameRequired": "請輸入您的全名。"
+    },
+    "alerts": {
+      "successTitle": "成功",
+      "successMessage": "個人檔案更新成功！",
+      "errorTitle": "錯誤",
+      "updateFailed": "無法更新個人檔案。",
+      "genericError": "儲存個人檔案時發生錯誤。"
+    }
+  },
+  "help": {
+    "screenTitle": "說明與支援",
+    "infoCard": {
+      "title": "需要協助嗎？",
+      "subtitle": "如果您有任何疑問、建議或回饋，歡迎隨時與我們聯絡。"
+    },
+    "sectionHeader": "聯絡資訊",
+    "contact": {
+      "emailLabel": "寄送電子郵件給我們",
+      "websiteLabel": "造訪官方網站"
+    },
+    "alerts": {
+      "errorTitle": "錯誤",
+      "emailError": "無法開啟電子郵件應用程式。",
+      "emailGenericError": "開啟電子郵件應用程式時發生錯誤。",
+      "browserError": "無法開啟網頁瀏覽器。",
+      "websiteGenericError": "開啟網站時發生錯誤。"
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "語言",
+    "topNotice": "請在下方選擇您偏好的應用程式語言。",
+    "bottomNotice": "變更語言將會自動更新應用程式文字並儲存至您的帳號。",
+    "activeLanguage": "使用中的語言",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "將應用程式語言設定為英文"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "將應用程式語言設定為丹麥文"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "將應用程式語言設定為法文"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "將應用程式語言設定為德文"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "將應用程式語言設定為印尼文"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "將應用程式語言設定為義大利文"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "將應用程式語言設定為日文"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "將應用程式語言設定為韓文"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "將應用程式語言設定為挪威博克馬爾文"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "將應用程式語言設定為波蘭文"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "將應用程式語言設定為葡萄牙文"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "將應用程式語言設定為俄文"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "將應用程式語言設定為簡體中文"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "將應用程式語言設定為西班牙文"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "將應用程式語言設定為瑞典文"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "將應用程式語言設定為泰文"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "將應用程式語言設定為繁體中文"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "將應用程式語言設定為土耳其文"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "將應用程式語言設定為越南文"
+      }
+    },
+    "alerts": {
+      "errorTitle": "錯誤",
+      "genericUpdateError": "無法在伺服器上更新語言設定。"
+    }
+  },
+  "notifications": {
+    "screenTitle": "通知",
+    "topNotice": "個性化您的通知，以保持連續紀錄。",
+    "bottomNotice": "各個習慣的通知可以在該習慣的個別設定中獨立管理。",
+    "items": {
+      "todays_plan": {
+        "title": "今天的計畫 📋",
+        "description": "「早晨：5個習慣，午後：1個習慣，傍晚：6個習慣，全天：2個習慣」"
+      },
+      "morning_plan": {
+        "title": "晨間計畫 ☀️",
+        "description": "「您今天早上有 5 個習慣需要完成，以及 2 個隨時可進行的習慣。」"
+      },
+      "afternoon_plan": {
+        "title": "午後計畫 🌤️",
+        "description": "「您今天下午有 1 個習慣需要完成，以及 2 個隨時可進行的習慣。」"
+      },
+      "evening_plan": {
+        "title": "傍晚計畫 🌙",
+        "description": "「您今天晚上有 6 個習慣需要完成，以及 2 個隨時可進行的習慣。」"
+      },
+      "today_results": {
+        "title": "今天的成果 🎉",
+        "description": "「已完成：3，已略過：1，剩餘：14 個習慣」"
+      }
+    },
+    "alerts": {
+      "errorTitle": "錯誤",
+      "genericUpdateError": "無法更新通知設定。"
+    }
+  },
+  "settings": {
+    "headerTitle": "設定",
+    "generalTitle": "一般",
+    "sound": "音效",
+    "vacationMode": "度假模式",
+    "vacationSubtitle": "暫停您的習慣，同時保留您的連續紀錄。",
+    "changePassword": "變更密碼",
+    "help": "說明",
+    "privacyPolicy": "隱私權政策",
+    "rateUs": "給我們評分",
+    "shareApp": "分享應用程式",
+    "shareMessage": "快來試試 Habitly！這是一款能幫您培養日常習慣並達成目標的超棒 App。\n\n📱 Android 下載：{{playStoreUrl}}\n🍏 iOS 下載：{{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "無法更新設定，請重試。",
+      "unexpectedNetwork": "發生未知的網路連線錯誤。",
+      "privacyPolicy": "無法開啟隱私權政策頁面。",
+      "appStore": "無法開啟應用程式商店頁面。",
+      "whatsapp": "此裝置上未安裝或無法使用 WhatsApp。",
+      "genericLink": "開啟連結時發生錯誤。"
+    }
+  }
+}

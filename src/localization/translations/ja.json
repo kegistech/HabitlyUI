@@ -1,0 +1,706 @@
+{
+  "auth": {
+    "tagBadge": "習慣トラッカー",
+    "title": "小さな習慣が、\n大きな成果を生む。",
+    "subtitle": "毎日のルーティンを一生ものの習慣に変えましょう。今すぐ一日をコントロールしましょう。",
+    "getStartedFree": "無料で始める",
+    "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
+    "signIn": "ログイン",
+    "termsNotice": "登録することで、以下に同意したことになります：",
+    "termsAndPrivacy": "利用規約およびプライバシーポリシー"
+  },
+  "login": {
+    "tagBadge": "おかえりなさい",
+    "welcomeText": "ログイン",
+    "subText": "連続記録を維持し、今日の進捗を追跡しましょう。",
+    "emailLabel": "メールアドレス",
+    "emailPlaceholder": "name@example.com",
+    "passwordLabel": "パスワード",
+    "passwordPlaceholder": "パスワードを入力",
+    "hide": "非表示",
+    "show": "表示",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "signInButton": "ログイン",
+    "dontHaveAccount": "アカウントをお持ちでないですか？",
+    "signUp": "新規登録",
+    "errors": {
+      "emailRequired": "メールアドレスは必須です。",
+      "emailInvalid": "有効なメールアドレスを入力してください。",
+      "passwordRequired": "パスワードは必須です。",
+      "loginFailed": "ログインに失敗しました。入力内容を確認してください。",
+      "loginError": "メールアドレスまたはパスワードが正しくありません。"
+    }
+  },
+  "forgotPassword": {
+    "tag": "アカウントの復元",
+    "backToLogin": "ログインに戻る",
+    "back": "戻る",
+    "success": "成功",
+    "hide": "非表示",
+    "show": "表示",
+    "titleEmail": "パスワードの再設定 🔒",
+    "titleOtp": "OTP認証 💬",
+    "titlePassword": "新しいパスワード 🔑",
+    "subEmail": "メールアドレスを入力すると、OTPコードが送信されます。",
+    "subOtp": "以下に送信された認証コードを入力してください：",
+    "subPassword": "アカウントを保護するため、新しい安全なパスワードを設定してください。",
+    "noOtp": "コードが届きませんか？",
+    "successMsg": "パスワードが正常に更新されました！",
+    "loginNow": "今すぐログイン",
+    "labels": {
+      "email": "メールアドレス",
+      "otp": "OTPコードを入力",
+      "newPassword": "新しいパスワード",
+      "confirmPassword": "新しいパスワード（確認）"
+    },
+    "placeholders": {
+      "email": "name@example.com",
+      "otp": "• • • • • •",
+      "minPassword": "8文字以上",
+      "reEnterPassword": "パスワードを再入力"
+    },
+    "buttons": {
+      "generateOtp": "OTPを送信",
+      "verifyOtp": "OTPを検証",
+      "updatePassword": "パスワードを更新",
+      "resend": "コードを再送",
+      "resendIn": "再送可能まで"
+    },
+    "errors": {
+      "emailRequired": "メールアドレスは必須です。",
+      "invalidEmail": "有効なメールアドレスを入力してください。",
+      "otpRequired": "OTPコードは必須です。",
+      "invalidOtp": "有効なOTPコードを入力してください。",
+      "passwordRequired": "新しいパスワードは必須です。",
+      "passwordLength": "パスワードは8文字以上である必要があります。",
+      "confirmPasswordRequired": "確認用パスワードを入力してください。",
+      "passwordsMismatch": "パスワードが一致しません。",
+      "sendOtpFailed": "OTPの送信に失敗しました。もう一度お試しください。",
+      "updatePasswordFailed": "パスワードの更新に失敗しました。もう一度お試しください。",
+      "resendFailed": "OTPコードの再送に失敗しました。",
+      "networkError": "ネットワークエラーが発生しました。もう一度お試しください。"
+    }
+  },
+  "signUp": {
+    "badge": "はじめに",
+    "title": "アカウント作成 🚀",
+    "subtitle": "今日からより良い毎日のルーティンを作り始めましょう。",
+    "hide": "非表示",
+    "show": "表示",
+    "loadingCountries": "国を読み込み中...",
+    "labels": {
+      "fullName": "氏名",
+      "email": "メールアドレス",
+      "password": "パスワード",
+      "country": "国"
+    },
+    "placeholders": {
+      "fullName": "山田 太郎",
+      "email": "name@example.com",
+      "password": "8文字以上",
+      "selectCountry": "国を選択してください"
+    },
+    "buttons": {
+      "createAccount": "アカウントを作成",
+      "creatingAccount": "アカウント作成中..."
+    },
+    "legal": {
+      "prefix": "アカウントを作成することで、以下に同意したことになります： ",
+      "termsAndPrivacy": "利用規約およびプライバシーポリシー"
+    },
+    "footer": {
+      "alreadyHaveAccount": "すでにアカウントをお持ちですか？ ",
+      "signIn": "ログイン"
+    },
+    "modal": {
+      "title": "国を選択",
+      "done": "完了"
+    },
+    "errors": {
+      "requiredFields": "必須項目をすべて入力してください。",
+      "invalidEmail": "有効なメールアドレスを入力してください。",
+      "passwordLength": "パスワードは8文字以上である必要があります。",
+      "registrationFailed": "登録に失敗しました。もう一度お試しください。",
+      "networkError": "ネットワークエラーが発生しました。"
+    }
+  },
+  "wakeUpTime": {
+    "badge": "朝のルーティン",
+    "title": "普段は何時に\n起きますか？ 🌅",
+    "subtitle": "一日を最適化し、やる気を高めるリマインダーをスケジュールするために使用します。",
+    "buttons": {
+      "continue": "次へ"
+    },
+    "errors": {
+      "updateFailed": "起床時間の更新に失敗しました。もう一度お試しください。",
+      "networkError": "ネットワークエラーが発生しました。"
+    }
+  },
+  "reflectionTime": {
+    "badge": "夜の振り返り",
+    "title": "一日の振り返りは\n何時にしますか？ 🌙",
+    "subtitle": "夜の簡単な振り返りは、達成感を実感し、継続性を維持するのに役立ちます。",
+    "buttons": {
+      "continue": "次へ"
+    },
+    "errors": {
+      "updateFailed": "振り返り時間の更新に失敗しました。もう一度お試しください。",
+      "networkError": "ネットワークエラーが発生しました。"
+    }
+  },
+  "dashboard": {
+    "title": "今日",
+    "sectionTitle": "タスクと習慣",
+    "emptyHabits": "この日付にスケジュールされた習慣はありません。",
+    "defaults": {
+      "goalType": "毎日",
+      "valueType": "回"
+    },
+    "tracking": {
+      "disabledFuture": "未来の日付の記録は無効です",
+      "trackToday": "今日の記録をつける"
+    },
+    "alerts": {
+      "errorTitle": "エラー",
+      "fetchError": "選択した日付の習慣の取得に失敗しました。",
+      "trackError": "習慣の進捗更新に失敗しました。",
+      "connectError": "トラッカーへの接続に失敗しました。",
+      "futureDateTitle": "未許可の操作",
+      "futureDateMessage": "未来の日付の記録はできません。",
+      "goalReachedTitle": "目標達成",
+      "goalReachedMessage": "この習慣の目標を達成しました。",
+      "minLimitTitle": "最小制限",
+      "minLimitMessage": "完了したアクティビティ数は0未満にできません。",
+      "limitReachedTitle": "上限に達しました",
+      "limitReachedMessage": "無料枠の制限（2つの習慣）に達しました。無制限アクセスを利用するにはProにアップグレードしてください。",
+      "cancel": "キャンセル",
+      "upgrade": "アップグレード"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "習慣を作成",
+    "regularHabit": "定期的な習慣",
+    "oneTimeTask": "単発タスク",
+    "sectionHeader": "またはカテゴリーから選択",
+    "defaultCategorySubtitle": "新しい習慣を見つけて構築する",
+    "alerts": {
+      "noticeTitle": "お知らせ",
+      "fetchError": "カテゴリーの取得に失敗しました。",
+      "errorTitle": "エラー",
+      "connectError": "サーバーへの接続に失敗しました。"
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "習慣",
+    "habitsCount": "{{count}} 個の習慣",
+    "habitsCount_plural": "{{count}} 個の習慣",
+    "emptyState": "このカテゴリーの習慣テンプレートが見つかりません。",
+    "alerts": {
+      "noticeTitle": "お知らせ",
+      "fetchError": "習慣テンプレートの取得に失敗しました。",
+      "errorTitle": "エラー",
+      "connectError": "サーバーへの接続に失敗しました。"
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "タスクを編集",
+    "headerTitleCreate": "単発タスク",
+    "save": "保存",
+    "habitNamePlaceholder": "習慣の名前を入力",
+    "selectColor": "カラーを選択",
+    "todayPrefix": "今日、{{date}}",
+    "getReminders": "リマインダーを受け取る",
+    "addReminderTime": "リマインダー時間を追加",
+    "validation": {
+      "title": "入力エラー",
+      "emptyName": "習慣の名前を入力してください。"
+    },
+    "alerts": {
+      "errorTitle": "エラー",
+      "successTitle": "成功",
+      "fetchColorsFailed": "カラーの取得に失敗しました。",
+      "updateSuccess": "単発タスクが更新されました。",
+      "updateFailed": "タスクの更新に失敗しました。",
+      "updateError": "更新中にエラーが発生しました。",
+      "createSuccess": "単発タスクが作成されました。",
+      "createFailed": "タスクの作成に失敗しました。",
+      "createError": "作成中にエラーが発生しました。",
+      "ok": "OK"
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "習慣を編集",
+    "headerTitleNew": "新しい習慣",
+    "save": "保存",
+    "placeholderName": "習慣の名前を入力",
+    "selectColor": "カラーを選択",
+    "goalForHabit": "習慣の目標",
+    "numberOfTimes": "回数",
+    "time": "時間",
+    "timesSuffix": "回",
+    "minutesSuffix": "分",
+    "frequencies": {
+      "daily": "毎日",
+      "weekly": "毎週",
+      "monthly": "毎月"
+    },
+    "repeatEveryDay": "毎日繰り返す",
+    "repeatDailyIn": "毎日の時間帯：",
+    "timesOfDay": {
+      "morning": "朝",
+      "afternoon": "昼",
+      "evening": "夜"
+    },
+    "daysOfWeek": {
+      "sunday": "日",
+      "monday": "月",
+      "tuesday": "火",
+      "wednesday": "水",
+      "thursday": "木",
+      "friday": "金",
+      "saturday": "土"
+    },
+    "getReminders": "リマインダーを受け取る",
+    "addReminderTime": "リマインダー時間を追加",
+    "alerts": {
+      "errorTitle": "エラー",
+      "successTitle": "成功",
+      "validationTitle": "入力エラー",
+      "enterHabitName": "習慣の名前を入力してください。",
+      "fetchColorsFailed": "カラーの取得に失敗しました。",
+      "habitUpdatedSuccess": "習慣が正常に更新されました。",
+      "habitCreatedSuccess": "習慣が正常に作成されました。",
+      "habitUpdateFailed": "習慣の更新に失敗しました。",
+      "habitCreateFailed": "習慣 commercial作成に失敗しました。",
+      "updateError": "更新中にエラーが発生しました。",
+      "createError": "作成中にエラーが発生しました。"
+    }
+  },
+  "common": {
+    "error": "エラー",
+    "success": "成功",
+    "cancel": "キャンセル",
+    "goBack": "戻る"
+  },
+  "habitDetails": {
+    "currentStreak": "現在の連続達成",
+    "longestStreak": "最長連続達成",
+    "completionRate": "達成率",
+    "totalTimesCompleted": "通算完了回数",
+    "dayCount_one": "{{count}} 日",
+    "dayCount_other": "{{count}} 日",
+    "actions": {
+      "edit": "編集",
+      "archive": "アーカイブ"
+    },
+    "alerts": {
+      "archiveTitle": "習慣をアーカイブ",
+      "archiveMessage": "「{{name}}」をアーカイブしてもよろしいですか？",
+      "archiveSuccess": "習慣がアーカイブされました。",
+      "archiveFailed": "習慣のアーカイブに失敗しました。",
+      "fetchFailed": "習慣統計の読み込みに失敗しました。"
+    },
+    "daysOfWeek": ["日", "月", "火", "水", "木", "金", "土"],
+    "monthNames": [
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月"
+    ]
+  },
+  "stats": {
+    "title": "統計情報",
+    "months": [
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月"
+    ],
+    "daysOfWeek": {
+      "sun": "日",
+      "mon": "月",
+      "tue": "火",
+      "wed": "水",
+      "thu": "木",
+      "fri": "金",
+      "sat": "土"
+    },
+    "legend": {
+      "allComplete": "すべて完了",
+      "someComplete": "一部完了"
+    },
+    "quote": "最初の一歩が常に最も困難です。あなたなら絶対にできます！",
+    "currentStreak": "現在の連続達成",
+    "longestStreak": "最長連続達成",
+    "days": "{{count}} 日",
+    "days_one": "{{count}} 日",
+    "days_other": "{{count}} 日",
+    "totalPerfectDays": "パーフェクト達成日数",
+    "totalTimesCompleted": "通算完了回数",
+    "habitCompletionRate": "習慣達成率",
+    "averagePerDaily": "1日あたりの平均",
+    "errors": {
+      "fetchFailedTitle": "エラー",
+      "fetchFailedMessage": "習慣統計の読み込みに失敗しました。"
+    }
+  },
+  "subscription": {
+    "restore": "復元",
+    "heroTitle": "生産性を飛躍的に高める",
+    "loading": "読み込み中...",
+    "features": [
+      "習慣トラッキング＆リマインダー無制限",
+      "詳細な分析＆進捗インサイト",
+      "広告なしのプレミアム体験"
+    ],
+    "yearly": {
+      "bestOffer": "一番人気",
+      "title": "年額プラン",
+      "subtitle": "1年間アクセス • {{price}}"
+    },
+    "monthly": {
+      "title": "月額プラン",
+      "priceFormat": "{{price}}/月"
+    },
+    "cancelOrManage": "サブスクリプションの解約・管理",
+    "continue": "次へ",
+    "plans": {
+      "yearlyPlan": "年額プラン",
+      "monthlyPlan": "月額プラン",
+      "yearlyPrice": "{{price}}/年",
+      "monthlyPrice": "{{price}}/月"
+    },
+    "securePayment": {
+      "ios": "App Store経由の安全な決済",
+      "android": "Google Play経由の安全な決済"
+    },
+    "autoRenewDisclaimer": "現在の期間が終了する少なくとも24時間前にキャンセルされない限り、サブスクリプションは自動的に更新されます。",
+    "legal": {
+      "termsOfUse": "利用規約（EULA）",
+      "privacyPolicy": "プライバシーポリシー"
+    },
+    "alerts": {
+      "storeErrorTitle": "ストアエラー",
+      "storeErrorMessage": "サブスクリプションプランの読み込みに失敗しました。",
+      "errorTitle": "エラー",
+      "cannotOpenLink": "リンクを開けません: {{url}}",
+      "failedOpenLink": "リンクを開くのに失敗しました。",
+      "planUnavailable": "選択されたプランは現在ご利用いただけません。",
+      "successTitle": "成功！",
+      "upgradedMessage": "アカウントがアップグレードされました。",
+      "continueBtn": "次へ",
+      "paymentFailedTitle": "決済失敗",
+      "unexpectedError": "予期せぬエラーが発生しました。",
+      "restoredTitle": "復元完了",
+      "restoredMessage": "サブスクリプションが正常に復元されました。",
+      "noSubscriptionTitle": "サブスクリプションなし",
+      "noSubscriptionMessage": "復元可能な有効なサブスクリプションが見つかりませんでした。",
+      "restoreFailedPrefix": "復元失敗: ",
+      "manageTitle": "サブスクリプション管理",
+      "manageMessage": "プランの管理または解約を行うため、サブスクリプション設定に移動します。",
+      "cancelBtn": "キャンセル",
+      "openSettingsBtn": "設定を開く",
+      "cannotOpenSettings": "サブスクリプション設定を開けません。"
+    }
+  },
+  "appLayout": {
+    "tryPro": "PROをお試し",
+    "routes": {
+      "dashboard": "今日",
+      "stats": "統計",
+      "profile": "マイページ"
+    }
+  },
+  "profile": {
+    "screenTitle": "マイページ",
+    "edit": "編集",
+    "allHabits": "すべての習慣",
+    "notifications": "通知設定",
+    "changeLanguage": "言語変更",
+    "settings": "設定",
+    "tryForFree": "無料でお試し",
+    "pro": "PRO",
+    "signOut": "ログアウト",
+    "signOutAlert": {
+      "title": "ログアウト",
+      "message": "本当にログアウトしますか？",
+      "cancel": "キャンセル",
+      "confirm": "ログアウト"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "すべての習慣",
+    "tabs": {
+      "regular": "定期的な習慣",
+      "oneTime": "単発タスク"
+    },
+    "emptyState": {
+      "regular": "定期的な習慣は見つかりませんでした。",
+      "oneTime": "単発タスクは見つかりませんでした。"
+    },
+    "defaults": {
+      "daily": "毎日",
+      "times": "回"
+    },
+    "alerts": {
+      "errorTitle": "エラー",
+      "fetchFailed": "今後の習慣の取得に失敗しました。"
+    }
+  },
+  "changePassword": {
+    "screenTitle": "パスワード変更",
+    "infoCard": {
+      "title": "セキュリティの強化",
+      "subtitle": "8文字以上の強力なパスワードを選択してください。"
+    },
+    "labels": {
+      "currentPassword": "現在のパスワード",
+      "newPassword": "新しいパスワード",
+      "confirmPassword": "新しいパスワード（確認）"
+    },
+    "placeholders": {
+      "currentPassword": "現在のパスワードを入力",
+      "newPassword": "新しいパスワードを入力",
+      "confirmPassword": "新しいパスワードを再入力"
+    },
+    "buttons": {
+      "updatePassword": "パスワードを更新"
+    },
+    "validation": {
+      "errorTitle": "入力エラー",
+      "currentPasswordRequired": "現在のパスワードを入力してください。",
+      "newPasswordRequired": "新しいパスワードを入力してください。",
+      "minLength": "新しいパスワードは8文字以上である必要があります。",
+      "sameAsCurrent": "新しいパスワードは現在のパスワードと同じにできません。",
+      "passwordMismatch": "新しいパスワードと確認用パスワードが一致しません。"
+    },
+    "alerts": {
+      "successTitle": "成功",
+      "successMessage": "パスワードが正常に変更されました！",
+      "errorTitle": "エラー",
+      "fetchFailed": "パスワードの変更に失敗しました。",
+      "genericError": "問題が発生しました。もう一度お試しください。"
+    }
+  },
+  "editProfile": {
+    "screenTitle": "プロフィール編集",
+    "labels": {
+      "fullName": "氏名",
+      "country": "国",
+      "state": "都道府県 / 州"
+    },
+    "placeholders": {
+      "fullName": "お名前を入力",
+      "country": "国を選択",
+      "state": "都道府県を選択",
+      "selectCountryFirst": "最初に国を選択してください"
+    },
+    "buttons": {
+      "saveChanges": "変更を保存"
+    },
+    "validation": {
+      "nameRequired": "氏名を入力してください。"
+    },
+    "alerts": {
+      "successTitle": "成功",
+      "successMessage": "プロフィールが更新されました！",
+      "errorTitle": "エラー",
+      "updateFailed": "プロフィールの更新に失敗しました。",
+      "genericError": "プロフィールの保存中にエラーが発生しました。"
+    }
+  },
+  "help": {
+    "screenTitle": "ヘルプ＆サポート",
+    "infoCard": {
+      "title": "何かお困りですか？",
+      "subtitle": "ご質問、ご意見、ご要望がございましたら、お気軽にお問い合わせください。"
+    },
+    "sectionHeader": "連絡先情報",
+    "contact": {
+      "emailLabel": "メールでのお問い合わせ",
+      "websiteLabel": "ウェブサイトを開く"
+    },
+    "alerts": {
+      "errorTitle": "エラー",
+      "emailError": "メールアプリを開けませんでした。",
+      "emailGenericError": "メール送信の起動中にエラーが発生しました。",
+      "browserError": "ウェブブラウザを開けませんでした。",
+      "websiteGenericError": "ウェブサイトを開く際にエラーが発生しました。"
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "言語",
+    "topNotice": "アプリで使用する希望の言語を以下から選択してください。",
+    "bottomNotice": "言語を変更すると、アプリ全体のUIラベルが自動的に更新され、アカウントに保存されます。",
+    "activeLanguage": "現在の言語",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "アプリの言語を英語に設定"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "アプリの言語をデンマーク語に設定"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "アプリの言語をフランス語に設定"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "アプリの言語をドイツ語に設定"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "アプリの言語をインドネシア語に設定"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "アプリの言語をイタリア語に設定"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "アプリの言語を日本語に設定"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "アプリの言語を韓国語に設定"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "アプリの言語をノルウェー語（ボークモール）に設定"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "アプリの言語をポーランド語に設定"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "アプリの言語をポルトガル語に設定"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "アプリの言語をロシア語に設定"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "アプリの言語を簡体字中国語に設定"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "アプリの言語をスペイン語に設定"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "アプリの言語をスウェーデン語に設定"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "アプリの言語をタイ語に設定"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "アプリの言語を繁体字中国語に設定"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "アプリの言語をトルコ語に設定"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "アプリの言語をベトナム語に設定"
+      }
+    },
+    "alerts": {
+      "errorTitle": "エラー",
+      "genericUpdateError": "サーバー上の言語設定の更新に失敗しました。"
+    }
+  },
+  "notifications": {
+    "screenTitle": "通知設定",
+    "topNotice": "習慣の継続をサポートするための通知を設定します。",
+    "bottomNotice": "個別の習慣のリマインダーは、各習慣の設定画面からも調整できます。",
+    "items": {
+      "todays_plan": {
+        "title": "今日の予定 📋",
+        "description": "「朝: 5つの習慣、昼: 1つの習慣、夜: 6つの習慣、いつでも: 2つの習慣」"
+      },
+      "morning_plan": {
+        "title": "朝の予定 ☀️",
+        "description": "「今朝は5つの習慣と、いつでも行える習慣が2つあります。」"
+      },
+      "afternoon_plan": {
+        "title": "昼の予定 🌤️",
+        "description": "「今日の午後は1つの習慣と、いつでも行える習慣が2つあります。」"
+      },
+      "evening_plan": {
+        "title": "夜の予定 🌙",
+        "description": "「今夜は6つの習慣と、いつでも行える習慣が2つあります。」"
+      },
+      "today_results": {
+        "title": "今日の成果 🎉",
+        "description": "「完了: 3つ、スキップ: 1つ、残り: 14個の習慣」"
+      }
+    },
+    "alerts": {
+      "errorTitle": "エラー",
+      "genericUpdateError": "通知設定の更新に失敗しました。"
+    }
+  },
+  "settings": {
+    "headerTitle": "設定",
+    "generalTitle": "一般",
+    "sound": "効果音",
+    "vacationMode": "休暇モード",
+    "vacationSubtitle": "習慣を一時停止し、連続達成記録を保護します",
+    "changePassword": "パスワード変更",
+    "help": "ヘルプ",
+    "privacyPolicy": "プライバシーポリシー",
+    "rateUs": "アプリを評価",
+    "shareApp": "アプリを共有",
+    "shareMessage": "Habitlyをチェック！毎日の習慣を記録して目標達成をサポートするアプリです。\n\n📱 Android版をダウンロード: {{playStoreUrl}}\n🍏 iOS版をダウンロード: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "設定の更新に失敗しました。もう一度お試しください。",
+      "unexpectedNetwork": "予期せぬネットワークエラーが発生しました。",
+      "privacyPolicy": "プライバシーポリシーページを開けませんでした。",
+      "appStore": "アプリストアのページを開けませんでした。",
+      "whatsapp": "WhatsAppがこのデバイスにインストールされていないか、利用できません。",
+      "genericLink": "リンクを開く際に予期せぬエラーが発生しました。"
+    }
+  }
+}

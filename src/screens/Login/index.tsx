@@ -20,6 +20,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/responsive';
@@ -29,6 +30,8 @@ import { loginAPI } from '../../services/apiendpoints';
 type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 const LoginScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
+
   // --- Form State ---
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -73,15 +76,15 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!email.trim()) {
-      setEmailError('Email address is required.');
+      setEmailError(t('login.errors.emailRequired', 'Email address is required.'));
       isValid = false;
     } else if (!emailRegex.test(email.trim())) {
-      setEmailError('Please enter a valid email address.');
+      setEmailError(t('login.errors.emailInvalid', 'Please enter a valid email address.'));
       isValid = false;
     }
 
     if (!password) {
-      setPasswordError('Password is required.');
+      setPasswordError(t('login.errors.passwordRequired', 'Password is required.'));
       isValid = false;
     }
 
@@ -105,7 +108,10 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
       payload,
       async (response: any) => {
         setIsLoading(false);
-        if (response && (response.succeeded || response.isSuccess || response.status === 200 || response.token)) {
+        if (
+          response &&
+          (response.succeeded || response.isSuccess || response.status === 200 || response.token)
+        ) {
           const token = response.token || response.data?.token;
           if (token) {
             await setAuthToken(token);
@@ -114,18 +120,24 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
           if (response.data?.userDetail) {
             await AsyncStorage.setItem('userData', JSON.stringify(response.data.userDetail));
           }
-              if (response.data?.userDetail?.id) {
-                          await AsyncStorage.setItem('id', String(response.data.userDetail?.id));
-              }
+          if (response.data?.userDetail?.id) {
+            await AsyncStorage.setItem('id', String(response.data.userDetail?.id));
+          }
 
           navigation.replace('Dashboard');
         } else {
-          setGeneralError(response?.message || 'Login failed. Please verify your credentials.');
+          setGeneralError(
+            response?.message ||
+              t('login.errors.loginFailed', 'Login failed. Please verify your credentials.')
+          );
         }
       },
       (error: any) => {
         setIsLoading(false);
-        const serverMsg = error?.response?.data?.message || error?.message || 'Invalid email or password. Please try again.';
+        const serverMsg =
+          error?.response?.data?.message ||
+          error?.message ||
+          t('login.errors.loginError', 'Invalid email or password. Please try again.');
         setGeneralError(serverMsg);
       }
     );
@@ -172,12 +184,16 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
                 ]}
               >
                 <View style={styles.tagBadge}>
-                  <Text style={styles.tagBadgeText}>WELCOME BACK</Text>
+                  <Text style={styles.tagBadgeText}>
+                    {t('login.tagBadge', 'WELCOME BACK')}
+                  </Text>
                 </View>
 
-                <Text style={styles.welcomeText}>Sign In 👋</Text>
+                <Text style={styles.welcomeText}>
+                  {t('login.welcomeText', 'Sign In 👋')}
+                </Text>
                 <Text style={styles.subText}>
-                  Continue your streak and track today's progress.
+                  {t('login.subText', "Continue your streak and track today's progress.")}
                 </Text>
               </Animated.View>
 
@@ -200,7 +216,9 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
               >
                 {/* Email Input */}
                 <View style={styles.inputWrapper}>
-                  <Text style={styles.inputLabel}>EMAIL ADDRESS</Text>
+                  <Text style={styles.inputLabel}>
+                    {t('login.emailLabel', 'EMAIL ADDRESS')}
+                  </Text>
                   <View
                     style={[
                       styles.inputContainer,
@@ -210,7 +228,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
                   >
                     <TextInput
                       style={styles.textInput}
-                      placeholder="name@example.com"
+                      placeholder={t('login.emailPlaceholder', 'name@example.com')}
                       placeholderTextColor="rgba(226, 232, 240, 0.35)"
                       value={email}
                       onChangeText={(val) => {
@@ -230,7 +248,9 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
                 {/* Password Input */}
                 <View style={styles.inputWrapper}>
-                  <Text style={styles.inputLabel}>PASSWORD</Text>
+                  <Text style={styles.inputLabel}>
+                    {t('login.passwordLabel', 'PASSWORD')}
+                  </Text>
                   <View
                     style={[
                       styles.inputContainer,
@@ -240,7 +260,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
                   >
                     <TextInput
                       style={styles.textInput}
-                      placeholder="Enter your password"
+                      placeholder={t('login.passwordPlaceholder', 'Enter your password')}
                       placeholderTextColor="rgba(226, 232, 240, 0.35)"
                       secureTextEntry={!isPasswordVisible}
                       value={password}
@@ -258,11 +278,15 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
                       activeOpacity={0.7}
                     >
                       <Text style={styles.eyeButtonText}>
-                        {isPasswordVisible ? 'HIDE' : 'SHOW'}
+                        {isPasswordVisible
+                          ? t('login.hide', 'HIDE')
+                          : t('login.show', 'SHOW')}
                       </Text>
                     </TouchableOpacity>
                   </View>
-                  {passwordError ? <Text style={styles.fieldErrorText}>{passwordError}</Text> : null}
+                  {passwordError ? (
+                    <Text style={styles.fieldErrorText}>{passwordError}</Text>
+                  ) : null}
                 </View>
 
                 {/* Forgot Password Link */}
@@ -271,7 +295,9 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
                   style={styles.forgotPasswordContainer}
                   activeOpacity={0.7}
                 >
-                  <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+                  <Text style={styles.forgotPasswordText}>
+                    {t('login.forgotPassword', 'Forgot Password?')}
+                  </Text>
                 </TouchableOpacity>
 
                 {/* Submit Button */}
@@ -290,7 +316,9 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
                     {isLoading ? (
                       <ActivityIndicator color="#FFFFFF" size="small" />
                     ) : (
-                      <Text style={styles.loginButtonText}>SIGN IN</Text>
+                      <Text style={styles.loginButtonText}>
+                        {t('login.signInButton', 'SIGN IN')}
+                      </Text>
                     )}
                   </LinearGradient>
                 </TouchableOpacity>
@@ -298,10 +326,12 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
                 {/* Footer Switcher */}
                 <View style={styles.footerContainer}>
                   <Text style={styles.footerText}>
-                    Don't have an account?{' '}
+                    {t('login.dontHaveAccount', "Don't have an account?")}{' '}
                   </Text>
                   <TouchableOpacity onPress={handleSignUpRedirect} activeOpacity={0.7}>
-                    <Text style={styles.signUpText}>Sign Up</Text>
+                    <Text style={styles.signUpText}>
+                      {t('login.signUp', 'Sign Up')}
+                    </Text>
                   </TouchableOpacity>
                 </View>
               </Animated.View>

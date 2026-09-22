@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Eye, EyeOff, Lock } from 'lucide-react-native';
 
 import { RootStackParamList } from '../../navigation/navigation';
@@ -37,6 +38,8 @@ interface ApiResponse<T = any> {
 }
 
 const ChangePasswordScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
+
   const [currentPassword, setCurrentPassword] = useState<string>('');
   const [newPassword, setNewPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
@@ -48,29 +51,44 @@ const ChangePasswordScreen: React.FC<Props> = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleChangePassword = async () => {
-    // Basic Form Validations
+    // Form Validations
     if (!currentPassword.trim()) {
-      Alert.alert('Validation Error', 'Please enter your current password.');
+      Alert.alert(
+        t('changePassword.validation.errorTitle'),
+        t('changePassword.validation.currentPasswordRequired')
+      );
       return;
     }
 
     if (!newPassword.trim()) {
-      Alert.alert('Validation Error', 'Please enter a new password.');
+      Alert.alert(
+        t('changePassword.validation.errorTitle'),
+        t('changePassword.validation.newPasswordRequired')
+      );
       return;
     }
 
-    if (newPassword.length < 6) {
-      Alert.alert('Validation Error', 'New password must be at least 8 characters long.');
+    if (newPassword.length < 8) {
+      Alert.alert(
+        t('changePassword.validation.errorTitle'),
+        t('changePassword.validation.minLength')
+      );
       return;
     }
 
     if (newPassword === currentPassword) {
-      Alert.alert('Validation Error', 'New password cannot be the same as current password.');
+      Alert.alert(
+        t('changePassword.validation.errorTitle'),
+        t('changePassword.validation.sameAsCurrent')
+      );
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      Alert.alert('Validation Error', 'New password and confirm password do not match.');
+      Alert.alert(
+        t('changePassword.validation.errorTitle'),
+        t('changePassword.validation.passwordMismatch')
+      );
       return;
     }
 
@@ -87,16 +105,24 @@ const ChangePasswordScreen: React.FC<Props> = ({ navigation }) => {
       (res: ApiResponse) => {
         setIsLoading(false);
         if (res?.succeeded) {
-          Alert.alert('Success', res?.message || 'Password changed successfully!', [
-            { text: 'OK', onPress: () => navigation.goBack() },
-          ]);
+          Alert.alert(
+            t('changePassword.alerts.successTitle'),
+            res?.message || t('changePassword.alerts.successMessage'),
+            [{ text: 'OK', onPress: () => navigation.goBack() }]
+          );
         } else {
-          Alert.alert('Error', res?.message || 'Failed to change password.');
+          Alert.alert(
+            t('changePassword.alerts.errorTitle'),
+            res?.message || t('changePassword.alerts.fetchFailed')
+          );
         }
       },
       (err: any) => {
         setIsLoading(false);
-        Alert.alert('Error', err?.message || 'Something went wrong. Please try again.');
+        Alert.alert(
+          t('changePassword.alerts.errorTitle'),
+          err?.message || t('changePassword.alerts.genericError')
+        );
       }
     );
   };
@@ -115,7 +141,7 @@ const ChangePasswordScreen: React.FC<Props> = ({ navigation }) => {
           <ArrowLeft size={moderateScale(22)} color="#FFFFFF" />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>Change Password</Text>
+        <Text style={styles.headerTitle}>{t('changePassword.screenTitle')}</Text>
 
         <View style={styles.headerRightPlaceholder} />
       </View>
@@ -135,9 +161,9 @@ const ChangePasswordScreen: React.FC<Props> = ({ navigation }) => {
               <Lock size={moderateScale(24)} color="#29B6F6" />
             </View>
             <View style={styles.infoTextContainer}>
-              <Text style={styles.infoTitle}>Update Security</Text>
+              <Text style={styles.infoTitle}>{t('changePassword.infoCard.title')}</Text>
               <Text style={styles.infoSubtitle}>
-                Choose a strong password with at least 8 characters.
+                {t('changePassword.infoCard.subtitle')}
               </Text>
             </View>
           </View>
@@ -146,11 +172,11 @@ const ChangePasswordScreen: React.FC<Props> = ({ navigation }) => {
           <View style={styles.formContainer}>
             {/* Current Password */}
             <View style={styles.inputGroup}>
-              <Text style={styles.label}>CURRENT PASSWORD</Text>
+              <Text style={styles.label}>{t('changePassword.labels.currentPassword')}</Text>
               <View style={styles.inputWrapper}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Enter current password"
+                  placeholder={t('changePassword.placeholders.currentPassword')}
                   placeholderTextColor="#8E93A6"
                   secureTextEntry={!showCurrentPassword}
                   value={currentPassword}
@@ -173,11 +199,11 @@ const ChangePasswordScreen: React.FC<Props> = ({ navigation }) => {
 
             {/* New Password */}
             <View style={styles.inputGroup}>
-              <Text style={styles.label}>NEW PASSWORD</Text>
+              <Text style={styles.label}>{t('changePassword.labels.newPassword')}</Text>
               <View style={styles.inputWrapper}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Enter new password"
+                  placeholder={t('changePassword.placeholders.newPassword')}
                   placeholderTextColor="#8E93A6"
                   secureTextEntry={!showNewPassword}
                   value={newPassword}
@@ -200,11 +226,11 @@ const ChangePasswordScreen: React.FC<Props> = ({ navigation }) => {
 
             {/* Confirm New Password */}
             <View style={styles.inputGroup}>
-              <Text style={styles.label}>CONFIRM NEW PASSWORD</Text>
+              <Text style={styles.label}>{t('changePassword.labels.confirmPassword')}</Text>
               <View style={styles.inputWrapper}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Re-enter new password"
+                  placeholder={t('changePassword.placeholders.confirmPassword')}
                   placeholderTextColor="#8E93A6"
                   secureTextEntry={!showConfirmPassword}
                   value={confirmPassword}
@@ -236,7 +262,9 @@ const ChangePasswordScreen: React.FC<Props> = ({ navigation }) => {
             {isLoading ? (
               <ActivityIndicator size="small" color="#FFFFFF" />
             ) : (
-              <Text style={styles.submitButtonText}>Update Password</Text>
+              <Text style={styles.submitButtonText}>
+                {t('changePassword.buttons.updatePassword')}
+              </Text>
             )}
           </TouchableOpacity>
         </ScrollView>

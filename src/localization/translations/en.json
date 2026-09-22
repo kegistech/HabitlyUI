@@ -1,0 +1,706 @@
+{
+ "auth": {
+    "tagBadge": "HABIT BUILDER",
+    "title": "Small habits.\nRemarkable wins.",
+    "subtitle": "Transform your daily routines into lifelong streaks. Take control of your day now.",
+    "getStartedFree": "GET STARTED FREE",
+    "alreadyHaveAccount": "I already have an account.",
+    "signIn": "Sign In",
+    "termsNotice": "By signing up, you agree to our",
+    "termsAndPrivacy": "Terms of Service and Privacy Policy"
+  },
+  "login": {
+    "tagBadge": "WELCOME BACK",
+    "welcomeText": "Sign In",
+    "subText": "Continue your streak and track today's progress.",
+    "emailLabel": "EMAIL ADDRESS",
+    "emailPlaceholder": "name@example.com",
+    "passwordLabel": "PASSWORD",
+    "passwordPlaceholder": "Enter your password",
+    "hide": "HIDE",
+    "show": "SHOW",
+    "forgotPassword": "Forgot Password?",
+    "signInButton": "SIGN IN",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "errors": {
+      "emailRequired": "Email address is required.",
+      "emailInvalid": "Please enter a valid email address.",
+      "passwordRequired": "Password is required.",
+      "loginFailed": "Login failed. Please verify your credentials.",
+      "loginError": "Invalid email or password. Please try again."
+    }
+  },
+ "forgotPassword": {
+    "tag": "ACCOUNT RECOVERY",
+    "backToLogin": "Back to Login",
+    "back": "Back",
+    "success": "Success",
+    "hide": "HIDE",
+    "show": "SHOW",
+    "titleEmail": "Reset Password 🔒",
+    "titleOtp": "Verify OTP 💬",
+    "titlePassword": "New Password 🔑",
+    "subEmail": "Enter your email address and we'll send you an OTP code.",
+    "subOtp": "Enter the verification code sent to",
+    "subPassword": "Set a strong new password to protect your account.",
+    "noOtp": "Didn't receive the code?",
+    "successMsg": "Your password has been updated successfully!",
+    "loginNow": "Login Now",
+    "labels": {
+      "email": "EMAIL ADDRESS",
+      "otp": "ENTER OTP CODE",
+      "newPassword": "NEW PASSWORD",
+      "confirmPassword": "CONFIRM NEW PASSWORD"
+    },
+    "placeholders": {
+      "email": "name@example.com",
+      "otp": "• • • • • •",
+      "minPassword": "Minimum 8 characters",
+      "reEnterPassword": "Re-enter password"
+    },
+    "buttons": {
+      "generateOtp": "GENERATE OTP",
+      "verifyOtp": "VERIFY OTP",
+      "updatePassword": "UPDATE PASSWORD",
+      "resend": "Resend Code",
+      "resendIn": "Resend in"
+    },
+    "errors": {
+      "emailRequired": "Email address is required.",
+      "invalidEmail": "Please enter a valid email address.",
+      "otpRequired": "OTP code is required.",
+      "invalidOtp": "Please enter a valid OTP code.",
+      "passwordRequired": "New password is required.",
+      "passwordLength": "Password must be at least 8 characters long.",
+      "confirmPasswordRequired": "Please confirm your new password.",
+      "passwordsMismatch": "Passwords do not match.",
+      "sendOtpFailed": "Failed to send OTP code. Please try again.",
+      "updatePasswordFailed": "Failed to update password. Please try again.",
+      "resendFailed": "Failed to resend OTP code.",
+      "networkError": "Network error. Please try again."
+    }
+  },
+"signUp": {
+    "badge": "GET STARTED",
+    "title": "Create Account 🚀",
+    "subtitle": "Start building better daily routines starting today.",
+    "hide": "HIDE",
+    "show": "SHOW",
+    "loadingCountries": "Loading countries...",
+    "labels": {
+      "fullName": "FULL NAME",
+      "email": "EMAIL ADDRESS",
+      "password": "PASSWORD",
+      "country": "COUNTRY"
+    },
+    "placeholders": {
+      "fullName": "John Doe",
+      "email": "name@example.com",
+      "password": "Minimum 8 characters",
+      "selectCountry": "Select your country"
+    },
+    "buttons": {
+      "createAccount": "CREATE MY ACCOUNT",
+      "creatingAccount": "CREATING ACCOUNT..."
+    },
+    "legal": {
+      "prefix": "By creating an account, you agree to our ",
+      "termsAndPrivacy": "Terms and Privacy Policy"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Already have an account? ",
+      "signIn": "Sign In"
+    },
+    "modal": {
+      "title": "Select Country",
+      "done": "Done"
+    },
+    "errors": {
+      "requiredFields": "Please fill in all required fields.",
+      "invalidEmail": "Please enter a valid email address.",
+      "passwordLength": "Password must be at least 8 characters long.",
+      "registrationFailed": "Registration failed. Please try again.",
+      "networkError": "Network error occurred."
+    }
+  },
+  "wakeUpTime": {
+    "badge": "MORNING ROUTINE",
+    "title": "What time do you\nusually wake up? 🌅",
+    "subtitle": "We'll use this to optimize your daily routine and schedule momentum alerts.",
+    "buttons": {
+      "continue": "CONTINUE"
+    },
+    "errors": {
+      "updateFailed": "Failed to update wake-up time. Please try again.",
+      "networkError": "Network error occurred."
+    }
+  },
+  "reflectionTime": {
+    "badge": "EVENING REFLECTION",
+    "title": "When do you want to\nreflect on your day? 🌙",
+    "subtitle": "A quick evening check-in helps celebrate wins and stay consistent.",
+    "buttons": {
+      "continue": "CONTINUE"
+    },
+    "errors": {
+      "updateFailed": "Failed to update reflection time. Please try again.",
+      "networkError": "Network error occurred."
+    }
+  },
+  "dashboard": {
+    "title": "Today",
+    "sectionTitle": "TASKS & HABITS",
+    "emptyHabits": "No habits scheduled for this date.",
+    "defaults": {
+      "goalType": "Daily",
+      "valueType": "times"
+    },
+    "tracking": {
+      "disabledFuture": "Tracking disabled for future dates",
+      "trackToday": "Track today's activity"
+    },
+    "alerts": {
+      "errorTitle": "Error",
+      "fetchError": "Failed to fetch habits for selected date.",
+      "trackError": "Failed to update habit progress.",
+      "connectError": "Failed to connect to tracker.",
+      "futureDateTitle": "Action Not Allowed",
+      "futureDateMessage": "You cannot track activity for future dates.",
+      "goalReachedTitle": "Goal Reached",
+      "goalReachedMessage": "You have already completed the target for this habit.",
+      "minLimitTitle": "Minimum Limit",
+      "minLimitMessage": "Completed activity cannot be less than 0.",
+      "limitReachedTitle": "Limit Reached",
+      "limitReachedMessage": "You have reached the free limit of 2 habits. Upgrade to Pro for unlimited access.",
+      "cancel": "Cancel",
+      "upgrade": "Upgrade"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "Create habit",
+    "regularHabit": "Regular habit",
+    "oneTimeTask": "One-time task",
+    "sectionHeader": "OR CHOOSE FROM THESE CATEGORIES",
+    "defaultCategorySubtitle": "Discover and build new habits",
+    "alerts": {
+      "noticeTitle": "Notice",
+      "fetchError": "Failed to retrieve categories.",
+      "errorTitle": "Error",
+      "connectError": "Failed to connect to the server."
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "Habits",
+    "habitsCount": "{{count}} habit",
+    "habitsCount_plural": "{{count}} habits",
+    "emptyState": "No habit templates found for this category.",
+    "alerts": {
+      "noticeTitle": "Notice",
+      "fetchError": "Failed to retrieve habit templates.",
+      "errorTitle": "Error",
+      "connectError": "Failed to connect to the server."
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "Edit task",
+    "headerTitleCreate": "One-time task",
+    "save": "SAVE",
+    "habitNamePlaceholder": "Name your habit",
+    "selectColor": "Select Color",
+    "todayPrefix": "Today, {{date}}",
+    "getReminders": "Get reminders",
+    "addReminderTime": "Add reminder time",
+    "validation": {
+      "title": "Validation Error",
+      "emptyName": "Please enter a habit name."
+    },
+    "alerts": {
+      "errorTitle": "Error",
+      "successTitle": "Success",
+      "fetchColorsFailed": "Failed to fetch colors.",
+      "updateSuccess": "One-time task updated successfully.",
+      "updateFailed": "Failed to update task.",
+      "updateError": "An error occurred while updating.",
+      "createSuccess": "One-time task created successfully.",
+      "createFailed": "Failed to create task.",
+      "createError": "An error occurred while creating.",
+      "ok": "OK"
+    }
+  },
+"createRegularHabit": {
+    "headerTitleEdit": "Edit habit",
+    "headerTitleNew": "New habit",
+    "save": "SAVE",
+    "placeholderName": "Name your habit",
+    "selectColor": "Select Color",
+    "goalForHabit": "Goal for Habit",
+    "numberOfTimes": "# of times",
+    "time": "Time",
+    "timesSuffix": "times",
+    "minutesSuffix": "minutes",
+    "frequencies": {
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly"
+    },
+    "repeatEveryDay": "Repeat every day",
+    "repeatDailyIn": "Repeat daily in the:",
+    "timesOfDay": {
+      "morning": "Morning",
+      "afternoon": "Afternoon",
+      "evening": "Evening"
+    },
+    "daysOfWeek": {
+      "sunday": "S",
+      "monday": "M",
+      "tuesday": "T",
+      "wednesday": "W",
+      "thursday": "T",
+      "friday": "F",
+      "saturday": "S"
+    },
+    "getReminders": "Get reminders",
+    "addReminderTime": "Add reminder time",
+    "alerts": {
+      "errorTitle": "Error",
+      "successTitle": "Success",
+      "validationTitle": "Validation Error",
+      "enterHabitName": "Please enter a habit name.",
+      "fetchColorsFailed": "Failed to fetch colors.",
+      "habitUpdatedSuccess": "Habit updated successfully.",
+      "habitCreatedSuccess": "Habit created successfully.",
+      "habitUpdateFailed": "Failed to update habit.",
+      "habitCreateFailed": "Failed to create habit.",
+      "updateError": "An error occurred while updating.",
+      "createError": "An error occurred while creating."
+    }
+  },
+  "common": {
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "goBack": "Go back"
+  },
+  "habitDetails": {
+    "currentStreak": "Your current streak",
+    "longestStreak": "Your longest streak",
+    "completionRate": "Habit completion rate",
+    "totalTimesCompleted": "Total times completed",
+    "dayCount_one": "{{count}} day",
+    "dayCount_other": "{{count}} days",
+    "actions": {
+      "edit": "Edit",
+      "archive": "Archive"
+    },
+    "alerts": {
+      "archiveTitle": "Archive Habit",
+      "archiveMessage": "Are you sure you want to archive \"{{name}}\"?",
+      "archiveSuccess": "Habit archived successfully.",
+      "archiveFailed": "Failed to archive habit.",
+      "fetchFailed": "Failed to load habit statistics."
+    },
+    "daysOfWeek": ["S", "M", "T", "W", "T", "F", "S"],
+    "monthNames": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
+  },
+  "stats": {
+    "title": "Your stats",
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "daysOfWeek": {
+      "sun": "S",
+      "mon": "M",
+      "tue": "T",
+      "wed": "W",
+      "thu": "T",
+      "fri": "F",
+      "sat": "S"
+    },
+    "legend": {
+      "allComplete": "All complete",
+      "someComplete": "Some complete"
+    },
+    "quote": "The first step is the hardest. No hesitations — you can make it.",
+    "currentStreak": "Your current streak",
+    "longestStreak": "Your longest streak",
+    "days": "{{count}} days",
+    "days_one": "{{count}} day",
+    "days_other": "{{count}} days",
+    "totalPerfectDays": "Total perfect days",
+    "totalTimesCompleted": "Total times completed",
+    "habitCompletionRate": "Habit completion rate",
+    "averagePerDaily": "Average per daily",
+    "errors": {
+      "fetchFailedTitle": "Error",
+      "fetchFailedMessage": "Failed to load habit statistics."
+    }
+  },
+  "subscription": {
+    "restore": "RESTORE",
+    "heroTitle": "Elevate Your Efficiency",
+    "loading": "Loading...",
+    "features": [
+      "Unlimited Habit Tracking & Reminders",
+      "Advanced Analytics & Progress Insights",
+      "Ad-Free Premium Experience"
+    ],
+    "yearly": {
+      "bestOffer": "BEST OFFER",
+      "title": "Yearly",
+      "subtitle": "1 Year Access • {{price}}"
+    },
+    "monthly": {
+      "title": "Monthly",
+      "priceFormat": "{{price}}/Month"
+    },
+    "cancelOrManage": "Cancel or Manage Subscription",
+    "continue": "Continue",
+    "plans": {
+      "yearlyPlan": "Yearly Plan",
+      "monthlyPlan": "Monthly Plan",
+      "yearlyPrice": "{{price}}/year",
+      "monthlyPrice": "{{price}}/month"
+    },
+    "securePayment": {
+      "ios": "SECURE PAYMENT VIA APP STORE",
+      "android": "SECURE PAYMENT VIA GOOGLE PLAY"
+    },
+    "autoRenewDisclaimer": "Subscription automatically renews unless cancelled at least 24 hours before the end of the current period.",
+    "legal": {
+      "termsOfUse": "Terms of Use (EULA)",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "alerts": {
+      "storeErrorTitle": "Store Error",
+      "storeErrorMessage": "Could not load subscription packages.",
+      "errorTitle": "Error",
+      "cannotOpenLink": "Cannot open the link: {{url}}",
+      "failedOpenLink": "Failed to open link.",
+      "planUnavailable": "Selected plan is currently unavailable.",
+      "successTitle": "Success!",
+      "upgradedMessage": "Your account has been upgraded.",
+      "continueBtn": "Continue",
+      "paymentFailedTitle": "Payment Failed",
+      "unexpectedError": "An unexpected error occurred.",
+      "restoredTitle": "Restored",
+      "restoredMessage": "Your subscription was successfully restored.",
+      "noSubscriptionTitle": "No Subscription",
+      "noSubscriptionMessage": "We couldn't find an active subscription to restore.",
+      "restoreFailedPrefix": "Restore failed: ",
+      "manageTitle": "Manage Subscription",
+      "manageMessage": "You will be redirected to subscription settings to manage or cancel your plan.",
+      "cancelBtn": "Cancel",
+      "openSettingsBtn": "Open Settings",
+      "cannotOpenSettings": "Could not open subscription settings."
+    }
+  },
+  "appLayout": {
+    "tryPro": "TRY PRO",
+    "routes": {
+      "dashboard": "Today",
+      "stats": "Stats",
+      "profile": "Profile"
+    }
+  },
+  "profile": {
+    "screenTitle": "Profile",
+    "edit": "Edit",
+    "allHabits": "All habits",
+    "notifications": "Notifications",
+    "changeLanguage": "Change Language",
+    "settings": "Settings",
+    "tryForFree": "Try for free",
+    "pro": "PRO",
+    "signOut": "Sign out",
+    "signOutAlert": {
+      "title": "Sign Out",
+      "message": "Are you sure you want to sign out?",
+      "cancel": "Cancel",
+      "confirm": "Sign Out"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "All habits",
+    "tabs": {
+      "regular": "REGULAR HABITS",
+      "oneTime": "ONE-TIME TASKS"
+    },
+    "emptyState": {
+      "regular": "No regular habits found.",
+      "oneTime": "No one-time tasks found."
+    },
+    "defaults": {
+      "daily": "Daily",
+      "times": "times"
+    },
+    "alerts": {
+      "errorTitle": "Error",
+      "fetchFailed": "Failed to fetch upcoming habits."
+    }
+  },
+  "changePassword": {
+    "screenTitle": "Change Password",
+    "infoCard": {
+      "title": "Update Security",
+      "subtitle": "Choose a strong password with at least 8 characters."
+    },
+    "labels": {
+      "currentPassword": "CURRENT PASSWORD",
+      "newPassword": "NEW PASSWORD",
+      "confirmPassword": "CONFIRM NEW PASSWORD"
+    },
+    "placeholders": {
+      "currentPassword": "Enter current password",
+      "newPassword": "Enter new password",
+      "confirmPassword": "Re-enter new password"
+    },
+    "buttons": {
+      "updatePassword": "Update Password"
+    },
+    "validation": {
+      "errorTitle": "Validation Error",
+      "currentPasswordRequired": "Please enter your current password.",
+      "newPasswordRequired": "Please enter a new password.",
+      "minLength": "New password must be at least 8 characters long.",
+      "sameAsCurrent": "New password cannot be the same as current password.",
+      "passwordMismatch": "New password and confirm password do not match."
+    },
+    "alerts": {
+      "successTitle": "Success",
+      "successMessage": "Password changed successfully!",
+      "errorTitle": "Error",
+      "fetchFailed": "Failed to change password.",
+      "genericError": "Something went wrong. Please try again."
+    }
+  },
+  "editProfile": {
+    "screenTitle": "Edit Profile",
+    "labels": {
+      "fullName": "Full Name",
+      "country": "Country",
+      "state": "State / Region"
+    },
+    "placeholders": {
+      "fullName": "Enter your name",
+      "country": "Select Country",
+      "state": "Select State",
+      "selectCountryFirst": "Select Country First"
+    },
+    "buttons": {
+      "saveChanges": "Save Changes"
+    },
+    "validation": {
+      "nameRequired": "Please enter your full name."
+    },
+    "alerts": {
+      "successTitle": "Success",
+      "successMessage": "Profile updated successfully!",
+      "errorTitle": "Error",
+      "updateFailed": "Failed to update profile.",
+      "genericError": "An error occurred while saving profile."
+    }
+  },
+  "help": {
+    "screenTitle": "Help & Support",
+    "infoCard": {
+      "title": "How can we help?",
+      "subtitle": "If you have any questions, feedback, or need assistance, feel free to reach out to us."
+    },
+    "sectionHeader": "CONTACT INFORMATION",
+    "contact": {
+      "emailLabel": "Email Us",
+      "websiteLabel": "Visit Website"
+    },
+    "alerts": {
+      "errorTitle": "Error",
+      "emailError": "Unable to open email client.",
+      "emailGenericError": "An error occurred while trying to send an email.",
+      "browserError": "Unable to open browser.",
+      "websiteGenericError": "An error occurred while opening the website."
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "Language",
+    "topNotice": "Select your preferred app display language below.",
+    "bottomNotice": "Changing language will automatically update interface labels across the entire app and save to your account.",
+    "activeLanguage": "ACTIVE LANGUAGE",
+    "languages": {
+     "en": {
+    "title": "English 🇬🇧",
+    "nativeTitle": "English",
+    "description": "Set app language to English"
+  },
+  "da": {
+    "title": "Danish 🇩🇰",
+    "nativeTitle": "Dansk",
+    "description": "Indstil app-sprog til dansk"
+  },
+  "fr": {
+    "title": "French 🇫🇷",
+    "nativeTitle": "Français",
+    "description": "Définir la langue de l'application en français"
+  },
+  "de": {
+    "title": "German 🇩🇪",
+    "nativeTitle": "Deutsch",
+    "description": "App-Sprache auf Deutsch stellen"
+  },
+  "id": {
+    "title": "Indonesian 🇮🇩",
+    "nativeTitle": "Bahasa Indonesia",
+    "description": "Atur bahasa aplikasi ke Bahasa Indonesia"
+  },
+  "it": {
+    "title": "Italian 🇮🇹",
+    "nativeTitle": "Italiano",
+    "description": "Imposta la lingua dell'app su Italiano"
+  },
+  "ja": {
+    "title": "Japanese 🇯🇵",
+    "nativeTitle": "日本語",
+    "description": "アプリの言語を日本語に設定"
+  },
+  "ko": {
+    "title": "Korean 🇰🇷",
+    "nativeTitle": "한국어",
+    "description": "앱 언어를 한국어로 설정"
+  },
+  "nb": {
+    "title": "Norwegian Bokmål 🇳🇴",
+    "nativeTitle": "Norsk bokmål",
+    "description": "Sett app-språk til norsk bokmål"
+  },
+  "pl": {
+    "title": "Polish 🇵🇱",
+    "nativeTitle": "Polski",
+    "description": "Ustaw język aplikacji na polski"
+  },
+  "pt": {
+    "title": "Portuguese 🇵🇹",
+    "nativeTitle": "Português",
+    "description": "Definir idioma do aplicativo para português"
+  },
+  "ru": {
+    "title": "Russian 🇷🇺",
+    "nativeTitle": "Русский",
+    "description": "Установить язык приложения на русский"
+  },
+  "zh-Hans": {
+    "title": "Simplified Chinese 🇨🇳",
+    "nativeTitle": "简体中文",
+    "description": "将应用语言设置为简体中文"
+  },
+  "es": {
+    "title": "Spanish 🇪🇸",
+    "nativeTitle": "Español",
+    "description": "Establecer el idioma de la aplicación en español"
+  },
+  "sv": {
+    "title": "Swedish 🇸🇪",
+    "nativeTitle": "Svenska",
+    "description": "Ställ in appspråk till svenska"
+  },
+  "th": {
+    "title": "Thai 🇹🇭",
+    "nativeTitle": "ไทย",
+    "description": "ตั้งค่าภาษาของแอปเป็นภาษาไทย"
+  },
+  "zh-Hant": {
+    "title": "Traditional Chinese 🇹🇼",
+    "nativeTitle": "繁體中文",
+    "description": "將應用語言設置為繁體中文"
+  },
+  "tr": {
+    "title": "Turkish 🇹🇷",
+    "nativeTitle": "Türkçe",
+    "description": "Uygulama dilini Türkçe olarak ayarla"
+  },
+  "vi": {
+    "title": "Vietnamese 🇻🇳",
+    "nativeTitle": "Tiếng Việt",
+    "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Việt"
+  }
+    },
+    "alerts": {
+      "errorTitle": "Error",
+      "genericUpdateError": "Failed to update language on server."
+    }
+  },
+  "notifications": {
+    "screenTitle": "Notifications",
+    "topNotice": "Set notifications to get habit completion information.",
+    "bottomNotice": "You can also set reminders for individual habits in their settings.",
+    "items": {
+      "todays_plan": {
+        "title": "Today's plan 📋",
+        "description": "\"Morning: 5 habits, Afternoon: 1 habit, Evening: 6 habits, Do anytime: 2 habits\""
+      },
+      "morning_plan": {
+        "title": "Morning plan ☀️",
+        "description": "\"You have 5 habits for this morning and 2 more you can do.\""
+      },
+      "afternoon_plan": {
+        "title": "Afternoon plan 🌤️",
+        "description": "\"You have 1 habit for this afternoon and 2 more you can do.\""
+      },
+      "evening_plan": {
+        "title": "Evening plan 🌙",
+        "description": "\"You have 6 habits for this evening and 2 more you can do.\""
+      },
+      "today_results": {
+        "title": "Your results for today 🎉",
+        "description": "\"3 habits completed, 1 habit skipped, 14 habits left\""
+      }
+    },
+    "alerts": {
+      "errorTitle": "Error",
+      "genericUpdateError": "Failed to update notification settings."
+    }
+  },
+  "settings": {
+    "headerTitle": "Settings",
+    "generalTitle": "GENERAL",
+    "sound": "Sound",
+    "vacationMode": "Vacation mode",
+    "vacationSubtitle": "Put habits on pause, and keep your stats",
+    "changePassword": "Change Password",
+    "help": "Help",
+    "privacyPolicy": "Privacy & Policy",
+    "rateUs": "Rate us",
+    "shareApp": "Share app",
+    "shareMessage": "Check out Habitly! It helps you track your daily habits and achieve your goals.\n\n📱 Download for Android: {{playStoreUrl}}\n🍏 Download for iOS: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "Failed to update settings. Please try again.",
+      "unexpectedNetwork": "An unexpected network error occurred.",
+      "privacyPolicy": "Unable to open privacy policy webpage.",
+      "appStore": "Unable to open app store page.",
+      "whatsapp": "WhatsApp is not installed or available on this device.",
+      "genericLink": "An unexpected error occurred while attempting to open the link."
+    }
+  }
+}

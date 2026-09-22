@@ -20,6 +20,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/responsive';
@@ -34,6 +35,8 @@ type Props = NativeStackScreenProps<RootStackParamList, 'ForgotPassword'>;
 type Step = 'EMAIL' | 'OTP' | 'NEW_PASSWORD';
 
 const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
+
   // --- Flow State ---
   const [currentStep, setCurrentStep] = useState<Step>('EMAIL');
   const [isLoading, setIsLoading] = useState(false);
@@ -68,22 +71,25 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
 
   const animateStepTransition = (nextStep: Step) => {
     setGeneralError('');
+
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 200,
+      duration: 180,
       useNativeDriver: true,
     }).start(() => {
       setCurrentStep(nextStep);
+      slideAnim.setValue(15);
+
       Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
-          duration: 400,
+          duration: 350,
           easing: Easing.out(Easing.quad),
           useNativeDriver: true,
         }),
         Animated.timing(slideAnim, {
           toValue: 0,
-          duration: 400,
+          duration: 350,
           easing: Easing.out(Easing.quad),
           useNativeDriver: true,
         }),
@@ -91,7 +97,18 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
     });
   };
 
-  // OTP Countdown Timer Logic
+  // Handle Back Button
+  const handleBackPress = () => {
+    if (currentStep === 'OTP') {
+      animateStepTransition('EMAIL');
+    } else if (currentStep === 'NEW_PASSWORD') {
+      animateStepTransition('OTP');
+    } else {
+      navigation.goBack();
+    }
+  };
+
+  // OTP Countdown Timer
   useEffect(() => {
     let interval: any;
     if (currentStep === 'OTP' && timer > 0) {
@@ -109,11 +126,11 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!email.trim()) {
-      setEmailError('Email address is required.');
+      setEmailError(t('forgotPassword.errors.emailRequired'));
       return false;
     }
     if (!emailRegex.test(email.trim())) {
-      setEmailError('Please enter a valid email address.');
+      setEmailError(t('forgotPassword.errors.invalidEmail'));
       return false;
     }
     return true;
@@ -123,11 +140,11 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
     setOtpError('');
     setGeneralError('');
     if (!otp.trim()) {
-      setOtpError('OTP code is required.');
+      setOtpError(t('forgotPassword.errors.otpRequired'));
       return false;
     }
     if (otp.trim().length < 4) {
-      setOtpError('Please enter a valid OTP code.');
+      setOtpError(t('forgotPassword.errors.invalidOtp'));
       return false;
     }
     return true;
@@ -140,25 +157,25 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
     let isValid = true;
 
     if (!newPassword) {
-      setPasswordError('New password is required.');
+      setPasswordError(t('forgotPassword.errors.passwordRequired'));
       isValid = false;
     } else if (newPassword.length < 8) {
-      setPasswordError('Password must be at least 8 characters long.');
+      setPasswordError(t('forgotPassword.errors.passwordLength'));
       isValid = false;
     }
 
     if (!confirmPassword) {
-      setConfirmPasswordError('Please confirm your new password.');
+      setConfirmPasswordError(t('forgotPassword.errors.confirmPasswordRequired'));
       isValid = false;
     } else if (newPassword !== confirmPassword) {
-      setConfirmPasswordError('Passwords do not match.');
+      setConfirmPasswordError(t('forgotPassword.errors.passwordsMismatch'));
       isValid = false;
     }
 
     return isValid;
   };
 
-  // --- API Handlers Using postApi ---
+  // --- API Handlers ---
 
   // STEP 1: Request OTP
   const handleSendOtp = () => {
@@ -179,12 +196,12 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
           setCanResend(false);
           animateStepTransition('OTP');
         } else {
-          setGeneralError(response?.message || 'Failed to send OTP code. Please try again.');
+          setGeneralError(response?.message || t('forgotPassword.errors.sendOtpFailed'));
         }
       },
       (error: any) => {
         setIsLoading(false);
-        const serverMsg = error?.response?.data?.message || error?.message || 'Network error. Please try again.';
+        const serverMsg = error?.response?.data?.message || error?.message || t('forgotPassword.errors.networkError');
         setGeneralError(serverMsg);
       }
     );
@@ -210,12 +227,12 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
         if (response && (response.succeeded || response.isSuccess || response.status === 200 || response.success)) {
           animateStepTransition('NEW_PASSWORD');
         } else {
-          setGeneralError(response?.message || 'Invalid or expired OTP code.');
+          setGeneralError(response?.message || t('forgotPassword.errors.invalidOtp'));
         }
       },
       (error: any) => {
         setIsLoading(false);
-        const serverMsg = error?.response?.data?.message || error?.message || 'Invalid OTP code. Please try again.';
+        const serverMsg = error?.response?.data?.message || error?.message || t('forgotPassword.errors.invalidOtp');
         setGeneralError(serverMsg);
       }
     );
@@ -240,16 +257,18 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
       (response: any) => {
         setIsLoading(false);
         if (response && (response.succeeded || response.isSuccess || response.status === 200 || response.success)) {
-          Alert.alert('Success', 'Your password has been updated successfully!', [
-            { text: 'Login Now', onPress: () => navigation.navigate('Login') },
-          ]);
+          Alert.alert(
+            t('forgotPassword.success'),
+            t('forgotPassword.successMsg'),
+            [{ text: t('forgotPassword.loginNow'), onPress: () => navigation.navigate('Login') }]
+          );
         } else {
-          setGeneralError(response?.message || 'Failed to update password. Please try again.');
+          setGeneralError(response?.message || t('forgotPassword.errors.updatePasswordFailed'));
         }
       },
       (error: any) => {
         setIsLoading(false);
-        const serverMsg = error?.response?.data?.message || error?.message || 'Failed to reset password. Please try again.';
+        const serverMsg = error?.response?.data?.message || error?.message || t('forgotPassword.errors.updatePasswordFailed');
         setGeneralError(serverMsg);
       }
     );
@@ -271,12 +290,12 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
           setTimer(30);
           setCanResend(false);
         } else {
-          setGeneralError(response?.message || 'Failed to resend OTP code.');
+          setGeneralError(response?.message || t('forgotPassword.errors.resendFailed'));
         }
       },
       (error: any) => {
         setIsLoading(false);
-        setGeneralError(error?.response?.data?.message || error?.message || 'Failed to resend OTP.');
+        setGeneralError(error?.response?.data?.message || error?.message || t('forgotPassword.errors.resendFailed'));
       }
     );
   };
@@ -303,13 +322,17 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
               showsVerticalScrollIndicator={false}
               bounces={false}
             >
-              {/* Back to Login Action */}
+              {/* Back Action Header */}
               <TouchableOpacity
-                onPress={() => navigation.goBack()}
+                onPress={handleBackPress}
                 style={styles.backButton}
                 activeOpacity={0.7}
               >
-                <Text style={styles.backButtonText}>← Back to Login</Text>
+                <Text style={styles.backButtonText}>
+                  {currentStep === 'EMAIL'
+                    ? `← ${t('forgotPassword.backToLogin')}`
+                    : `← ${t('forgotPassword.back')}`}
+                </Text>
               </TouchableOpacity>
 
               {/* Header Info */}
@@ -323,21 +346,18 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                 ]}
               >
                 <View style={styles.tagBadge}>
-                  <Text style={styles.tagBadgeText}>ACCOUNT RECOVERY</Text>
+                  <Text style={styles.tagBadgeText}>{t('forgotPassword.tag')}</Text>
                 </View>
 
                 <Text style={styles.welcomeText}>
-                  {currentStep === 'EMAIL' && 'Reset Password 🔒'}
-                  {currentStep === 'OTP' && 'Verify OTP 💬'}
-                  {currentStep === 'NEW_PASSWORD' && 'New Password 🔑'}
+                  {currentStep === 'EMAIL' && t('forgotPassword.titleEmail')}
+                  {currentStep === 'OTP' && t('forgotPassword.titleOtp')}
+                  {currentStep === 'NEW_PASSWORD' && t('forgotPassword.titlePassword')}
                 </Text>
                 <Text style={styles.subText}>
-                  {currentStep === 'EMAIL' &&
-                    "Enter your email address and we'll send you an OTP code."}
-                  {currentStep === 'OTP' &&
-                    `Enter the verification code sent to ${email}`}
-                  {currentStep === 'NEW_PASSWORD' &&
-                    'Set a strong new password to protect your account.'}
+                  {currentStep === 'EMAIL' && t('forgotPassword.subEmail')}
+                  {currentStep === 'OTP' && `${t('forgotPassword.subOtp')} ${email}`}
+                  {currentStep === 'NEW_PASSWORD' && t('forgotPassword.subPassword')}
                 </Text>
               </Animated.View>
 
@@ -362,7 +382,7 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                 {currentStep === 'EMAIL' && (
                   <>
                     <View style={styles.inputWrapper}>
-                      <Text style={styles.inputLabel}>EMAIL ADDRESS</Text>
+                      <Text style={styles.inputLabel}>{t('forgotPassword.labels.email')}</Text>
                       <View
                         style={[
                           styles.inputContainer,
@@ -372,7 +392,7 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                       >
                         <TextInput
                           style={styles.textInput}
-                          placeholder="name@example.com"
+                          placeholder={t('forgotPassword.placeholders.email')}
                           placeholderTextColor="rgba(226, 232, 240, 0.35)"
                           value={email}
                           onChangeText={(val) => {
@@ -406,7 +426,9 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                         {isLoading ? (
                           <ActivityIndicator color="#FFFFFF" size="small" />
                         ) : (
-                          <Text style={styles.actionButtonText}>GENERATE OTP</Text>
+                          <Text style={styles.actionButtonText}>
+                            {t('forgotPassword.buttons.generateOtp')}
+                          </Text>
                         )}
                       </LinearGradient>
                     </TouchableOpacity>
@@ -417,7 +439,7 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                 {currentStep === 'OTP' && (
                   <>
                     <View style={styles.inputWrapper}>
-                      <Text style={styles.inputLabel}>ENTER OTP CODE</Text>
+                      <Text style={styles.inputLabel}>{t('forgotPassword.labels.otp')}</Text>
                       <View
                         style={[
                           styles.inputContainer,
@@ -427,7 +449,7 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                       >
                         <TextInput
                           style={[styles.textInput, styles.otpInput]}
-                          placeholder="• • • • • •"
+                          placeholder={t('forgotPassword.placeholders.otp')}
                           placeholderTextColor="rgba(226, 232, 240, 0.35)"
                           value={otp}
                           onChangeText={(val) => {
@@ -447,14 +469,18 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
 
                     {/* Resend Timer */}
                     <View style={styles.resendContainer}>
-                      <Text style={styles.resendText}>Didn't receive the code? </Text>
+                      <Text style={styles.resendText}>
+                        {t('forgotPassword.noOtp')}{' '}
+                      </Text>
                       <TouchableOpacity
                         onPress={handleResendOtp}
                         disabled={!canResend || isLoading}
                         activeOpacity={0.7}
                       >
                         <Text style={[styles.resendLink, (!canResend || isLoading) && styles.disabledLink]}>
-                          {canResend ? 'Resend Code' : `Resend in ${timer}s`}
+                          {canResend
+                            ? t('forgotPassword.buttons.resend')
+                            : `${t('forgotPassword.buttons.resendIn')} ${timer}s`}
                         </Text>
                       </TouchableOpacity>
                     </View>
@@ -474,7 +500,9 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                         {isLoading ? (
                           <ActivityIndicator color="#FFFFFF" size="small" />
                         ) : (
-                          <Text style={styles.actionButtonText}>VERIFY OTP</Text>
+                          <Text style={styles.actionButtonText}>
+                            {t('forgotPassword.buttons.verifyOtp')}
+                          </Text>
                         )}
                       </LinearGradient>
                     </TouchableOpacity>
@@ -485,7 +513,9 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                 {currentStep === 'NEW_PASSWORD' && (
                   <>
                     <View style={styles.inputWrapper}>
-                      <Text style={styles.inputLabel}>NEW PASSWORD</Text>
+                      <Text style={styles.inputLabel}>
+                        {t('forgotPassword.labels.newPassword')}
+                      </Text>
                       <View
                         style={[
                           styles.inputContainer,
@@ -495,7 +525,7 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                       >
                         <TextInput
                           style={styles.textInput}
-                          placeholder="Minimum 8 characters"
+                          placeholder={t('forgotPassword.placeholders.minPassword')}
                           placeholderTextColor="rgba(226, 232, 240, 0.35)"
                           secureTextEntry={!isPasswordVisible}
                           value={newPassword}
@@ -514,7 +544,9 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                           activeOpacity={0.7}
                         >
                           <Text style={styles.eyeButtonText}>
-                            {isPasswordVisible ? 'HIDE' : 'SHOW'}
+                            {isPasswordVisible
+                              ? t('forgotPassword.hide')
+                              : t('forgotPassword.show')}
                           </Text>
                         </TouchableOpacity>
                       </View>
@@ -522,7 +554,9 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                     </View>
 
                     <View style={styles.inputWrapper}>
-                      <Text style={styles.inputLabel}>CONFIRM NEW PASSWORD</Text>
+                      <Text style={styles.inputLabel}>
+                        {t('forgotPassword.labels.confirmPassword')}
+                      </Text>
                       <View
                         style={[
                           styles.inputContainer,
@@ -532,7 +566,7 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                       >
                         <TextInput
                           style={styles.textInput}
-                          placeholder="Re-enter password"
+                          placeholder={t('forgotPassword.placeholders.reEnterPassword')}
                           placeholderTextColor="rgba(226, 232, 240, 0.35)"
                           secureTextEntry={!isPasswordVisible}
                           value={confirmPassword}
@@ -566,7 +600,9 @@ const ForgotPasswordScreen: React.FC<Props> = ({ navigation }) => {
                         {isLoading ? (
                           <ActivityIndicator color="#FFFFFF" size="small" />
                         ) : (
-                          <Text style={styles.actionButtonText}>UPDATE PASSWORD</Text>
+                          <Text style={styles.actionButtonText}>
+                            {t('forgotPassword.buttons.updatePassword')}
+                          </Text>
                         )}
                       </LinearGradient>
                     </TouchableOpacity>

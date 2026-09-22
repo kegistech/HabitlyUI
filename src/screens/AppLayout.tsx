@@ -9,8 +9,7 @@ import {
   ArrowLeft,
   Crown,
 } from 'lucide-react-native';
-
-
+import { useTranslation } from 'react-i18next';
 
 export type RouteType = 'Dashboard' | 'Stats' | 'Profile';
 
@@ -32,6 +31,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
   onBack,
 }) => {
   const insets = useSafeAreaInsets();
+  const { t } = useTranslation();
 
   const handleBackAction = () => {
     if (onBack) {
@@ -43,6 +43,22 @@ const AppLayout: React.FC<AppLayoutProps> = ({
 
   const handleProPress = () => {
     navigation.navigate('Subscription');
+  };
+
+  // Helper function to resolve translated route names for the header
+  const getHeaderTitle = () => {
+    if (title) return title;
+
+    switch (currentRoute) {
+      case 'Dashboard':
+        return t('appLayout.routes.dashboard');
+      case 'Stats':
+        return t('appLayout.routes.stats');
+      case 'Profile':
+        return t('appLayout.routes.profile');
+      default:
+        return currentRoute;
+    }
   };
 
   return (
@@ -61,7 +77,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
             </TouchableOpacity>
           )}
           <Text style={styles.headerTitle} numberOfLines={1}>
-            {title || currentRoute}
+            {getHeaderTitle()}
           </Text>
         </View>
 
@@ -72,7 +88,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
           onPress={handleProPress}
         >
           <Crown size={15} color="#FFD700" style={styles.crownIcon} />
-          <Text style={styles.proText}>TRY PRO</Text>
+          <Text style={styles.proText}>{t('appLayout.tryPro')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -102,7 +118,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
             />
           </View>
           <Text style={[styles.navText, currentRoute === 'Dashboard' && styles.activeNavText]}>
-            Today
+            {t('appLayout.routes.dashboard')}
           </Text>
         </TouchableOpacity>
 
@@ -119,7 +135,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
             />
           </View>
           <Text style={[styles.navText, currentRoute === 'Stats' && styles.activeNavText]}>
-            Stats
+            {t('appLayout.routes.stats')}
           </Text>
         </TouchableOpacity>
 
@@ -136,7 +152,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({
             />
           </View>
           <Text style={[styles.navText, currentRoute === 'Profile' && styles.activeNavText]}>
-            Profile
+            {t('appLayout.routes.profile')}
           </Text>
         </TouchableOpacity>
       </View>

@@ -1,0 +1,705 @@
+{
+  "auth": {
+    "tagBadge": "Ứng dụng Theo dõi Thói quen",
+    "title": "Thói quen nhỏ,\nKết quả lớn",
+    "subtitle": "Biến các hành động hàng ngày thành thói quen lâu dài. Bắt đầu xây dựng kỷ luật và sắp xếp cuộc sống của bạn ngay hôm nay.",
+    "getStartedFree": "Bắt đầu miễn phí",
+    "alreadyHaveAccount": "Đã có tài khoản?",
+    "signIn": "Đăng nhập",
+    "termsNotice": "Bằng cách đăng ký, bạn đồng ý với",
+    "termsAndPrivacy": "Điều khoản dịch vụ và Chính sách bảo mật"
+  },
+  "login": {
+    "tagBadge": "Chào mừng trở lại",
+    "welcomeText": "Đăng nhập",
+    "subText": "Duy trì chuỗi thói quen và theo dõi tiến trình của bạn hôm nay.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "ten@example.com",
+    "passwordLabel": "Mật khẩu",
+    "passwordPlaceholder": "Nhập mật khẩu của bạn",
+    "hide": "Ẩn",
+    "show": "Hiện",
+    "forgotPassword": "Quên mật khẩu?",
+    "signInButton": "Đăng nhập",
+    "dontHaveAccount": "Chưa có tài khoản?",
+    "signUp": "Đăng ký",
+    "errors": {
+      "emailRequired": "Vui lòng nhập email.",
+      "emailInvalid": "Vui lòng nhập địa chỉ email hợp lệ.",
+      "passwordRequired": "Vui lòng nhập mật khẩu.",
+      "loginFailed": "Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.",
+      "loginError": "Email hoặc mật khẩu không chính xác."
+    }
+  },
+  "forgotPassword": {
+    "tag": "Khôi phục tài khoản",
+    "backToLogin": "Quay lại đăng nhập",
+    "back": "Quay lại",
+    "success": "Thành công",
+    "hide": "Ẩn",
+    "show": "Hiện",
+    "titleEmail": "Đặt lại mật khẩu 🔒",
+    "titleOtp": "Xác thực OTP 💬",
+    "titlePassword": "Đặt mật khẩu mới 🔑",
+    "subEmail": "Nhập email của bạn để nhận mã xác thực.",
+    "subOtp": "Nhập mã xác thực đã được gửi đến:",
+    "subPassword": "Tạo mật khẩu mới an toàn để bảo vệ tài khoản của bạn.",
+    "noOtp": "Chưa nhận được mã?",
+    "successMsg": "Mật khẩu của bạn đã được cập nhật thành công!",
+    "loginNow": "Đăng nhập ngay",
+    "labels": {
+      "email": "Email",
+      "otp": "Nhập mã OTP",
+      "newPassword": "Mật khẩu mới",
+      "confirmPassword": "Xác nhận mật khẩu mới"
+    },
+    "placeholders": {
+      "email": "ten@example.com",
+      "otp": "• • • • • •",
+      "minPassword": "Ít nhất 8 ký tự",
+      "reEnterPassword": "Nhập lại mật khẩu mới"
+    },
+    "buttons": {
+      "generateOtp": "Gửi mã OTP",
+      "verifyOtp": "Xác thực OTP",
+      "updatePassword": "Cập nhật mật khẩu",
+      "resend": "Gửi lại",
+      "resendIn": "Gửi lại sau"
+    },
+    "errors": {
+      "emailRequired": "Vui lòng nhập email.",
+      "invalidEmail": "Vui lòng nhập địa chỉ email hợp lệ.",
+      "otpRequired": "Vui lòng nhập mã OTP.",
+      "invalidOtp": "Vui lòng nhập mã OTP hợp lệ.",
+      "passwordRequired": "Vui lòng nhập mật khẩu mới.",
+      "passwordLength": "Mật khẩu phải có ít nhất 8 ký tự.",
+      "confirmPasswordRequired": "Vui lòng xác nhận mật khẩu mới.",
+      "passwordsMismatch": "Mật khẩu không trùng khớp.",
+      "sendOtpFailed": "Không thể gửi mã OTP. Vui lòng thử lại.",
+      "updatePasswordFailed": "Không thể cập nhật mật khẩu. Vui lòng thử lại.",
+      "resendFailed": "Không thể gửi lại mã.",
+      "networkError": "Đã xảy ra lỗi kết nối mạng. Vui lòng thử lại."
+    }
+  },
+  "signUp": {
+    "badge": "Bắt đầu",
+    "title": "Tạo tài khoản 🚀",
+    "subtitle": "Bắt đầu xây dựng những thói quen tốt mỗi ngày ngay hôm nay.",
+    "hide": "Ẩn",
+    "show": "Hiện",
+    "loadingCountries": "Đang tải danh sách quốc gia...",
+    "labels": {
+      "fullName": "Họ và tên",
+      "email": "Email",
+      "password": "Mật khẩu",
+      "country": "Quốc gia"
+    },
+    "placeholders": {
+      "fullName": "Nguyễn Văn A",
+      "email": "ten@example.com",
+      "password": "Ít nhất 8 ký tự",
+      "selectCountry": "Chọn quốc gia"
+    },
+    "buttons": {
+      "createAccount": "Tạo tài khoản",
+      "creatingAccount": "Đang tạo tài khoản..."
+    },
+    "legal": {
+      "prefix": "Bằng cách tạo tài khoản, bạn đồng ý với ",
+      "termsAndPrivacy": "Điều khoản dịch vụ và Chính sách bảo mật"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Đã có tài khoản? ",
+      "signIn": "Đăng nhập"
+    },
+    "modal": {
+      "title": "Chọn quốc gia",
+      "done": "Xong"
+    },
+    "errors": {
+      "requiredFields": "Vui lòng điền đầy đủ các thông tin bắt buộc.",
+      "invalidEmail": "Vui lòng nhập địa chỉ email hợp lệ.",
+      "passwordLength": "Mật khẩu phải có ít nhất 8 ký tự.",
+      "registrationFailed": "Đăng ký thất bại. Vui lòng thử lại.",
+      "networkError": "Đã xảy ra lỗi kết nối mạng."
+    }
+  },
+  "wakeUpTime": {
+    "badge": "Thói quen buổi sáng",
+    "title": "Bạn thường thức dậy\nlúc mấy giờ? 🌅",
+    "subtitle": "Được sử dụng để lập kế hoạch ngày hiệu quả và đặt lời nhắc truyền cảm hứng.",
+    "buttons": {
+      "continue": "Tiếp tục"
+    },
+    "errors": {
+      "updateFailed": "Không thể cập nhật thời gian thức dậy. Vui lòng thử lại.",
+      "networkError": "Đã xảy ra lỗi kết nối mạng."
+    }
+  },
+  "reflectionTime": {
+    "badge": "Nhìn lại buổi tối",
+    "title": "Bạn muốn nhìn lại bản thân\nvào lúc nào? 🌙",
+    "subtitle": "Một vài phút nhìn lại vào buổi tối giúp bạn theo dõi tiến trình và duy trì tính kiên trì.",
+    "buttons": {
+      "continue": "Tiếp tục"
+    },
+    "errors": {
+      "updateFailed": "Không thể cập nhật thời gian nhìn lại. Vui lòng thử lại.",
+      "networkError": "Đã xảy ra lỗi kết nối mạng."
+    }
+  },
+  "dashboard": {
+    "title": "Hôm nay",
+    "sectionTitle": "Nhiệm vụ & Thói quen",
+    "emptyHabits": "Không có thói quen nào được lên lịch cho hôm nay.",
+    "defaults": {
+      "goalType": "Hàng ngày",
+      "valueType": "lần"
+    },
+    "tracking": {
+      "disabledFuture": "Tắt ghi nhận cho các ngày trong tương lai",
+      "trackToday": "Ghi nhận cho hôm nay"
+    },
+    "alerts": {
+      "errorTitle": "Lỗi",
+      "fetchError": "Không thể tải thói quen cho ngày đã chọn.",
+      "trackError": "Không thể cập nhật tiến trình thói quen.",
+      "connectError": "Không thể kết nối đến trình theo dõi thói quen.",
+      "futureDateTitle": "Hành động không được phép",
+      "futureDateMessage": "Bạn không thể ghi nhận thói quen cho ngày trong tương lai.",
+      "goalReachedTitle": "Đã hoàn thành mục tiêu",
+      "goalReachedMessage": "Bạn đã hoàn thành mục tiêu cho thói quen này.",
+      "minLimitTitle": "Giới hạn tối thiểu",
+      "minLimitMessage": "Số lần hoàn thành không thể nhỏ hơn 0.",
+      "limitReachedTitle": "Đã đạt giới hạn",
+      "limitReachedMessage": "Bạn đã đạt giới hạn 2 thói quen của gói Miễn phí. Nâng cấp lên Pro để truy cập không giới hạn.",
+      "cancel": "Hủy",
+      "upgrade": "Mở khóa Pro"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "Tạo thói quen",
+    "regularHabit": "Thói quen thường xuyên",
+    "oneTimeTask": "Nhiệm vụ một lần",
+    "sectionHeader": "Hoặc chọn từ danh mục",
+    "defaultCategorySubtitle": "Khám phá và phát triển thói quen mới",
+    "alerts": {
+      "noticeTitle": "Thông báo",
+      "fetchError": "Không thể tải danh mục.",
+      "errorTitle": "Lỗi",
+      "connectError": "Không thể kết nối đến máy chủ."
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "Thói quen",
+    "habitsCount": "{{count}} thói quen",
+    "habitsCount_plural": "{{count}} thói quen",
+    "emptyState": "Không tìm thấy mẫu thói quen nào trong danh mục này.",
+    "alerts": {
+      "noticeTitle": "Thông báo",
+      "fetchError": "Không thể tải các mẫu thói quen.",
+      "errorTitle": "Lỗi",
+      "connectError": "Không thể kết nối đến máy chủ."
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "Chỉnh sửa nhiệm vụ",
+    "headerTitleCreate": "Nhiệm vụ một lần",
+    "save": "Lưu",
+    "habitNamePlaceholder": "Nhập tên thói quen",
+    "selectColor": "Chọn màu sắc",
+    "todayPrefix": "Hôm nay, {{date}}",
+    "getReminders": "Nhận lời nhắc",
+    "addReminderTime": "Thêm thời gian nhắc nhở",
+    "validation": {
+      "title": "Dữ liệu không hợp lệ",
+      "emptyName": "Vui lòng nhập tên thói quen"
+    },
+    "alerts": {
+      "errorTitle": "Lỗi",
+      "successTitle": "Thành công",
+      "fetchColorsFailed": "Không thể tải danh sách màu.",
+      "updateSuccess": "Đã cập nhật nhiệm vụ một lần thành công",
+      "updateFailed": "Không thể cập nhật nhiệm vụ",
+      "updateError": "Đã xảy ra lỗi trong quá trình cập nhật",
+      "createSuccess": "Đã tạo nhiệm vụ một lần thành công",
+      "createFailed": "Không thể tạo nhiệm vụ",
+      "createError": "Đã xảy ra lỗi trong quá trình tạo"
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "Chỉnh sửa thói quen",
+    "headerTitleNew": "Thói quen mới",
+    "save": "Lưu",
+    "placeholderName": "Nhập tên thói quen",
+    "selectColor": "Chọn màu sắc",
+    "goalForHabit": "Mục tiêu thói quen",
+    "numberOfTimes": "Số lần",
+    "time": "Thời gian",
+    "timesSuffix": "lần",
+    "minutesSuffix": "phút",
+    "frequencies": {
+      "daily": "Hàng ngày",
+      "weekly": "Hàng tuần",
+      "monthly": "Hàng tháng"
+    },
+    "repeatEveryDay": "Lặp lại mỗi ngày",
+    "repeatDailyIn": "Lặp lại mỗi ngày vào:",
+    "timesOfDay": {
+      "morning": "Buổi sáng",
+      "afternoon": "Buổi chiều",
+      "evening": "Buổi tối"
+    },
+    "daysOfWeek": {
+      "sunday": "CN",
+      "monday": "T2",
+      "tuesday": "T3",
+      "wednesday": "T4",
+      "thursday": "T5",
+      "friday": "T6",
+      "saturday": "T7"
+    },
+    "getReminders": "Nhận lời nhắc",
+    "addReminderTime": "Thêm thời gian nhắc nhở",
+    "alerts": {
+      "errorTitle": "Lỗi",
+      "successTitle": "Thành công",
+      "validationTitle": "Dữ liệu không hợp lệ",
+      "enterHabitName": "Vui lòng nhập tên thói quen",
+      "fetchColorsFailed": "Không thể tải danh sách màu.",
+      "habitUpdatedSuccess": "Cập nhật thói quen thành công",
+      "habitCreatedSuccess": "Tạo thói quen thành công",
+      "habitUpdateFailed": "Không thể cập nhật thói quen",
+      "habitCreateFailed": "Không thể tạo thói quen",
+      "updateError": "Đã xảy ra lỗi trong quá trình cập nhật",
+      "createError": "Đã xảy ra lỗi trong quá trình tạo"
+    }
+  },
+  "common": {
+    "error": "Lỗi",
+    "success": "Thành công",
+    "cancel": "Hủy",
+    "goBack": "Quay lại"
+  },
+  "habitDetails": {
+    "currentStreak": "Chuỗi hiện tại",
+    "longestStreak": "Chuỗi dài nhất",
+    "completionRate": "Tỷ lệ hoàn thành",
+    "totalTimesCompleted": "Tổng số lần hoàn thành",
+    "dayCount_one": "{{count}} Ngày",
+    "dayCount_other": "{{count}} Ngày",
+    "actions": {
+      "edit": "Chỉnh sửa",
+      "archive": "Lưu trữ"
+    },
+    "alerts": {
+      "archiveTitle": "Lưu trữ thói quen",
+      "archiveMessage": "Bạn có chắc chắn muốn lưu trữ \"{{name}}\"?",
+      "archiveSuccess": "Đã lưu trữ thói quen thành công",
+      "archiveFailed": "Không thể lưu trữ thói quen",
+      "fetchFailed": "Không thể tải thống kê thói quen."
+    },
+    "daysOfWeek": ["CN", "T2", "T3", "T4", "T5", "T6", "T7"],
+    "monthNames": [
+      "Tháng 1",
+      "Tháng 2",
+      "Tháng 3",
+      "Tháng 4",
+      "Tháng 5",
+      "Tháng 6",
+      "Tháng 7",
+      "Tháng 8",
+      "Tháng 9",
+      "Tháng 10",
+      "Tháng 11",
+      "Tháng 12"
+    ]
+  },
+  "stats": {
+    "title": "Thống kê",
+    "months": [
+      "Tháng 1",
+      "Tháng 2",
+      "Tháng 3",
+      "Tháng 4",
+      "Tháng 5",
+      "Tháng 6",
+      "Tháng 7",
+      "Tháng 8",
+      "Tháng 9",
+      "Tháng 10",
+      "Tháng 11",
+      "Tháng 12"
+    ],
+    "daysOfWeek": {
+      "sun": "CN",
+      "mon": "T2",
+      "tue": "T3",
+      "wed": "T4",
+      "thu": "T5",
+      "fri": "T6",
+      "sat": "T7"
+    },
+    "legend": {
+      "allComplete": "Hoàn thành tất cả",
+      "someComplete": "Hoàn thành một phần"
+    },
+    "quote": "Bước đầu tiên luôn là bước khó khăn nhất, nhưng bạn chắc chắn làm được!",
+    "currentStreak": "Chuỗi hiện tại",
+    "longestStreak": "Chuỗi dài nhất",
+    "days": "{{count}} Ngày",
+    "days_one": "{{count}} Ngày",
+    "days_other": "{{count}} Ngày",
+    "totalPerfectDays": "Tổng số ngày hoàn hảo",
+    "totalTimesCompleted": "Tổng số lần hoàn thành",
+    "habitCompletionRate": "Tỷ lệ hoàn thành thói quen",
+    "averagePerDaily": "Trung bình hàng ngày",
+    "errors": {
+      "fetchFailedTitle": "Lỗi",
+      "fetchFailedMessage": "Không thể tải thống kê thói quen."
+    }
+  },
+  "subscription": {
+    "restore": "Khôi phục đăng ký",
+    "heroTitle": "Tối ưu hóa hiệu suất công việc của bạn",
+    "loading": "Đang tải...",
+    "features": [
+      "Theo dõi thói quen và lời nhắc không giới hạn",
+      "Thống kê và phân tích tiến trình chi tiết",
+      "Trải nghiệm cao cấp hoàn toàn không có quảng cáo"
+    ],
+    "yearly": {
+      "bestOffer": "ƯU ĐÃI TỐT NHẤT",
+      "title": "Gói Hàng Năm",
+      "subtitle": "Truy cập 1 năm • {{price}}"
+    },
+    "monthly": {
+      "title": "Gói Hàng Tháng",
+      "priceFormat": "{{price}}/tháng"
+    },
+    "cancelOrManage": "Hủy hoặc Quản lý đăng ký",
+    "continue": "Tiếp tục",
+    "plans": {
+      "yearlyPlan": "Gói Hàng Năm",
+      "monthlyPlan": "Gói Hàng Tháng",
+      "yearlyPrice": "{{price}}/năm",
+      "monthlyPrice": "{{price}}/tháng"
+    },
+    "securePayment": {
+      "ios": "Thanh toán an toàn qua App Store",
+      "android": "Thanh toán an toàn qua Google Play"
+    },
+    "autoRenewDisclaimer": "Gói đăng ký sẽ tự động gia hạn trừ khi bị hủy ít nhất 24 giờ trước khi kết thúc chu kỳ hiện tại.",
+    "legal": {
+      "termsOfUse": "Điều khoản sử dụng (EULA)",
+      "privacyPolicy": "Chính sách bảo mật"
+    },
+    "alerts": {
+      "storeErrorTitle": "Lỗi cửa hàng",
+      "storeErrorMessage": "Không thể tải các tùy chọn đăng ký.",
+      "errorTitle": "Lỗi",
+      "cannotOpenLink": "Không thể mở liên kết: {{url}}",
+      "failedOpenLink": "Không thể mở liên kết",
+      "planUnavailable": "Gói đã chọn hiện không khả dụng.",
+      "successTitle": "Thành công!",
+      "upgradedMessage": "Tài khoản của bạn đã được nâng cấp thành công.",
+      "continueBtn": "Tiếp tục",
+      "paymentFailedTitle": "Thanh toán thất bại",
+      "unexpectedError": "Đã xảy ra lỗi không xác định.",
+      "restoredTitle": "Đã khôi phục",
+      "restoredMessage": "Đăng ký của bạn đã được khôi phục thành công.",
+      "noSubscriptionTitle": "Không tìm thấy gói đăng ký",
+      "noSubscriptionMessage": "Không tìm thấy gói đăng ký đang hoạt động nào để khôi phục.",
+      "restoreFailedPrefix": "Khôi phục thất bại: ",
+      "manageTitle": "Quản lý đăng ký",
+      "manageMessage": "Đang chuyển hướng bạn đến cài đặt đăng ký để quản lý hoặc hủy gói dịch vụ.",
+      "cancelBtn": "Hủy",
+      "openSettingsBtn": "Mở Cài đặt",
+      "cannotOpenSettings": "Không thể mở trang cài đặt đăng ký."
+    }
+  },
+  "appLayout": {
+    "tryPro": "DÙNG THỬ PRO",
+    "routes": {
+      "dashboard": "Hôm nay",
+      "stats": "Thống kê",
+      "profile": "Hồ sơ"
+    }
+  },
+  "profile": {
+    "screenTitle": "Hồ sơ",
+    "edit": "Chỉnh sửa",
+    "allHabits": "Tất cả thói quen",
+    "notifications": "Thông báo",
+    "changeLanguage": "Đổi ngôn ngữ",
+    "settings": "Cài đặt",
+    "tryForFree": "Dùng thử miễn phí",
+    "pro": "PRO",
+    "signOut": "Đăng xuất",
+    "signOutAlert": {
+      "title": "Đăng xuất",
+      "message": "Bạn có chắc chắn muốn đăng xuất không?",
+      "cancel": "Hủy",
+      "confirm": "Đăng xuất"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "Tất cả thói quen",
+    "tabs": {
+      "regular": "Thói quen thường xuyên",
+      "oneTime": "Nhiệm vụ một lần"
+    },
+    "emptyState": {
+      "regular": "Không tìm thấy thói quen thường xuyên nào.",
+      "oneTime": "Không tìm thấy nhiệm vụ một lần nào."
+    },
+    "defaults": {
+      "daily": "Hàng ngày",
+      "times": "lần"
+    },
+    "alerts": {
+      "errorTitle": "Lỗi",
+      "fetchFailed": "Không thể tải danh sách thói quen sắp tới."
+    }
+  },
+  "changePassword": {
+    "screenTitle": "Đổi mật khẩu",
+    "infoCard": {
+      "title": "Tăng cường bảo mật",
+      "subtitle": "Chọn mật khẩu mới an toàn có độ dài ít nhất 8 ký tự."
+    },
+    "labels": {
+      "currentPassword": "Mật khẩu hiện tại",
+      "newPassword": "Mật khẩu mới",
+      "confirmPassword": "Xác nhận mật khẩu mới"
+    },
+    "placeholders": {
+      "currentPassword": "Nhập mật khẩu hiện tại",
+      "newPassword": "Nhập mật khẩu mới",
+      "confirmPassword": "Nhập lại mật khẩu mới"
+    },
+    "buttons": {
+      "updatePassword": "Cập nhật mật khẩu"
+    },
+    "validation": {
+      "errorTitle": "Dữ liệu không hợp lệ",
+      "currentPasswordRequired": "Vui lòng nhập mật khẩu hiện tại của bạn.",
+      "newPasswordRequired": "Vui lòng nhập mật khẩu mới của bạn.",
+      "minLength": "Mật khẩu mới phải có ít nhất 8 ký tự.",
+      "sameAsCurrent": "Mật khẩu mới không được trùng với mật khẩu hiện tại.",
+      "passwordMismatch": "Mật khẩu mới và mật khẩu xác nhận không trùng khớp."
+    },
+    "alerts": {
+      "successTitle": "Thành công",
+      "successMessage": "Mật khẩu của bạn đã được thay đổi thành công!",
+      "errorTitle": "Lỗi",
+      "fetchFailed": "Không thể thay đổi mật khẩu.",
+      "genericError": "Đã xảy ra lỗi. Vui lòng thử lại."
+    }
+  },
+  "editProfile": {
+    "screenTitle": "Chỉnh sửa hồ sơ",
+    "labels": {
+      "fullName": "Họ và tên",
+      "country": "Quốc gia",
+      "state": "Tỉnh / Thành phố"
+    },
+    "placeholders": {
+      "fullName": "Nhập họ và tên của bạn",
+      "country": "Chọn quốc gia",
+      "state": "Chọn tỉnh/thành phố",
+      "selectCountryFirst": "Vui lòng chọn quốc gia trước"
+    },
+    "buttons": {
+      "saveChanges": "Lưu thay đổi"
+    },
+    "validation": {
+      "nameRequired": "Vui lòng nhập họ và tên của bạn."
+    },
+    "alerts": {
+      "successTitle": "Thành công",
+      "successMessage": "Cập nhật hồ sơ thành công!",
+      "errorTitle": "Lỗi",
+      "updateFailed": "Không thể cập nhật hồ sơ.",
+      "genericError": "Đã xảy ra lỗi khi lưu hồ sơ."
+    }
+  },
+  "help": {
+    "screenTitle": "Trợ giúp & Hỗ trợ",
+    "infoCard": {
+      "title": "Bạn cần hỗ trợ?",
+      "subtitle": "Nếu bạn có câu hỏi, góp ý hoặc phản hồi, vui lòng liên hệ với chúng tôi bất kỳ lúc nào."
+    },
+    "sectionHeader": "Thông tin liên hệ",
+    "contact": {
+      "emailLabel": "Gửi email cho chúng tôi",
+      "websiteLabel": "Ghé thăm trang web"
+    },
+    "alerts": {
+      "errorTitle": "Lỗi",
+      "emailError": "Không thể mở ứng dụng email.",
+      "emailGenericError": "Đã xảy ra lỗi khi mở ứng dụng email.",
+      "browserError": "Không thể mở trình duyệt web.",
+      "websiteGenericError": "Đã xảy ra lỗi khi mở trang web."
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "Ngôn ngữ",
+    "topNotice": "Chọn ngôn ngữ ứng dụng mong muốn của bạn bên dưới.",
+    "bottomNotice": "Thay đổi ngôn ngữ sẽ tự động cập nhật văn bản ứng dụng và lưu vào tài khoản của bạn.",
+    "activeLanguage": "Ngôn ngữ đang dùng",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Anh"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Đan Mạch"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Pháp"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Đức"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Indonesia"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Ý"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Nhật"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Hàn"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Na Uy (Bokmål)"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Ba Lan"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Bồ Đào Nha"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Nga"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Trung giản thể"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Tây Ban Nha"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Thụy Điển"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Thái"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Trung phồn thể"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Thổ Nhĩ Kỳ"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Việt"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Lỗi",
+      "genericUpdateError": "Không thể cập nhật cài đặt ngôn ngữ trên máy chủ."
+    }
+  },
+  "notifications": {
+    "screenTitle": "Thông báo",
+    "topNotice": "Cá nhân hóa thông báo của bạn để duy trì các chuỗi thói quen.",
+    "bottomNotice": "Thông báo cho từng thói quen có thể được quản lý riêng trong phần cài đặt của thói quen đó.",
+    "items": {
+      "todays_plan": {
+        "title": "Kế hoạch hôm nay 📋",
+        "description": "“Sáng: 5 thói quen, Chiều: 1 thói quen, Tối: 6 thói quen, Bất kỳ lúc nào: 2 thói quen”"
+      },
+      "morning_plan": {
+        "title": "Kế hoạch buổi sáng ☀️",
+        "description": "“Bạn có 5 thói quen cần hoàn thành vào sáng nay và 2 thói quen có thể làm vào bất kỳ lúc nào.”"
+      },
+      "afternoon_plan": {
+        "title": "Kế hoạch buổi chiều 🌤️",
+        "description": "“Bạn có 1 thói quen cần hoàn thành vào chiều nay và 2 thói quen có thể làm vào bất kỳ lúc nào.”"
+      },
+      "evening_plan": {
+        "title": "Kế hoạch buổi tối 🌙",
+        "description": "“Bạn có 6 thói quen cần hoàn thành vào tối nay và 2 thói quen có thể làm vào bất kỳ lúc nào.”"
+      },
+      "today_results": {
+        "title": "Kết quả hôm nay 🎉",
+        "description": "“Đã hoàn thành: 3, Đã bỏ qua: 1, Còn lại: 14 thói quen”"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Lỗi",
+      "genericUpdateError": "Không thể cập nhật tùy chỉnh thông báo."
+    }
+  },
+  "settings": {
+    "headerTitle": "Cài đặt",
+    "generalTitle": "Chung",
+    "sound": "Âm thanh",
+    "vacationMode": "Chế độ kỳ nghỉ",
+    "vacationSubtitle": "Tạm dừng thói quen mà không làm mất chuỗi thành tích của bạn.",
+    "changePassword": "Đổi mật khẩu",
+    "help": "Trợ giúp",
+    "privacyPolicy": "Chính sách bảo mật",
+    "rateUs": "Đánh giá ứng dụng",
+    "shareApp": "Chia sẻ ứng dụng",
+    "shareMessage": "Trải nghiệm ngay Habitly! Ứng dụng tuyệt vời giúp xây dựng thói quen hàng ngày và đạt được mục tiêu của bạn.\n\n📱 Tải về cho Android: {{playStoreUrl}}\n🍏 Tải về cho iOS: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "Không thể cập nhật cài đặt. Vui lòng thử lại.",
+      "unexpectedNetwork": "Đã xảy ra lỗi kết nối mạng không xác định.",
+      "privacyPolicy": "Không thể mở trang chính sách bảo mật.",
+      "appStore": "Không thể mở trang cửa hàng ứng dụng.",
+      "whatsapp": "WhatsApp chưa được cài đặt hoặc không khả dụng trên thiết bị này.",
+      "genericLink": "Đã xảy ra lỗi khi mở liên kết."
+    }
+  }
+}

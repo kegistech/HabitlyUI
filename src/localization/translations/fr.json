@@ -1,0 +1,706 @@
+{
+  "auth": {
+    "tagBadge": "CRÉATEUR D'HABITUDES",
+    "title": "Petites habitudes.\nGrands résultats.",
+    "subtitle": "Transformez vos routines quotidiennes en séries durables. Prenez le contrôle de votre journée dès maintenant.",
+    "getStartedFree": "COMMENCER GRATUITEMENT",
+    "alreadyHaveAccount": "J'ai déjà un compte.",
+    "signIn": "Se connecter",
+    "termsNotice": "En vous inscrivant, vous acceptez nos",
+    "termsAndPrivacy": "Conditions d'utilisation et Politique de confidentialité"
+  },
+  "login": {
+    "tagBadge": "BIENVENUE",
+    "welcomeText": "Connexion",
+    "subText": "Poursuivez votre série et suivez vos progrès du jour.",
+    "emailLabel": "E-MAIL",
+    "emailPlaceholder": "nom@exemple.com",
+    "passwordLabel": "MOT DE PASSE",
+    "passwordPlaceholder": "Entrez votre mot de passe",
+    "hide": "MASQUER",
+    "show": "AFFICHER",
+    "forgotPassword": "Mot de passe oublié ?",
+    "signInButton": "SE CONNECTER",
+    "dontHaveAccount": "Vous n'avez pas de compte ?",
+    "signUp": "S'inscrire",
+    "errors": {
+      "emailRequired": "L'e-mail est requis.",
+      "emailInvalid": "Veuillez entrer un e-mail valide.",
+      "passwordRequired": "Le mot de passe est requis.",
+      "loginFailed": "Échec de la connexion. Veuillez vérifier vos identifiants.",
+      "loginError": "E-mail ou mot de passe incorrect. Veuillez réessayer."
+    }
+  },
+  "forgotPassword": {
+    "tag": "RÉCUPÉRATION DU COMPTE",
+    "backToLogin": "Retour à la connexion",
+    "back": "Retour",
+    "success": "Succès",
+    "hide": "MASQUER",
+    "show": "AFFICHER",
+    "titleEmail": "Réinitialiser le mot de passe 🔒",
+    "titleOtp": "Vérifier le code OTP 💬",
+    "titlePassword": "Nouveau mot de passe 🔑",
+    "subEmail": "Entrez votre e-mail et nous vous enverrons un code OTP.",
+    "subOtp": "Entrez le code de vérification envoyé à",
+    "subPassword": "Définissez un nouveau mot de passe sécurisé pour protéger votre compte.",
+    "noOtp": "Vous n'avez pas reçu le code ?",
+    "successMsg": "Votre mot de passe a été mis à jour avec succès !",
+    "loginNow": "Se connecter maintenant",
+    "labels": {
+      "email": "E-MAIL",
+      "otp": "ENTRER LE CODE OTP",
+      "newPassword": "NOUVEAU MOT DE PASSE",
+      "confirmPassword": "CONFIRMER LE MOT DE PASSE"
+    },
+    "placeholders": {
+      "email": "nom@exemple.com",
+      "otp": "• • • • • •",
+      "minPassword": "8 caractères minimum",
+      "reEnterPassword": "Retapez le mot de passe"
+    },
+    "buttons": {
+      "generateOtp": "GÉNÉRER L'OTP",
+      "verifyOtp": "VÉRIFIER L'OTP",
+      "updatePassword": "METTRE À JOUR LE MOT DE PASSE",
+      "resend": "Renvoyer le code",
+      "resendIn": "Renvoyer dans"
+    },
+    "errors": {
+      "emailRequired": "L'e-mail est requis.",
+      "invalidEmail": "Veuillez entrer un e-mail valide.",
+      "otpRequired": "Le code OTP est requis.",
+      "invalidOtp": "Veuillez entrer un code OTP valide.",
+      "passwordRequired": "Le nouveau mot de passe est requis.",
+      "passwordLength": "Le mot de passe doit contenir au moins 8 caractères.",
+      "confirmPasswordRequired": "Veuillez confirmer votre nouveau mot de passe.",
+      "passwordsMismatch": "Les mots de passe ne correspondent pas.",
+      "sendOtpFailed": "Échec de l'envoi de l'OTP. Veuillez réessayer.",
+      "updatePasswordFailed": "Échec de la mise à jour du mot de passe. Veuillez réessayer.",
+      "resendFailed": "Échec du renvoi du code OTP.",
+      "networkError": "Erreur réseau. Veuillez réessayer."
+    }
+  },
+  "signUp": {
+    "badge": "COMMENCER",
+    "title": "Créer un compte 🚀",
+    "subtitle": "Commencez à construire de meilleures routines quotidiennes dès aujourd'hui.",
+    "hide": "MASQUER",
+    "show": "AFFICHER",
+    "loadingCountries": "Chargement des pays...",
+    "labels": {
+      "fullName": "NOM COMPLET",
+      "email": "E-MAIL",
+      "password": "MOT DE PASSE",
+      "country": "PAYS"
+    },
+    "placeholders": {
+      "fullName": "Jean Dupont",
+      "email": "nom@exemple.com",
+      "password": "8 caractères minimum",
+      "selectCountry": "Sélectionnez votre pays"
+    },
+    "buttons": {
+      "createAccount": "CRÉER MON COMPTE",
+      "creatingAccount": "CRÉATION DU COMPTE..."
+    },
+    "legal": {
+      "prefix": "En créant un compte, vous acceptez nos ",
+      "termsAndPrivacy": "Conditions et Politique de confidentialité"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Vous avez déjà un compte ? ",
+      "signIn": "Se connecter"
+    },
+    "modal": {
+      "title": "Sélectionner le pays",
+      "done": "Terminé"
+    },
+    "errors": {
+      "requiredFields": "Veuillez remplir tous les champs obligatoires.",
+      "invalidEmail": "Veuillez entrer un e-mail valide.",
+      "passwordLength": "Le mot de passe doit contenir au moins 8 caractères.",
+      "registrationFailed": "L'inscription a échoué. Veuillez réessayer.",
+      "networkError": "Une erreur réseau est survenue."
+    }
+  },
+  "wakeUpTime": {
+    "badge": "ROUTINE MATINALE",
+    "title": "À quelle heure vous\nréveillez-vous habituellement ? 🌅",
+    "subtitle": "Nous l'utiliserons pour optimiser votre journée et planifier des rappels de motivation.",
+    "buttons": {
+      "continue": "CONTINUER"
+    },
+    "errors": {
+      "updateFailed": "Échec de la mise à jour de l'heure du réveil. Veuillez réessayer.",
+      "networkError": "Une erreur réseau est survenue."
+    }
+  },
+  "reflectionTime": {
+    "badge": "RÉFLEXION DU SOIR",
+    "title": "Quand souhaitez-vous\nfaire le bilan de votre journée ? 🌙",
+    "subtitle": "Un rapide bilan le soir permet de célébrer les victoires et de rester régulier.",
+    "buttons": {
+      "continue": "CONTINUER"
+    },
+    "errors": {
+      "updateFailed": "Échec de la mise à jour de l'heure de réflexion. Veuillez réessayer.",
+      "networkError": "Une erreur réseau est survenue."
+    }
+  },
+  "dashboard": {
+    "title": "Aujourd'hui",
+    "sectionTitle": "TÂCHES ET HABITUDES",
+    "emptyHabits": "Aucune habitude prévue pour cette date.",
+    "defaults": {
+      "goalType": "Quotidien",
+      "valueType": "fois"
+    },
+    "tracking": {
+      "disabledFuture": "Suivi désactivé pour les dates futures",
+      "trackToday": "Suivre pour aujourd'hui"
+    },
+    "alerts": {
+      "errorTitle": "Erreur",
+      "fetchError": "Échec de la récupération des habitudes pour la date sélectionnée.",
+      "trackError": "Échec de la mise à jour de la progression de l'habitude.",
+      "connectError": "Échec de la connexion au suivi.",
+      "futureDateTitle": "Action non autorisée",
+      "futureDateMessage": "Vous ne pouvez pas enregistrer d'activités pour une date future.",
+      "goalReachedTitle": "Objectif atteint",
+      "goalReachedMessage": "Vous avez déjà atteint l'objectif pour cette habitude.",
+      "minLimitTitle": "Limite minimale",
+      "minLimitMessage": "L'activité terminée ne peut pas être inférieure à 0.",
+      "limitReachedTitle": "Limite atteinte",
+      "limitReachedMessage": "Vous avez atteint la limite gratuite de 2 habitudes. Passez à la version Pro pour un accès illimité.",
+      "cancel": "Annuler",
+      "upgrade": "Mettre à niveau"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "Créer une habitude",
+    "regularHabit": "Habitude régulière",
+    "oneTimeTask": "Tâche ponctuelle",
+    "sectionHeader": "OU CHOISISSEZ PARMI CES CATÉGORIES",
+    "defaultCategorySubtitle": "Découvrez et créez de nouvelles habitudes",
+    "alerts": {
+      "noticeTitle": "Information",
+      "fetchError": "Échec de la récupération des catégories.",
+      "errorTitle": "Erreur",
+      "connectError": "Échec de la connexion au serveur."
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "Habitudes",
+    "habitsCount": "{{count}} habitude",
+    "habitsCount_plural": "{{count}} habitudes",
+    "emptyState": "Aucun modèle d'habitude trouvé pour cette catégorie.",
+    "alerts": {
+      "noticeTitle": "Information",
+      "fetchError": "Échec de la récupération des modèles d'habitudes.",
+      "errorTitle": "Erreur",
+      "connectError": "Échec de la connexion au serveur."
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "Modifier la tâche",
+    "headerTitleCreate": "Tâche ponctuelle",
+    "save": "ENREGISTRER",
+    "habitNamePlaceholder": "Nommez votre habitude",
+    "selectColor": "Choisir la couleur",
+    "todayPrefix": "Aujourd'hui, {{date}}",
+    "getReminders": "Recevoir des rappels",
+    "addReminderTime": "Ajouter l'heure du rappel",
+    "validation": {
+      "title": "Erreur de validation",
+      "emptyName": "Veuillez entrer un nom d'habitude."
+    },
+    "alerts": {
+      "errorTitle": "Erreur",
+      "successTitle": "Succès",
+      "fetchColorsFailed": "Échec de la récupération des couleurs.",
+      "updateSuccess": "Tâche ponctuelle mise à jour avec succès.",
+      "updateFailed": "Échec de la mise à jour de la tâche.",
+      "updateError": "Une erreur est survenue lors de la mise à jour.",
+      "createSuccess": "Tâche ponctuelle créée avec succès.",
+      "createFailed": "Échec de la création de la tâche.",
+      "createError": "Une erreur est survenue lors de la création.",
+      "ok": "OK"
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "Modifier l'habitude",
+    "headerTitleNew": "Nouvelle habitude",
+    "save": "ENREGISTRER",
+    "placeholderName": "Nommez votre habitude",
+    "selectColor": "Choisir la couleur",
+    "goalForHabit": "Objectif de l'habitude",
+    "numberOfTimes": "Nombre de fois",
+    "time": "Durée",
+    "timesSuffix": "fois",
+    "minutesSuffix": "minutes",
+    "frequencies": {
+      "daily": "Quotidien",
+      "weekly": "Hebdomadaire",
+      "monthly": "Mensuel"
+    },
+    "repeatEveryDay": "Répéter chaque jour",
+    "repeatDailyIn": "Répéter quotidiennement pendant :",
+    "timesOfDay": {
+      "morning": "Matin",
+      "afternoon": "Après-midi",
+      "evening": "Soir"
+    },
+    "daysOfWeek": {
+      "sunday": "D",
+      "monday": "L",
+      "tuesday": "M",
+      "wednesday": "M",
+      "thursday": "J",
+      "friday": "V",
+      "saturday": "S"
+    },
+    "getReminders": "Recevoir des rappels",
+    "addReminderTime": "Ajouter l'heure du rappel",
+    "alerts": {
+      "errorTitle": "Erreur",
+      "successTitle": "Succès",
+      "validationTitle": "Erreur de validation",
+      "enterHabitName": "Veuillez entrer un nom d'habitude.",
+      "fetchColorsFailed": "Échec de la récupération des couleurs.",
+      "habitUpdatedSuccess": "Habitude mise à jour avec succès.",
+      "habitCreatedSuccess": "Habitude créée avec succès.",
+      "habitUpdateFailed": "Échec de la mise à jour de l'habitude.",
+      "habitCreateFailed": "Échec de la création de l'habitude.",
+      "updateError": "Une erreur est survenue lors de la mise à jour.",
+      "createError": "Une erreur est survenue lors de la création."
+    }
+  },
+  "common": {
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "goBack": "Retour"
+  },
+  "habitDetails": {
+    "currentStreak": "Série actuelle",
+    "longestStreak": "Meilleure série",
+    "completionRate": "Taux de réussite",
+    "totalTimesCompleted": "Nombre total de réalisations",
+    "dayCount_one": "{{count}} jour",
+    "dayCount_other": "{{count}} jours",
+    "actions": {
+      "edit": "Modifier",
+      "archive": "Archiver"
+    },
+    "alerts": {
+      "archiveTitle": "Archiver l'habitude",
+      "archiveMessage": "Êtes-vous sûr de vouloir archiver « {{name}} » ?",
+      "archiveSuccess": "Habitude archivée avec succès.",
+      "archiveFailed": "Échec de l'archivage de l'habitude.",
+      "fetchFailed": "Échec du chargement des statistiques de l'habitude."
+    },
+    "daysOfWeek": ["D", "L", "M", "M", "J", "V", "S"],
+    "monthNames": [
+      "Janvier",
+      "Février",
+      "Mars",
+      "Avril",
+      "Mai",
+      "Juin",
+      "Juillet",
+      "Août",
+      "Septembre",
+      "Octobre",
+      "Novembre",
+      "Décembre"
+    ]
+  },
+  "stats": {
+    "title": "Vos statistiques",
+    "months": [
+      "Janvier",
+      "Février",
+      "Mars",
+      "Avril",
+      "Mai",
+      "Juin",
+      "Juillet",
+      "Août",
+      "Septembre",
+      "Octobre",
+      "Novembre",
+      "Décembre"
+    ],
+    "daysOfWeek": {
+      "sun": "D",
+      "mon": "L",
+      "tue": "M",
+      "wed": "M",
+      "thu": "J",
+      "fri": "V",
+      "sat": "S"
+    },
+    "legend": {
+      "allComplete": "Tout est complété",
+      "someComplete": "Partiellement complété"
+    },
+    "quote": "Le premier pas est toujours le plus difficile. Vous allez y arriver !",
+    "currentStreak": "Série actuelle",
+    "longestStreak": "Meilleure série",
+    "days": "{{count}} jours",
+    "days_one": "{{count}} jour",
+    "days_other": "{{count}} jours",
+    "totalPerfectDays": "Total de jours parfaits",
+    "totalTimesCompleted": "Nombre total de réalisations",
+    "habitCompletionRate": "Taux de réussite des habitudes",
+    "averagePerDaily": "Moyenne quotidienne",
+    "errors": {
+      "fetchFailedTitle": "Erreur",
+      "fetchFailedMessage": "Échec du chargement des statistiques d'habitudes."
+    }
+  },
+  "subscription": {
+    "restore": "RESTAURER",
+    "heroTitle": "Débloquez votre efficacité",
+    "loading": "Chargement...",
+    "features": [
+      "Suivi d'habitudes et rappels illimités",
+      "Analyses avancées et suivi de progression",
+      "Expérience Premium sans publicité"
+    ],
+    "yearly": {
+      "bestOffer": "MEILLEURE OFFRE",
+      "title": "Annuel",
+      "subtitle": "Accès 1 an • {{price}}"
+    },
+    "monthly": {
+      "title": "Mensuel",
+      "priceFormat": "{{price}}/mois"
+    },
+    "cancelOrManage": "Annuler ou gérer l'abonnement",
+    "continue": "Continuer",
+    "plans": {
+      "yearlyPlan": "Plan annuel",
+      "monthlyPlan": "Plan mensuel",
+      "yearlyPrice": "{{price}}/an",
+      "monthlyPrice": "{{price}}/mois"
+    },
+    "securePayment": {
+      "ios": "PAIEMENT SÉCURISÉ VIA L'APP STORE",
+      "android": "PAIEMENT SÉCURISÉ VIA GOOGLE PLAY"
+    },
+    "autoRenewDisclaimer": "L'abonnement se renouvelle automatiquement sauf s'il est annulé au moins 24 heures avant la fin de la période en cours.",
+    "legal": {
+      "termsOfUse": "Conditions d'utilisation (EULA)",
+      "privacyPolicy": "Politique de confidentialité"
+    },
+    "alerts": {
+      "storeErrorTitle": "Erreur de la boutique",
+      "storeErrorMessage": "Impossible de charger les offres d'abonnement.",
+      "errorTitle": "Erreur",
+      "cannotOpenLink": "Impossible d'ouvrir le lien : {{url}}",
+      "failedOpenLink": "Échec de l'ouverture du lien.",
+      "planUnavailable": "Le plan sélectionné n'est pas disponible actuellement.",
+      "successTitle": "Succès !",
+      "upgradedMessage": "Votre compte a été mis à niveau.",
+      "continueBtn": "Continuer",
+      "paymentFailedTitle": "Échec du paiement",
+      "unexpectedError": "Une erreur inattendue s'est produite.",
+      "restoredTitle": "Restauré",
+      "restoredMessage": "Votre abonnement a été restauré avec succès.",
+      "noSubscriptionTitle": "Aucun abonnement",
+      "noSubscriptionMessage": "Aucun abonnement actif n'a été trouvé à restaurer.",
+      "restoreFailedPrefix": "Échec de la restauration : ",
+      "manageTitle": "Gérer l'abonnement",
+      "manageMessage": "Vous allez être redirigé vers les paramètres d'abonnement pour gérer ou annuler votre offre.",
+      "cancelBtn": "Annuler",
+      "openSettingsBtn": "Ouvrir les paramètres",
+      "cannotOpenSettings": "Impossible d'ouvrir les paramètres d'abonnement."
+    }
+  },
+  "appLayout": {
+    "tryPro": "ESSAYER PRO",
+    "routes": {
+      "dashboard": "Aujourd'hui",
+      "stats": "Statistiques",
+      "profile": "Profil"
+    }
+  },
+  "profile": {
+    "screenTitle": "Profil",
+    "edit": "Modifier",
+    "allHabits": "Toutes les habitudes",
+    "notifications": "Notifications",
+    "changeLanguage": "Changer de langue",
+    "settings": "Paramètres",
+    "tryForFree": "Essayer gratuitement",
+    "pro": "PRO",
+    "signOut": "Déconnexion",
+    "signOutAlert": {
+      "title": "Déconnexion",
+      "message": "Êtes-vous sûr de vouloir vous déconnecter ?",
+      "cancel": "Annuler",
+      "confirm": "Se déconnecter"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "Toutes les habitudes",
+    "tabs": {
+      "regular": "HABITUDES RÉGULIÈRES",
+      "oneTime": "TÂCHES PONCTUELLES"
+    },
+    "emptyState": {
+      "regular": "Aucune habitude régulière trouvée.",
+      "oneTime": "Aucune tâche ponctuelle trouvée."
+    },
+    "defaults": {
+      "daily": "Quotidien",
+      "times": "fois"
+    },
+    "alerts": {
+      "errorTitle": "Erreur",
+      "fetchFailed": "Échec de la récupération des prochaines habitudes."
+    }
+  },
+  "changePassword": {
+    "screenTitle": "Changer le mot de passe",
+    "infoCard": {
+      "title": "Renforcer la sécurité",
+      "subtitle": "Choisissez un mot de passe fort d'au moins 8 caractères."
+    },
+    "labels": {
+      "currentPassword": "MOT DE PASSE ACTUEL",
+      "newPassword": "NOUVEAU MOT DE PASSE",
+      "confirmPassword": "CONFIRMER LE MOT DE PASSE"
+    },
+    "placeholders": {
+      "currentPassword": "Entrez le mot de passe actuel",
+      "newPassword": "Entrez le nouveau mot de passe",
+      "confirmPassword": "Retapez le nouveau mot de passe"
+    },
+    "buttons": {
+      "updatePassword": "Mettre à jour le mot de passe"
+    },
+    "validation": {
+      "errorTitle": "Erreur de validation",
+      "currentPasswordRequired": "Veuillez entrer votre mot de passe actuel.",
+      "newPasswordRequired": "Veuillez entrer un nouveau mot de passe.",
+      "minLength": "Le nouveau mot de passe doit contenir au moins 8 caractères.",
+      "sameAsCurrent": "Le nouveau mot de passe ne peut pas être identique au mot de passe actuel.",
+      "passwordMismatch": "Le nouveau mot de passe et la confirmation ne correspondent pas."
+    },
+    "alerts": {
+      "successTitle": "Succès",
+      "successMessage": "Mot de passe changé avec succès !",
+      "errorTitle": "Erreur",
+      "fetchFailed": "Échec de la modification du mot de passe.",
+      "genericError": "Une erreur s'est produite. Veuillez réessayer."
+    }
+  },
+  "editProfile": {
+    "screenTitle": "Modifier le profil",
+    "labels": {
+      "fullName": "Nom complet",
+      "country": "Pays",
+      "state": "État / Région"
+    },
+    "placeholders": {
+      "fullName": "Entrez votre nom",
+      "country": "Sélectionner le pays",
+      "state": "Sélectionner l'état",
+      "selectCountryFirst": "Sélectionnez d'abord un pays"
+    },
+    "buttons": {
+      "saveChanges": "Enregistrer les modifications"
+    },
+    "validation": {
+      "nameRequired": "Veuillez entrer votre nom complet."
+    },
+    "alerts": {
+      "successTitle": "Succès",
+      "successMessage": "Profil mis à jour avec succès !",
+      "errorTitle": "Erreur",
+      "updateFailed": "Échec de la mise à jour du profil.",
+      "genericError": "Une erreur s'est produite lors de la sauvegarde du profil."
+    }
+  },
+  "help": {
+    "screenTitle": "Aide et support",
+    "infoCard": {
+      "title": "Comment pouvons-nous vous aider ?",
+      "subtitle": "Si vous avez des questions, des remarques ou si vous avez besoin d'aide, n'hésitez pas à nous contacter."
+    },
+    "sectionHeader": "COORDONNÉES",
+    "contact": {
+      "emailLabel": "Nous envoyer un e-mail",
+      "websiteLabel": "Visiter le site Web"
+    },
+    "alerts": {
+      "errorTitle": "Erreur",
+      "emailError": "Impossible d'ouvrir l'application e-mail.",
+      "emailGenericError": "Une erreur est survenue lors de l'envoi de l'e-mail.",
+      "browserError": "Impossible d'ouvrir le navigateur Web.",
+      "websiteGenericError": "Une erreur est survenue lors de l'ouverture du site Web."
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "Langue",
+    "topNotice": "Sélectionnez votre langue préférée ci-dessous pour l'application.",
+    "bottomNotice": "Changer la langue mettra automatiquement à jour l'interface de l'application et enregistrera votre choix sur votre compte.",
+    "activeLanguage": "LANGUE ACTIVE",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "Définir la langue de l'application sur l'anglais"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "Définir la langue de l'application sur le danois"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "Définir la langue de l'application sur le français"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "Définir la langue de l'application sur l'allemand"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "Définir la langue de l'application sur l'indonésien"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "Définir la langue de l'application sur l'italien"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "Définir la langue de l'application sur le japonais"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "Définir la langue de l'application sur le coréen"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "Définir la langue de l'application sur le norvégien bokmål"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "Définir la langue de l'application sur le polonais"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "Définir la langue de l'application sur le portugais"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "Définir la langue de l'application sur le russe"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "Définir la langue de l'application sur le chinois simplifié"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "Définir la langue de l'application sur l'espagnol"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "Définir la langue de l'application sur le suédois"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "Définir la langue de l'application sur le thaï"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "Définir la langue de l'application sur le chinois traditionnel"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "Définir la langue de l'application sur le turc"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "Définir la langue de l'application sur le vietnamien"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Erreur",
+      "genericUpdateError": "Échec de la mise à jour de la langue sur le serveur."
+    }
+  },
+  "notifications": {
+    "screenTitle": "Notifications",
+    "topNotice": "Configurez vos notifications pour suivre la réalisation de vos habitudes.",
+    "bottomNotice": "Vous pouvez également configurer des rappels pour chaque habitude dans leurs paramètres individuels.",
+    "items": {
+      "todays_plan": {
+        "title": "Programme d'aujourd'hui 📋",
+        "description": "« Matin : 5 habitudes, Après-midi : 1 habitude, Soir : 6 habitudes, À tout moment : 2 habitudes »"
+      },
+      "morning_plan": {
+        "title": "Programme du matin ☀️",
+        "description": "« Vous avez 5 habitudes prévues ce matin et 2 autres facultatives. »"
+      },
+      "afternoon_plan": {
+        "title": "Programme de l'après-midi 🌤️",
+        "description": "« Vous avez 1 habitude prévue cet après-midi et 2 autres facultatives. »"
+      },
+      "evening_plan": {
+        "title": "Programme du soir 🌙",
+        "description": "« Vous avez 6 habitudes prévues ce soir et 2 autres facultatives. »"
+      },
+      "today_results": {
+        "title": "Vos résultats d'aujourd'hui 🎉",
+        "description": "« 3 habitudes terminées, 1 habitude ignorée, 14 habitudes restantes »"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Erreur",
+      "genericUpdateError": "Échec de la mise à jour des paramètres de notification."
+    }
+  },
+  "settings": {
+    "headerTitle": "Paramètres",
+    "generalTitle": "GÉNÉRAL",
+    "sound": "Son",
+    "vacationMode": "Mode vacances",
+    "vacationSubtitle": "Mettez vos habitudes en pause et conservez vos séries",
+    "changePassword": "Changer le mot de passe",
+    "help": "Aide",
+    "privacyPolicy": "Politique de confidentialité",
+    "rateUs": "Nous évaluer",
+    "shareApp": "Partager l'application",
+    "shareMessage": "Découvrez Habitly ! L'application idéale pour suivre vos habitudes quotidiennes et atteindre vos objectifs.\n\n📱 Télécharger pour Android : {{playStoreUrl}}\n🍏 Télécharger pour iOS : {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "Échec de la mise à jour des paramètres. Veuillez réessayer.",
+      "unexpectedNetwork": "Une erreur réseau inattendue est survenue.",
+      "privacyPolicy": "Impossible d'ouvrir la page de politique de confidentialité.",
+      "appStore": "Impossible d'ouvrir la page du magasin d'applications.",
+      "whatsapp": "WhatsApp n'est pas installé ou n'est pas disponible sur cet appareil.",
+      "genericLink": "Une erreur inattendue est survenue lors de l'ouverture du lien."
+    }
+  }
+}

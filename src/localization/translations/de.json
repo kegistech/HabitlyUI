@@ -1,0 +1,706 @@
+{
+  "auth": {
+    "tagBadge": "GEWOHNHEITEN-PLANER",
+    "title": "Kleine Gewohnheiten.\nGroße Erfolge.",
+    "subtitle": "Verwandeln Sie Ihre täglichen Routinen in lebenslange Erfolge. Übernehmen Sie jetzt die Kontrolle über Ihren Tag.",
+    "getStartedFree": "KOSTENLOS STARTEN",
+    "alreadyHaveAccount": "Ich habe bereits ein Konto.",
+    "signIn": "Anmelden",
+    "termsNotice": "Mit Ihrer Registrierung stimmen Sie unseren",
+    "termsAndPrivacy": "Nutzungsbedingungen und Datenschutzbestimmungen zu"
+  },
+  "login": {
+    "tagBadge": "WILLKOMMEN ZURÜCK",
+    "welcomeText": "Anmelden",
+    "subText": "Setzen Sie Ihre Serie fort und verfolgen Sie Ihren heutigen Fortschritt.",
+    "emailLabel": "E-MAIL-ADRESSE",
+    "emailPlaceholder": "name@beispiel.de",
+    "passwordLabel": "PASSWORT",
+    "passwordPlaceholder": "Passwort eingeben",
+    "hide": "AUSBLENDEN",
+    "show": "ANZEIGEN",
+    "forgotPassword": "Passwort vergessen?",
+    "signInButton": "ANMELDEN",
+    "dontHaveAccount": "Noch kein Konto?",
+    "signUp": "Registrieren",
+    "errors": {
+      "emailRequired": "E-Mail-Adresse ist erforderlich.",
+      "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      "passwordRequired": "Passwort ist erforderlich.",
+      "loginFailed": "Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Anmeldedaten.",
+      "loginError": "Ungültige E-Mail-Adresse oder Passwort. Bitte versuchen Sie es erneut."
+    }
+  },
+  "forgotPassword": {
+    "tag": "KONTO-WIEDERHERSTELLUNG",
+    "backToLogin": "Zurück zur Anmeldung",
+    "back": "Zurück",
+    "success": "Erfolg",
+    "hide": "AUSBLENDEN",
+    "show": "ANZEIGEN",
+    "titleEmail": "Passwort zurücksetzen 🔒",
+    "titleOtp": "OTP verifizieren 💬",
+    "titlePassword": "Neues Passwort 🔑",
+    "subEmail": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen OTP-Code.",
+    "subOtp": "Geben Sie den Bestätigungscode ein, der gesendet wurde an",
+    "subPassword": "Legen Sie ein starkes neues Passwort fest, um Ihr Konto zu schützen.",
+    "noOtp": "Code nicht erhalten?",
+    "successMsg": "Ihr Passwort wurde erfolgreich aktualisiert!",
+    "loginNow": "Jetzt anmelden",
+    "labels": {
+      "email": "E-MAIL-ADRESSE",
+      "otp": "OTP-CODE EINGEBEN",
+      "newPassword": "NEUES PASSWORT",
+      "confirmPassword": "NEUES PASSWORT BESTÄTIGEN"
+    },
+    "placeholders": {
+      "email": "name@beispiel.de",
+      "otp": "• • • • • •",
+      "minPassword": "Mindestens 8 Zeichen",
+      "reEnterPassword": "Passwort erneut eingeben"
+    },
+    "buttons": {
+      "generateOtp": "OTP GENERIEREN",
+      "verifyOtp": "OTP VERIFIZIEREN",
+      "updatePassword": "PASSWORT AKTUALISIEREN",
+      "resend": "Code erneut senden",
+      "resendIn": "Erneut senden in"
+    },
+    "errors": {
+      "emailRequired": "E-Mail-Adresse ist erforderlich.",
+      "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      "otpRequired": "OTP-Code ist erforderlich.",
+      "invalidOtp": "Bitte geben Sie einen gültigen OTP-Code ein.",
+      "passwordRequired": "Neues Passwort ist erforderlich.",
+      "passwordLength": "Das Passwort muss mindestens 8 Zeichen lang sein.",
+      "confirmPasswordRequired": "Bitte bestätigen Sie Ihr neues Passwort.",
+      "passwordsMismatch": "Die Passwörter stimmen nicht überein.",
+      "sendOtpFailed": "OTP-Code konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+      "updatePasswordFailed": "Passwort konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut.",
+      "resendFailed": "OTP-Code konnte nicht erneut gesendet werden.",
+      "networkError": "Netzwerkfehler. Bitte versuchen Sie es erneut."
+    }
+  },
+  "signUp": {
+    "badge": "JETZT STARTEN",
+    "title": "Konto erstellen 🚀",
+    "subtitle": "Beginnen Sie noch heute damit, bessere tägliche Routinen aufzubauen.",
+    "hide": "AUSBLENDEN",
+    "show": "ANZEIGEN",
+    "loadingCountries": "Länder werden geladen...",
+    "labels": {
+      "fullName": "VOLLSTÄNDIGER NAME",
+      "email": "E-MAIL-ADRESSE",
+      "password": "PASSWORT",
+      "country": "LAND"
+    },
+    "placeholders": {
+      "fullName": "Max Mustermann",
+      "email": "name@beispiel.de",
+      "password": "Mindestens 8 Zeichen",
+      "selectCountry": "Wählen Sie Ihr Land"
+    },
+    "buttons": {
+      "createAccount": "KONTO ERSTELLEN",
+      "creatingAccount": "KONTO WIRD ERSTELLT..."
+    },
+    "legal": {
+      "prefix": "Mit der Erstellung eines Kontos stimmen Sie unseren ",
+      "termsAndPrivacy": "Nutzungsbedingungen und Datenschutzbestimmungen zu"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Haben Sie bereits ein Konto? ",
+      "signIn": "Anmelden"
+    },
+    "modal": {
+      "title": "Land auswählen",
+      "done": "Fertig"
+    },
+    "errors": {
+      "requiredFields": "Bitte füllen Sie alle Pflichtfelder aus.",
+      "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      "passwordLength": "Das Passwort muss mindestens 8 Zeichen lang sein.",
+      "registrationFailed": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "networkError": "Ein Netzwerkfehler ist aufgetreten."
+    }
+  },
+  "wakeUpTime": {
+    "badge": "MORGENROUTINE",
+    "title": "Wann stehen Sie\nnormalerweise auf? 🌅",
+    "subtitle": "Wir nutzen diese Angabe, um Ihre Tagesroutine zu optimieren und Benachrichtigungen zu planen.",
+    "buttons": {
+      "continue": "WEITER"
+    },
+    "errors": {
+      "updateFailed": "Aufstehzeit konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut.",
+      "networkError": "Ein Netzwerkfehler ist aufgetreten."
+    }
+  },
+  "reflectionTime": {
+    "badge": "ABENDREFLEXION",
+    "title": "Wann möchten Sie\nIhren Tag reflektieren? 🌙",
+    "subtitle": "Ein kurzer Abend-Check-in hilft dabei, Erfolge zu feiern und konsequent zu bleiben.",
+    "buttons": {
+      "continue": "WEITER"
+    },
+    "errors": {
+      "updateFailed": "Reflexionszeit konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut.",
+      "networkError": "Ein Netzwerkfehler ist aufgetreten."
+    }
+  },
+  "dashboard": {
+    "title": "Heute",
+    "sectionTitle": "AUFGABEN & GEWOHNHEITEN",
+    "emptyHabits": "Für dieses Datum sind keine Gewohnheiten geplant.",
+    "defaults": {
+      "goalType": "Täglich",
+      "valueType": "Mal"
+    },
+    "tracking": {
+      "disabledFuture": "Tracking für zukünftige Daten deaktiviert",
+      "trackToday": "Heutige Aktivität erfassen"
+    },
+    "alerts": {
+      "errorTitle": "Fehler",
+      "fetchError": "Gewohnheiten für das ausgewählte Datum konnten nicht geladen werden.",
+      "trackError": "Fortschritt der Gewohnheit konnte nicht aktualisiert werden.",
+      "connectError": "Verbindung zum Tracker fehlgeschlagen.",
+      "futureDateTitle": "Aktion nicht erlaubt",
+      "futureDateMessage": "Sie können keine Aktivitäten für zukünftige Daten erfassen.",
+      "goalReachedTitle": "Ziel erreicht",
+      "goalReachedMessage": "Sie haben das Ziel für diese Gewohnheit bereits erreicht.",
+      "minLimitTitle": "Mindestgrenze",
+      "minLimitMessage": "Abgeschlossene Aktivität kann nicht weniger als 0 sein.",
+      "limitReachedTitle": "Limit erreicht",
+      "limitReachedMessage": "Sie haben das kostenlose Limit von 2 Gewohnheiten erreicht. Führen Sie ein Upgrade auf Pro durch, um unbegrenzten Zugriff zu erhalten.",
+      "cancel": "Abbrechen",
+      "upgrade": "Upgraden"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "Gewohnheit erstellen",
+    "regularHabit": "Regelmäßige Gewohnheit",
+    "oneTimeTask": "Einmalige Aufgabe",
+    "sectionHeader": "ODER AUS DIESEN KATEGORIEN WÄHLEN",
+    "defaultCategorySubtitle": "Neue Gewohnheiten entdecken und aufbauen",
+    "alerts": {
+      "noticeTitle": "Hinweis",
+      "fetchError": "Kategorien konnten nicht abgerufen werden.",
+      "errorTitle": "Fehler",
+      "connectError": "Verbindung zum Server fehlgeschlagen."
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "Gewohnheiten",
+    "habitsCount": "{{count}} Gewohnheit",
+    "habitsCount_plural": "{{count}} Gewohnheiten",
+    "emptyState": "Keine Gewohnheitsvorlagen für diese Kategorie gefunden.",
+    "alerts": {
+      "noticeTitle": "Hinweis",
+      "fetchError": "Gewohnheitsvorlagen konnten nicht abgerufen werden.",
+      "errorTitle": "Fehler",
+      "connectError": "Verbindung zum Server fehlgeschlagen."
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "Aufgabe bearbeiten",
+    "headerTitleCreate": "Einmalige Aufgabe",
+    "save": "SPEICHERN",
+    "habitNamePlaceholder": "Name der Gewohnheit",
+    "selectColor": "Farbe auswählen",
+    "todayPrefix": "Heute, {{date}}",
+    "getReminders": "Erinnerungen erhalten",
+    "addReminderTime": "Erinnerungszeit hinzufügen",
+    "validation": {
+      "title": "Validierungsfehler",
+      "emptyName": "Bitte geben Sie einen Namen für die Gewohnheit ein."
+    },
+    "alerts": {
+      "errorTitle": "Fehler",
+      "successTitle": "Erfolg",
+      "fetchColorsFailed": "Farben konnten nicht geladen werden.",
+      "updateSuccess": "Einmalige Aufgabe erfolgreich aktualisiert.",
+      "updateFailed": "Aufgabe konnte nicht aktualisiert werden.",
+      "updateError": "Beim Aktualisieren ist ein Fehler aufgetreten.",
+      "createSuccess": "Einmalige Aufgabe erfolgreich erstellt.",
+      "createFailed": "Aufgabe konnte nicht erstellt werden.",
+      "createError": "Beim Erstellen ist ein Fehler aufgetreten.",
+      "ok": "OK"
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "Gewohnheit bearbeiten",
+    "headerTitleNew": "Neue Gewohnheit",
+    "save": "SPEICHERN",
+    "placeholderName": "Name der Gewohnheit",
+    "selectColor": "Farbe auswählen",
+    "goalForHabit": "Ziel für die Gewohnheit",
+    "numberOfTimes": "Anzahl der Ausführungen",
+    "time": "Zeit",
+    "timesSuffix": "Mal",
+    "minutesSuffix": "Minuten",
+    "frequencies": {
+      "daily": "Täglich",
+      "weekly": "Wöchentlich",
+      "monthly": "Monatlich"
+    },
+    "repeatEveryDay": "Jeden Tag wiederholen",
+    "repeatDailyIn": "Täglich wiederholen am:",
+    "timesOfDay": {
+      "morning": "Morgen",
+      "afternoon": "Nachmittag",
+      "evening": "Abend"
+    },
+    "daysOfWeek": {
+      "sunday": "S",
+      "monday": "M",
+      "tuesday": "D",
+      "wednesday": "M",
+      "thursday": "D",
+      "friday": "F",
+      "saturday": "S"
+    },
+    "getReminders": "Erinnerungen erhalten",
+    "addReminderTime": "Erinnerungszeit hinzufügen",
+    "alerts": {
+      "errorTitle": "Fehler",
+      "successTitle": "Erfolg",
+      "validationTitle": "Validierungsfehler",
+      "enterHabitName": "Bitte geben Sie einen Namen für die Gewohnheit ein.",
+      "fetchColorsFailed": "Farben konnten nicht geladen werden.",
+      "habitUpdatedSuccess": "Gewohnheit erfolgreich aktualisiert.",
+      "habitCreatedSuccess": "Gewohnheit erfolgreich erstellt.",
+      "habitUpdateFailed": "Gewohnheit konnte nicht aktualisiert werden.",
+      "habitCreateFailed": "Gewohnheit konnte nicht erstellt werden.",
+      "updateError": "Beim Aktualisieren ist ein Fehler aufgetreten.",
+      "createError": "Beim Erstellen ist ein Fehler aufgetreten."
+    }
+  },
+  "common": {
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "goBack": "Zurück"
+  },
+  "habitDetails": {
+    "currentStreak": "Aktuelle Serie",
+    "longestStreak": "Längste Serie",
+    "completionRate": "Erfüllungsrate der Gewohnheit",
+    "totalTimesCompleted": "Insgesamt abgeschlossen",
+    "dayCount_one": "{{count}} Tag",
+    "dayCount_other": "{{count}} Tage",
+    "actions": {
+      "edit": "Bearbeiten",
+      "archive": "Archivieren"
+    },
+    "alerts": {
+      "archiveTitle": "Gewohnheit archivieren",
+      "archiveMessage": "Möchten Sie „{{name}}“ wirklich archivieren?",
+      "archiveSuccess": "Gewohnheit erfolgreich archiviert.",
+      "archiveFailed": "Gewohnheit konnte nicht archiviert werden.",
+      "fetchFailed": "Statistiken für die Gewohnheit konnten nicht geladen werden."
+    },
+    "daysOfWeek": ["S", "M", "D", "M", "D", "F", "S"],
+    "monthNames": [
+      "Januar",
+      "Februar",
+      "März",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Dezember"
+    ]
+  },
+  "stats": {
+    "title": "Ihre Statistiken",
+    "months": [
+      "Januar",
+      "Februar",
+      "März",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Dezember"
+    ],
+    "daysOfWeek": {
+      "sun": "S",
+      "mon": "M",
+      "tue": "D",
+      "wed": "M",
+      "thu": "D",
+      "fri": "F",
+      "sat": "S"
+    },
+    "legend": {
+      "allComplete": "Alle erledigt",
+      "someComplete": "Einige erledigt"
+    },
+    "quote": "Der erste Schritt ist der schwerste. Ohne Zögern – Sie können es schaffen.",
+    "currentStreak": "Aktuelle Serie",
+    "longestStreak": "Längste Serie",
+    "days": "{{count}} Tage",
+    "days_one": "{{count}} Tag",
+    "days_other": "{{count}} Tage",
+    "totalPerfectDays": "Perfekte Tage insgesamt",
+    "totalTimesCompleted": "Insgesamt abgeschlossen",
+    "habitCompletionRate": "Erfüllungsrate der Gewohnheit",
+    "averagePerDaily": "Täglicher Durchschnitt",
+    "errors": {
+      "fetchFailedTitle": "Fehler",
+      "fetchFailedMessage": "Statistiken konnten nicht geladen werden."
+    }
+  },
+  "subscription": {
+    "restore": "WIEDERHERSTELLEN",
+    "heroTitle": "Steigern Sie Ihre Effizienz",
+    "loading": "Wird geladen...",
+    "features": [
+      "Unbegrenztes Gewohnheits-Tracking & Erinnerungen",
+      "Erweiterte Analysen & Fortschrittseinblicke",
+      "Werbefreies Premium-Erlebnis"
+    ],
+    "yearly": {
+      "bestOffer": "BESTES ANGEBOT",
+      "title": "Jährlich",
+      "subtitle": "1 Jahr Zugriff • {{price}}"
+    },
+    "monthly": {
+      "title": "Monatlich",
+      "priceFormat": "{{price}}/Monat"
+    },
+    "cancelOrManage": "Abonnement kündigen oder verwalten",
+    "continue": "Weiter",
+    "plans": {
+      "yearlyPlan": "Jahresabo",
+      "monthlyPlan": "Monatsabo",
+      "yearlyPrice": "{{price}}/Jahr",
+      "monthlyPrice": "{{price}}/Monat"
+    },
+    "securePayment": {
+      "ios": "SICHERE ZAHLUNG ÜBER DEN APP STORE",
+      "android": "SICHERE ZAHLUNG ÜBER GOOGLE PLAY"
+    },
+    "autoRenewDisclaimer": "Das Abonnement verlängert sich automatisch, sofern es nicht mindestens 24 Stunden vor Ablauf des aktuellen Zeitraums gekündigt wird.",
+    "legal": {
+      "termsOfUse": "Nutzungsbedingungen (EULA)",
+      "privacyPolicy": "Datenschutzbestimmungen"
+    },
+    "alerts": {
+      "storeErrorTitle": "Store-Fehler",
+      "storeErrorMessage": "Abonnement-Pakete konnten nicht geladen werden.",
+      "errorTitle": "Fehler",
+      "cannotOpenLink": "Link kann nicht geöffnet werden: {{url}}",
+      "failedOpenLink": "Link konnte nicht geöffnet werden.",
+      "planUnavailable": "Der ausgewählte Tarif ist derzeit nicht verfügbar.",
+      "successTitle": "Erfolg!",
+      "upgradedMessage": "Ihr Konto wurde erfolgreich aufgewertet.",
+      "continueBtn": "Weiter",
+      "paymentFailedTitle": "Zahlung fehlgeschlagen",
+      "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten.",
+      "restoredTitle": "Wiederhergestellt",
+      "restoredMessage": "Ihr Abonnement wurde erfolgreich wiederhergestellt.",
+      "noSubscriptionTitle": "Kein Abonnement",
+      "noSubscriptionMessage": "Es wurde kein aktives Abonnement zum Wiederherstellen gefunden.",
+      "restoreFailedPrefix": "Wiederherstellung fehlgeschlagen: ",
+      "manageTitle": "Abonnement verwalten",
+      "manageMessage": "Sie werden zu den Abonnement-Einstellungen weitergeleitet, um Ihren Tarif zu verwalten oder zu kündigen.",
+      "cancelBtn": "Abbrechen",
+      "openSettingsBtn": "Einstellungen öffnen",
+      "cannotOpenSettings": "Abonnement-Einstellungen konnten nicht geöffnet werden."
+    }
+  },
+  "appLayout": {
+    "tryPro": "PRO TESTEN",
+    "routes": {
+      "dashboard": "Heute",
+      "stats": "Statistiken",
+      "profile": "Profil"
+    }
+  },
+  "profile": {
+    "screenTitle": "Profil",
+    "edit": "Bearbeiten",
+    "allHabits": "Alle Gewohnheiten",
+    "notifications": "Benachrichtigungen",
+    "changeLanguage": "Sprache wechseln",
+    "settings": "Einstellungen",
+    "tryForFree": "Kostenlos testen",
+    "pro": "PRO",
+    "signOut": "Abmelden",
+    "signOutAlert": {
+      "title": "Abmelden",
+      "message": "Möchten Sie sich wirklich abmelden?",
+      "cancel": "Abbrechen",
+      "confirm": "Abmelden"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "Alle Gewohnheiten",
+    "tabs": {
+      "regular": "REGELMÄSSIGE GEWOHNHEITEN",
+      "oneTime": "EINMALIGE AUFGABEN"
+    },
+    "emptyState": {
+      "regular": "Keine regelmäßigen Gewohnheiten gefunden.",
+      "oneTime": "Keine einmaligen Aufgaben gefunden."
+    },
+    "defaults": {
+      "daily": "Täglich",
+      "times": "Mal"
+    },
+    "alerts": {
+      "errorTitle": "Fehler",
+      "fetchFailed": "Anstehende Gewohnheiten konnten nicht geladen werden."
+    }
+  },
+  "changePassword": {
+    "screenTitle": "Passwort ändern",
+    "infoCard": {
+      "title": "Sicherheit aktualisieren",
+      "subtitle": "Wählen Sie ein starkes Passwort mit mindestens 8 Zeichen."
+    },
+    "labels": {
+      "currentPassword": "AKTUELLES PASSWORT",
+      "newPassword": "NEUES PASSWORT",
+      "confirmPassword": "NEUES PASSWORT BESTÄTIGEN"
+    },
+    "placeholders": {
+      "currentPassword": "Aktuelles Passwort eingeben",
+      "newPassword": "Neues Passwort eingeben",
+      "confirmPassword": "Neues Passwort erneut eingeben"
+    },
+    "buttons": {
+      "updatePassword": "Passwort aktualisieren"
+    },
+    "validation": {
+      "errorTitle": "Validierungsfehler",
+      "currentPasswordRequired": "Bitte geben Sie Ihr aktuelles Passwort ein.",
+      "newPasswordRequired": "Bitte geben Sie ein neues Passwort ein.",
+      "minLength": "Das neue Passwort muss mindestens 8 Zeichen lang sein.",
+      "sameAsCurrent": "Das neue Passwort darf nicht mit dem aktuellen Passwort übereinstimmen.",
+      "passwordMismatch": "Das neue Passwort und die Bestätigung stimmen nicht überein."
+    },
+    "alerts": {
+      "successTitle": "Erfolg",
+      "successMessage": "Passwort erfolgreich geändert!",
+      "errorTitle": "Fehler",
+      "fetchFailed": "Passwort konnte nicht geändert werden.",
+      "genericError": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+    }
+  },
+  "editProfile": {
+    "screenTitle": "Profil bearbeiten",
+    "labels": {
+      "fullName": "Vollständiger Name",
+      "country": "Land",
+      "state": "Bundesland / Region"
+    },
+    "placeholders": {
+      "fullName": "Name eingeben",
+      "country": "Land auswählen",
+      "state": "Bundesland auswählen",
+      "selectCountryFirst": "Zuerst Land auswählen"
+    },
+    "buttons": {
+      "saveChanges": "Änderungen speichern"
+    },
+    "validation": {
+      "nameRequired": "Bitte geben Sie Ihren vollständigen Namen ein."
+    },
+    "alerts": {
+      "successTitle": "Erfolg",
+      "successMessage": "Profil erfolgreich aktualisiert!",
+      "errorTitle": "Fehler",
+      "updateFailed": "Profil konnte nicht aktualisiert werden.",
+      "genericError": "Beim Speichern des Profils ist ein Fehler aufgetreten."
+    }
+  },
+  "help": {
+    "screenTitle": "Hilfe & Support",
+    "infoCard": {
+      "title": "Wie können wir helfen?",
+      "subtitle": "Wenn Sie Fragen haben, Feedback geben möchten oder Unterstützung benötigen, können Sie sich gerne an uns wenden."
+    },
+    "sectionHeader": "KONTAKTINFORMATIONEN",
+    "contact": {
+      "emailLabel": "E-Mail senden",
+      "websiteLabel": "Website besuchen"
+    },
+    "alerts": {
+      "errorTitle": "Fehler",
+      "emailError": "E-Mail-Client konnte nicht geöffnet werden.",
+      "emailGenericError": "Beim Senden der E-Mail ist ein Fehler aufgetreten.",
+      "browserError": "Browser konnte nicht geöffnet werden.",
+      "websiteGenericError": "Beim Öffnen der Website ist ein Fehler aufgetreten."
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "Sprache",
+    "topNotice": "Wählen Sie unten Ihre bevorzugte App-Sprache aus.",
+    "bottomNotice": "Das Ändern der Sprache aktualisiert automatisch die Benutzeroberfläche in der gesamten App und speichert die Einstellung in Ihrem Konto.",
+    "activeLanguage": "AKTIVE SPRACHE",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "App-Sprache auf Englisch stellen"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "App-Sprache auf Dänisch stellen"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "App-Sprache auf Französisch stellen"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "App-Sprache auf Deutsch stellen"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "App-Sprache auf Indonesisch stellen"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "App-Sprache auf Italienisch stellen"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "App-Sprache auf Japanisch stellen"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "App-Sprache auf Koreanisch stellen"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "App-Sprache auf Norwegisch Bokmål stellen"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "App-Sprache auf Polnisch stellen"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "App-Sprache auf Portugiesisch stellen"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "App-Sprache auf Russisch stellen"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "App-Sprache auf Vereinfachtes Chinesisch stellen"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "App-Sprache auf Spanisch stellen"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "App-Sprache auf Schwedisch stellen"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "App-Sprache auf Thailändisch stellen"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "App-Sprache auf Traditionelles Chinesisch stellen"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "App-Sprache auf Türkisch stellen"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "App-Sprache auf Vietnamesisch stellen"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Fehler",
+      "genericUpdateError": "Sprache konnte auf dem Server nicht aktualisiert werden."
+    }
+  },
+  "notifications": {
+    "screenTitle": "Benachrichtigungen",
+    "topNotice": "Richten Sie Benachrichtigungen ein, um Informationen zum Abschluss von Gewohnheiten zu erhalten.",
+    "bottomNotice": "Sie können auch Erinnerungen für einzelne Gewohnheiten in deren Einstellungen festlegen.",
+    "items": {
+      "todays_plan": {
+        "title": "Tagesplan 📋",
+        "description": "\"Morgen: 5 Gewohnheiten, Nachmittag: 1 Gewohnheit, Abend: 6 Gewohnheiten, Jederzeit: 2 Gewohnheiten\""
+      },
+      "morning_plan": {
+        "title": "Morgenplan ☀️",
+        "description": "\"Sie haben 5 Gewohnheiten für diesen Morgen und 2 weitere, die Sie erledigen können.\""
+      },
+      "afternoon_plan": {
+        "title": "Nachmittagsplan 🌤️",
+        "description": "\"Sie haben 1 Gewohnheit für diesen Nachmittag und 2 weitere, die Sie erledigen können.\""
+      },
+      "evening_plan": {
+        "title": "Abendplan 🌙",
+        "description": "\"Sie haben 6 Gewohnheiten für diesen Abend und 2 weitere, die Sie erledigen können.\""
+      },
+      "today_results": {
+        "title": "Ihre heutigen Ergebnisse 🎉",
+        "description": "\"3 Gewohnheiten abgeschlossen, 1 Gewohnheit übersprungen, 14 Gewohnheiten verbleibend\""
+      }
+    },
+    "alerts": {
+      "errorTitle": "Fehler",
+      "genericUpdateError": "Benachrichtigungseinstellungen konnten nicht aktualisiert werden."
+    }
+  },
+  "settings": {
+    "headerTitle": "Einstellungen",
+    "generalTitle": "ALLGEMEIN",
+    "sound": "Ton",
+    "vacationMode": "Urlaubsmodus",
+    "vacationSubtitle": "Gewohnheiten pausieren und Statistiken behalten",
+    "changePassword": "Passwort ändern",
+    "help": "Hilfe",
+    "privacyPolicy": "Datenschutz & Richtlinien",
+    "rateUs": "Bewerten Sie uns",
+    "shareApp": "App teilen",
+    "shareMessage": "Schauen Sie sich Habitly an! Es hilft Ihnen, Ihre täglichen Gewohnheiten zu verfolgen und Ihre Ziele zu erreichen.\n\n📱 Für Android herunterladen: {{playStoreUrl}}\n🍏 Für iOS herunterladen: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "Einstellungen konnten nicht aktualisiert werden. Bitte versuchen Sie es erneut.",
+      "unexpectedNetwork": "Ein unerwarteter Netzwerkfehler ist aufgetreten.",
+      "privacyPolicy": "Webseite mit den Datenschutzbestimmungen kann nicht geöffnet werden.",
+      "appStore": "App Store-Seite kann nicht geöffnet werden.",
+      "whatsapp": "WhatsApp ist auf diesem Gerät nicht installiert oder verfügbar.",
+      "genericLink": "Beim Versuch, den Link zu öffnen, ist ein unerwarteter Fehler aufgetreten."
+    }
+  }
+}

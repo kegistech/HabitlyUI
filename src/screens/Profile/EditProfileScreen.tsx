@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, User, Globe, MapPin, Check, ChevronDown } from 'lucide-react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -26,14 +27,24 @@ import { countriesAPI, statesAPI, editProfileAPI } from '../../services/apiendpo
 
 type Props = NativeStackScreenProps<RootStackParamList, 'EditProfile'>;
 
-interface DropdownItem {
+export interface DropdownItem {
   label: string;
   value: number;
 }
 
+interface ApiResponse<T = any> {
+  succeeded?: boolean;
+  isSuccess?: boolean;
+  status?: number;
+  message?: string;
+  data?: T;
+}
+
 const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
+
   // --- Form State ---
-  const [name, setName] = useState('');
+  const [name, setName] = useState<string>('');
   const [selectedCountryId, setSelectedCountryId] = useState<number | null>(null);
   const [selectedStateId, setSelectedStateId] = useState<number | null>(null);
 
@@ -42,10 +53,10 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
   const [states, setStates] = useState<DropdownItem[]>([]);
 
   // --- UI & Loading States ---
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
-  const [isStatesLoading, setIsStatesLoading] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [isInitialLoading, setIsInitialLoading] = useState<boolean>(true);
+  const [isStatesLoading, setIsStatesLoading] = useState<boolean>(false);
+  const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   // 1. Fetch Initial Data (User Data & Countries)
   useEffect(() => {
@@ -59,10 +70,9 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
       // Fetch stored user details
       const storedUserData = await AsyncStorage.getItem('userData');
       let userData: any = null;
- 
+
       if (storedUserData) {
         userData = JSON.parse(storedUserData);
-
         if (userData?.name) setName(userData.name);
       }
 
@@ -73,9 +83,8 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
       getApi(
         countriesAPI,
         async (response: any) => {
-          const countryList: DropdownItem[] = (
-            response?.data || response || []
-          ).map((item: any) => ({
+          const rawList = response?.data || response || [];
+          const countryList: DropdownItem[] = rawList.map((item: any) => ({
             label: item.name || item.countryName || item.label,
             value: item.id || item.countryId || item.value,
           }));
@@ -112,9 +121,8 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
         setIsStatesLoading(false);
         setIsInitialLoading(false);
 
-        const stateList: DropdownItem[] = (
-          response?.data || response || []
-        ).map((item: any) => ({
+        const rawList = response?.data || response || [];
+        const stateList: DropdownItem[] = rawList.map((item: any) => ({
           label: item.name || item.stateName || item.label,
           value: item.id || item.stateId || item.value,
         }));
@@ -145,7 +153,7 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
   // 4. Save Profile Changes using common putApi
   const handleSave = () => {
     if (!name.trim()) {
-      setErrorMessage('Please enter your full name.');
+      setErrorMessage(t('editProfile.validation.nameRequired'));
       return;
     }
 
@@ -161,7 +169,7 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
     putApi(
       editProfileAPI,
       payload,
-      async (response: any) => {
+      async (response: ApiResponse) => {
         setIsSaving(false);
         if (
           response &&
@@ -179,11 +187,13 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
           };
           await AsyncStorage.setItem('userData', JSON.stringify(updatedUserData));
 
-          Alert.alert('Success', 'Profile updated successfully!', [
-            { text: 'OK', onPress: () => navigation.goBack() },
-          ]);
+          Alert.alert(
+            t('editProfile.alerts.successTitle'),
+            t('editProfile.alerts.successMessage'),
+            [{ text: 'OK', onPress: () => navigation.goBack() }]
+          );
         } else {
-          setErrorMessage(response?.message || 'Failed to update profile.');
+          setErrorMessage(response?.message || t('editProfile.alerts.updateFailed'));
         }
       },
       (error: any) => {
@@ -191,7 +201,7 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
         const serverMsg =
           error?.response?.data?.message ||
           error?.message ||
-          'An error occurred while saving profile.';
+          t('editProfile.alerts.genericError');
         setErrorMessage(serverMsg);
       }
     );
@@ -211,14 +221,14 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
           <ArrowLeft size={moderateScale(22)} color="#FFFFFF" />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>Edit Profile</Text>
+        <Text style={styles.headerTitle}>{t('editProfile.screenTitle')}</Text>
 
         <View style={styles.headerRightPlaceholder} />
       </View>
 
       {isInitialLoading ? (
         <View style={styles.loadingCenter}>
-          <ActivityIndicator size="large" color="#2558D8" />
+          <ActivityIndicator size="large" color="#29B6F6" />
         </View>
       ) : (
         <KeyboardAvoidingView
@@ -241,7 +251,7 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
             <View style={styles.formContainer}>
               {/* Name Input */}
               <View style={styles.inputGroup}>
-                <Text style={styles.inputLabel}>Full Name</Text>
+                <Text style={styles.inputLabel}>{t('editProfile.labels.fullName')}</Text>
                 <View style={styles.inputWrapper}>
                   <User size={moderateScale(18)} color="#8E93A6" style={styles.inputIcon} />
                   <TextInput
@@ -251,7 +261,7 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
                       setName(text);
                       if (errorMessage) setErrorMessage('');
                     }}
-                    placeholder="Enter your name"
+                    placeholder={t('editProfile.placeholders.fullName')}
                     placeholderTextColor="#5C6070"
                   />
                 </View>
@@ -259,7 +269,7 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
 
               {/* Country Dropdown */}
               <View style={styles.inputGroup}>
-                <Text style={styles.inputLabel}>Country</Text>
+                <Text style={styles.inputLabel}>{t('editProfile.labels.country')}</Text>
                 <View style={styles.inputWrapper}>
                   <Globe size={moderateScale(18)} color="#8E93A6" style={styles.inputIcon} />
                   <Dropdown
@@ -272,7 +282,7 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
                     data={countries}
                     labelField="label"
                     valueField="value"
-                    placeholder="Select Country"
+                    placeholder={t('editProfile.placeholders.country')}
                     value={selectedCountryId}
                     onChange={handleCountryChange}
                     renderRightIcon={() => (
@@ -284,11 +294,11 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
 
               {/* State Dropdown */}
               <View style={styles.inputGroup}>
-                <Text style={styles.inputLabel}>State / Region</Text>
+                <Text style={styles.inputLabel}>{t('editProfile.labels.state')}</Text>
                 <View style={styles.inputWrapper}>
                   <MapPin size={moderateScale(18)} color="#8E93A6" style={styles.inputIcon} />
                   {isStatesLoading ? (
-                    <ActivityIndicator size="small" color="#2558D8" style={styles.flexOne} />
+                    <ActivityIndicator size="small" color="#29B6F6" style={styles.flexOne} />
                   ) : (
                     <Dropdown
                       style={styles.dropdown}
@@ -300,10 +310,14 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
                       data={states}
                       labelField="label"
                       valueField="value"
-                      placeholder={selectedCountryId ? 'Select State' : 'Select Country First'}
+                      placeholder={
+                        selectedCountryId
+                          ? t('editProfile.placeholders.state')
+                          : t('editProfile.placeholders.selectCountryFirst')
+                      }
                       value={selectedStateId}
                       disable={!selectedCountryId}
-                      onChange={(item:any) => setSelectedStateId(item.value)}
+                      onChange={(item: DropdownItem) => setSelectedStateId(item.value)}
                       renderRightIcon={() => (
                         <ChevronDown size={moderateScale(18)} color="#8E93A6" />
                       )}
@@ -327,7 +341,9 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
               ) : (
                 <>
                   <Check size={moderateScale(20)} color="#FFFFFF" />
-                  <Text style={styles.saveButtonText}>Save Changes</Text>
+                  <Text style={styles.saveButtonText}>
+                    {t('editProfile.buttons.saveChanges')}
+                  </Text>
                 </>
               )}
             </TouchableOpacity>
@@ -471,7 +487,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#2558D8',
+    backgroundColor: '#29B6F6',
     borderRadius: moderateScale(16),
     height: scaleHeight(52),
     gap: scaleWidth(8),

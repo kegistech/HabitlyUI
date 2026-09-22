@@ -1,0 +1,705 @@
+{
+  "auth": {
+    "tagBadge": "Alışkanlık Takipçisi",
+    "title": "Küçük alışkanlıklar,\nbüyük sonuçlar doğurur",
+    "subtitle": "Günlük eylemlerinizi kalıcı alışkanlıklara dönüştürün. Disiplin inşa etmeye ve hayatınızı organize etmeye bugün başlayın.",
+    "getStartedFree": "Ücretsiz Başla",
+    "alreadyHaveAccount": "Zaten hesabınız var mı?",
+    "signIn": "Giriş Yap",
+    "termsNotice": "Kayıt olarak şunları kabul etmiş olursunuz:",
+    "termsAndPrivacy": "Kullanım Koşulları ve Gizlilik Politikası"
+  },
+  "login": {
+    "tagBadge": "Tekrar Hoş Geldiniz",
+    "welcomeText": "Giriş Yap",
+    "subText": "Serinizi koruyun ve bugünkü ilerlemenizi takip edin.",
+    "emailLabel": "E-posta",
+    "emailPlaceholder": "ad@ornek.com",
+    "passwordLabel": "Şifre",
+    "passwordPlaceholder": "Şifrenizi girin",
+    "hide": "Gizle",
+    "show": "Göster",
+    "forgotPassword": "Şifrenizi mi unuttunuz?",
+    "signInButton": "Giriş Yap",
+    "dontHaveAccount": "Hesabınız yok mu?",
+    "signUp": "Kayıt Ol",
+    "errors": {
+      "emailRequired": "E-posta gereklidir.",
+      "emailInvalid": "Lütfen geçerli bir e-posta adresi girin.",
+      "passwordRequired": "Şifre gereklidir.",
+      "loginFailed": "Giriş başarısız. Lütfen bilgilerinizi kontrol edin.",
+      "loginError": "Geçersiz e-posta veya şifre."
+    }
+  },
+  "forgotPassword": {
+    "tag": "Hesabı Kurtar",
+    "backToLogin": "Giriş Sayfasına Dön",
+    "back": "Geri",
+    "success": "Başarılı",
+    "hide": "Gizle",
+    "show": "Göster",
+    "titleEmail": "Şifreyi Sıfırla 🔒",
+    "titleOtp": "OTP Doğrulama 💬",
+    "titlePassword": "Yeni Şifre Belirle 🔑",
+    "subEmail": "Doğrulama kodunu almak için e-posta adresinizi girin.",
+    "subOtp": "Şuraya gönderilen doğrulama kodunu girin:",
+    "subPassword": "Hesabınızı korumak için yeni ve güçlü bir şifre oluşturun.",
+    "noOtp": "Kod gelmedi mi?",
+    "successMsg": "Şifreniz başarıyla güncellendi!",
+    "loginNow": "Şimdi Giriş Yap",
+    "labels": {
+      "email": "E-posta",
+      "otp": "OTP Kodunu Girin",
+      "newPassword": "Yeni Şifre",
+      "confirmPassword": "Yeni Şifreyi Onayla"
+    },
+    "placeholders": {
+      "email": "ad@ornek.com",
+      "otp": "• • • • • •",
+      "minPassword": "En az 8 karakter",
+      "reEnterPassword": "Yeni şifreyi tekrar girin"
+    },
+    "buttons": {
+      "generateOtp": "OTP Gönder",
+      "verifyOtp": "OTP Doğrula",
+      "updatePassword": "Şifreyi Güncelle",
+      "resend": "Tekrar Gönder",
+      "resendIn": "Şu sürede tekrar gönder:"
+    },
+    "errors": {
+      "emailRequired": "E-posta gereklidir.",
+      "invalidEmail": "Lütfen geçerli bir e-posta adresi girin.",
+      "otpRequired": "OTP kodu gereklidir.",
+      "invalidOtp": "Lütfen geçerli bir OTP kodu girin.",
+      "passwordRequired": "Yeni şifre gereklidir.",
+      "passwordLength": "Şifre en az 8 karakter olmalıdır.",
+      "confirmPasswordRequired": "Lütfen yeni şifrenizi onaylayın.",
+      "passwordsMismatch": "Şifreler eşleşmiyor.",
+      "sendOtpFailed": "OTP gönderilemedi. Lütfen tekrar deneyin.",
+      "updatePasswordFailed": "Şifre güncellenemedi. Lütfen tekrar deneyin.",
+      "resendFailed": "Tekrar gönderilemedi.",
+      "networkError": "Ağ hatası oluştu. Lütfen tekrar deneyin."
+    }
+  },
+  "signUp": {
+    "badge": "Başlarken",
+    "title": "Hesap Oluştur 🚀",
+    "subtitle": "Günlük harika alışkanlıklar edinmeye bugün başlayın.",
+    "hide": "Gizle",
+    "show": "Göster",
+    "loadingCountries": "Ülkeler yükleniyor...",
+    "labels": {
+      "fullName": "Ad Soyad",
+      "email": "E-posta",
+      "password": "Şifre",
+      "country": "Ülke"
+    },
+    "placeholders": {
+      "fullName": "Ahmet Yılmaz",
+      "email": "ad@ornek.com",
+      "password": "En az 8 karakter",
+      "selectCountry": "Ülke seçin"
+    },
+    "buttons": {
+      "createAccount": "Hesap Oluştur",
+      "creatingAccount": "Hesap oluşturuluyor..."
+    },
+    "legal": {
+      "prefix": "Hesap oluşturarak şunları kabul etmiş olursunuz: ",
+      "termsAndPrivacy": "Kullanım Koşulları ve Gizlilik Politikası"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Zaten hesabınız var mı? ",
+      "signIn": "Giriş Yap"
+    },
+    "modal": {
+      "title": "Ülke Seçin",
+      "done": "Tamam"
+    },
+    "errors": {
+      "requiredFields": "Lütfen gerekli tüm alanları doldurun.",
+      "invalidEmail": "Lütfen geçerli bir e-posta adresi girin.",
+      "passwordLength": "Şifre en az 8 karakter olmalıdır.",
+      "registrationFailed": "Kayıt başarısız. Lütfen tekrar deneyin.",
+      "networkError": "Bir ağ hatası oluştu."
+    }
+  },
+  "wakeUpTime": {
+    "badge": "Uyanma Rutini",
+    "title": "Genellikle kaçta\nuyanırsınız? 🌅",
+    "subtitle": "Gününüzü verimli bir şekilde planlamak ve motive edici hatırlatıcılar ayarlamak için kullanılır.",
+    "buttons": {
+      "continue": "Devam Et"
+    },
+    "errors": {
+      "updateFailed": "Uyanma zamanı güncellenemedi. Lütfen tekrar deneyin.",
+      "networkError": "Bir ağ hatası oluştu."
+    }
+  },
+  "reflectionTime": {
+    "badge": "Akşam Değerlendirmesi",
+    "title": "Gününüzü ne zaman\ndeğerlendirmek istersiniz? 🌙",
+    "subtitle": "Hızlı bir akşam değerlendirmesi, ilerlemenizi takip etmenize ve tutarlı kalmanıza yardımcı olur.",
+    "buttons": {
+      "continue": "Devam Et"
+    },
+    "errors": {
+      "updateFailed": "Değerlendirme zamanı güncellenemedi. Lütfen tekrar deneyin.",
+      "networkError": "Bir ağ hatası oluştu."
+    }
+  },
+  "dashboard": {
+    "title": "Bugün",
+    "sectionTitle": "Görevler ve Alışkanlıklar",
+    "emptyHabits": "Bugün için planlanmış alışkanlık yok.",
+    "defaults": {
+      "goalType": "Günlük",
+      "valueType": "kez"
+    },
+    "tracking": {
+      "disabledFuture": "Gelecek tarihler için kayıt devre dışı bırakıldı",
+      "trackToday": "Bugün için kaydet"
+    },
+    "alerts": {
+      "errorTitle": "Hata",
+      "fetchError": "Seçilen tarih için alışkanlıklar alınamadı.",
+      "trackError": "Alışkanlık ilerlemesi güncellenemedi.",
+      "connectError": "Alışkanlık takipçisine bağlanılamadı.",
+      "futureDateTitle": "Eyleme İzin Verilmiyor",
+      "futureDateMessage": "Gelecek tarihler için alışkanlık kaydedemezsiniz.",
+      "goalReachedTitle": "Hedefe Ulaşıldı",
+      "goalReachedMessage": "Bu alışkanlık için hedefinizi zaten tamamladınız.",
+      "minLimitTitle": "Minimum Sınır",
+      "minLimitMessage": "Tamamlama sayısı 0'dan az olamaz.",
+      "limitReachedTitle": "Sınıra Ulaşıldı",
+      "limitReachedMessage": "Ücretsiz planın 2 alışkanlık sınırına ulaştınız. Sınırsız erişim için Pro'ya yükseltin.",
+      "cancel": "İptal",
+      "upgrade": "Pro'yu Aç"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "Alışkanlık Oluştur",
+    "regularHabit": "Düzenli Alışkanlık",
+    "oneTimeTask": "Tek Seferlik Görev",
+    "sectionHeader": "Veya Kategorilerden Seçin",
+    "defaultCategorySubtitle": "Yeni alışkanlıklar keşfedin ve geliştirin",
+    "alerts": {
+      "noticeTitle": "Bildirim",
+      "fetchError": "Kategoriler alınamadı.",
+      "errorTitle": "Hata",
+      "connectError": "Sunucuya bağlanılamadı."
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "Alışkanlıklar",
+    "habitsCount": "{{count}} Alışkanlık",
+    "habitsCount_plural": "{{count}} Alışkanlık",
+    "emptyState": "Bu kategoride alışkanlık şablonu bulunamadı.",
+    "alerts": {
+      "noticeTitle": "Bildirim",
+      "fetchError": "Alışkanlık şablonları alınamadı.",
+      "errorTitle": "Hata",
+      "connectError": "Sunucuya bağlanılamadı."
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "Görevi Düzenle",
+    "headerTitleCreate": "Tek Seferlik Görev",
+    "save": "Kaydet",
+    "habitNamePlaceholder": "Alışkanlık adını girin",
+    "selectColor": "Renk Seçin",
+    "todayPrefix": "Bugün, {{date}}",
+    "getReminders": "Hatırlatıcı Al",
+    "addReminderTime": "Hatırlatıcı zamanı ekle",
+    "validation": {
+      "title": "Geçersiz Girdi",
+      "emptyName": "Lütfen bir alışkanlık adı girin"
+    },
+    "alerts": {
+      "errorTitle": "Hata",
+      "successTitle": "Başarılı",
+      "fetchColorsFailed": "Renkler alınamadı.",
+      "updateSuccess": "Tek seferlik görev başarıyla güncellendi",
+      "updateFailed": "Görev güncellenemedi",
+      "updateError": "Güncelleme sırasında bir hata oluştu",
+      "createSuccess": "Tek seferlik görev başarıyla oluşturuldu",
+      "createFailed": "Görev oluşturulamadı",
+      "createError": "Oluşturma sırasında bir hata oluştu"
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "Alışkanlığı Düzenle",
+    "headerTitleNew": "Yeni Alışkanlık",
+    "save": "Kaydet",
+    "placeholderName": "Alışkanlık adını girin",
+    "selectColor": "Renk Seçin",
+    "goalForHabit": "Alışkanlık Hedefi",
+    "numberOfTimes": "Kez Sayısı",
+    "time": "Süre",
+    "timesSuffix": "kez",
+    "minutesSuffix": "dakika",
+    "frequencies": {
+      "daily": "Günlük",
+      "weekly": "Haftalık",
+      "monthly": "Aylık"
+    },
+    "repeatEveryDay": "Her gün tekrarla",
+    "repeatDailyIn": "Şu zaman diliminde her gün tekrarla:",
+    "timesOfDay": {
+      "morning": "Sabah",
+      "afternoon": "Öğle",
+      "evening": "Akşam"
+    },
+    "daysOfWeek": {
+      "sunday": "Paz",
+      "monday": "Pzt",
+      "tuesday": "Sal",
+      "wednesday": "Çar",
+      "thursday": "Per",
+      "friday": "Cum",
+      "saturday": "Cmt"
+    },
+    "getReminders": "Hatırlatıcı Al",
+    "addReminderTime": "Hatırlatıcı zamanı ekle",
+    "alerts": {
+      "errorTitle": "Hata",
+      "successTitle": "Başarılı",
+      "validationTitle": "Geçersiz Girdi",
+      "enterHabitName": "Lütfen bir alışkanlık adı girin",
+      "fetchColorsFailed": "Renkler alınamadı.",
+      "habitUpdatedSuccess": "Alışkanlık başarıyla güncellendi",
+      "habitCreatedSuccess": "Alışkanlık başarıyla oluşturuldu",
+      "habitUpdateFailed": "Alışkanlık güncellenemedi",
+      "habitCreateFailed": "Alışkanlık oluşturulamadı",
+      "updateError": "Güncelleme sırasında bir hata oluştu",
+      "createError": "Oluşturma sırasında bir hata oluştu"
+    }
+  },
+  "common": {
+    "error": "Hata",
+    "success": "Başarılı",
+    "cancel": "İptal",
+    "goBack": "Geri Dön"
+  },
+  "habitDetails": {
+    "currentStreak": "Mevcut Seri",
+    "longestStreak": "En Uzun Seri",
+    "completionRate": "Tamamlama Oranı",
+    "totalTimesCompleted": "Toplam Tamamlanma Sayısı",
+    "dayCount_one": "{{count}} Gün",
+    "dayCount_other": "{{count}} Gün",
+    "actions": {
+      "edit": "Düzenle",
+      "archive": "Arşivle"
+    },
+    "alerts": {
+      "archiveTitle": "Alışkanlığı Arşivle",
+      "archiveMessage": "\"{{name}}\" alışkanlığını arşivlemek istediğinize emin misiniz?",
+      "archiveSuccess": "Alışkanlık başarıyla arşivlendi",
+      "archiveFailed": "Alışkanlık arşivlenemedi",
+      "fetchFailed": "Alışkanlık istatistikleri yüklenemedi."
+    },
+    "daysOfWeek": ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+    "monthNames": [
+      "Ocak",
+      "Şubat",
+      "Mart",
+      "Nisan",
+      "Mayıs",
+      "Haziran",
+      "Temmuz",
+      "Ağustos",
+      "Eylül",
+      "Ekim",
+      "Kasım",
+      "Aralık"
+    ]
+  },
+  "stats": {
+    "title": "İstatistikler",
+    "months": [
+      "Ocak",
+      "Şubat",
+      "Mart",
+      "Nisan",
+      "Mayıs",
+      "Haziran",
+      "Temmuz",
+      "Ağustos",
+      "Eylül",
+      "Ekim",
+      "Kasım",
+      "Aralık"
+    ],
+    "daysOfWeek": {
+      "sun": "Pz",
+      "mon": "Pt",
+      "tue": "Sa",
+      "wed": "Ça",
+      "thu": "Pe",
+      "fri": "Cu",
+      "sat": "Ct"
+    },
+    "legend": {
+      "allComplete": "Tümü Tamamlandı",
+      "someComplete": "Kısmen Tamamlandı"
+    },
+    "quote": "İlk adım her zaman en zorudur, ama bunu başarabilirsin!",
+    "currentStreak": "Mevcut Seri",
+    "longestStreak": "En Uzun Seri",
+    "days": "{{count}} Gün",
+    "days_one": "{{count}} Gün",
+    "days_other": "{{count}} Gün",
+    "totalPerfectDays": "Toplam Mükemmel Günler",
+    "totalTimesCompleted": "Toplam Tamamlanma Sayısı",
+    "habitCompletionRate": "Alışkanlık Tamamlama Oranı",
+    "averagePerDaily": "Günlük Ortalama",
+    "errors": {
+      "fetchFailedTitle": "Hata",
+      "fetchFailedMessage": "Alışkanlık istatistikleri yüklenemedi."
+    }
+  },
+  "subscription": {
+    "restore": "Satın Almaları Geri Yükle",
+    "heroTitle": "Verimliliğinizi Süper Güçlerle Donatın",
+    "loading": "Yükleniyor...",
+    "features": [
+      "Sınırsız alışkanlık ve hatırlatıcı takibi",
+      "Ayrıntılı istatistikler ve ilerleme analizleri",
+      "Reklamsız, kesintisiz bir deneyim"
+    ],
+    "yearly": {
+      "bestOffer": "EN İYİ TEKLİF",
+      "title": "Yıllık Erişim",
+      "subtitle": "1 Yıl Tam Erişim • {{price}}"
+    },
+    "monthly": {
+      "title": "Aylık Erişim",
+      "priceFormat": "{{price}}/ay"
+    },
+    "cancelOrManage": "Aboneliği İptal Et veya Yönet",
+    "continue": "Devam Et",
+    "plans": {
+      "yearlyPlan": "Yıllık Plan",
+      "monthlyPlan": "Aylık Plan",
+      "yearlyPrice": "{{price}}/yıl",
+      "monthlyPrice": "{{price}}/ay"
+    },
+    "securePayment": {
+      "ios": "App Store üzerinden güvenli ödeme",
+      "android": "Google Play üzerinden güvenli ödeme"
+    },
+    "autoRenewDisclaimer": "Mevcut dönemin bitiminden en az 24 saat önce iptal edilmediği sürece abonelik otomatik olarak yenilenir.",
+    "legal": {
+      "termsOfUse": "Kullanım Koşulları (EULA)",
+      "privacyPolicy": "Gizlilik Politikası"
+    },
+    "alerts": {
+      "storeErrorTitle": "Mağaza Hatası",
+      "storeErrorMessage": "Abonelik seçenekleri alınamadı.",
+      "errorTitle": "Hata",
+      "cannotOpenLink": "Bağlantı açılamıyor: {{url}}",
+      "failedOpenLink": "Bağlantı açılamadı",
+      "planUnavailable": "Seçilen plan şu anda kullanılabilir değil.",
+      "successTitle": "Tebrikler!",
+      "upgradedMessage": "Hesabınız başarıyla yükseltildi.",
+      "continueBtn": "Devam Et",
+      "paymentFailedTitle": "Ödeme Başarısız",
+      "unexpectedError": "Beklenmeyen bir hata oluştu.",
+      "restoredTitle": "Geri Yüklendi",
+      "restoredMessage": "Aboneliğiniz başarıyla geri yüklendi.",
+      "noSubscriptionTitle": "Abonelik Bulunamadı",
+      "noSubscriptionMessage": "Geri yüklenecek aktif bir abonelik bulunamadı.",
+      "restoreFailedPrefix": "Geri yükleme başarısız: ",
+      "manageTitle": "Aboneliği Yönet",
+      "manageMessage": "Planınızı yönetmek veya iptal etmek için abonelik ayarlarına yönlendiriliyorsunuz.",
+      "cancelBtn": "İptal",
+      "openSettingsBtn": "Ayarları Aç",
+      "cannotOpenSettings": "Abonelik ayarları sayfası açılamıyor."
+    }
+  },
+  "appLayout": {
+    "tryPro": "PRO'YU DENEYİN",
+    "routes": {
+      "dashboard": "Bugün",
+      "stats": "İstatistikler",
+      "profile": "Profil"
+    }
+  },
+  "profile": {
+    "screenTitle": "Profil",
+    "edit": "Düzenle",
+    "allHabits": "Tüm Alışkanlıklar",
+    "notifications": "Bildirimler",
+    "changeLanguage": "Dili Değiştir",
+    "settings": "Ayarlar",
+    "tryForFree": "Ücretsiz Deneyin",
+    "pro": "PRO",
+    "signOut": "Çıkış Yap",
+    "signOutAlert": {
+      "title": "Çıkış Yap",
+      "message": "Çıkış yapmak istediğinize emin misiniz?",
+      "cancel": "İptal",
+      "confirm": "Çıkış Yap"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "Tüm Alışkanlıklar",
+    "tabs": {
+      "regular": "Düzenli Alışkanlıklar",
+      "oneTime": "Tek Seferlik Görevler"
+    },
+    "emptyState": {
+      "regular": "Düzenli alışkanlık bulunamadı.",
+      "oneTime": "Tek seferlik görev bulunamadı."
+    },
+    "defaults": {
+      "daily": "Günlük",
+      "times": "kez"
+    },
+    "alerts": {
+      "errorTitle": "Hata",
+      "fetchFailed": "Gelecek alışkanlıklar alınamadı."
+    }
+  },
+  "changePassword": {
+    "screenTitle": "Şifreyi Değiştir",
+    "infoCard": {
+      "title": "Güvenliğinizi Artırın",
+      "subtitle": "En az 8 karakterden oluşan yeni ve güçlü bir şifre seçin."
+    },
+    "labels": {
+      "currentPassword": "Mevcut Şifre",
+      "newPassword": "Yeni Şifre",
+      "confirmPassword": "Yeni Şifreyi Onayla"
+    },
+    "placeholders": {
+      "currentPassword": "Mevcut şifrenizi girin",
+      "newPassword": "Yeni şifrenizi girin",
+      "confirmPassword": "Yeni şifreyi tekrar girin"
+    },
+    "buttons": {
+      "updatePassword": "Şifreyi Güncelle"
+    },
+    "validation": {
+      "errorTitle": "Geçersiz Girdi",
+      "currentPasswordRequired": "Lütfen mevcut şifrenizi girin.",
+      "newPasswordRequired": "Lütfen yeni şifrenizi girin.",
+      "minLength": "Yeni şifre en az 8 karakter olmalıdır.",
+      "sameAsCurrent": "Yeni şifre mevcut şifre ile aynı olamaz.",
+      "passwordMismatch": "Yeni şifre ve onay şifresi eşleşmiyor."
+    },
+    "alerts": {
+      "successTitle": "Başarılı",
+      "successMessage": "Şifreniz başarıyla değiştirildi!",
+      "errorTitle": "Hata",
+      "fetchFailed": "Şifre değiştirilemedi.",
+      "genericError": "Bir şeyler yanlış gitti. Lütfen tekrar deneyin."
+    }
+  },
+  "editProfile": {
+    "screenTitle": "Profili Düzenle",
+    "labels": {
+      "fullName": "Ad Soyad",
+      "country": "Ülke",
+      "state": "Eyalet / Şehir"
+    },
+    "placeholders": {
+      "fullName": "Adınızı ve soyadınızı girin",
+      "country": "Ülke seçin",
+      "state": "Eyalet/Şehir seçin",
+      "selectCountryFirst": "Lütfen önce bir ülke seçin"
+    },
+    "buttons": {
+      "saveChanges": "Değişiklikleri Kaydet"
+    },
+    "validation": {
+      "nameRequired": "Lütfen adınızı ve soyadınızı girin."
+    },
+    "alerts": {
+      "successTitle": "Başarılı",
+      "successMessage": "Profiliniz başarıyla güncellendi!",
+      "errorTitle": "Hata",
+      "updateFailed": "Profil güncellenemedi.",
+      "genericError": "Profil kaydedilirken bir hata oluştu."
+    }
+  },
+  "help": {
+    "screenTitle": "Yardım ve Destek",
+    "infoCard": {
+      "title": "Yardıma mı ihtiyacınız var?",
+      "subtitle": "Sorularınız, önerileriniz veya geri bildirimleriniz için dilediğiniz zaman bize ulaşabilirsiniz."
+    },
+    "sectionHeader": "İletişim Bilgileri",
+    "contact": {
+      "emailLabel": "Bize E-posta Gönderin",
+      "websiteLabel": "Web Sitemizi Ziyaret Edin"
+    },
+    "alerts": {
+      "errorTitle": "Hata",
+      "emailError": "E-posta uygulaması açılamıyor.",
+      "emailGenericError": "E-posta uygulaması açılırken bir hata oluştu.",
+      "browserError": "Web tarayıcısı açılamıyor.",
+      "websiteGenericError": "Web sitesi açılırken bir hata oluştu."
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "Dil",
+    "topNotice": "Tercih ettiğiniz uygulama dilini aşağıdan seçin.",
+    "bottomNotice": "Dili değiştirmek uygulamadaki metinleri otomatik olarak güncelleyecek ve hesabınıza kaydedecektir.",
+    "activeLanguage": "Etkin Dil",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "Uygulama dilini İngilizce olarak ayarla"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "Uygulama dilini Danimarkaca olarak ayarla"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "Uygulama dilini Fransızca olarak ayarla"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "Uygulama dilini Almanca olarak ayarla"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "Uygulama dilini Endonezce olarak ayarla"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "Uygulama dilini İtalyanca olarak ayarla"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "Uygulama dilini Japonca olarak ayarla"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "Uygulama dilini Korece olarak ayarla"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "Uygulama dilini Norveççe Bokmål olarak ayarla"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "Uygulama dilini Lehçe olarak ayarla"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "Uygulama dilini Portekizce olarak ayarla"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "Uygulama dilini Rusça olarak ayarla"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "Uygulama dilini Basitleştirilmiş Çince olarak ayarla"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "Uygulama dilini İspanyolca olarak ayarla"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "Uygulama dilini İsveççe olarak ayarla"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "Uygulama dilini Tayca olarak ayarla"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "Uygulama dilini Geleneksel Çince olarak ayarla"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "Uygulama dilini Türkçe olarak ayarla"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "Uygulama dilini Vietnamca olarak ayarla"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Hata",
+      "genericUpdateError": "Sunucudaki dil ayarı güncellenemedi."
+    }
+  },
+  "notifications": {
+    "screenTitle": "Bildirimler",
+    "topNotice": "Alışkanlık serilerinizi korumak için bildirimlerinizi kişiselleştirin.",
+    "bottomNotice": "Her alışkanlığın bildirimleri, kendi ayarlarından ayrı olarak yönetilebilir.",
+    "items": {
+      "todays_plan": {
+        "title": "Bugünün Planı 📋",
+        "description": "“Sabah: 5 alışkanlık, Öğle: 1 alışkanlık, Akşam: 6 alışkanlık, Herhangi bir zamanda: 2 alışkanlık”"
+      },
+      "morning_plan": {
+        "title": "Sabah Planı ☀️",
+        "description": "“Bu sabah yapmanız gereken 5 alışkanlık ve günün herhangi bir zamanında yapabileceğiniz 2 alışkanlık var.”"
+      },
+      "afternoon_plan": {
+        "title": "Öğle Planı 🌤️",
+        "description": "“Bu öğleden sonra yapmanız gereken 1 alışkanlık ve günün herhangi bir zamanında yapabileceğiniz 2 alışkanlık var.”"
+      },
+      "evening_plan": {
+        "title": "Akşam Planı 🌙",
+        "description": "“Bu akşam yapmanız gereken 6 alışkanlık ve günün herhangi bir zamanında yapabileceğiniz 2 alışkanlık var.”"
+      },
+      "today_results": {
+        "title": "Bugünün Sonuçları 🎉",
+        "description": "“Tamamlanan: 3, Atlanan: 1, Kalan: 14 alışkanlık”"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Hata",
+      "genericUpdateError": "Bildirim tercihleri güncellenemedi."
+    }
+  },
+  "settings": {
+    "headerTitle": "Ayarlar",
+    "generalTitle": "Genel",
+    "sound": "Ses",
+    "vacationMode": "Tatil Modu",
+    "vacationSubtitle": "Serilerinizi kaybetmeden alışkanlıklarınızı geçici olarak duraklatın.",
+    "changePassword": "Şifreyi Değiştir",
+    "help": "Yardım",
+    "privacyPolicy": "Gizlilik Politikası",
+    "rateUs": "Bizi Değerlendirin",
+    "shareApp": "Uygulamayı Paylaş",
+    "shareMessage": "Habitly'ye göz atın! Günlük alışkanlıklar edinmek ve hedeflerinize ulaşmak için harika bir uygulama.\n\n📱 Android için indir: {{playStoreUrl}}\n🍏 iOS için indir: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "Ayarlar güncellenemedi. Lütfen tekrar deneyin.",
+      "unexpectedNetwork": "Beklenmeyen bir ağ hatası oluştu.",
+      "privacyPolicy": "Gizlilik politikası sayfası açılamıyor.",
+      "appStore": "Uygulama mağazası sayfası açılamıyor.",
+      "whatsapp": "WhatsApp yüklü değil veya bu cihazda kullanılamıyor.",
+      "genericLink": "Bağlantı açılırken beklenmeyen bir hata oluştu."
+    }
+  }
+}

@@ -1,0 +1,706 @@
+{
+  "auth": {
+    "tagBadge": "VANEVÆRKTØJ",
+    "title": "Små vaner.\nBemærkelsesværdige sejre.",
+    "subtitle": "Forvandl dine daglige rutiner til livslange stimer. Tag styringen over din dag nu.",
+    "getStartedFree": "KOM GRATIS I GANG",
+    "alreadyHaveAccount": "Jeg har allerede en konto.",
+    "signIn": "Log ind",
+    "termsNotice": "Ved at tilmelde dig accepterer du vores",
+    "termsAndPrivacy": "Servicevilkår og privatlivspolitik"
+  },
+  "login": {
+    "tagBadge": "VELKOMMEN TILBAGE",
+    "welcomeText": "Log ind",
+    "subText": "Fortsæt din stime og følg dagens fremskridt.",
+    "emailLabel": "E-MAILADRESSE",
+    "emailPlaceholder": "navn@eksempel.dk",
+    "passwordLabel": "ADGANGSKODE",
+    "passwordPlaceholder": "Indtast din adgangskode",
+    "hide": "SKJUL",
+    "show": "VIS",
+    "forgotPassword": "Glemt adgangskode?",
+    "signInButton": "LOG IND",
+    "dontHaveAccount": "Har du ikke en konto?",
+    "signUp": "Opret konto",
+    "errors": {
+      "emailRequired": "E-mailadresse er påkrævet.",
+      "emailInvalid": "Indtast venligst en gyldig e-mailadresse.",
+      "passwordRequired": "Adgangskode er påkrævet.",
+      "loginFailed": "Login mislykkedes. Kontroller dine oplysninger.",
+      "loginError": "Forkert e-mail eller adgangskode. Prøv venligst igen."
+    }
+  },
+  "forgotPassword": {
+    "tag": "GENDANNING AF KONTO",
+    "backToLogin": "Tilbage til login",
+    "back": "Tilbage",
+    "success": "Succes",
+    "hide": "SKJUL",
+    "show": "VIS",
+    "titleEmail": "Nulstil adgangskode 🔒",
+    "titleOtp": "Bekræft OTP 💬",
+    "titlePassword": "Ny adgangskode 🔑",
+    "subEmail": "Indtast din e-mailadresse, så sender vi dig en OTP-kode.",
+    "subOtp": "Indtast bekræftelseskoden sendt til",
+    "subPassword": "Vælg en stærk ny adgangskode for at beskytte din konto.",
+    "noOtp": "Modtog du ikke koden?",
+    "successMsg": "Din adgangskode er blevet opdateret!",
+    "loginNow": "Log ind nu",
+    "labels": {
+      "email": "E-MAILADRESSE",
+      "otp": "INDTAST OTP-KODE",
+      "newPassword": "NY ADGANGSKODE",
+      "confirmPassword": "BEKRÆFT NY ADGANGSKODE"
+    },
+    "placeholders": {
+      "email": "navn@eksempel.dk",
+      "otp": "• • • • • •",
+      "minPassword": "Mindst 8 tegn",
+      "reEnterPassword": "Genindtast adgangskode"
+    },
+    "buttons": {
+      "generateOtp": "GENERER OTP",
+      "verifyOtp": "BEKRÆFT OTP",
+      "updatePassword": "OPDATER ADGANGSKODE",
+      "resend": "Send kode igen",
+      "resendIn": "Send igen om"
+    },
+    "errors": {
+      "emailRequired": "E-mailadresse er påkrævet.",
+      "invalidEmail": "Indtast venligst en gyldig e-mailadresse.",
+      "otpRequired": "OTP-kode er påkrævet.",
+      "invalidOtp": "Indtast venligst en gyldig OTP-kode.",
+      "passwordRequired": "Ny adgangskode er påkrævet.",
+      "passwordLength": "Adgangskoden skal være på mindst 8 tegn.",
+      "confirmPasswordRequired": "Bekræft venligst din nye adgangskode.",
+      "passwordsMismatch": "Adgangskoderne matcher ikke.",
+      "sendOtpFailed": "Kunne ikke sende OTP-kode. Prøv venligst igen.",
+      "updatePasswordFailed": "Kunne ikke opdatere adgangskode. Prøv venligst igen.",
+      "resendFailed": "Kunne ikke gensende OTP-kode.",
+      "networkError": "Netværksfejl. Prøv venligst igen."
+    }
+  },
+  "signUp": {
+    "badge": "KOM I GANG",
+    "title": "Opret konto 🚀",
+    "subtitle": "Begynd at opbygge bedre daglige rutiner fra i dag.",
+    "hide": "SKJUL",
+    "show": "VIS",
+    "loadingCountries": "Indlæser lande...",
+    "labels": {
+      "fullName": "FULDE NAVN",
+      "email": "E-MAILADRESSE",
+      "password": "ADGANGSKODE",
+      "country": "LAND"
+    },
+    "placeholders": {
+      "fullName": "Jens Hansen",
+      "email": "navn@eksempel.dk",
+      "password": "Mindst 8 tegn",
+      "selectCountry": "Vælg dit land"
+    },
+    "buttons": {
+      "createAccount": "OPRET MIN KONTO",
+      "creatingAccount": "OPRETTER KONTO..."
+    },
+    "legal": {
+      "prefix": "Ved at oprette en konto accepterer du vores ",
+      "termsAndPrivacy": "Vilkår og privatlivspolitik"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Har du allerede en konto? ",
+      "signIn": "Log ind"
+    },
+    "modal": {
+      "title": "Vælg land",
+      "done": "Færdig"
+    },
+    "errors": {
+      "requiredFields": "Udfyld venligst alle påkrævede felter.",
+      "invalidEmail": "Indtast venligst en gyldig e-mailadresse.",
+      "passwordLength": "Adgangskoden skal være på mindst 8 tegn.",
+      "registrationFailed": "Registrering mislykkedes. Prøv venligst igen.",
+      "networkError": "Der opstod en netværksfejl."
+    }
+  },
+  "wakeUpTime": {
+    "badge": "MORGENRUTINE",
+    "title": "Hvornår står du\nsædvanligvis op? 🌅",
+    "subtitle": "Vi bruger dette til at optimere din daglige rutine og planlægge påmindelser.",
+    "buttons": {
+      "continue": "FORTSÆT"
+    },
+    "errors": {
+      "updateFailed": "Kunne ikke opdatere vækketidspunkt. Prøv venligst igen.",
+      "networkError": "Der opstod en netværksfejl."
+    }
+  },
+  "reflectionTime": {
+    "badge": "AFTENREFLEKSION",
+    "title": "Hvornår vil du\nreflektere over din dag? 🌙",
+    "subtitle": "Et kort tjek om aftenen hjælper med at fejre sejre og forblive konsistent.",
+    "buttons": {
+      "continue": "FORTSÆT"
+    },
+    "errors": {
+      "updateFailed": "Kunne ikke opdatere refleksionstidspunkt. Prøv venligst igen.",
+      "networkError": "Der opstod en netværksfejl."
+    }
+  },
+  "dashboard": {
+    "title": "I dag",
+    "sectionTitle": "OPGAVER & VANER",
+    "emptyHabits": "Ingen vaner planlagt til denne dato.",
+    "defaults": {
+      "goalType": "Daglig",
+      "valueType": "gange"
+    },
+    "tracking": {
+      "disabledFuture": "Registrering deaktiveret for fremtidige datoer",
+      "trackToday": "Registrer dagens aktivitet"
+    },
+    "alerts": {
+      "errorTitle": "Fejl",
+      "fetchError": "Kunne ikke hente vaner for den valgte dato.",
+      "trackError": "Kunne ikke opdatere vane-fremskridt.",
+      "connectError": "Kunne ikke forbinde til tracker.",
+      "futureDateTitle": "Handling ikke tilladt",
+      "futureDateMessage": "Du kan ikke registrere aktivitet for fremtidige datoer.",
+      "goalReachedTitle": "Mål nået",
+      "goalReachedMessage": "Du har allerede fuldført målet for denne vane.",
+      "minLimitTitle": "Minimumsgrænse",
+      "minLimitMessage": "Fuldført aktivitet kan ikke være mindre end 0.",
+      "limitReachedTitle": "Grænse nået",
+      "limitReachedMessage": "Du har nået gratisgrænsen på 2 vaner. Opgrader til Pro for ubegrænset adgang.",
+      "cancel": "Annuller",
+      "upgrade": "Opgrader"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "Opret vane",
+    "regularHabit": "Regelmæssig vane",
+    "oneTimeTask": "Engangsopgave",
+    "sectionHeader": "ELLER VÆLG FRA DISSE KATEGORIER",
+    "defaultCategorySubtitle": "Opdag og opbyg nye vaner",
+    "alerts": {
+      "noticeTitle": "Bemærk",
+      "fetchError": "Kunne ikke hente kategorier.",
+      "errorTitle": "Fejl",
+      "connectError": "Kunne ikke forbinde til serveren."
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "Vaner",
+    "habitsCount": "{{count}} vane",
+    "habitsCount_plural": "{{count}} vaner",
+    "emptyState": "Ingen vaneskabeloner fundet for denne kategori.",
+    "alerts": {
+      "noticeTitle": "Bemærk",
+      "fetchError": "Kunne ikke hente vaneskabeloner.",
+      "errorTitle": "Fejl",
+      "connectError": "Kunne ikke forbinde til serveren."
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "Rediger opgave",
+    "headerTitleCreate": "Engangsopgave",
+    "save": "GEM",
+    "habitNamePlaceholder": "Navngiv din vane",
+    "selectColor": "Vælg farve",
+    "todayPrefix": "I dag, {{date}}",
+    "getReminders": "Modtag påmindelser",
+    "addReminderTime": "Tilføj påmindelsestidspunkt",
+    "validation": {
+      "title": "Valideringsfejl",
+      "emptyName": "Indtast venligst et vanenavn."
+    },
+    "alerts": {
+      "errorTitle": "Fejl",
+      "successTitle": "Succes",
+      "fetchColorsFailed": "Kunne ikke hente farver.",
+      "updateSuccess": "Engangsopgave opdateret.",
+      "updateFailed": "Kunne ikke opdatere opgave.",
+      "updateError": "Der opstod en fejl under opdateringen.",
+      "createSuccess": "Engangsopgave oprettet.",
+      "createFailed": "Kunne ikke oprette opgave.",
+      "createError": "Der opstod en fejl under oprettelsen.",
+      "ok": "OK"
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "Rediger vane",
+    "headerTitleNew": "Ny vane",
+    "save": "GEM",
+    "placeholderName": "Navngiv din vane",
+    "selectColor": "Vælg farve",
+    "goalForHabit": "Mål for vane",
+    "numberOfTimes": "Antal gange",
+    "time": "Tid",
+    "timesSuffix": "gange",
+    "minutesSuffix": "minutter",
+    "frequencies": {
+      "daily": "Dagligt",
+      "weekly": "Ugentligt",
+      "monthly": "Månedligt"
+    },
+    "repeatEveryDay": "Gentag hver dag",
+    "repeatDailyIn": "Gentag dagligt om:",
+    "timesOfDay": {
+      "morning": "Morgenen",
+      "afternoon": "Eftermiddagen",
+      "evening": "Aftenen"
+    },
+    "daysOfWeek": {
+      "sunday": "S",
+      "monday": "M",
+      "tuesday": "T",
+      "wednesday": "O",
+      "thursday": "T",
+      "friday": "F",
+      "saturday": "L"
+    },
+    "getReminders": "Modtag påmindelser",
+    "addReminderTime": "Tilføj påmindelsestidspunkt",
+    "alerts": {
+      "errorTitle": "Fejl",
+      "successTitle": "Succes",
+      "validationTitle": "Valideringsfejl",
+      "enterHabitName": "Indtast venligst et vanenavn.",
+      "fetchColorsFailed": "Kunne ikke hente farver.",
+      "habitUpdatedSuccess": "Vane opdateret.",
+      "habitCreatedSuccess": "Vane oprettet.",
+      "habitUpdateFailed": "Kunne ikke opdatere vane.",
+      "habitCreateFailed": "Kunne ikke oprette vane.",
+      "updateError": "Der opstod en fejl under opdateringen.",
+      "createError": "Der opstod en fejl under oprettelsen."
+    }
+  },
+  "common": {
+    "error": "Fejl",
+    "success": "Succes",
+    "cancel": "Annuller",
+    "goBack": "Gå tilbage"
+  },
+  "habitDetails": {
+    "currentStreak": "Din nuværende stime",
+    "longestStreak": "Din længste stime",
+    "completionRate": "Fuldførelsesrate for vane",
+    "totalTimesCompleted": "Gange fuldført i alt",
+    "dayCount_one": "{{count}} dag",
+    "dayCount_other": "{{count}} dage",
+    "actions": {
+      "edit": "Rediger",
+      "archive": "Arkiver"
+    },
+    "alerts": {
+      "archiveTitle": "Arkiver vane",
+      "archiveMessage": "Er du sikker på, at du vil arkivere \"{{name}}\"?",
+      "archiveSuccess": "Vane arkiveret.",
+      "archiveFailed": "Kunne ikke arkivere vane.",
+      "fetchFailed": "Kunne ikke indlæse vanestatistik."
+    },
+    "daysOfWeek": ["S", "M", "T", "O", "T", "F", "L"],
+    "monthNames": [
+      "Januar",
+      "Februar",
+      "Marts",
+      "April",
+      "Maj",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "December"
+    ]
+  },
+  "stats": {
+    "title": "Din statistik",
+    "months": [
+      "Januar",
+      "Februar",
+      "Marts",
+      "April",
+      "Maj",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "December"
+    ],
+    "daysOfWeek": {
+      "sun": "S",
+      "mon": "M",
+      "tue": "T",
+      "wed": "O",
+      "thu": "T",
+      "fri": "F",
+      "sat": "L"
+    },
+    "legend": {
+      "allComplete": "Alle fuldført",
+      "someComplete": "Nogle fuldført"
+    },
+    "quote": "Det første skridt er det sværeste. Ingen tøven — du kan klare det.",
+    "currentStreak": "Din nuværende stime",
+    "longestStreak": "Din længste stime",
+    "days": "{{count}} dage",
+    "days_one": "{{count}} dag",
+    "days_other": "{{count}} dage",
+    "totalPerfectDays": "Perfekte dage i alt",
+    "totalTimesCompleted": "Gange fuldført i alt",
+    "habitCompletionRate": "Fuldførelsesrate for vaner",
+    "averagePerDaily": "Gennemsnit pr. dag",
+    "errors": {
+      "fetchFailedTitle": "Fejl",
+      "fetchFailedMessage": "Kunne ikke indlæse vanestatistik."
+    }
+  },
+  "subscription": {
+    "restore": "GENDAN",
+    "heroTitle": "Løft din effektivitet",
+    "loading": "Indlæser...",
+    "features": [
+      "Ubegrænset vaneregistrering & påmindelser",
+      "Avanceret analyse & indsigt i fremskridt",
+      "Annoncefri premium-oplevelse"
+    ],
+    "yearly": {
+      "bestOffer": "BEDSTE TILBUD",
+      "title": "Årlig",
+      "subtitle": "1 års adgang • {{price}}"
+    },
+    "monthly": {
+      "title": "Månedlig",
+      "priceFormat": "{{price}}/Måned"
+    },
+    "cancelOrManage": "Annuller eller administrer abonnement",
+    "continue": "Fortsæt",
+    "plans": {
+      "yearlyPlan": "Årsabonnement",
+      "monthlyPlan": "Månedsabonnement",
+      "yearlyPrice": "{{price}}/år",
+      "monthlyPrice": "{{price}}/måned"
+    },
+    "securePayment": {
+      "ios": "SIKKER BETALING VIA APP STORE",
+      "android": "SIKKER BETALING VIA GOOGLE PLAY"
+    },
+    "autoRenewDisclaimer": "Abonnementet fornyes automatisk, medmindre det annulleres mindst 24 timer før udgangen af den nuværende periode.",
+    "legal": {
+      "termsOfUse": "Brugsbetingelser (EULA)",
+      "privacyPolicy": "Privatlivspolitik"
+    },
+    "alerts": {
+      "storeErrorTitle": "Butiksfejl",
+      "storeErrorMessage": "Kunne ikke indlæse abonnementspakker.",
+      "errorTitle": "Fejl",
+      "cannotOpenLink": "Kunne ikke åbne linket: {{url}}",
+      "failedOpenLink": "Kunne ikke åbne link.",
+      "planUnavailable": "Den valgte pakke er i øjeblikket ikke tilgængelig.",
+      "successTitle": "Succes!",
+      "upgradedMessage": "Din konto er blevet opgraderet.",
+      "continueBtn": "Fortsæt",
+      "paymentFailedTitle": "Betaling mislykkedes",
+      "unexpectedError": "Der opstod en uventet fejl.",
+      "restoredTitle": "Gendannet",
+      "restoredMessage": "Dit abonnement blev gendannet.",
+      "noSubscriptionTitle": "Intet abonnement",
+      "noSubscriptionMessage": "Vi kunne ikke finde et aktivt abonnement at gendanne.",
+      "restoreFailedPrefix": "Gendannelse mislykkedes: ",
+      "manageTitle": "Administrer abonnement",
+      "manageMessage": "Du vil blive omdirigeret til abonnementsindstillinger for at administrere eller annullere dit abonnement.",
+      "cancelBtn": "Annuller",
+      "openSettingsBtn": "Åbn indstillinger",
+      "cannotOpenSettings": "Kunne ikke åbne abonnementsindstillinger."
+    }
+  },
+  "appLayout": {
+    "tryPro": "PRØV PRO",
+    "routes": {
+      "dashboard": "I dag",
+      "stats": "Statistik",
+      "profile": "Profil"
+    }
+  },
+  "profile": {
+    "screenTitle": "Profil",
+    "edit": "Rediger",
+    "allHabits": "Alle vaner",
+    "notifications": "Notifikationer",
+    "changeLanguage": "Skift sprog",
+    "settings": "Indstillinger",
+    "tryForFree": "Prøv gratis",
+    "pro": "PRO",
+    "signOut": "Log ud",
+    "signOutAlert": {
+      "title": "Log ud",
+      "message": "Er du sikker på, at du vil logge ud?",
+      "cancel": "Annuller",
+      "confirm": "Log ud"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "Alle vaner",
+    "tabs": {
+      "regular": "REGELMÆSSIGE VANER",
+      "oneTime": "ENGANGSOPGAVER"
+    },
+    "emptyState": {
+      "regular": "Ingen regelmæssige vaner fundet.",
+      "oneTime": "Ingen engangsopgaver fundet."
+    },
+    "defaults": {
+      "daily": "Dagligt",
+      "times": "gange"
+    },
+    "alerts": {
+      "errorTitle": "Fejl",
+      "fetchFailed": "Kunne ikke hente kommende vaner."
+    }
+  },
+  "changePassword": {
+    "screenTitle": "Skift adgangskode",
+    "infoCard": {
+      "title": "Opdater sikkerhed",
+      "subtitle": "Vælg en stærk adgangskode med mindst 8 tegn."
+    },
+    "labels": {
+      "currentPassword": "NUVÆRENDE ADGANGSKODE",
+      "newPassword": "NY ADGANGSKODE",
+      "confirmPassword": "BEKRÆFT NY ADGANGSKODE"
+    },
+    "placeholders": {
+      "currentPassword": "Indtast nuværende adgangskode",
+      "newPassword": "Indtast ny adgangskode",
+      "confirmPassword": "Genindtast ny adgangskode"
+    },
+    "buttons": {
+      "updatePassword": "Opdater adgangskode"
+    },
+    "validation": {
+      "errorTitle": "Valideringsfejl",
+      "currentPasswordRequired": "Indtast venligst din nuværende adgangskode.",
+      "newPasswordRequired": "Indtast venligst en ny adgangskode.",
+      "minLength": "Den nye adgangskode skal være på mindst 8 tegn.",
+      "sameAsCurrent": "Den nye adgangskode kan ikke være den samme som den nuværende adgangskode.",
+      "passwordMismatch": "Den nye adgangskode og bekræftelsen matcher ikke."
+    },
+    "alerts": {
+      "successTitle": "Succes",
+      "successMessage": "Adgangskoden er ændret!",
+      "errorTitle": "Fejl",
+      "fetchFailed": "Kunne ikke ændre adgangskode.",
+      "genericError": "Noget gik galt. Prøv venligst igen."
+    }
+  },
+  "editProfile": {
+    "screenTitle": "Rediger profil",
+    "labels": {
+      "fullName": "Fulde navn",
+      "country": "Land",
+      "state": "Region / Stat"
+    },
+    "placeholders": {
+      "fullName": "Indtast dit navn",
+      "country": "Vælg land",
+      "state": "Vælg region",
+      "selectCountryFirst": "Vælg land først"
+    },
+    "buttons": {
+      "saveChanges": "Gem ændringer"
+    },
+    "validation": {
+      "nameRequired": "Indtast venligst dit fulde navn."
+    },
+    "alerts": {
+      "successTitle": "Succes",
+      "successMessage": "Profil opdateret!",
+      "errorTitle": "Fejl",
+      "updateFailed": "Kunne ikke opdatere profil.",
+      "genericError": "Der opstod en fejl under gemning af profilen."
+    }
+  },
+  "help": {
+    "screenTitle": "Hjælp & Support",
+    "infoCard": {
+      "title": "Hvordan kan vi hjælpe?",
+      "subtitle": "Hvis du har spørgsmål, feedback eller brug for hjælp, er du velkommen til at kontakte os."
+    },
+    "sectionHeader": "KONTAKTINFORMATION",
+    "contact": {
+      "emailLabel": "Send os en e-mail",
+      "websiteLabel": "Besøg hjemmeside"
+    },
+    "alerts": {
+      "errorTitle": "Fejl",
+      "emailError": "Kunne ikke åbne e-mailklient.",
+      "emailGenericError": "Der opstod en fejl under forsøget på at sende en e-mail.",
+      "browserError": "Kunne ikke åbne browser.",
+      "websiteGenericError": "Der opstod en fejl under åbning af hjemmesiden."
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "Language",
+    "topNotice": "Select your preferred app display language below.",
+    "bottomNotice": "Changing language will automatically update interface labels across the entire app and save to your account.",
+    "activeLanguage": "ACTIVE LANGUAGE",
+    "languages": {
+     "en": {
+    "title": "English 🇬🇧",
+    "nativeTitle": "English",
+    "description": "Set app language to English"
+  },
+  "da": {
+    "title": "Danish 🇩🇰",
+    "nativeTitle": "Dansk",
+    "description": "Indstil app-sprog til dansk"
+  },
+  "fr": {
+    "title": "French 🇫🇷",
+    "nativeTitle": "Français",
+    "description": "Définir la langue de l'application en français"
+  },
+  "de": {
+    "title": "German 🇩🇪",
+    "nativeTitle": "Deutsch",
+    "description": "App-Sprache auf Deutsch stellen"
+  },
+  "id": {
+    "title": "Indonesian 🇮🇩",
+    "nativeTitle": "Bahasa Indonesia",
+    "description": "Atur bahasa aplikasi ke Bahasa Indonesia"
+  },
+  "it": {
+    "title": "Italian 🇮🇹",
+    "nativeTitle": "Italiano",
+    "description": "Imposta la lingua dell'app su Italiano"
+  },
+  "ja": {
+    "title": "Japanese 🇯🇵",
+    "nativeTitle": "日本語",
+    "description": "アプリの言語を日本語に設定"
+  },
+  "ko": {
+    "title": "Korean 🇰🇷",
+    "nativeTitle": "한국어",
+    "description": "앱 언어를 한국어로 설정"
+  },
+  "nb": {
+    "title": "Norwegian Bokmål 🇳🇴",
+    "nativeTitle": "Norsk bokmål",
+    "description": "Sett app-språk til norsk bokmål"
+  },
+  "pl": {
+    "title": "Polish 🇵🇱",
+    "nativeTitle": "Polski",
+    "description": "Ustaw język aplikacji na polski"
+  },
+  "pt": {
+    "title": "Portuguese 🇵🇹",
+    "nativeTitle": "Português",
+    "description": "Definir idioma do aplicativo para português"
+  },
+  "ru": {
+    "title": "Russian 🇷🇺",
+    "nativeTitle": "Русский",
+    "description": "Установить язык приложения на русский"
+  },
+  "zh-Hans": {
+    "title": "Simplified Chinese 🇨🇳",
+    "nativeTitle": "简体中文",
+    "description": "将应用语言设置为简体中文"
+  },
+  "es": {
+    "title": "Spanish 🇪🇸",
+    "nativeTitle": "Español",
+    "description": "Establecer el idioma de la aplicación en español"
+  },
+  "sv": {
+    "title": "Swedish 🇸🇪",
+    "nativeTitle": "Svenska",
+    "description": "Ställ in appspråk till svenska"
+  },
+  "th": {
+    "title": "Thai 🇹🇭",
+    "nativeTitle": "ไทย",
+    "description": "ตั้งค่าภาษาของแอปเป็นภาษาไทย"
+  },
+  "zh-Hant": {
+    "title": "Traditional Chinese 🇹🇼",
+    "nativeTitle": "繁體中文",
+    "description": "將應用語言設置為繁體中文"
+  },
+  "tr": {
+    "title": "Turkish 🇹🇷",
+    "nativeTitle": "Türkçe",
+    "description": "Uygulama dilini Türkçe olarak ayarla"
+  },
+  "vi": {
+    "title": "Vietnamese 🇻🇳",
+    "nativeTitle": "Tiếng Việt",
+    "description": "Đặt ngôn ngữ ứng dụng thành Tiếng Việt"
+  }
+    },
+    "alerts": {
+      "errorTitle": "Error",
+      "genericUpdateError": "Failed to update language on server."
+    }
+  },
+  "notifications": {
+    "screenTitle": "Notifikationer",
+    "topNotice": "Indstil notifikationer for at få information om vanefuldførelse.",
+    "bottomNotice": "Du kan også indstille påmindelser for enkelte vaner i deres indstillinger.",
+    "items": {
+      "todays_plan": {
+        "title": "Dagens plan 📋",
+        "description": "\"Morgen: 5 vaner, Eftermiddag: 1 vane, Aften: 6 vaner, Gør når som helst: 2 vaner\""
+      },
+      "morning_plan": {
+        "title": "Morgenplan ☀️",
+        "description": "\"Du har 5 vaner i morges og 2 mere, du kan gøre.\""
+      },
+      "afternoon_plan": {
+        "title": "Eftermiddagsplan 🌤️",
+        "description": "\"Du har 1 vane i eftermiddag og 2 mere, du kan gøre.\""
+      },
+      "evening_plan": {
+        "title": "Aftenplan 🌙",
+        "description": "\"Du har 6 vaner i aften og 2 mere, du kan gøre.\""
+      },
+      "today_results": {
+        "title": "Dine resultater for i dag 🎉",
+        "description": "\"3 vaner fuldført, 1 vane sprunget over, 14 vaner tilbage\""
+      }
+    },
+    "alerts": {
+      "errorTitle": "Fejl",
+      "genericUpdateError": "Kunne ikke opdatere notifikationsindstillinger."
+    }
+  },
+  "settings": {
+    "headerTitle": "Indstillinger",
+    "generalTitle": "GENERELT",
+    "sound": "Lyd",
+    "vacationMode": "Ferietilstand",
+    "vacationSubtitle": "Pæt vaner på pause, og behold din statistik",
+    "changePassword": "Skift adgangskode",
+    "help": "Hjælp",
+    "privacyPolicy": "Privatlivspolitik",
+    "rateUs": "Bedøm os",
+    "shareApp": "Del appen",
+    "shareMessage": "Tjek Habitly ud! Den hjælper dig med at spore dine daglige vaner og nå dine mål.\n\n📱 Download til Android: {{playStoreUrl}}\n🍏 Download til iOS: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "Kunne ikke opdatere indstillinger. Prøv venligst igen.",
+      "unexpectedNetwork": "Der opstod en uventet netværksfejl.",
+      "privacyPolicy": "Kunne ikke åbne websiden for privatlivspolitik.",
+      "appStore": "Kunne ikke åbne App Store-siden.",
+      "whatsapp": "WhatsApp er ikke installeret eller tilgængelig på denne enhed.",
+      "genericLink": "Der opstod en uventet fejl under forsøget på at åbne linket."
+    }
+  }
+}

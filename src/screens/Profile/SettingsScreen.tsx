@@ -1,5 +1,5 @@
 // src/screens/Settings/SettingsScreen.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
   Text,
@@ -16,6 +16,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
 import {
   ArrowLeft,
   Volume2,
@@ -29,57 +30,102 @@ import {
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
-import { putApi } from '../../services/commonAPIs'; 
+import { putApi } from '../../services/commonAPIs';
 import { settingUserAPI } from '../../services/apiendpoints';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
-// App Details & URLs
+type ToggleField = 'sound' | 'vacation';
+
+interface UserSettings {
+  soundOn?: boolean;
+  vacationModeOn?: boolean;
+}
+
+interface UserData {
+  settings?: UserSettings;
+  soundOn?: boolean;
+  vacationModeOn?: boolean;
+  [key: string]: unknown;
+}
+
+// App Details & External URLs
 const PRIVACY_POLICY_URL = 'https://kegistech.com/habitly-privacy-policy.html';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.kegistech.habitly';
-const APP_STORE_URL = 'https://apps.apple.com/in/app/consistent-habit-tracker/id6804195230'; 
+const APP_STORE_URL = 'https://apps.apple.com/in/app/consistent-habit-tracker/id6804195230';
+
+// Color Palette Constants
+const COLORS = {
+  background: '#161820',
+  cardBackground: '#1E222D',
+  primary: '#2558D8',
+  white: '#FFFFFF',
+  subtext: '#8E93A6',
+  trackFalse: '#2C303E',
+  border: 'rgba(255, 255, 255, 0.05)',
+  icons: {
+    sound: '#29B6F6',
+    vacation: '#FFC107',
+    password: '#4CAF50',
+    help: '#AB47BC',
+    privacy: '#FFB300',
+    rate: '#FF7043',
+    share: '#26A69A',
+  },
+};
 
 const SettingsScreen: React.FC<Props> = ({ navigation }) => {
-  // Settings States
+  const { t } = useTranslation();
+
+  // State Management
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
   const [vacationMode, setVacationMode] = useState<boolean>(false);
-
-  // Loaders & Feedback
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [updatingField, setUpdatingField] = useState<'sound' | 'vacation' | null>(null);
+  const [updatingField, setUpdatingField] = useState<ToggleField | null>(null);
 
-  // 1. On Mount: Hydrate initial values from AsyncStorage
+  // 1. Hydrate Initial Values from Local Cache
   useEffect(() => {
-    const loadSettingsFromStorage = async () => {
+    let isMounted = true;
+
+    const loadSettingsFromStorage = async (): Promise<void> => {
       try {
         const storedUserData = await AsyncStorage.getItem('userData');
-        if (storedUserData) {
-          const settings = JSON.parse(storedUserData);
+        if (storedUserData && isMounted) {
+          const parsedData: UserData = JSON.parse(storedUserData);
           
-          if (settings.soundOn !== undefined) {
-            setSoundEnabled(Boolean(settings.soundOn));
+          if (typeof parsedData.soundOn === 'boolean') {
+            setSoundEnabled(parsedData.soundOn);
           }
-          if (settings.vacationModeOn !== undefined) {
-            setVacationMode(Boolean(settings.vacationModeOn));
+          if (typeof parsedData.vacationModeOn === 'boolean') {
+            setVacationMode(parsedData.vacationModeOn);
           }
         }
       } catch (error) {
-        console.error('Failed to load local settings:', error);
+        console.error('[SettingsScreen] Failed to load local settings:', error);
       } finally {
-        setIsLoading(false);
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     };
 
     loadSettingsFromStorage();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  // 2. Helper to update AsyncStorage cache
-  const updateLocalSettingsCache = async (soundVal: boolean, vacationVal: boolean) => {
+  // 2. Helper: Sync Local AsyncStorage Cache
+  const updateLocalSettingsCache = async (
+    soundVal: boolean,
+    vacationVal: boolean
+  ): Promise<void> => {
     try {
       const storedUserData = await AsyncStorage.getItem('userData');
       if (storedUserData) {
-        const parsedData = JSON.parse(storedUserData);
-        const updatedData = {
+        const parsedData: UserData = JSON.parse(storedUserData);
+        const updatedData: UserData = {
           ...parsedData,
           settings: {
             ...parsedData.settings,
@@ -92,16 +138,16 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
         await AsyncStorage.setItem('userData', JSON.stringify(updatedData));
       }
     } catch (error) {
-      console.error('Failed to update local settings cache:', error);
+      console.error('[SettingsScreen] Failed to update local settings cache:', error);
     }
   };
 
-  // 3. API Call: Update Settings On Switch Toggle
-  const handleToggleSetting = async (field: 'sound' | 'vacation', newValue: boolean) => {
+  // 3. API Handler: Optimistic Settings Toggle
+  const handleToggleSetting = async (field: ToggleField, newValue: boolean): Promise<void> => {
     const nextSound = field === 'sound' ? newValue : soundEnabled;
     const nextVacation = field === 'vacation' ? newValue : vacationMode;
 
-    // Optimistic state update
+    // Optimistic UI updates
     if (field === 'sound') setSoundEnabled(newValue);
     if (field === 'vacation') setVacationMode(newValue);
 
@@ -112,74 +158,77 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
       vacationModeOn: nextVacation,
     };
 
-    await putApi(
-      settingUserAPI,
-      payload,
-      async (res: any) => {
-        setUpdatingField(null);
-        await updateLocalSettingsCache(nextSound, nextVacation);
-      },
-      (err: any) => {
-        setUpdatingField(null);
-        // Revert toggle state on error
-        if (field === 'sound') setSoundEnabled(!newValue);
-        if (field === 'vacation') setVacationMode(!newValue);
-        Alert.alert('Error', err?.message || 'Failed to update settings. Please try again.');
-      }
-    );
-  };
-
-  // 4. Open Privacy & Policy Web Link
-  const handleOpenPrivacyPolicy = async () => {
     try {
-      const supported = await Linking.canOpenURL(PRIVACY_POLICY_URL);
-      if (supported) {
-        await Linking.openURL(PRIVACY_POLICY_URL);
-      } else {
-        Alert.alert('Error', 'Unable to open privacy policy web page.');
-      }
+      await putApi(
+        settingUserAPI,
+        payload,
+        async () => {
+          setUpdatingField(null);
+          await updateLocalSettingsCache(nextSound, nextVacation);
+        },
+        (err: { message?: string }) => {
+          setUpdatingField(null);
+          // Revert toggle state on failure
+          if (field === 'sound') setSoundEnabled(!newValue);
+          if (field === 'vacation') setVacationMode(!newValue);
+          Alert.alert(t('common.error'), err?.message || t('settings.errors.failedUpdate'));
+        }
+      );
     } catch (error) {
-      Alert.alert('Error', 'An unexpected error occurred while opening the web link.');
+      setUpdatingField(null);
+      if (field === 'sound') setSoundEnabled(!newValue);
+      if (field === 'vacation') setVacationMode(!newValue);
+      Alert.alert(t('common.error'), t('settings.errors.unexpectedNetwork'));
     }
   };
 
-  // 5. Open Store Listing for Rating
-  const handleRateUs = async () => {
+  // 4. Link Handler Helper
+  const openExternalUrl = useCallback(async (url: string, errorMessage: string): Promise<void> => {
+    try {
+      const supported = await Linking.canOpenURL(url);
+      if (supported) {
+        await Linking.openURL(url);
+      } else {
+        Alert.alert(t('common.error'), errorMessage);
+      }
+    } catch (error) {
+      Alert.alert(t('common.error'), t('settings.errors.genericLink'));
+    }
+  }, [t]);
+
+  const handleOpenPrivacyPolicy = useCallback(() => {
+    openExternalUrl(PRIVACY_POLICY_URL, t('settings.errors.privacyPolicy'));
+  }, [openExternalUrl, t]);
+
+  const handleRateUs = useCallback(() => {
     const storeUrl = Platform.OS === 'ios' ? APP_STORE_URL : PLAY_STORE_URL;
-    try {
-      const supported = await Linking.canOpenURL(storeUrl);
-      if (supported) {
-        await Linking.openURL(storeUrl);
-      } else {
-        Alert.alert('Error', 'Unable to open app store page.');
-      }
-    } catch (error) {
-      Alert.alert('Error', 'An error occurred while opening the store.');
-    }
-  };
+    openExternalUrl(storeUrl, t('settings.errors.appStore'));
+  }, [openExternalUrl, t]);
 
-  // 6. Share via WhatsApp with Play Store and App Store Links
-  const handleShareAppWhatsApp = async () => {
-    const shareMessage = `Check out Habitly! It helps you track your daily habits and achieve your goals.\n\n📱 Download for Android: ${PLAY_STORE_URL}\n🍏 Download for iOS: ${APP_STORE_URL}`;
+  // 5. WhatsApp Sharing Handler
+  const handleShareAppWhatsApp = useCallback(async (): Promise<void> => {
+    const shareMessage = t('settings.shareMessage', {
+      playStoreUrl: PLAY_STORE_URL,
+      appStoreUrl: APP_STORE_URL,
+    });
     const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareMessage)}`;
+    const webWhatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareMessage)}`;
 
     try {
       const supported = await Linking.canOpenURL(whatsappUrl);
       if (supported) {
         await Linking.openURL(whatsappUrl);
       } else {
-        // Fallback to web WhatsApp URL if app isn't directly handling deep link
-        const webWhatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareMessage)}`;
         await Linking.openURL(webWhatsappUrl);
       }
     } catch (error) {
-      Alert.alert('Error', 'WhatsApp is not installed or available on this device.');
+      Alert.alert(t('common.error'), t('settings.errors.whatsapp'));
     }
-  };
+  }, [t]);
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right', 'bottom']}>
-      <StatusBar barStyle="light-content" backgroundColor="#161820" />
+      <StatusBar barStyle="light-content" backgroundColor={COLORS.background} />
 
       {/* Header Bar */}
       <View style={styles.header}>
@@ -187,18 +236,20 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
           activeOpacity={0.7}
           style={styles.backButton}
           onPress={() => navigation.goBack()}
+          accessibilityRole="button"
+          accessibilityLabel={t('common.goBack')}
         >
-          <ArrowLeft size={moderateScale(22)} color="#FFFFFF" />
+          <ArrowLeft size={moderateScale(22)} color={COLORS.white} />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>Settings</Text>
+        <Text style={styles.headerTitle}>{t('settings.headerTitle')}</Text>
 
         <View style={styles.headerRightPlaceholder} />
       </View>
 
       {isLoading ? (
         <View style={styles.loaderContainer}>
-          <ActivityIndicator size="large" color="#2558D8" />
+          <ActivityIndicator size="large" color={COLORS.primary} />
         </View>
       ) : (
         <ScrollView
@@ -206,21 +257,22 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
         >
           {/* GENERAL SECTION */}
-          <Text style={styles.sectionTitle}>GENERAL</Text>
+          <Text style={styles.sectionTitle}>{t('settings.generalTitle')}</Text>
           <View style={styles.sectionContainer}>
+            
             {/* Sound Toggle */}
             <View style={styles.settingRow}>
               <View style={styles.leftRow}>
-                <Volume2 size={moderateScale(22)} color="#29B6F6" />
-                <Text style={styles.settingTitle}>Sound</Text>
+                <Volume2 size={moderateScale(22)} color={COLORS.icons.sound} />
+                <Text style={styles.settingTitle}>{t('settings.sound')}</Text>
               </View>
               {updatingField === 'sound' ? (
-                <ActivityIndicator size="small" color="#2558D8" />
+                <ActivityIndicator size="small" color={COLORS.primary} />
               ) : (
                 <Switch
-                  trackColor={{ false: '#2C303E', true: '#2558D8' }}
-                  thumbColor={soundEnabled ? '#FFFFFF' : '#8E93A6'}
-                  ios_backgroundColor="#2C303E"
+                  trackColor={{ false: COLORS.trackFalse, true: COLORS.primary }}
+                  thumbColor={soundEnabled ? COLORS.white : COLORS.subtext}
+                  ios_backgroundColor={COLORS.trackFalse}
                   onValueChange={(val) => handleToggleSetting('sound', val)}
                   value={soundEnabled}
                 />
@@ -230,21 +282,21 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
             {/* Vacation Mode Toggle */}
             <View style={styles.settingRow}>
               <View style={styles.leftRow}>
-                <Umbrella size={moderateScale(22)} color="#FFC107" />
+                <Umbrella size={moderateScale(22)} color={COLORS.icons.vacation} />
                 <View style={styles.flexShrink}>
-                  <Text style={styles.settingTitle}>Vacation mode</Text>
+                  <Text style={styles.settingTitle}>{t('settings.vacationMode')}</Text>
                   <Text style={styles.settingSubtitle}>
-                    Put habits on pause, and keep your stats
+                    {t('settings.vacationSubtitle')}
                   </Text>
                 </View>
               </View>
               {updatingField === 'vacation' ? (
-                <ActivityIndicator size="small" color="#2558D8" />
+                <ActivityIndicator size="small" color={COLORS.primary} />
               ) : (
                 <Switch
-                  trackColor={{ false: '#2C303E', true: '#2558D8' }}
-                  thumbColor={vacationMode ? '#FFFFFF' : '#8E93A6'}
-                  ios_backgroundColor="#2C303E"
+                  trackColor={{ false: COLORS.trackFalse, true: COLORS.primary }}
+                  thumbColor={vacationMode ? COLORS.white : COLORS.subtext}
+                  ios_backgroundColor={COLORS.trackFalse}
                   onValueChange={(val) => handleToggleSetting('vacation', val)}
                   value={vacationMode}
                 />
@@ -255,11 +307,11 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
             <TouchableOpacity
               activeOpacity={0.7}
               style={styles.settingRow}
-              onPress={() => navigation.navigate('ChangePassword' as never)}
+              onPress={() => navigation.navigate('ChangePassword')}
             >
               <View style={styles.leftRow}>
-                <Lock size={moderateScale(22)} color="#4CAF50" />
-                <Text style={styles.settingTitle}>Change Password</Text>
+                <Lock size={moderateScale(22)} color={COLORS.icons.password} />
+                <Text style={styles.settingTitle}>{t('settings.changePassword')}</Text>
               </View>
             </TouchableOpacity>
 
@@ -267,23 +319,23 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
             <TouchableOpacity
               activeOpacity={0.7}
               style={styles.settingRow}
-              onPress={() => navigation.navigate('Help' as never)}
+              onPress={() => navigation.navigate('Help')}
             >
               <View style={styles.leftRow}>
-                <HelpCircle size={moderateScale(22)} color="#AB47BC" />
-                <Text style={styles.settingTitle}>Help</Text>
+                <HelpCircle size={moderateScale(22)} color={COLORS.icons.help} />
+                <Text style={styles.settingTitle}>{t('settings.help')}</Text>
               </View>
             </TouchableOpacity>
 
-            {/* Privacy & Policy */}
+            {/* Privacy Policy */}
             <TouchableOpacity
               activeOpacity={0.7}
               style={styles.settingRow}
               onPress={handleOpenPrivacyPolicy}
             >
               <View style={styles.leftRow}>
-                <Info size={moderateScale(22)} color="#FFB300" />
-                <Text style={styles.settingTitle}>Privacy & Policy</Text>
+                <Info size={moderateScale(22)} color={COLORS.icons.privacy} />
+                <Text style={styles.settingTitle}>{t('settings.privacyPolicy')}</Text>
               </View>
             </TouchableOpacity>
 
@@ -294,8 +346,8 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
               onPress={handleRateUs}
             >
               <View style={styles.leftRow}>
-                <ThumbsUp size={moderateScale(22)} color="#FF7043" />
-                <Text style={styles.settingTitle}>Rate us</Text>
+                <ThumbsUp size={moderateScale(22)} color={COLORS.icons.rate} />
+                <Text style={styles.settingTitle}>{t('settings.rateUs')}</Text>
               </View>
             </TouchableOpacity>
 
@@ -306,10 +358,11 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
               onPress={handleShareAppWhatsApp}
             >
               <View style={styles.leftRow}>
-                <Share2 size={moderateScale(22)} color="#26A69A" />
-                <Text style={styles.settingTitle}>Share app</Text>
+                <Share2 size={moderateScale(22)} color={COLORS.icons.share} />
+                <Text style={styles.settingTitle}>{t('settings.shareApp')}</Text>
               </View>
             </TouchableOpacity>
+
           </View>
         </ScrollView>
       )}
@@ -320,10 +373,8 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#161820',
+    backgroundColor: COLORS.background,
   },
-
-  /* Header Bar */
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -331,68 +382,58 @@ const styles = StyleSheet.create({
     paddingHorizontal: scaleWidth(16),
     paddingVertical: scaleHeight(12),
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(255, 255, 255, 0.05)',
+    borderBottomColor: COLORS.border,
   },
   backButton: {
     width: scaleWidth(40),
     height: scaleWidth(40),
     borderRadius: scaleWidth(20),
-    backgroundColor: '#1E222D',
+    backgroundColor: COLORS.cardBackground,
     alignItems: 'center',
     justifyContent: 'center',
   },
   headerTitle: {
     fontSize: moderateScale(18),
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: COLORS.white,
   },
   headerRightPlaceholder: {
     width: scaleWidth(40),
   },
-
-  /* Loader */
   loaderContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-
-  /* Scroll Content */
   scrollContent: {
     paddingHorizontal: scaleWidth(16),
     paddingTop: scaleHeight(16),
     paddingBottom: scaleHeight(40),
   },
-
-  /* Section Titles */
   sectionTitle: {
     fontSize: moderateScale(12),
     fontWeight: '800',
-    color: '#8E93A6',
+    color: COLORS.subtext,
     letterSpacing: 0.8,
     marginTop: scaleHeight(12),
     marginBottom: scaleHeight(10),
     paddingLeft: scaleWidth(4),
   },
-
-  /* Card Group Container */
   sectionContainer: {
-    backgroundColor: '#1E222D',
+    backgroundColor: COLORS.cardBackground,
     borderRadius: moderateScale(20),
     paddingHorizontal: scaleWidth(16),
     marginBottom: scaleHeight(12),
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.05)',
+    borderColor: COLORS.border,
   },
-
-  /* Row Item */
   settingRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: scaleHeight(16),
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(255, 255, 255, 0.05)',
+    borderBottomColor: COLORS.border,
   },
   noBorder: {
     borderBottomWidth: 0,
@@ -410,12 +451,12 @@ const styles = StyleSheet.create({
   settingTitle: {
     fontSize: moderateScale(15),
     fontWeight: '700',
-    color: '#FFFFFF',
+    color: COLORS.white,
   },
   settingSubtitle: {
     fontSize: moderateScale(12),
     fontWeight: '600',
-    color: '#8E93A6',
+    color: COLORS.subtext,
     marginTop: scaleHeight(2),
   },
 });

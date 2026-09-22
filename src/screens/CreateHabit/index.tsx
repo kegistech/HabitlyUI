@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 import {
   CalendarDays,
   CheckSquare,
@@ -94,52 +95,63 @@ const getCategoryGraphic = (iconName?: string, hexColor?: string) => {
 };
 
 const CreateHabitScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
+
   const [categories, setCategories] = useState<CategoryCard[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
 
-  const fetchCategories = useCallback(async (isRefreshingCall = false) => {
-    if (isRefreshingCall) {
-      setIsRefreshing(true);
-    } else {
-      setIsLoading(true);
-    }
-
-    await getApi(
-      habitCategoriesAPI,
-      (res: ApiResponse<DropdownResponseDto[]>) => {
-        if (res?.succeeded && Array.isArray(res.data)) {
-          const formattedCategories: CategoryCard[] = res.data.map((item) => {
-            const extra = item.extraData || {};
-            const { IconComponent, accentColor, badgeBg } = getCategoryGraphic(
-              extra.imageName,
-              extra.iconColor
-            );
-
-            return {
-              id: item.id,
-              title: item.name,
-              subtitle: extra.description || 'Discover and build new habits',
-              icon: IconComponent,
-              accentColor,
-              badgeBg,
-            };
-          });
-
-          setCategories(formattedCategories);
-        } else {
-          Alert.alert('Notice', res?.message || 'Failed to retrieve categories.');
-        }
-        setIsLoading(false);
-        setIsRefreshing(false);
-      },
-      (err:any) => {
-        setIsLoading(false);
-        setIsRefreshing(false);
-        Alert.alert('Error', err?.message || 'Failed to connect to the server.');
+  const fetchCategories = useCallback(
+    async (isRefreshingCall = false) => {
+      if (isRefreshingCall) {
+        setIsRefreshing(true);
+      } else {
+        setIsLoading(true);
       }
-    );
-  }, []);
+
+      await getApi(
+        habitCategoriesAPI,
+        (res: ApiResponse<DropdownResponseDto[]>) => {
+          if (res?.succeeded && Array.isArray(res.data)) {
+            const formattedCategories: CategoryCard[] = res.data.map((item) => {
+              const extra = item.extraData || {};
+              const { IconComponent, accentColor, badgeBg } = getCategoryGraphic(
+                extra.imageName,
+                extra.iconColor
+              );
+
+              return {
+                id: item.id,
+                title: item.name,
+                subtitle: extra.description || t('createHabitMenu.defaultCategorySubtitle'),
+                icon: IconComponent,
+                accentColor,
+                badgeBg,
+              };
+            });
+
+            setCategories(formattedCategories);
+          } else {
+            Alert.alert(
+              t('createHabitMenu.alerts.noticeTitle'),
+              res?.message || t('createHabitMenu.alerts.fetchError')
+            );
+          }
+          setIsLoading(false);
+          setIsRefreshing(false);
+        },
+        (err: any) => {
+          setIsLoading(false);
+          setIsRefreshing(false);
+          Alert.alert(
+            t('createHabitMenu.alerts.errorTitle'),
+            err?.message || t('createHabitMenu.alerts.connectError')
+          );
+        }
+      );
+    },
+    [t]
+  );
 
   useEffect(() => {
     fetchCategories();
@@ -179,7 +191,7 @@ const CreateHabitScreen: React.FC<Props> = ({ navigation }) => {
           <X size={moderateScale(22)} color="#FFFFFF" />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>Create habit</Text>
+        <Text style={styles.headerTitle}>{t('createHabitMenu.headerTitle')}</Text>
 
         <View style={styles.headerRightSpacer} />
       </View>
@@ -205,7 +217,7 @@ const CreateHabitScreen: React.FC<Props> = ({ navigation }) => {
           <View style={[styles.typeIconBox, { backgroundColor: 'rgba(41, 182, 246, 0.15)' }]}>
             <CalendarDays size={moderateScale(24)} color="#29B6F6" />
           </View>
-          <Text style={styles.typeTitle}>Regular habit</Text>
+          <Text style={styles.typeTitle}>{t('createHabitMenu.regularHabit')}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -216,12 +228,12 @@ const CreateHabitScreen: React.FC<Props> = ({ navigation }) => {
           <View style={[styles.typeIconBox, { backgroundColor: 'rgba(255, 112, 67, 0.15)' }]}>
             <CheckSquare size={moderateScale(24)} color="#FF7043" />
           </View>
-          <Text style={styles.typeTitle}>One-time task</Text>
+          <Text style={styles.typeTitle}>{t('createHabitMenu.oneTimeTask')}</Text>
         </TouchableOpacity>
 
         {/* Section Divider Header */}
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>OR CHOOSE FROM THESE CATEGORIES</Text>
+          <Text style={styles.sectionTitle}>{t('createHabitMenu.sectionHeader')}</Text>
         </View>
 
         {/* Category Discovery List */}

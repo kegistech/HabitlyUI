@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 import {
   ArrowLeft,
   Info,
@@ -116,8 +117,10 @@ const getLucideIcon = (iconName?: string) => {
 };
 
 const CategoryHabitsListScreen: React.FC<Props> = ({ navigation, route }) => {
+  const { t } = useTranslation();
+
   const categoryId = route.params?.categoryId;
-  const categoryTitle = route.params?.categoryName || 'Habits';
+  const categoryTitle = route.params?.categoryName || t('categoryHabits.defaultCategoryTitle');
 
   const [habits, setHabits] = useState<HabitItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -154,7 +157,10 @@ const CategoryHabitsListScreen: React.FC<Props> = ({ navigation, route }) => {
 
             setHabits(formattedHabits);
           } else {
-            Alert.alert('Notice', res?.message || 'Failed to retrieve habit templates.');
+            Alert.alert(
+              t('categoryHabits.alerts.noticeTitle'),
+              res?.message || t('categoryHabits.alerts.fetchError')
+            );
           }
           setIsLoading(false);
           setIsRefreshing(false);
@@ -162,11 +168,14 @@ const CategoryHabitsListScreen: React.FC<Props> = ({ navigation, route }) => {
         (err: any) => {
           setIsLoading(false);
           setIsRefreshing(false);
-          Alert.alert('Error', err?.message || 'Failed to connect to the server.');
+          Alert.alert(
+            t('categoryHabits.alerts.errorTitle'),
+            err?.message || t('categoryHabits.alerts.connectError')
+          );
         }
       );
     },
-    [categoryId]
+    [categoryId, t]
   );
 
   useEffect(() => {
@@ -180,7 +189,7 @@ const CategoryHabitsListScreen: React.FC<Props> = ({ navigation, route }) => {
   const handleSelectHabit = (habit: HabitItem) => {
     navigation.navigate('CreateRegularHabit', {
       habitName: habit.title,
-      habitMasterId: habit.id
+      habitMasterId: habit.id,
     });
   };
 
@@ -221,7 +230,9 @@ const CategoryHabitsListScreen: React.FC<Props> = ({ navigation, route }) => {
       >
         {/* Count Label */}
         <View style={styles.countContainer}>
-          <Text style={styles.countText}>{habits.length} habits</Text>
+          <Text style={styles.countText}>
+            {t('categoryHabits.habitsCount', { count: habits.length })}
+          </Text>
         </View>
 
         {/* 2. Main List Card with Shadow */}
@@ -231,7 +242,7 @@ const CategoryHabitsListScreen: React.FC<Props> = ({ navigation, route }) => {
           </View>
         ) : habits.length === 0 ? (
           <View style={styles.emptyContainer}>
-            <Text style={styles.emptyText}>No habit templates found for this category.</Text>
+            <Text style={styles.emptyText}>{t('categoryHabits.emptyState')}</Text>
           </View>
         ) : (
           <View style={styles.cardContentContainer}>

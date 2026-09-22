@@ -1,0 +1,705 @@
+{
+  "auth": {
+    "tagBadge": "Vane-tracker",
+    "title": "Små vanor leder\ntill stora resultat.",
+    "subtitle": "Förvandla dagliga handlingar till livslånga vanor. Ta kontroll över din dag nu.",
+    "getStartedFree": "Börja gratis",
+    "alreadyHaveAccount": "Har du redan ett konto?",
+    "signIn": "Logga in",
+    "termsNotice": "Genom att registrera dig godkänner du våra",
+    "termsAndPrivacy": "Användarvillkor och Integritetspolicy"
+  },
+  "login": {
+    "tagBadge": "Välkommen tillbaka",
+    "welcomeText": "Logga in",
+    "subText": "Håll din svit i gång och spåra dina framsteg i dag.",
+    "emailLabel": "E-postadress",
+    "emailPlaceholder": "namn@exempel.se",
+    "passwordLabel": "Lösenord",
+    "passwordPlaceholder": "Ange ditt lösenord",
+    "hide": "Dölj",
+    "show": "Visa",
+    "forgotPassword": "Glömt lösenordet?",
+    "signInButton": "Logga in",
+    "dontHaveAccount": "Har du inget konto?",
+    "signUp": "Skapa konto",
+    "errors": {
+      "emailRequired": "E-post krävs.",
+      "emailInvalid": "Ange en giltig e-postadress.",
+      "passwordRequired": "Lösenord krävs.",
+      "loginFailed": "Det gick inte att logga in. Kontrollera dina uppgifter.",
+      "loginError": "Ogiltig e-post eller lösenord."
+    }
+  },
+  "forgotPassword": {
+    "tag": "Kontoåterställning",
+    "backToLogin": "Tillbaka till inloggning",
+    "back": "Tillbaka",
+    "success": "Klart",
+    "hide": "Dölj",
+    "show": "Visa",
+    "titleEmail": "Återställ lösenord 🔒",
+    "titleOtp": "OTP-verifiering 💬",
+    "titlePassword": "Nytt lösenord 🔑",
+    "subEmail": "Ange din e-postadress så skickar vi en verifieringskod.",
+    "subOtp": "Ange verifieringskoden som skickades till:",
+    "subPassword": "Skapa ett nytt starkt lösenord för att skydda ditt konto.",
+    "noOtp": "Fick du ingen kod?",
+    "successMsg": "Ditt lösenord har uppdaterats!",
+    "loginNow": "Logga in nu",
+    "labels": {
+      "email": "E-postadress",
+      "otp": "Ange OTP-kod",
+      "newPassword": "Nytt lösenord",
+      "confirmPassword": "Bekräfta nytt lösenord"
+    },
+    "placeholders": {
+      "email": "namn@exempel.se",
+      "otp": "• • • • • •",
+      "minPassword": "Minst 8 tecken",
+      "reEnterPassword": "Upprepa nytt lösenord"
+    },
+    "buttons": {
+      "generateOtp": "Skicka OTP-kod",
+      "verifyOtp": "Verifiera OTP",
+      "updatePassword": "Uppdatera lösenord",
+      "resend": "Skicka igen",
+      "resendIn": "Skicka igen om"
+    },
+    "errors": {
+      "emailRequired": "E-post krävs.",
+      "invalidEmail": "Ange en giltig e-postadress.",
+      "otpRequired": "OTP-kod krävs.",
+      "invalidOtp": "Ange en giltig OTP-kod.",
+      "passwordRequired": "Nytt lösenord krävs.",
+      "passwordLength": "Lösenordet måste vara minst 8 tecken.",
+      "confirmPasswordRequired": "Bekräfta ditt nya lösenord.",
+      "passwordsMismatch": "Lösenorden stämmer inte överens.",
+      "sendOtpFailed": "Det gick inte att skicka OTP-kod. Försök igen.",
+      "updatePasswordFailed": "Det gick inte att uppdatera lösenordet. Försök igen.",
+      "resendFailed": "Det gick inte att skicka koden igen.",
+      "networkError": "Nätverksfel. Försök igen."
+    }
+  },
+  "signUp": {
+    "badge": "Kom i gång",
+    "title": "Skapa konto 🚀",
+    "subtitle": "Börja bygga hälsosamma dagliga vanor i dag.",
+    "hide": "Dölj",
+    "show": "Visa",
+    "loadingCountries": "Laddar länder...",
+    "labels": {
+      "fullName": "Fullständigt namn",
+      "email": "E-postadress",
+      "password": "Lösenord",
+      "country": "Land"
+    },
+    "placeholders": {
+      "fullName": "Anna Andersson",
+      "email": "namn@exempel.se",
+      "password": "Minst 8 tecken",
+      "selectCountry": "Välj land"
+    },
+    "buttons": {
+      "createAccount": "Skapa konto",
+      "creatingAccount": "Skapar konto..."
+    },
+    "legal": {
+      "prefix": "Genom att skapa ett konto godkänner du våra ",
+      "termsAndPrivacy": "Användarvillkor och Integritetspolicy"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Har du redan ett konto? ",
+      "signIn": "Logga in"
+    },
+    "modal": {
+      "title": "Välj land",
+      "done": "Klar"
+    },
+    "errors": {
+      "requiredFields": "Fyll i alla obligatoriska fält.",
+      "invalidEmail": "Ange en giltig e-postadress.",
+      "passwordLength": "Lösenordet måste vara minst 8 tecken.",
+      "registrationFailed": "Registreringen misslyckades. Försök igen.",
+      "networkError": "Ett nätverksfel uppstod."
+    }
+  },
+  "wakeUpTime": {
+    "badge": "Morgonrutin",
+    "title": "När brukar du\nvakna? 🌅",
+    "subtitle": "Används för att optimera din dag och schemalägga motiverande påminnelser.",
+    "buttons": {
+      "continue": "Fortsätt"
+    },
+    "errors": {
+      "updateFailed": "Det gick inte att uppdatera väckningstid. Försök igen.",
+      "networkError": "Ett nätverksfel uppstod."
+    }
+  },
+  "reflectionTime": {
+    "badge": "Kvällsreflektion",
+    "title": "När föredrar du att\nutvärdera din dag? 🌙",
+    "subtitle": "En kort kvällsreflektion hjälper dig att följa dina framsteg och hålla rutinen.",
+    "buttons": {
+      "continue": "Fortsätt"
+    },
+    "errors": {
+      "updateFailed": "Det gick inte att uppdatera reflektionstid. Försök igen.",
+      "networkError": "Ett nätverksfel uppstod."
+    }
+  },
+  "dashboard": {
+    "title": "I dag",
+    "sectionTitle": "Uppgifter och vanor",
+    "emptyHabits": "Inga vanor schemalagda för den här dagen.",
+    "defaults": {
+      "goalType": "Dagligen",
+      "valueType": "gånger"
+    },
+    "tracking": {
+      "disabledFuture": "Spårning för framtida datum är inaktiverad",
+      "trackToday": "Markera för i dag"
+    },
+    "alerts": {
+      "errorTitle": "Fel",
+      "fetchError": "Det gick inte att hämta vanor för det valda datumet.",
+      "trackError": "Det gick inte att uppdatera vanans framsteg.",
+      "connectError": "Det gick inte att ansluta till vanespåraren.",
+      "futureDateTitle": "Åtgärd ej tillåten",
+      "futureDateMessage": "Du kan inte markera vanor som slutförda för framtida datum.",
+      "goalReachedTitle": "Målet uppnått",
+      "goalReachedMessage": "Du har redan nått ditt mål för den här vanan.",
+      "minLimitTitle": "Minsta gräns",
+      "minLimitMessage": "Antal slutföranden kan inte vara mindre än 0.",
+      "limitReachedTitle": "Gränsen nådd",
+      "limitReachedMessage": "Du har nått gränsen på 2 vanor för gratisplanen. Uppgradera till Pro för obegränsad åtkomst.",
+      "cancel": "Avbryt",
+      "upgrade": "Lås upp Pro"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "Skapa vana",
+    "regularHabit": "Regelbunden vana",
+    "oneTimeTask": "Engångsuppgift",
+    "sectionHeader": "Eller välj från kategorier",
+    "defaultCategorySubtitle": "Utforska och utveckla nya vanor",
+    "alerts": {
+      "noticeTitle": "Meddelande",
+      "fetchError": "Det gick inte att hämta kategorier.",
+      "errorTitle": "Fel",
+      "connectError": "Det gick inte att ansluta till servern."
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "Vanor",
+    "habitsCount": "{{count}} vana",
+    "habitsCount_plural": "{{count}} vanor",
+    "emptyState": "Inga vanemallar hittades i den här kategorin.",
+    "alerts": {
+      "noticeTitle": "Meddelande",
+      "fetchError": "Det gick inte att hämta vanemallar.",
+      "errorTitle": "Fel",
+      "connectError": "Det gick inte att ansluta till servern."
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "Redigera uppgift",
+    "headerTitleCreate": "Engångsuppgift",
+    "save": "Spara",
+    "habitNamePlaceholder": "Ange vanans namn",
+    "selectColor": "Välj färg",
+    "todayPrefix": "I dag, {{date}}",
+    "getReminders": "Få påminnelser",
+    "addReminderTime": "Lägg till påminnelsetid",
+    "validation": {
+      "title": "Valideringsfel",
+      "emptyName": "Ange ett namn på vanan."
+    },
+    "alerts": {
+      "errorTitle": "Fel",
+      "successTitle": "Klart",
+      "fetchColorsFailed": "Det gick inte att hämta färger.",
+      "updateSuccess": "Engångsuppgiften uppdaterades.",
+      "updateFailed": "Det gick inte att uppdatera uppgiften.",
+      "updateError": "Ett fel uppstod vid uppdateringen.",
+      "createSuccess": "Engångsuppgiften skapades.",
+      "createFailed": "Det gick inte att skapa uppgiften.",
+      "createError": "Ett fel uppstod vid skapandet."
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "Redigera vana",
+    "headerTitleNew": "Ny vana",
+    "save": "Spara",
+    "placeholderName": "Ange vanans namn",
+    "selectColor": "Välj färg",
+    "goalForHabit": "Mål för vanan",
+    "numberOfTimes": "Antal gånger",
+    "time": "Tid",
+    "timesSuffix": "gånger",
+    "minutesSuffix": "min",
+    "frequencies": {
+      "daily": "Dagligen",
+      "weekly": "Veckovis",
+      "monthly": "Månadsvis"
+    },
+    "repeatEveryDay": "Upprepa varje dag",
+    "repeatDailyIn": "Upprepa dagligen under:",
+    "timesOfDay": {
+      "morning": "Morgon",
+      "afternoon": "Eftermiddag",
+      "evening": "Kväll"
+    },
+    "daysOfWeek": {
+      "sunday": "Sön",
+      "monday": "Mån",
+      "tuesday": "Tis",
+      "wednesday": "Ons",
+      "thursday": "Tor",
+      "friday": "Fre",
+      "saturday": "Lör"
+    },
+    "getReminders": "Få påminnelser",
+    "addReminderTime": "Lägg till påminnelsetid",
+    "alerts": {
+      "errorTitle": "Fel",
+      "successTitle": "Klart",
+      "validationTitle": "Valideringsfel",
+      "enterHabitName": "Ange ett namn på vanan.",
+      "fetchColorsFailed": "Det gick inte att hämta färger.",
+      "habitUpdatedSuccess": "Vanan har uppdaterats.",
+      "habitCreatedSuccess": "Vanan har skapats.",
+      "habitUpdateFailed": "Det gick inte att uppdatera vanan.",
+      "habitCreateFailed": "Det gick inte att skapa vanan.",
+      "updateError": "Ett fel uppstod vid uppdateringen.",
+      "createError": "Ett fel uppstod vid skapandet."
+    }
+  },
+  "common": {
+    "error": "Fel",
+    "success": "Klart",
+    "cancel": "Avbryt",
+    "goBack": "Gå tillbaka"
+  },
+  "habitDetails": {
+    "currentStreak": "Nuvarande svit",
+    "longestStreak": "Längsta svit",
+    "completionRate": "Genomförandegrad",
+    "totalTimesCompleted": "Totalt slutfört",
+    "dayCount_one": "{{count}} dag",
+    "dayCount_other": "{{count}} dagar",
+    "actions": {
+      "edit": "Redigera",
+      "archive": "Arkivera"
+    },
+    "alerts": {
+      "archiveTitle": "Arkivera vana",
+      "archiveMessage": "Är du säker på att du vill arkivera \"{{name}}\"?",
+      "archiveSuccess": "Vanan har arkiverats.",
+      "archiveFailed": "Det gick inte att arkivera vanan.",
+      "fetchFailed": "Det gick inte att hämta vanestatistik."
+    },
+    "daysOfWeek": ["Sön", "Mån", "Tis", "Ons", "Tor", "Fre", "Lör"],
+    "monthNames": [
+      "Januari",
+      "Februari",
+      "Mars",
+      "April",
+      "Maj",
+      "Juni",
+      "Juli",
+      "Augusti",
+      "September",
+      "Oktober",
+      "November",
+      "December"
+    ]
+  },
+  "stats": {
+    "title": "Statistik",
+    "months": [
+      "Januari",
+      "Februari",
+      "Mars",
+      "April",
+      "Maj",
+      "Juni",
+      "Juli",
+      "Augusti",
+      "September",
+      "Oktober",
+      "November",
+      "December"
+    ],
+    "daysOfWeek": {
+      "sun": "Sön",
+      "mon": "Mån",
+      "tue": "Tis",
+      "wed": "Ons",
+      "thu": "Tor",
+      "fri": "Fre",
+      "sat": "Lör"
+    },
+    "legend": {
+      "allComplete": "Alla slutförda",
+      "someComplete": "Vissa slutförda"
+    },
+    "quote": "Det första steget är alltid det svåraste, men du klarar det!",
+    "currentStreak": "Nuvarande svit",
+    "longestStreak": "Längsta svit",
+    "days": "{{count}} dagar",
+    "days_one": "{{count}} dag",
+    "days_other": "{{count}} dagar",
+    "totalPerfectDays": "Totalt perfekta dagar",
+    "totalTimesCompleted": "Totalt slutfört",
+    "habitCompletionRate": "Genomförandegrad för vanor",
+    "averagePerDaily": "Genomsnitt per dag",
+    "errors": {
+      "fetchFailedTitle": "Fel",
+      "fetchFailedMessage": "Det gick inte att hämta vanestatistik."
+    }
+  },
+  "subscription": {
+    "restore": "Återställ köp",
+    "heroTitle": "Öka din produktivitet",
+    "loading": "Laddar...",
+    "features": [
+      "Obegränsad vanespårning och påminnelser",
+      "Detaljerad analys och framstegsöversikt",
+      "Annonsfri premiumupplevelse"
+    ],
+    "yearly": {
+      "bestOffer": "Bästa erbjudandet",
+      "title": "Årsabonnemang",
+      "subtitle": "1 års åtkomst • {{price}}"
+    },
+    "monthly": {
+      "title": "Månadsabonnemang",
+      "priceFormat": "{{price}}/månad"
+    },
+    "cancelOrManage": "Avbryt eller hantera abonnemang",
+    "continue": "Fortsätt",
+    "plans": {
+      "yearlyPlan": "Årsabonnemang",
+      "monthlyPlan": "Månadsabonnemang",
+      "yearlyPrice": "{{price}}/år",
+      "monthlyPrice": "{{price}}/månad"
+    },
+    "securePayment": {
+      "ios": "Säker betalning via App Store",
+      "android": "Säker betalning via Google Play"
+    },
+    "autoRenewDisclaimer": "Abonnemanget förnyas automatiskt om det inte avbryts minst 24 timmar före slutet av den aktuella perioden.",
+    "legal": {
+      "termsOfUse": "Användarvillkor (EULA)",
+      "privacyPolicy": "Integritetspolicy"
+    },
+    "alerts": {
+      "storeErrorTitle": "Butiksfel",
+      "storeErrorMessage": "Det gick inte att hämta abonnemangsalternativ.",
+      "errorTitle": "Fel",
+      "cannotOpenLink": "Kan inte öppna länk: {{url}}",
+      "failedOpenLink": "Det gick inte att öppna länken.",
+      "planUnavailable": "Den valda planen är inte tillgänglig för tillfället.",
+      "successTitle": "Hurra!",
+      "upgradedMessage": "Ditt konto har uppgraderats.",
+      "continueBtn": "Fortsätt",
+      "paymentFailedTitle": "Betalningen misslyckades",
+      "unexpectedError": "Ett oväntat fel uppstod.",
+      "restoredTitle": "Återställt",
+      "restoredMessage": "Ditt abonnemang har återställts.",
+      "noSubscriptionTitle": "Inget abonnemang",
+      "noSubscriptionMessage": "Inga aktiva abonnemang hittades att återställa.",
+      "restoreFailedPrefix": "Återställning misslyckades: ",
+      "manageTitle": "Hantera abonnemang",
+      "manageMessage": "Omdirigerar till dina abonnemangsinställningar för att hantera eller avbryta din plan.",
+      "cancelBtn": "Avbryt",
+      "openSettingsBtn": "Öppna inställningar",
+      "cannotOpenSettings": "Det gick inte att öppna abonnemangsinställningarna."
+    }
+  },
+  "appLayout": {
+    "tryPro": "Testa PRO",
+    "routes": {
+      "dashboard": "I dag",
+      "stats": "Statistik",
+      "profile": "Profil"
+    }
+  },
+  "profile": {
+    "screenTitle": "Profil",
+    "edit": "Redigera",
+    "allHabits": "Alla vanor",
+    "notifications": "Notiser",
+    "changeLanguage": "Byt språk",
+    "settings": "Inställningar",
+    "tryForFree": "Testa gratis",
+    "pro": "PRO",
+    "signOut": "Logga ut",
+    "signOutAlert": {
+      "title": "Logga ut",
+      "message": "Är du säker på att du vill logga ut?",
+      "cancel": "Avbryt",
+      "confirm": "Logga ut"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "Alla vanor",
+    "tabs": {
+      "regular": "Regelbundna vanor",
+      "oneTime": "Engångsuppgifter"
+    },
+    "emptyState": {
+      "regular": "Inga regelbundna vanor hittades.",
+      "oneTime": "Inga engångsuppgifter hittades."
+    },
+    "defaults": {
+      "daily": "Dagligen",
+      "times": "gånger"
+    },
+    "alerts": {
+      "errorTitle": "Fel",
+      "fetchFailed": "Det gick inte att hämta kommande vanor."
+    }
+  },
+  "changePassword": {
+    "screenTitle": "Ändra lösenord",
+    "infoCard": {
+      "title": "Förbättra din säkerhet",
+      "subtitle": "Välj ett starkt lösenord med minst 8 tecken."
+    },
+    "labels": {
+      "currentPassword": "Nuvarande lösenord",
+      "newPassword": "Nytt lösenord",
+      "confirmPassword": "Bekräfta nytt lösenord"
+    },
+    "placeholders": {
+      "currentPassword": "Ange nuvarande lösenord",
+      "newPassword": "Ange nytt lösenord",
+      "confirmPassword": "Upprepa nytt lösenord"
+    },
+    "buttons": {
+      "updatePassword": "Uppdatera lösenord"
+    },
+    "validation": {
+      "errorTitle": "Valideringsfel",
+      "currentPasswordRequired": "Ange ditt nuvarande lösenord.",
+      "newPasswordRequired": "Ange ditt nya lösenord.",
+      "minLength": "Det nya lösenordet måste vara minst 8 tecken.",
+      "sameAsCurrent": "Det nya lösenordet kan inte vara detsamma som det nuvarande.",
+      "passwordMismatch": "Det nya lösenordet och bekräftelsen stämmer inte överens."
+    },
+    "alerts": {
+      "successTitle": "Klart",
+      "successMessage": "Ditt lösenord har ändrats!",
+      "errorTitle": "Fel",
+      "fetchFailed": "Det gick inte att ändra lösenordet.",
+      "genericError": "Något gick fel. Försök igen."
+    }
+  },
+  "editProfile": {
+    "screenTitle": "Redigera profil",
+    "labels": {
+      "fullName": "Fullständigt namn",
+      "country": "Land",
+      "state": "Län / Region"
+    },
+    "placeholders": {
+      "fullName": "Ange ditt fullständiga namn",
+      "country": "Välj land",
+      "state": "Välj län/region",
+      "selectCountryFirst": "Välj ett land först"
+    },
+    "buttons": {
+      "saveChanges": "Spara ändringar"
+    },
+    "validation": {
+      "nameRequired": "Ange ditt fullständiga namn."
+    },
+    "alerts": {
+      "successTitle": "Klart",
+      "successMessage": "Din profil har uppdaterats!",
+      "errorTitle": "Fel",
+      "updateFailed": "Det gick inte att uppdatera profilen.",
+      "genericError": "Ett fel uppstod när profilen skulle sparas."
+    }
+  },
+  "help": {
+    "screenTitle": "Hjälp & Support",
+    "infoCard": {
+      "title": "Hur kan vi hjälpa dig?",
+      "subtitle": "Om du har frågor, feedback eller förslag är du välkommen att kontakta oss."
+    },
+    "sectionHeader": "Kontaktinformation",
+    "contact": {
+      "emailLabel": "Skicka e-post till oss",
+      "websiteLabel": "Besök vår webbplats"
+    },
+    "alerts": {
+      "errorTitle": "Fel",
+      "emailError": "Det gick inte att öppna e-postappen.",
+      "emailGenericError": "Ett fel uppstod när e-postklienten skulle öppnas.",
+      "browserError": "Det gick inte att öppna webbläsaren.",
+      "websiteGenericError": "Ett fel uppstod när webbplatsen skulle öppnas."
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "Språk",
+    "topNotice": "Välj ditt föredragna app-språk nedan.",
+    "bottomNotice": "Byte av språk uppdaterar gränssnittets text automatiskt och sparas på ditt konto.",
+    "activeLanguage": "Aktivt språk",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "Ställ in appspråk till engelska"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "Ställ in appspråk till danska"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "Ställ in appspråk till franska"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "Ställ in appspråk till tyska"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "Ställ in appspråk till indonesiska"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "Ställ in appspråk till italienska"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "Ställ in appspråk till japanska"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "Ställ in appspråk till koreanska"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "Ställ in appspråk till norskt bokmål"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "Ställ in appspråk till polska"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "Ställ in appspråk till portugisiska"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "Ställ in appspråk till ryska"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "Ställ in appspråk till förenklad kinesiska"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "Ställ in appspråk till spanska"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "Ställ in appspråk till svenska"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "Ställ in appspråk till thailändska"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "Ställ in appspråk till traditionell kinesiska"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "Ställ in appspråk till turkiska"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "Ställ in appspråk till vietnamesiska"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Fel",
+      "genericUpdateError": "Det gick inte att uppdatera språkinställningen på servern."
+    }
+  },
+  "notifications": {
+    "screenTitle": "Notiser",
+    "topNotice": "Anpassa dina påminnelser så att du håller dina vanor på rätt spår.",
+    "bottomNotice": "Påminnelser för enskilda vanor kan också hanteras i vanans egna inställningar.",
+    "items": {
+      "todays_plan": {
+        "title": "Dagens plan 📋",
+        "description": "”Morgon: 5 vanor, Eftermiddag: 1 vana, Kväll: 6 vanor, När som helst: 2 vanor”"
+      },
+      "morning_plan": {
+        "title": "Morgonplan ☀️",
+        "description": "”Du har 5 vanor schemalagda i morgon bitti samt 2 vanor utan tidsbestämning.”"
+      },
+      "afternoon_plan": {
+        "title": "Eftermiddagsplan 🌤️",
+        "description": "”Du har 1 vana schemalagd i eftermiddag samt 2 vanor utan tidsbestämning.”"
+      },
+      "evening_plan": {
+        "title": "Kvällsplan 🌙",
+        "description": "”Du har 6 vanor schemalagda i kväll samt 2 vanor utan tidsbestämning.”"
+      },
+      "today_results": {
+        "title": "Dagens resultat 🎉",
+        "description": "”Klara: 3, Hoppades över: 1, Återstår: 14 vanor”"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Fel",
+      "genericUpdateError": "Det gick inte att uppdatera notisinställningarna."
+    }
+  },
+  "settings": {
+    "headerTitle": "Inställningar",
+    "generalTitle": "Allmänt",
+    "sound": "Ljud",
+    "vacationMode": "Semesterläge",
+    "vacationSubtitle": "Pausa vanor och behåll din svit",
+    "changePassword": "Ändra lösenord",
+    "help": "Hjälp",
+    "privacyPolicy": "Integritetspolicy",
+    "rateUs": "Betygsätt oss",
+    "shareApp": "Dela appen",
+    "shareMessage": "Kolla in Habitly! Den hjälper dig spåra dina dagliga vanor och nå dina mål.\n\n📱 Ladda ner för Android: {{playStoreUrl}}\n🍏 Ladda ner för iOS: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "Det gick inte att uppdatera inställningarna. Försök igen.",
+      "unexpectedNetwork": "Ett oväntat nätverksfel uppstod.",
+      "privacyPolicy": "Det gick inte att öppna integritetspolicyn.",
+      "appStore": "Det gick inte att öppna appbutiken.",
+      "whatsapp": "WhatsApp är inte installerat eller tillgängligt på denna enhet.",
+      "genericLink": "Ett oväntat fel uppstod när länken skulle öppnas."
+    }
+  }
+}

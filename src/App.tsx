@@ -3,7 +3,7 @@ import { StatusBar, StyleSheet, AppState, AppStateStatus } from 'react-native';
 import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import Purchases from 'react-native-purchases';
-
+import './localization/i18n';
 import RootNavigator from './navigation/RootNavigator';
 import { SubscriptionProvider } from './context/SubscriptionContext';
 import { API_KEY } from './constants/revenuecat';

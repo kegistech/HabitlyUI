@@ -22,6 +22,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/responsive';
@@ -43,6 +44,8 @@ interface CountryItem {
 }
 
 const SignUpScreen: React.FC<Props> = ({ navigation }) => {
+const { t } = useTranslation();
+
   // --- Form State ---
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -95,7 +98,7 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
           const loadedCountries: CountryItem[] = response.data;
           setCountries(loadedCountries);
 
-          // Default select USA (id: 234)
+          // Default select USA (id: 233)
           const defaultUSA = loadedCountries.find((item) => item.id === 233);
           if (defaultUSA) {
             setSelectedCountry(defaultUSA);
@@ -115,18 +118,18 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
   const handleSignUp = async () => {
     setErrorMessage('');
     if (!fullName.trim() || !email.trim() || !password || !selectedCountry) {
-      setErrorMessage('Please fill in all required fields.');
+      setErrorMessage(t('signUp.errors.requiredFields'));
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      setErrorMessage('Please enter a valid email address.');
+      setErrorMessage(t('signUp.errors.invalidEmail'));
       return;
     }
 
     if (password.length < 8) {
-      setErrorMessage('Password must be at least 8 characters long.');
+      setErrorMessage(t('signUp.errors.passwordLength'));
       return;
     }
 
@@ -165,14 +168,14 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
           } catch (storageErr) {
             console.warn('Error storing signup info', storageErr);
           }
-          navigation.replace('WakeUpTime');
+          navigation.replace('Dashboard');
         } else {
-          setErrorMessage(response?.message || 'Registration failed. Please try again.');
+          setErrorMessage(response?.message || t('signUp.errors.registrationFailed'));
         }
       },
       (error: any) => {
         setIsLoading(false);
-        const serverMsg = error?.response?.data?.message || error?.message || 'Network error occurred.';
+        const serverMsg = error?.response?.data?.message || error?.message || t('signUp.errors.networkError');
         setErrorMessage(serverMsg);
       }
     );
@@ -181,8 +184,6 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
   const handleSignInRedirect = () => {
     navigation.navigate('Login');
   };
-
-
 
   const openPrivacy = () => {
     Linking.openURL('https://www.kegistech.com/habitly-privacy-policy.html').catch((err) =>
@@ -224,12 +225,10 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
                 ]}
               >
                 <View style={styles.badgeContainer}>
-                  <Text style={styles.badgeText}>GET STARTED</Text>
+                  <Text style={styles.badgeText}>{t('signUp.badge')}</Text>
                 </View>
-                <Text style={styles.welcomeText}>Create Account 🚀</Text>
-                <Text style={styles.subText}>
-                  Start building better daily routines starting today.
-                </Text>
+                <Text style={styles.welcomeText}>{t('signUp.title')}</Text>
+                <Text style={styles.subText}>{t('signUp.subtitle')}</Text>
               </Animated.View>
 
               {/* Error Banner */}
@@ -251,7 +250,7 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
               >
                 {/* Full Name Input */}
                 <View style={styles.inputWrapper}>
-                  <Text style={styles.inputLabel}>FULL NAME</Text>
+                  <Text style={styles.inputLabel}>{t('signUp.labels.fullName')}</Text>
                   <View
                     style={[
                       styles.inputContainer,
@@ -260,7 +259,7 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
                   >
                     <TextInput
                       style={styles.textInput}
-                      placeholder="John Doe"
+                      placeholder={t('signUp.placeholders.fullName')}
                       placeholderTextColor="rgba(255, 255, 255, 0.4)"
                       value={fullName}
                       onChangeText={setFullName}
@@ -273,7 +272,7 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
 
                 {/* Email Address Input */}
                 <View style={styles.inputWrapper}>
-                  <Text style={styles.inputLabel}>EMAIL ADDRESS</Text>
+                  <Text style={styles.inputLabel}>{t('signUp.labels.email')}</Text>
                   <View
                     style={[
                       styles.inputContainer,
@@ -282,7 +281,7 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
                   >
                     <TextInput
                       style={styles.textInput}
-                      placeholder="name@example.com"
+                      placeholder={t('signUp.placeholders.email')}
                       placeholderTextColor="rgba(255, 255, 255, 0.4)"
                       value={email}
                       onChangeText={setEmail}
@@ -297,7 +296,7 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
 
                 {/* Password Input */}
                 <View style={styles.inputWrapper}>
-                  <Text style={styles.inputLabel}>PASSWORD</Text>
+                  <Text style={styles.inputLabel}>{t('signUp.labels.password')}</Text>
                   <View
                     style={[
                       styles.inputContainer,
@@ -306,7 +305,7 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
                   >
                     <TextInput
                       style={styles.textInput}
-                      placeholder="Minimum 8 characters"
+                      placeholder={t('signUp.placeholders.password')}
                       placeholderTextColor="rgba(255, 255, 255, 0.4)"
                       secureTextEntry={!isPasswordVisible}
                       value={password}
@@ -320,7 +319,7 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
                       activeOpacity={0.7}
                     >
                       <Text style={styles.eyeButtonText}>
-                        {isPasswordVisible ? 'HIDE' : 'SHOW'}
+                        {isPasswordVisible ? t('signUp.hide') : t('signUp.show')}
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -328,7 +327,7 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
 
                 {/* Country Dropdown Input */}
                 <View style={styles.inputWrapper}>
-                  <Text style={styles.inputLabel}>COUNTRY</Text>
+                  <Text style={styles.inputLabel}>{t('signUp.labels.country')}</Text>
                   <TouchableOpacity
                     activeOpacity={0.8}
                     style={styles.inputContainer}
@@ -343,7 +342,7 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
                         },
                       ]}
                     >
-                      {selectedCountry ? selectedCountry.name : 'Select your country'}
+                      {selectedCountry ? selectedCountry.name : t('signUp.placeholders.selectCountry')}
                     </Text>
                     <Text style={styles.dropdownChevron}>▼</Text>
                   </TouchableOpacity>
@@ -363,7 +362,7 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
                     style={styles.buttonGradient}
                   >
                     <Text style={styles.signUpButtonText}>
-                      {isLoading ? 'CREATING ACCOUNT...' : 'CREATE MY ACCOUNT'}
+                      {isLoading ? t('signUp.buttons.creatingAccount') : t('signUp.buttons.createAccount')}
                     </Text>
                   </LinearGradient>
                 </TouchableOpacity>
@@ -371,18 +370,18 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
                 {/* Legal Footer */}
                 <View style={styles.legalFooter}>
                   <Text style={styles.termsText}>
-                    By creating an account, you agree to our{' '}
+                    {t('signUp.legal.prefix')}
                     <Text style={styles.linkText} onPress={openPrivacy}>
-                      Terms and  Privacy Policy
+                      {t('signUp.legal.termsAndPrivacy')}
                     </Text>
                   </Text>
                 </View>
 
                 {/* Switch to Login Redirect */}
                 <View style={styles.footerContainer}>
-                  <Text style={styles.footerText}>Already have an account? </Text>
+                  <Text style={styles.footerText}>{t('signUp.footer.alreadyHaveAccount')}</Text>
                   <TouchableOpacity onPress={handleSignInRedirect} activeOpacity={0.7}>
-                    <Text style={styles.signInText}>Sign In</Text>
+                    <Text style={styles.signInText}>{t('signUp.footer.signIn')}</Text>
                   </TouchableOpacity>
                 </View>
               </Animated.View>
@@ -406,19 +405,19 @@ const SignUpScreen: React.FC<Props> = ({ navigation }) => {
                 <View style={styles.modalPullHandle} />
 
                 <View style={styles.modalHeader}>
-                  <Text style={styles.modalTitle}>Select Country</Text>
+                  <Text style={styles.modalTitle}>{t('signUp.modal.title')}</Text>
                   <TouchableOpacity
                     onPress={() => setIsCountryModalVisible(false)}
                     activeOpacity={0.7}
                   >
-                    <Text style={styles.modalCloseText}>Done</Text>
+                    <Text style={styles.modalCloseText}>{t('signUp.modal.done')}</Text>
                   </TouchableOpacity>
                 </View>
 
                 {loadingCountries ? (
                   <View style={styles.modalLoadingContainer}>
                     <Text style={{ color: '#FFFFFF', fontSize: moderateScale(14) }}>
-                      Loading countries...
+                      {t('signUp.loadingCountries')}
                     </Text>
                   </View>
                 ) : (

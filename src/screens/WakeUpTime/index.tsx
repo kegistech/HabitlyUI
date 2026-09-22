@@ -16,6 +16,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/responsive';
@@ -32,6 +33,8 @@ const MINUTES = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, '0'))
 const PERIODS = ['AM', 'PM'];
 
 const WakeUpTimeScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
+
   // Time selection state (Default: 08:00 AM)
   const [selectedHour, setSelectedHour] = useState('08');
   const [selectedMinute, setSelectedMinute] = useState('00');
@@ -96,13 +99,13 @@ const WakeUpTimeScreen: React.FC<Props> = ({ navigation }) => {
         if (response && (response.succeeded || response.isSuccess || response.status === 200)) {
           navigation.navigate('ReflectionTime');
         } else {
-          setErrorMessage(response?.message || 'Failed to update wake-up time. Please try again.');
+          setErrorMessage(response?.message || t('wakeUpTime.errors.updateFailed'));
         }
       },
       (error: any) => {
         setIsLoading(false);
         const serverMsg =
-          error?.response?.data?.message || error?.message || 'Network error occurred.';
+          error?.response?.data?.message || error?.message || t('wakeUpTime.errors.networkError');
         setErrorMessage(serverMsg);
       }
     );
@@ -196,14 +199,14 @@ const WakeUpTimeScreen: React.FC<Props> = ({ navigation }) => {
           {/* Main Question Title & Badge */}
           <View style={styles.headerContainer}>
             <View style={styles.tagBadge}>
-              <Text style={styles.tagBadgeText}>MORNING ROUTINE</Text>
+              <Text style={styles.tagBadgeText}>{t('wakeUpTime.badge')}</Text>
             </View>
 
             <Text style={styles.questionText}>
-              What time do you{'\n'}usually wake up? 🌅
+              {t('wakeUpTime.title')}
             </Text>
             <Text style={styles.subText}>
-              We'll use this to optimize your daily routine and schedule momentum alerts.
+              {t('wakeUpTime.subtitle')}
             </Text>
           </View>
 
@@ -251,7 +254,7 @@ const WakeUpTimeScreen: React.FC<Props> = ({ navigation }) => {
                 {isLoading ? (
                   <ActivityIndicator color="#FFFFFF" size="small" />
                 ) : (
-                  <Text style={styles.continueButtonText}>CONTINUE</Text>
+                  <Text style={styles.continueButtonText}>{t('wakeUpTime.buttons.continue')}</Text>
                 )}
               </LinearGradient>
             </TouchableOpacity>

@@ -1,0 +1,706 @@
+{
+  "auth": {
+    "tagBadge": "습관 형성",
+    "title": "작은 습관이 만드는\n놀라운 변화.",
+    "subtitle": "일상의 루틴을 평생 유지되는 습관으로 만들어 보세요. 지금 당신의 하루를 주도하세요.",
+    "getStartedFree": "무료로 시작하기",
+    "alreadyHaveAccount": "이미 계정이 있으신가요?",
+    "signIn": "로그인",
+    "termsNotice": "가입하시면 다음에 동의하게 됩니다:",
+    "termsAndPrivacy": "이용약관 및 개인정보 처리방침"
+  },
+  "login": {
+    "tagBadge": "환영합니다",
+    "welcomeText": "로그인",
+    "subText": "연속 기록을 이어가고 오늘의 달성 현황을 확인하세요.",
+    "emailLabel": "이메일",
+    "emailPlaceholder": "name@example.com",
+    "passwordLabel": "비밀번호",
+    "passwordPlaceholder": "비밀번호를 입력하세요",
+    "hide": "숨기기",
+    "show": "표시",
+    "forgotPassword": "비밀번호를 잊으셨나요?",
+    "signInButton": "로그인",
+    "dontHaveAccount": "계정이 없으신가요?",
+    "signUp": "회원가입",
+    "errors": {
+      "emailRequired": "이메일을 입력해 주세요.",
+      "emailInvalid": "유효한 이메일 주소를 입력해 주세요.",
+      "passwordRequired": "비밀번호를 입력해 주세요.",
+      "loginFailed": "로그인에 실패했습니다. 인증 정보를 확인해 주세요.",
+      "loginError": "이메일 또는 비밀번호가 올바르지 않습니다."
+    }
+  },
+  "forgotPassword": {
+    "tag": "계정 복구",
+    "backToLogin": "로그인으로 돌아가기",
+    "back": "뒤로",
+    "success": "성공",
+    "hide": "숨기기",
+    "show": "표시",
+    "titleEmail": "비밀번호 재설정 🔒",
+    "titleOtp": "OTP 인증 💬",
+    "titlePassword": "새 비밀번호 🔑",
+    "subEmail": "이메일을 입력하시면 OTP 인증 코드를 보내드립니다.",
+    "subOtp": "다음으로 전송된 인증 코드를 입력하세요:",
+    "subPassword": "계정을 안전하게 보호하기 위해 새 비밀번호를 설정하세요.",
+    "noOtp": "코드를 받지 못하셨나요?",
+    "successMsg": "비밀번호가 성공적으로 변경되었습니다!",
+    "loginNow": "지금 로그인하기",
+    "labels": {
+      "email": "이메일",
+      "otp": "OTP 코드 입력",
+      "newPassword": "새 비밀번호",
+      "confirmPassword": "새 비밀번호 확인"
+    },
+    "placeholders": {
+      "email": "name@example.com",
+      "otp": "• • • • • •",
+      "minPassword": "최소 8자 이상",
+      "reEnterPassword": "비밀번호 재입력"
+    },
+    "buttons": {
+      "generateOtp": "OTP 전송",
+      "verifyOtp": "OTP 인증",
+      "updatePassword": "비밀번호 변경",
+      "resend": "코드 재전송",
+      "resendIn": "재전송 가능까지"
+    },
+    "errors": {
+      "emailRequired": "이메일을 입력해 주세요.",
+      "invalidEmail": "유효한 이메일 주소를 입력해 주세요.",
+      "otpRequired": "OTP 코드를 입력해 주세요.",
+      "invalidOtp": "유효한 OTP 코드를 입력해 주세요.",
+      "passwordRequired": "새 비밀번호를 입력해 주세요.",
+      "passwordLength": "비밀번호는 최소 8자 이상이어야 합니다.",
+      "confirmPasswordRequired": "새 비밀번호를 다시 입력해 주세요.",
+      "passwordsMismatch": "비밀번호가 일치하지 않습니다.",
+      "sendOtpFailed": "OTP 전송에 실패했습니다. 다시 시도해 주세요.",
+      "updatePasswordFailed": "비밀번호 변경에 실패했습니다. 다시 시도해 주세요.",
+      "resendFailed": "OTP 코드 재전송에 실패했습니다.",
+      "networkError": "네트워크 오류가 발생했습니다. 다시 시도해 주세요."
+    }
+  },
+  "signUp": {
+    "badge": "시작하기",
+    "title": "계정 만들기 🚀",
+    "subtitle": "오늘부터 더 나은 일상 루틴을 만들어 보세요.",
+    "hide": "숨기기",
+    "show": "표시",
+    "loadingCountries": "국가 목록 로딩 중...",
+    "labels": {
+      "fullName": "이름",
+      "email": "이메일",
+      "password": "비밀번호",
+      "country": "국가"
+    },
+    "placeholders": {
+      "fullName": "홍길동",
+      "email": "name@example.com",
+      "password": "최소 8자 이상",
+      "selectCountry": "국가를 선택하세요"
+    },
+    "buttons": {
+      "createAccount": "계정 만들기",
+      "creatingAccount": "계정 생성 중..."
+    },
+    "legal": {
+      "prefix": "계정을 생성하면 다음에 동의하게 됩니다: ",
+      "termsAndPrivacy": "이용약관 및 개인정보 처리방침"
+    },
+    "footer": {
+      "alreadyHaveAccount": "이미 계정이 있으신가요? ",
+      "signIn": "로그인"
+    },
+    "modal": {
+      "title": "국가 선택",
+      "done": "완료"
+    },
+    "errors": {
+      "requiredFields": "모든 필수 항목을 입력해 주세요.",
+      "invalidEmail": "유효한 이메일 주소를 입력해 주세요.",
+      "passwordLength": "비밀번호는 최소 8자 이상이어야 합니다.",
+      "registrationFailed": "회원가입에 실패했습니다. 다시 시도해 주세요.",
+      "networkError": "네트워크 오류가 발생했습니다."
+    }
+  },
+  "wakeUpTime": {
+    "badge": "모닝 루틴",
+    "title": "보통 몇 시에\n일어나시나요? 🌅",
+    "subtitle": "하루 일정을 최적화하고 동기부여 알림을 보내드리는 데 사용됩니다.",
+    "buttons": {
+      "continue": "계속하기"
+    },
+    "errors": {
+      "updateFailed": "기상 시간 업데이트에 실패했습니다. 다시 시도해 주세요.",
+      "networkError": "네트워크 오류가 발생했습니다."
+    }
+  },
+  "reflectionTime": {
+    "badge": "나이트 회고",
+    "title": "하루를 돌아볼\n시간은 언제인가요? 🌙",
+    "subtitle": "저녁의 짧은 회고는 성취를 확인하고 꾸준함을 유지하는 데 도움이 됩니다.",
+    "buttons": {
+      "continue": "계속하기"
+    },
+    "errors": {
+      "updateFailed": "회고 시간 업데이트에 실패했습니다. 다시 시도해 주세요.",
+      "networkError": "네트워크 오류가 발생했습니다."
+    }
+  },
+  "dashboard": {
+    "title": "오늘",
+    "sectionTitle": "할 일 및 습관",
+    "emptyHabits": "이 날짜에 예정된 습관이 없습니다.",
+    "defaults": {
+      "goalType": "매일",
+      "valueType": "회"
+    },
+    "tracking": {
+      "disabledFuture": "미래 날짜의 기록은 지원되지 않습니다.",
+      "trackToday": "오늘의 활동 기록하기"
+    },
+    "alerts": {
+      "errorTitle": "오류",
+      "fetchError": "선택한 날짜의 습관을 불러오지 못했습니다.",
+      "trackError": "습관 진행 상황을 업데이트하지 못했습니다.",
+      "connectError": "트래커 연결에 실패했습니다.",
+      "futureDateTitle": "불가한 작업",
+      "futureDateMessage": "미래 날짜의 활동은 기록할 수 없습니다.",
+      "goalReachedTitle": "목표 달성",
+      "goalReachedMessage": "이 습관의 목표를 이미 달성하셨습니다.",
+      "minLimitTitle": "최소 제한",
+      "minLimitMessage": "완료 횟수는 0보다 작을 수 없습니다.",
+      "limitReachedTitle": "제한 도달",
+      "limitReachedMessage": "무료 플랜 제한(습관 2개)에 도달했습니다. 제한 없이 이용하려면 Pro로 업그레이드하세요.",
+      "cancel": "취소",
+      "upgrade": "업그레이드"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "습관 만들기",
+    "regularHabit": "정기 습관",
+    "oneTimeTask": "일회성 할 일",
+    "sectionHeader": "또는 카테고리에서 선택하세요",
+    "defaultCategorySubtitle": "새로운 습관을 찾고 만들어 보세요",
+    "alerts": {
+      "noticeTitle": "알림",
+      "fetchError": "카테고리를 불러오지 못했습니다.",
+      "errorTitle": "오류",
+      "connectError": "서버 연결에 실패했습니다."
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "습관",
+    "habitsCount": "{{count}}개의 습관",
+    "habitsCount_plural": "{{count}}개의 습관",
+    "emptyState": "이 카테고리에 추천 습관이 없습니다.",
+    "alerts": {
+      "noticeTitle": "알림",
+      "fetchError": "습관 템플릿을 불러오지 못했습니다.",
+      "errorTitle": "오류",
+      "connectError": "서버 연결에 실패했습니다."
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "할 일 수정",
+    "headerTitleCreate": "일회성 할 일",
+    "save": "저장",
+    "habitNamePlaceholder": "습관 이름을 입력하세요",
+    "selectColor": "색상 선택",
+    "todayPrefix": "오늘, {{date}}",
+    "getReminders": "알림 받기",
+    "addReminderTime": "알림 시간 추가",
+    "validation": {
+      "title": "입력 오류",
+      "emptyName": "습관 이름을 입력해 주세요."
+    },
+    "alerts": {
+      "errorTitle": "오류",
+      "successTitle": "성공",
+      "fetchColorsFailed": "색상 목록을 불러오지 못했습니다.",
+      "updateSuccess": "일회성 할 일이 수정되었습니다.",
+      "updateFailed": "할 일 수정에 실패했습니다.",
+      "updateError": "수정 중 오류가 발생했습니다.",
+      "createSuccess": "일회성 할 일이 생성되었습니다.",
+      "createFailed": "할 일 생성에 실패했습니다.",
+      "createError": "생성 중 오류가 발생했습니다.",
+      "ok": "확인"
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "습관 수정",
+    "headerTitleNew": "새 습관",
+    "save": "저장",
+    "placeholderName": "습관 이름을 입력하세요",
+    "selectColor": "색상 선택",
+    "goalForHabit": "습관 목표",
+    "numberOfTimes": "횟수",
+    "time": "시간",
+    "timesSuffix": "회",
+    "minutesSuffix": "분",
+    "frequencies": {
+      "daily": "매일",
+      "weekly": "매주",
+      "monthly": "매월"
+    },
+    "repeatEveryDay": "매일 반복",
+    "repeatDailyIn": "매일 실행 시간대:",
+    "timesOfDay": {
+      "morning": "아침",
+      "afternoon": "점심",
+      "evening": "저녁"
+    },
+    "daysOfWeek": {
+      "sunday": "일",
+      "monday": "월",
+      "tuesday": "화",
+      "wednesday": "수",
+      "thursday": "목",
+      "friday": "금",
+      "saturday": "토"
+    },
+    "getReminders": "알림 받기",
+    "addReminderTime": "알림 시간 추가",
+    "alerts": {
+      "errorTitle": "오류",
+      "successTitle": "성공",
+      "validationTitle": "입력 오류",
+      "enterHabitName": "습관 이름을 입력해 주세요.",
+      "fetchColorsFailed": "색상 목록을 불러오지 못했습니다.",
+      "habitUpdatedSuccess": "습관이 성공적으로 수정되었습니다.",
+      "habitCreatedSuccess": "습관이 성공적으로 생성되었습니다.",
+      "habitUpdateFailed": "습관 수정에 실패했습니다.",
+      "habitCreateFailed": "습관 생성에 실패했습니다.",
+      "updateError": "수정 중 오류가 발생했습니다.",
+      "createError": "생성 중 오류가 발생했습니다."
+    }
+  },
+  "common": {
+    "error": "오류",
+    "success": "성공",
+    "cancel": "취소",
+    "goBack": "뒤로"
+  },
+  "habitDetails": {
+    "currentStreak": "현재 연속 달성",
+    "longestStreak": "최고 연속 달성",
+    "completionRate": "달성률",
+    "totalTimesCompleted": "총 완료 횟수",
+    "dayCount_one": "{{count}}일",
+    "dayCount_other": "{{count}}일",
+    "actions": {
+      "edit": "수정",
+      "archive": "보관"
+    },
+    "alerts": {
+      "archiveTitle": "습관 보관",
+      "archiveMessage": "\"{{name}}\" 습관을 보관하시겠습니까?",
+      "archiveSuccess": "습관이 보관되었습니다.",
+      "archiveFailed": "습관 보관에 실패했습니다.",
+      "fetchFailed": "습관 통계를 불러오지 못했습니다."
+    },
+    "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
+    "monthNames": [
+      "1월",
+      "2월",
+      "3월",
+      "4월",
+      "5월",
+      "6월",
+      "7월",
+      "8월",
+      "9월",
+      "10월",
+      "11월",
+      "12월"
+    ]
+  },
+  "stats": {
+    "title": "통계",
+    "months": [
+      "1월",
+      "2월",
+      "3월",
+      "4월",
+      "5월",
+      "6월",
+      "7월",
+      "8월",
+      "9월",
+      "10월",
+      "11월",
+      "12월"
+    ],
+    "daysOfWeek": {
+      "sun": "일",
+      "mon": "월",
+      "tue": "화",
+      "wed": "수",
+      "thu": "목",
+      "fri": "금",
+      "sat": "토"
+    },
+    "legend": {
+      "allComplete": "전체 완료",
+      "someComplete": "일부 완료"
+    },
+    "quote": "첫 걸음이 가장 어려운 법입니다. 당신은 할 수 있습니다!",
+    "currentStreak": "현재 연속 달성",
+    "longestStreak": "최고 연속 달성",
+    "days": "{{count}}일",
+    "days_one": "{{count}}일",
+    "days_other": "{{count}}일",
+    "totalPerfectDays": "총 올클리어 일수",
+    "totalTimesCompleted": "총 완료 횟수",
+    "habitCompletionRate": "습관 달성률",
+    "averagePerDaily": "일평균 달성",
+    "errors": {
+      "fetchFailedTitle": "오류",
+      "fetchFailedMessage": "습관 통계를 불러오지 못했습니다."
+    }
+  },
+  "subscription": {
+    "restore": "구매 복원",
+    "heroTitle": "생산성을 극대화하세요",
+    "loading": "로딩 중...",
+    "features": [
+      "무제한 습관 추적 및 알림",
+      "상세한 분석 및 성과 인사이트",
+      "광고 없는 프리미엄 환경"
+    ],
+    "yearly": {
+      "bestOffer": "최고의 혜택",
+      "title": "연간 플랜",
+      "subtitle": "1년 이용 • {{price}}"
+    },
+    "monthly": {
+      "title": "월간 플랜",
+      "priceFormat": "{{price}}/월"
+    },
+    "cancelOrManage": "구독 취소 또는 관리",
+    "continue": "계속하기",
+    "plans": {
+      "yearlyPlan": "연간 플랜",
+      "monthlyPlan": "월간 플랜",
+      "yearlyPrice": "{{price}}/년",
+      "monthlyPrice": "{{price}}/월"
+    },
+    "securePayment": {
+      "ios": "APP STORE를 통한 안전한 결제",
+      "android": "GOOGLE PLAY를 통한 안전한 결제"
+    },
+    "autoRenewDisclaimer": "현재 구독 기간 종료 최소 24시간 전에 취소하지 않으면 구독이 자동으로 갱신됩니다.",
+    "legal": {
+      "termsOfUse": "이용약관 (EULA)",
+      "privacyPolicy": "개인정보 처리방침"
+    },
+    "alerts": {
+      "storeErrorTitle": "스토어 오류",
+      "storeErrorMessage": "구독 상품을 불러오지 못했습니다.",
+      "errorTitle": "오류",
+      "cannotOpenLink": "링크를 열 수 없습니다: {{url}}",
+      "failedOpenLink": "링크를 여는 데 실패했습니다.",
+      "planUnavailable": "선택한 상품은 현재 이용할 수 없습니다.",
+      "successTitle": "성공!",
+      "upgradedMessage": "계정이 성공적으로 업그레이드되었습니다.",
+      "continueBtn": "계속하기",
+      "paymentFailedTitle": "결제 실패",
+      "unexpectedError": "예상치 못한 오류가 발생했습니다.",
+      "restoredTitle": "복원 완료",
+      "restoredMessage": "구독 구매 내역이 성공적으로 복원되었습니다.",
+      "noSubscriptionTitle": "구독 내역 없음",
+      "noSubscriptionMessage": "복원할 활성화된 구독을 찾을 수 없습니다.",
+      "restoreFailedPrefix": "복원 실패: ",
+      "manageTitle": "구독 관리",
+      "manageMessage": "구독을 관리하거나 취소할 수 있는 스토어 설정 페이지로 이동합니다.",
+      "cancelBtn": "취소",
+      "openSettingsBtn": "설정 열기",
+      "cannotOpenSettings": "구독 설정 페이지를 열 수 없습니다."
+    }
+  },
+  "appLayout": {
+    "tryPro": "PRO 체험하기",
+    "routes": {
+      "dashboard": "오늘",
+      "stats": "통계",
+      "profile": "프로필"
+    }
+  },
+  "profile": {
+    "screenTitle": "프로필",
+    "edit": "편집",
+    "allHabits": "모든 습관",
+    "notifications": "알림 설정",
+    "changeLanguage": "언어 변경",
+    "settings": "설정",
+    "tryForFree": "무료로 체험하기",
+    "pro": "PRO",
+    "signOut": "로그아웃",
+    "signOutAlert": {
+      "title": "로그아웃",
+      "message": "정말 로그아웃하시겠습니까?",
+      "cancel": "취소",
+      "confirm": "로그아웃"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "모든 습관",
+    "tabs": {
+      "regular": "정기 습관",
+      "oneTime": "일회성 할 일"
+    },
+    "emptyState": {
+      "regular": "등록된 정기 습관이 없습니다.",
+      "oneTime": "등록된 일회성 할 일이 없습니다."
+    },
+    "defaults": {
+      "daily": "매일",
+      "times": "회"
+    },
+    "alerts": {
+      "errorTitle": "오류",
+      "fetchFailed": "예정된 습관 목록을 불러오지 못했습니다."
+    }
+  },
+  "changePassword": {
+    "screenTitle": "비밀번호 변경",
+    "infoCard": {
+      "title": "보안 강화",
+      "subtitle": "최소 8자 이상의 안전한 비밀번호를 설정하세요."
+    },
+    "labels": {
+      "currentPassword": "현재 비밀번호",
+      "newPassword": "새 비밀번호",
+      "confirmPassword": "새 비밀번호 확인"
+    },
+    "placeholders": {
+      "currentPassword": "현재 비밀번호 입력",
+      "newPassword": "새 비밀번호 입력",
+      "confirmPassword": "새 비밀번호 재입력"
+    },
+    "buttons": {
+      "updatePassword": "비밀번호 변경"
+    },
+    "validation": {
+      "errorTitle": "입력 오류",
+      "currentPasswordRequired": "현재 비밀번호를 입력해 주세요.",
+      "newPasswordRequired": "새 비밀번호를 입력해 주세요.",
+      "minLength": "새 비밀번호는 최소 8자 이상이어야 합니다.",
+      "sameAsCurrent": "새 비밀번호는 현재 비밀번호와 동일할 수 없습니다.",
+      "passwordMismatch": "새 비밀번호와 확인 입력이 일치하지 않습니다."
+    },
+    "alerts": {
+      "successTitle": "성공",
+      "successMessage": "비밀번호가 변경되었습니다!",
+      "errorTitle": "오류",
+      "fetchFailed": "비밀번호 변경에 실패했습니다.",
+      "genericError": "문제가 발생했습니다. 다시 시도해 주세요."
+    }
+  },
+  "editProfile": {
+    "screenTitle": "프로필 수정",
+    "labels": {
+      "fullName": "이름",
+      "country": "국가",
+      "state": "시 / 도"
+    },
+    "placeholders": {
+      "fullName": "이름을 입력하세요",
+      "country": "국가 선택",
+      "state": "시 / 도 선택",
+      "selectCountryFirst": "먼저 국가를 선택해 주세요"
+    },
+    "buttons": {
+      "saveChanges": "변경사항 저장"
+    },
+    "validation": {
+      "nameRequired": "이름을 입력해 주세요."
+    },
+    "alerts": {
+      "successTitle": "성공",
+      "successMessage": "프로필이 수정되었습니다!",
+      "errorTitle": "오류",
+      "updateFailed": "프로필 수정에 실패했습니다.",
+      "genericError": "프로필 저장 중 오류가 발생했습니다."
+    }
+  },
+  "help": {
+    "screenTitle": "도움말 및 지원",
+    "infoCard": {
+      "title": "무엇을 도와드릴까요?",
+      "subtitle": "문의 사항이나 제안하고 싶은 의견이 있으시면 언제든지 연락해 주세요."
+    },
+    "sectionHeader": "연락처 정보",
+    "contact": {
+      "emailLabel": "이메일 보내기",
+      "websiteLabel": "웹사이트 방문"
+    },
+    "alerts": {
+      "errorTitle": "오류",
+      "emailError": "이메일 앱을 열 수 없습니다.",
+      "emailGenericError": "이메일 연결 중 오류가 발생했습니다.",
+      "browserError": "웹 브라우저를 열 수 없습니다.",
+      "websiteGenericError": "웹사이트 이동 중 오류가 발생했습니다."
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "언어",
+    "topNotice": "앱에서 사용할 언어를 아래에서 선택하세요.",
+    "bottomNotice": "언어를 변경하면 앱 전체의 라벨이 자동으로 업데이트되며 계정에 설정이 저장됩니다.",
+    "activeLanguage": "현재 언어",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "앱 언어를 영어로 설정"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "앱 언어를 덴마크어로 설정"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "앱 언어를 프랑스어로 설정"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "앱 언어를 독일어로 설정"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "앱 언어를 인도네시아어로 설정"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "앱 언어를 이탈리아어로 설정"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "앱 언어를 일본어로 설정"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "앱 언어를 한국어로 설정"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "앱 언어를 노르웨이어(보크몰)로 설정"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "앱 언어를 폴란드어로 설정"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "앱 언어를 포르투갈어로 설정"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "앱 언어를 러시아어로 설정"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "앱 언어를 간체 중국어로 설정"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "앱 언어를 스페인어로 설정"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "앱 언어를 스웨덴어로 설정"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "앱 언어를 태국어로 설정"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "앱 언어를 번체 중국어로 설정"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "앱 언어를 튀르키예어로 설정"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "앱 언어를 베트남어로 설정"
+      }
+    },
+    "alerts": {
+      "errorTitle": "오류",
+      "genericUpdateError": "서버 언어 변경 설정에 실패했습니다."
+    }
+  },
+  "notifications": {
+    "screenTitle": "알림",
+    "topNotice": "습관 달성을 지원할 알림을 설정하세요.",
+    "bottomNotice": "개별 습관 알림은 각 습관 설정에서도 조정하실 수 있습니다.",
+    "items": {
+      "todays_plan": {
+        "title": "오늘의 계획 📋",
+        "description": "\"아침: 습관 5개, 점심: 습관 1개, 저녁: 습관 6개, 언제나: 습관 2개\""
+      },
+      "morning_plan": {
+        "title": "아침 계획 ☀️",
+        "description": "\"오늘 아침 습관 5개와 언제든 할 수 있는 습관 2개가 있습니다.\""
+      },
+      "afternoon_plan": {
+        "title": "점심 계획 🌤️",
+        "description": "\"오늘 점심 습관 1개와 언제든 할 수 있는 습관 2개가 있습니다.\""
+      },
+      "evening_plan": {
+        "title": "저녁 계획 🌙",
+        "description": "\"오늘 저녁 습관 6개와 언제든 할 수 있는 습관 2개가 있습니다.\""
+      },
+      "today_results": {
+        "title": "오늘의 결과 🎉",
+        "description": "\"완료 3개, 건너뜀 1개, 남은 습관 14개\""
+      }
+    },
+    "alerts": {
+      "errorTitle": "오류",
+      "genericUpdateError": "알림 설정을 업데이트하지 못했습니다."
+    }
+  },
+  "settings": {
+    "headerTitle": "설정",
+    "generalTitle": "일반",
+    "sound": "소리",
+    "vacationMode": "휴가 모드",
+    "vacationSubtitle": "습관을 잠시 멈추고 연속 달성 기록을 보호하세요",
+    "changePassword": "비밀번호 변경",
+    "help": "도움말",
+    "privacyPolicy": "개인정보 처리방침",
+    "rateUs": "앱 평가하기",
+    "shareApp": "앱 공유하기",
+    "shareMessage": "Habitly를 확인해 보세요! 매일의 습관을 추적하고 목표를 달성할 수 있도록 도와줍니다.\n\n📱 Android 다운로드: {{playStoreUrl}}\n🍏 iOS 다운로드: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "설정 업데이트에 실패했습니다. 다시 시도해 주세요.",
+      "unexpectedNetwork": "예상치 못한 네트워크 오류가 발생했습니다.",
+      "privacyPolicy": "개인정보 처리방침 페이지를 열 수 없습니다.",
+      "appStore": "앱 스토어 페이지를 열 수 없습니다.",
+      "whatsapp": "이 기기에 WhatsApp이 설치되어 있지 않거나 사용할 수 없습니다.",
+      "genericLink": "링크를 여는 중 예상치 못한 오류가 발생했습니다."
+    }
+  }
+}

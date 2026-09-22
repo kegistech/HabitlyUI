@@ -1,0 +1,706 @@
+{
+  "auth": {
+    "tagBadge": "CREATORE DI ABITUDINI",
+    "title": "Piccole abitudini.\nGrandi risultati.",
+    "subtitle": "Trasforma le tue routine quotidiane in abitudini durature. Prendi il controllo della tua giornata ora.",
+    "getStartedFree": "INIZIA GRATIS",
+    "alreadyHaveAccount": "Ho già un account.",
+    "signIn": "Accedi",
+    "termsNotice": "Registrandoti, accetti i nostri",
+    "termsAndPrivacy": "Termini di servizio e l'Informativa sulla privacy"
+  },
+  "login": {
+    "tagBadge": "BENVENUTO/A",
+    "welcomeText": "Accedi",
+    "subText": "Continua la tua serie e monitora i progressi di oggi.",
+    "emailLabel": "EMAIL",
+    "emailPlaceholder": "nome@esempio.com",
+    "passwordLabel": "PASSWORD",
+    "passwordPlaceholder": "Inserisci la tua password",
+    "hide": "NASCONDI",
+    "show": "MOSTRA",
+    "forgotPassword": "Password dimenticata?",
+    "signInButton": "ACCEDI",
+    "dontHaveAccount": "Non hai un account?",
+    "signUp": "Registrati",
+    "errors": {
+      "emailRequired": "L'email è obbligatoria.",
+      "emailInvalid": "Inserisci un indirizzo email valido.",
+      "passwordRequired": "La password è obbligatoria.",
+      "loginFailed": "Accesso non riuscito. Verifica le tue credenziali.",
+      "loginError": "Email o password non corrette. Riprova."
+    }
+  },
+  "forgotPassword": {
+    "tag": "RECUPERO ACCOUNT",
+    "backToLogin": "Torna al login",
+    "back": "Indietro",
+    "success": "Operazione riuscita",
+    "hide": "NASCONDI",
+    "show": "MOSTRA",
+    "titleEmail": "Reimposta password 🔒",
+    "titleOtp": "Verifica codice OTP 💬",
+    "titlePassword": "Nuova password 🔑",
+    "subEmail": "Inserisci la tua email e ti invieremo un codice OTP.",
+    "subOtp": "Inserisci il codice di verifica inviato a",
+    "subPassword": "Imposta una nuova password sicura per proteggere il tuo account.",
+    "noOtp": "Non hai ricevuto il codice?",
+    "successMsg": "La tua password è stata aggiornata con successo!",
+    "loginNow": "Accedi ora",
+    "labels": {
+      "email": "EMAIL",
+      "otp": "INSERISCI CODICE OTP",
+      "newPassword": "NUOVA PASSWORD",
+      "confirmPassword": "CONFERMA NUOVA PASSWORD"
+    },
+    "placeholders": {
+      "email": "nome@esempio.com",
+      "otp": "• • • • • •",
+      "minPassword": "Minimo 8 caratteri",
+      "reEnterPassword": "Reinserisci la password"
+    },
+    "buttons": {
+      "generateOtp": "GENERA OTP",
+      "verifyOtp": "VERIFICA OTP",
+      "updatePassword": "AGGIORNA PASSWORD",
+      "resend": "Reinvia codice",
+      "resendIn": "Reinvia tra"
+    },
+    "errors": {
+      "emailRequired": "L'email è obbligatoria.",
+      "invalidEmail": "Inserisci un indirizzo email valido.",
+      "otpRequired": "Il codice OTP è obbligatorio.",
+      "invalidOtp": "Inserisci un codice OTP valido.",
+      "passwordRequired": "La nuova password è obbligatoria.",
+      "passwordLength": "La password deve contenere almeno 8 caratteri.",
+      "confirmPasswordRequired": "Conferma la tua nuova password.",
+      "passwordsMismatch": "Le password non coincidono.",
+      "sendOtpFailed": "Invio dell'OTP non riuscito. Riprova.",
+      "updatePasswordFailed": "Aggiornamento della password non riuscito. Riprova.",
+      "resendFailed": "Reinvio del codice OTP non riuscito.",
+      "networkError": "Errore di rete. Riprova."
+    }
+  },
+  "signUp": {
+    "badge": "PER INIZIARE",
+    "title": "Crea un account 🚀",
+    "subtitle": "Inizia a costruire routine quotidiane migliori da oggi.",
+    "hide": "NASCONDI",
+    "show": "MOSTRA",
+    "loadingCountries": "Caricamento paesi...",
+    "labels": {
+      "fullName": "NOME COMPLETO",
+      "email": "EMAIL",
+      "password": "PASSWORD",
+      "country": "PAESE"
+    },
+    "placeholders": {
+      "fullName": "Mario Rossi",
+      "email": "nome@esempio.com",
+      "password": "Minimo 8 caratteri",
+      "selectCountry": "Seleziona il tuo paese"
+    },
+    "buttons": {
+      "createAccount": "CREA IL MIO ACCOUNT",
+      "creatingAccount": "CREAZIONE ACCOUNT..."
+    },
+    "legal": {
+      "prefix": "Creando un account, accetti i nostri ",
+      "termsAndPrivacy": "Termini e l'Informativa sulla privacy"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Hai già un account? ",
+      "signIn": "Accedi"
+    },
+    "modal": {
+      "title": "Seleziona Paese",
+      "done": "Fatto"
+    },
+    "errors": {
+      "requiredFields": "Compila tutti i campi obbligatori.",
+      "invalidEmail": "Inserisci un indirizzo email valido.",
+      "passwordLength": "La password deve contenere almeno 8 caratteri.",
+      "registrationFailed": "Registrazione non riuscita. Riprova.",
+      "networkError": "Si è verificato un errore di rete."
+    }
+  },
+  "wakeUpTime": {
+    "badge": "ROUTINE MATTUTINA",
+    "title": "A che ora ti svegli\ndi solito? 🌅",
+    "subtitle": "Useremo questo orario per ottimizzare la tua giornata e programmare promemoria motivazionali.",
+    "buttons": {
+      "continue": "CONTINUA"
+    },
+    "errors": {
+      "updateFailed": "Aggiornamento dell'orario di sveglia non riuscito. Riprova.",
+      "networkError": "Si è verificato un errore di rete."
+    }
+  },
+  "reflectionTime": {
+    "badge": "RIFLESSIONE SERALE",
+    "title": "Quando vuoi riflettere\nsulla tua giornata? 🌙",
+    "subtitle": "Un rapido resoconto serale aiuta a celebrare i successi e a mantenere la costanza.",
+    "buttons": {
+      "continue": "CONTINUA"
+    },
+    "errors": {
+      "updateFailed": "Aggiornamento dell'orario di riflessione non riuscito. Riprova.",
+      "networkError": "Si è verificato un errore di rete."
+    }
+  },
+  "dashboard": {
+    "title": "Oggi",
+    "sectionTitle": "ATTIVITÀ E ABITUDINI",
+    "emptyHabits": "Nessuna abitudine programmata per questa data.",
+    "defaults": {
+      "goalType": "Giornaliero",
+      "valueType": "volte"
+    },
+    "tracking": {
+      "disabledFuture": "Tracciamento disabilitato per le date future",
+      "trackToday": "Registra attività per oggi"
+    },
+    "alerts": {
+      "errorTitle": "Errore",
+      "fetchError": "Impossibile recuperare le abitudini per la data selezionata.",
+      "trackError": "Impossibile aggiornare i progressi dell'abitudine.",
+      "connectError": "Connessione al tracciatore non riuscita.",
+      "futureDateTitle": "Azione non consentita",
+      "futureDateMessage": "Non puoi registrare attività per date future.",
+      "goalReachedTitle": "Obiettivo raggiunto",
+      "goalReachedMessage": "Hai già completato l'obiettivo per questa abitudine.",
+      "minLimitTitle": "Limite minimo",
+      "minLimitMessage": "L'attività completata non può essere inferiore a 0.",
+      "limitReachedTitle": "Limite raggiunto",
+      "limitReachedMessage": "Hai raggiunto il limite gratuito di 2 abitudini. Passa a Pro per un accesso illimitato.",
+      "cancel": "Annulla",
+      "upgrade": "Passa a Pro"
+    }
+  },
+  "createHabitMenu": {
+    "headerTitle": "Crea abitudine",
+    "regularHabit": "Abitudine regolare",
+    "oneTimeTask": "Attività singola",
+    "sectionHeader": "OPPURE SCEGLI TRA QUESTE CATEGORIE",
+    "defaultCategorySubtitle": "Scopri e crea nuove abitudini",
+    "alerts": {
+      "noticeTitle": "Avviso",
+      "fetchError": "Impossibile recuperare le categorie.",
+      "errorTitle": "Errore",
+      "connectError": "Connessione al server non riuscita."
+    }
+  },
+  "categoryHabits": {
+    "defaultCategoryTitle": "Abitudini",
+    "habitsCount": "{{count}} abitudine",
+    "habitsCount_plural": "{{count}} abitudini",
+    "emptyState": "Nessun modello di abitudine trovato per questa categoria.",
+    "alerts": {
+      "noticeTitle": "Avviso",
+      "fetchError": "Impossibile recuperare i modelli di abitudine.",
+      "errorTitle": "Errore",
+      "connectError": "Connessione al server non riuscita."
+    }
+  },
+  "createOneTimeHabit": {
+    "headerTitleEdit": "Modifica attività",
+    "headerTitleCreate": "Attività singola",
+    "save": "SALVA",
+    "habitNamePlaceholder": "Dai un nome alla tua abitudine",
+    "selectColor": "Seleziona colore",
+    "todayPrefix": "Oggi, {{date}}",
+    "getReminders": "Ricevi promemoria",
+    "addReminderTime": "Aggiungi orario promemoria",
+    "validation": {
+      "title": "Errore di convalida",
+      "emptyName": "Inserisci un nome per l'abitudine."
+    },
+    "alerts": {
+      "errorTitle": "Errore",
+      "successTitle": "Operazione riuscita",
+      "fetchColorsFailed": "Impossibile recuperare i colori.",
+      "updateSuccess": "Attività singola aggiornata con successo.",
+      "updateFailed": "Aggiornamento dell'attività non riuscito.",
+      "updateError": "Si è verificato un errore durante l'aggiornamento.",
+      "createSuccess": "Attività singola creata con successo.",
+      "createFailed": "Creazione dell'attività non riuscita.",
+      "createError": "Si è verificato un errore durante la creazione.",
+      "ok": "OK"
+    }
+  },
+  "createRegularHabit": {
+    "headerTitleEdit": "Modifica abitudine",
+    "headerTitleNew": "Nuova abitudine",
+    "save": "SALVA",
+    "placeholderName": "Dai un nome alla tua abitudine",
+    "selectColor": "Seleziona colore",
+    "goalForHabit": "Obiettivo dell'abitudine",
+    "numberOfTimes": "N. di volte",
+    "time": "Durata",
+    "timesSuffix": "volte",
+    "minutesSuffix": "minuti",
+    "frequencies": {
+      "daily": "Giornaliera",
+      "weekly": "Settimanale",
+      "monthly": "Mensile"
+    },
+    "repeatEveryDay": "Ripeti ogni giorno",
+    "repeatDailyIn": "Ripeti ogni giorno di:",
+    "timesOfDay": {
+      "morning": "Mattina",
+      "afternoon": "Pomeriggio",
+      "evening": "Sera"
+    },
+    "daysOfWeek": {
+      "sunday": "D",
+      "monday": "L",
+      "tuesday": "M",
+      "wednesday": "M",
+      "thursday": "G",
+      "friday": "V",
+      "saturday": "S"
+    },
+    "getReminders": "Ricevi promemoria",
+    "addReminderTime": "Aggiungi orario promemoria",
+    "alerts": {
+      "errorTitle": "Errore",
+      "successTitle": "Operazione riuscita",
+      "validationTitle": "Errore di convalida",
+      "enterHabitName": "Inserisci un nome per l'abitudine.",
+      "fetchColorsFailed": "Impossibile recuperare i colori.",
+      "habitUpdatedSuccess": "Abitudine aggiornata con successo.",
+      "habitCreatedSuccess": "Abitudine creata con successo.",
+      "habitUpdateFailed": "Aggiornamento dell'abitudine non riuscito.",
+      "habitCreateFailed": "Creazione dell'abitudine non riuscita.",
+      "updateError": "Si è verificato un errore durante l'aggiornamento.",
+      "createError": "Si è verificato un errore durante la creazione."
+    }
+  },
+  "common": {
+    "error": "Errore",
+    "success": "Operazione riuscita",
+    "cancel": "Annulla",
+    "goBack": "Indietro"
+  },
+  "habitDetails": {
+    "currentStreak": "Serie attuale",
+    "longestStreak": "Serie più lunga",
+    "completionRate": "Tasso di completamento",
+    "totalTimesCompleted": "Volte totali completate",
+    "dayCount_one": "{{count}} giorno",
+    "dayCount_other": "{{count}} giorni",
+    "actions": {
+      "edit": "Modifica",
+      "archive": "Archivia"
+    },
+    "alerts": {
+      "archiveTitle": "Archivia abitudine",
+      "archiveMessage": "Sei sicuro di voler archiviare \"{{name}}\"?",
+      "archiveSuccess": "Abitudine archiviata con successo.",
+      "archiveFailed": "Archiviazione dell'abitudine non riuscita.",
+      "fetchFailed": "Impossibile caricare le statistiche dell'abitudine."
+    },
+    "daysOfWeek": ["D", "L", "M", "M", "G", "V", "S"],
+    "monthNames": [
+      "Gennaio",
+      "Febbraio",
+      "Marzo",
+      "Aprile",
+      "Maggio",
+      "Giugno",
+      "Luglio",
+      "Agosto",
+      "Settembre",
+      "Ottobre",
+      "Novembre",
+      "Dicembre"
+    ]
+  },
+  "stats": {
+    "title": "Le tue statistiche",
+    "months": [
+      "Gennaio",
+      "Febbraio",
+      "Marzo",
+      "Aprile",
+      "Maggio",
+      "Giugno",
+      "Luglio",
+      "Agosto",
+      "Settembre",
+      "Ottobre",
+      "Novembre",
+      "Dicembre"
+    ],
+    "daysOfWeek": {
+      "sun": "D",
+      "mon": "L",
+      "tue": "M",
+      "wed": "M",
+      "thu": "G",
+      "fri": "V",
+      "sat": "S"
+    },
+    "legend": {
+      "allComplete": "Tutti completati",
+      "someComplete": "Alcuni completati"
+    },
+    "quote": "Il primo passo è sempre il più difficile. Puoi farcela!",
+    "currentStreak": "Serie attuale",
+    "longestStreak": "Serie più lunga",
+    "days": "{{count}} giorni",
+    "days_one": "{{count}} giorno",
+    "days_other": "{{count}} giorni",
+    "totalPerfectDays": "Giorni perfetti totali",
+    "totalTimesCompleted": "Volte totali completate",
+    "habitCompletionRate": "Tasso di completamento",
+    "averagePerDaily": "Media giornaliera",
+    "errors": {
+      "fetchFailedTitle": "Errore",
+      "fetchFailedMessage": "Impossibile caricare le statistiche dell'abitudine."
+    }
+  },
+  "subscription": {
+    "restore": "RIPRISTINA",
+    "heroTitle": "Migliora la tua efficienza",
+    "loading": "Caricamento...",
+    "features": [
+      "Tracciamento abitudini e promemoria illimitati",
+      "Analisi avanzate e approfondimenti sui progressi",
+      "Esperienza Premium senza pubblicità"
+    ],
+    "yearly": {
+      "bestOffer": "MIGLIORE OFFERTA",
+      "title": "Annuale",
+      "subtitle": "Accesso di 1 anno • {{price}}"
+    },
+    "monthly": {
+      "title": "Mensile",
+      "priceFormat": "{{price}}/Mese"
+    },
+    "cancelOrManage": "Annulla o gestisci abbonamento",
+    "continue": "Continua",
+    "plans": {
+      "yearlyPlan": "Piano annuale",
+      "monthlyPlan": "Piano mensile",
+      "yearlyPrice": "{{price}}/anno",
+      "monthlyPrice": "{{price}}/mese"
+    },
+    "securePayment": {
+      "ios": "PAGAMENTO SICURO TRAMITE APP STORE",
+      "android": "PAGAMENTO SICURO TRAMITE GOOGLE PLAY"
+    },
+    "autoRenewDisclaimer": "L'abbonamento si rinnova automaticamente a meno che non venga annullato almeno 24 ore prima della fine del periodo corrente.",
+    "legal": {
+      "termsOfUse": "Termini di utilizzo (EULA)",
+      "privacyPolicy": "Informativa sulla privacy"
+    },
+    "alerts": {
+      "storeErrorTitle": "Errore dello store",
+      "storeErrorMessage": "Impossibile caricare i pacchetti di abbonamento.",
+      "errorTitle": "Errore",
+      "cannotOpenLink": "Impossibile aprire il link: {{url}}",
+      "failedOpenLink": "Apertura del link non riuscita.",
+      "planUnavailable": "Il piano selezionato non è al momento disponibile.",
+      "successTitle": "Operazione riuscita!",
+      "upgradedMessage": "Il tuo account è stato aggiornato.",
+      "continueBtn": "Continua",
+      "paymentFailedTitle": "Pagamento non riuscito",
+      "unexpectedError": "Si è verificato un errore imprevisto.",
+      "restoredTitle": "Ripristinato",
+      "restoredMessage": "Il tuo abbonamento è stato ripristinato con successo.",
+      "noSubscriptionTitle": "Nessun abbonamento",
+      "noSubscriptionMessage": "Non è stato possibile trovare un abbonamento attivo da ripristinare.",
+      "restoreFailedPrefix": "Ripristino non riuscito: ",
+      "manageTitle": "Gestisci abbonamento",
+      "manageMessage": "Verrai reindirizzato alle impostazioni dell'abbonamento per gestire o annullare il tuo piano.",
+      "cancelBtn": "Annulla",
+      "openSettingsBtn": "Apri impostazioni",
+      "cannotOpenSettings": "Impossibile aprire le impostazioni dell'abbonamento."
+    }
+  },
+  "appLayout": {
+    "tryPro": "PROVA PRO",
+    "routes": {
+      "dashboard": "Oggi",
+      "stats": "Statistiche",
+      "profile": "Profilo"
+    }
+  },
+  "profile": {
+    "screenTitle": "Profilo",
+    "edit": "Modifica",
+    "allHabits": "Tutte le abitudini",
+    "notifications": "Notifiche",
+    "changeLanguage": "Cambia lingua",
+    "settings": "Impostazioni",
+    "tryForFree": "Prova gratis",
+    "pro": "PRO",
+    "signOut": "Esci",
+    "signOutAlert": {
+      "title": "Disconnessione",
+      "message": "Sei sicuro di voler uscire?",
+      "cancel": "Annulla",
+      "confirm": "Esci"
+    }
+  },
+  "allHabits": {
+    "screenTitle": "Tutte le abitudini",
+    "tabs": {
+      "regular": "ABITUDINI REGOLARI",
+      "oneTime": "ATTIVITÀ SINGOLE"
+    },
+    "emptyState": {
+      "regular": "Nessuna abitudine regolare trovata.",
+      "oneTime": "Nessuna attività singola trovata."
+    },
+    "defaults": {
+      "daily": "Giornaliera",
+      "times": "volte"
+    },
+    "alerts": {
+      "errorTitle": "Errore",
+      "fetchFailed": "Impossibile recuperare le prossime abitudini."
+    }
+  },
+  "changePassword": {
+    "screenTitle": "Cambia password",
+    "infoCard": {
+      "title": "Aggiorna sicurezza",
+      "subtitle": "Scegli una password sicura con almeno 8 caratteri."
+    },
+    "labels": {
+      "currentPassword": "PASSWORD ATTUALE",
+      "newPassword": "NUOVA PASSWORD",
+      "confirmPassword": "CONFERMA NUOVA PASSWORD"
+    },
+    "placeholders": {
+      "currentPassword": "Inserisci la password attuale",
+      "newPassword": "Inserisci la nuova password",
+      "confirmPassword": "Reinserisci la nuova password"
+    },
+    "buttons": {
+      "updatePassword": "Aggiorna password"
+    },
+    "validation": {
+      "errorTitle": "Errore di convalida",
+      "currentPasswordRequired": "Inserisci la tua password attuale.",
+      "newPasswordRequired": "Inserisci una nuova password.",
+      "minLength": "La nuova password deve contenere almeno 8 caratteri.",
+      "sameAsCurrent": "La nuova password non può essere uguale a quella attuale.",
+      "passwordMismatch": "La nuova password e la conferma non coincidono."
+    },
+    "alerts": {
+      "successTitle": "Operazione riuscita",
+      "successMessage": "Password modificata con successo!",
+      "errorTitle": "Errore",
+      "fetchFailed": "Modifica della password non riuscita.",
+      "genericError": "Qualcosa è andato storto. Riprova."
+    }
+  },
+  "editProfile": {
+    "screenTitle": "Modifica profilo",
+    "labels": {
+      "fullName": "Nome completo",
+      "country": "Paese",
+      "state": "Stato / Regione"
+    },
+    "placeholders": {
+      "fullName": "Inserisci il tuo nome",
+      "country": "Seleziona paese",
+      "state": "Seleziona stato/regione",
+      "selectCountryFirst": "Seleziona prima un paese"
+    },
+    "buttons": {
+      "saveChanges": "Salva modifiche"
+    },
+    "validation": {
+      "nameRequired": "Inserisci il tuo nome completo."
+    },
+    "alerts": {
+      "successTitle": "Operazione riuscita",
+      "successMessage": "Profilo aggiornato con successo!",
+      "errorTitle": "Errore",
+      "updateFailed": "Aggiornamento del profilo non riuscito.",
+      "genericError": "Si è verificato un errore durante il salvataggio del profilo."
+    }
+  },
+  "help": {
+    "screenTitle": "Aiuto e supporto",
+    "infoCard": {
+      "title": "Come possiamo aiutarti?",
+      "subtitle": "Se hai domande, feedback o hai bisogno di assistenza, non esitare a contattarci."
+    },
+    "sectionHeader": "INFORMAZIONI DI CONTATTO",
+    "contact": {
+      "emailLabel": "Inviaci un'email",
+      "websiteLabel": "Visita il sito web"
+    },
+    "alerts": {
+      "errorTitle": "Errore",
+      "emailError": "Impossibile aprire il client di posta.",
+      "emailGenericError": "Si è verificato un errore durante l'invio dell'email.",
+      "browserError": "Impossibile aprire il browser web.",
+      "websiteGenericError": "Si è verificato un errore durante l'apertura del sito web."
+    }
+  },
+  "languageSelector": {
+    "screenTitle": "Lingua",
+    "topNotice": "Seleziona la tua lingua preferita per l'applicazione qui sotto.",
+    "bottomNotice": "La modifica della lingua aggiornerà automaticamente le etichette dell'interfaccia nell'intera app e verrà salvata sul tuo account.",
+    "activeLanguage": "LINGUA ATTIVA",
+    "languages": {
+      "en": {
+        "title": "English 🇬🇧",
+        "nativeTitle": "English",
+        "description": "Imposta la lingua dell'app su Inglese"
+      },
+      "da": {
+        "title": "Danish 🇩🇰",
+        "nativeTitle": "Dansk",
+        "description": "Imposta la lingua dell'app su Danese"
+      },
+      "fr": {
+        "title": "French 🇫🇷",
+        "nativeTitle": "Français",
+        "description": "Imposta la lingua dell'app su Francese"
+      },
+      "de": {
+        "title": "German 🇩🇪",
+        "nativeTitle": "Deutsch",
+        "description": "Imposta la lingua dell'app su Tedesco"
+      },
+      "id": {
+        "title": "Indonesian 🇮🇩",
+        "nativeTitle": "Bahasa Indonesia",
+        "description": "Imposta la lingua dell'app su Indonesiano"
+      },
+      "it": {
+        "title": "Italian 🇮🇹",
+        "nativeTitle": "Italiano",
+        "description": "Imposta la lingua dell'app su Italiano"
+      },
+      "ja": {
+        "title": "Japanese 🇯🇵",
+        "nativeTitle": "日本語",
+        "description": "Imposta la lingua dell'app su Giapponese"
+      },
+      "ko": {
+        "title": "Korean 🇰🇷",
+        "nativeTitle": "한국어",
+        "description": "Imposta la lingua dell'app su Coreano"
+      },
+      "nb": {
+        "title": "Norwegian Bokmål 🇳🇴",
+        "nativeTitle": "Norsk bokmål",
+        "description": "Imposta la lingua dell'app su Norvegese Bokmål"
+      },
+      "pl": {
+        "title": "Polish 🇵🇱",
+        "nativeTitle": "Polski",
+        "description": "Imposta la lingua dell'app su Polacco"
+      },
+      "pt": {
+        "title": "Portuguese 🇵🇹",
+        "nativeTitle": "Português",
+        "description": "Imposta la lingua dell'app su Portoghese"
+      },
+      "ru": {
+        "title": "Russian 🇷🇺",
+        "nativeTitle": "Русский",
+        "description": "Imposta la lingua dell'app su Russo"
+      },
+      "zh-Hans": {
+        "title": "Simplified Chinese 🇨🇳",
+        "nativeTitle": "简体中文",
+        "description": "Imposta la lingua dell'app su Cinese Semplificato"
+      },
+      "es": {
+        "title": "Spanish 🇪🇸",
+        "nativeTitle": "Español",
+        "description": "Imposta la lingua dell'app su Spagnolo"
+      },
+      "sv": {
+        "title": "Swedish 🇸🇪",
+        "nativeTitle": "Svenska",
+        "description": "Imposta la lingua dell'app su Svedese"
+      },
+      "th": {
+        "title": "Thai 🇹🇭",
+        "nativeTitle": "ไทย",
+        "description": "Imposta la lingua dell'app su Tailandese"
+      },
+      "zh-Hant": {
+        "title": "Traditional Chinese 🇹🇼",
+        "nativeTitle": "繁體中文",
+        "description": "Imposta la lingua dell'app su Cinese Tradizionale"
+      },
+      "tr": {
+        "title": "Turkish 🇹🇷",
+        "nativeTitle": "Türkçe",
+        "description": "Imposta la lingua dell'app su Turco"
+      },
+      "vi": {
+        "title": "Vietnamese 🇻🇳",
+        "nativeTitle": "Tiếng Việt",
+        "description": "Imposta la lingua dell'app su Vietnamita"
+      }
+    },
+    "alerts": {
+      "errorTitle": "Errore",
+      "genericUpdateError": "Impossibile aggiornare la lingua sul server."
+    }
+  },
+  "notifications": {
+    "screenTitle": "Notifiche",
+    "topNotice": "Configura le tue notifiche per monitorare il completamento delle tue abitudini.",
+    "bottomNotice": "Puoi anche impostare promemoria per singole abitudini nelle relative impostazioni.",
+    "items": {
+      "todays_plan": {
+        "title": "Programma di oggi 📋",
+        "description": "\"Mattina: 5 abitudini, Pomeriggio: 1 abitudine, Sera: 6 abitudini, In qualsiasi momento: 2 abitudini\""
+      },
+      "morning_plan": {
+        "title": "Programma mattutino ☀️",
+        "description": "\"Hai 5 abitudini per questa mattina e altre 2 che puoi completare.\""
+      },
+      "afternoon_plan": {
+        "title": "Programma pomeridiano 🌤️",
+        "description": "\"Hai 1 abitudine per questo pomeriggio e altre 2 che puoi completare.\""
+      },
+      "evening_plan": {
+        "title": "Programma serale 🌙",
+        "description": "\"Hai 6 abitudini per questa sera e altre 2 che puoi completare.\""
+      },
+      "today_results": {
+        "title": "I tuoi risultati di oggi 🎉",
+        "description": "\"3 abitudini completate, 1 abitudine saltata, 14 abitudini rimanenti\""
+      }
+    },
+    "alerts": {
+      "errorTitle": "Errore",
+      "genericUpdateError": "Impossibile aggiornare le impostazioni delle notifiche."
+    }
+  },
+  "settings": {
+    "headerTitle": "Impostazioni",
+    "generalTitle": "GENERALE",
+    "sound": "Suono",
+    "vacationMode": "Modalità vacanza",
+    "vacationSubtitle": "Metti in pausa le tue abitudini e conserva le tue serie",
+    "changePassword": "Cambia password",
+    "help": "Aiuto",
+    "privacyPolicy": "Informativa sulla privacy",
+    "rateUs": "Valutaci",
+    "shareApp": "Condividi app",
+    "shareMessage": "Dai un'occhiata a Habitly! Ti aiuta a tracciare le tue abitudini quotidiane e a raggiungere i tuoi obiettivi.\n\n📱 Scarica per Android: {{playStoreUrl}}\n🍏 Scarica per iOS: {{appStoreUrl}}",
+    "errors": {
+      "failedUpdate": "Impossibile aggiornare le impostazioni. Riprova.",
+      "unexpectedNetwork": "Si è verificato un errore di rete imprevisto.",
+      "privacyPolicy": "Impossibile aprire la pagina web dell'informativa sulla privacy.",
+      "appStore": "Impossibile aprire la pagina dello store dell'app.",
+      "whatsapp": "WhatsApp non è installato o non è disponibile su questo dispositivo.",
+      "genericLink": "Si è verificato un errore imprevisto durante l'apertura del link."
+    }
+  }
+}

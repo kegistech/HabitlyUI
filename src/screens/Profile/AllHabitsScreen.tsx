@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Activity, CheckCircle2, Target } from 'lucide-react-native';
 
 import { RootStackParamList } from '../../navigation/navigation';
@@ -46,6 +47,7 @@ interface ApiResponse<T> {
 }
 
 const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<TabType>('REGULAR');
   const [allHabits, setAllHabits] = useState<UpcomingHabitResponse[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -69,7 +71,10 @@ const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
       (err: any) => {
         setIsLoading(false);
         setAllHabits([]);
-        Alert.alert('Error', err?.message || 'Failed to fetch upcoming habits.');
+        Alert.alert(
+          t('allHabits.alerts.errorTitle'),
+          err?.message || t('allHabits.alerts.fetchFailed')
+        );
       }
     );
   };
@@ -89,7 +94,7 @@ const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
 
   const handleNavigateToDetails = (item: UpcomingHabitResponse) => {
     navigation.navigate('HabitDetails', {
-      habitData: item
+      habitData: item,
     });
   };
 
@@ -107,7 +112,7 @@ const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
           <ArrowLeft size={moderateScale(22)} color="#FFFFFF" />
         </TouchableOpacity>
 
-        <Text style={styles.headerTitle}>All habits</Text>
+        <Text style={styles.headerTitle}>{t('allHabits.screenTitle')}</Text>
 
         <View style={styles.headerRightPlaceholder} />
       </View>
@@ -125,7 +130,7 @@ const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
               activeTab === 'REGULAR' && styles.activeTabText,
             ]}
           >
-            REGULAR HABITS
+            {t('allHabits.tabs.regular')}
           </Text>
         </TouchableOpacity>
 
@@ -140,7 +145,7 @@ const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
               activeTab === 'ONE_TIME' && styles.activeTabText,
             ]}
           >
-            ONE-TIME TASKS
+            {t('allHabits.tabs.oneTime')}
           </Text>
         </TouchableOpacity>
       </View>
@@ -159,8 +164,8 @@ const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
             <Target size={42} color="rgba(255, 255, 255, 0.2)" />
             <Text style={styles.emptyText}>
               {activeTab === 'REGULAR'
-                ? 'No regular habits found.'
-                : 'No one-time tasks found.'}
+                ? t('allHabits.emptyState.regular')
+                : t('allHabits.emptyState.oneTime')}
             </Text>
           </View>
         ) : (
@@ -202,7 +207,9 @@ const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
                         ) : null}
                         <View style={styles.badgeContainer}>
                           <Text style={styles.badgeStar}>★</Text>
-                          <Text style={styles.badgeText}>{item.goalTypeName || 'Daily'}</Text>
+                          <Text style={styles.badgeText}>
+                            {item.goalTypeName || t('allHabits.defaults.daily')}
+                          </Text>
                         </View>
                       </View>
                     </View>
@@ -213,7 +220,7 @@ const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
                         {item.targetValue}
                       </Text>
                       <Text style={styles.progressUnit}>
-                        {item.valueTypeName || 'times'}
+                        {item.valueTypeName || t('allHabits.defaults.times')}
                       </Text>
                     </View>
                   </View>

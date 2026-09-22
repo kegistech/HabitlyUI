@@ -12,6 +12,7 @@ import {
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Plus, Minus, CheckCircle2, Activity, Target } from 'lucide-react-native';
 import * as StoreReview from 'react-native-store-review';
+import { useTranslation } from 'react-i18next';
 
 import AppLayout from '../AppLayout';
 import { RootStackParamList } from '../../navigation/navigation';
@@ -20,7 +21,6 @@ import { getApi, postApi, putApi } from '../../services/commonAPIs';
 import { habitsByDateAPI, trackHabitAPI, updateRatingAPI } from '../../services/apiendpoints';
 import { useSubscription } from '../../context/SubscriptionContext';
 import { useFocusEffect } from '@react-navigation/native';
-
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Dashboard'>;
 
@@ -61,6 +61,8 @@ interface ApiResponse<T> {
 }
 
 const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
+  const { t } = useTranslation();
+
   // Dynamically calculate current week (Sunday to Saturday)
   const currentWeekDays: CalendarDay[] = useMemo(() => {
     const today = new Date();
@@ -119,51 +121,48 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
     refreshProfile();
   }, []);
 
-
   useFocusEffect(
-  useCallback(() => {
-    fetchHabitsByDate(selectedDate);
-  }, [selectedDate])
-);
+    useCallback(() => {
+      fetchHabitsByDate(selectedDate);
+    }, [selectedDate])
+  );
 
   // App Store / Play Store Review Prompt Handler
   useEffect(() => {
-  const triggerReview = async () => {
-    try {
-      const shouldAskReview = route.params?.review === 1;
+    const triggerReview = async () => {
+      try {
+        const shouldAskReview = route.params?.review === 1;
 
-      if (!shouldAskReview) return;
+        if (!shouldAskReview) return;
 
-      // Backend says user already rated
-      if (userData?.isRateGiven) return;
+        // Backend says user already rated
+        if (userData?.isRateGiven) return;
 
-      // Request native review dialog
-      await StoreReview.requestReview();
-         putApi(
-            updateRatingAPI,
-            {},
-            (response: any) => {
-                refreshProfile();
-            },
-            (error: any) => {
-              const serverMsg = error?.response?.data?.message || error?.message || 'Network error occurred.';
-            }
-          );
-          
-      // Remove review param so effect won't trigger again
-      navigation.setParams({
-        review: undefined,
-      });
+        // Request native review dialog
+        await StoreReview.requestReview();
+        putApi(
+          updateRatingAPI,
+          {},
+          (response: any) => {
+            refreshProfile();
+          },
+          (error: any) => {
+            const serverMsg =
+              error?.response?.data?.message || error?.message || 'Network error occurred.';
+          }
+        );
 
-    } catch (error) {
-      console.log('Review Error:', error);
-    }
-  };
+        // Remove review param so effect won't trigger again
+        navigation.setParams({
+          review: undefined,
+        });
+      } catch (error) {
+        console.log('Review Error:', error);
+      }
+    };
 
-  triggerReview();
-
-}, [route.params?.review, userData?.isRateGiven]);
- 
+    triggerReview();
+  }, [route.params?.review, userData?.isRateGiven]);
 
   const fetchHabitsByDate = async (date: Date) => {
     setIsLoading(true);
@@ -183,7 +182,10 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
       (err: any) => {
         setIsLoading(false);
         setHabits([]);
-        Alert.alert('Error', err?.message || 'Failed to fetch habits for selected date.');
+        Alert.alert(
+          t('dashboard.alerts.errorTitle'),
+          err?.message || t('dashboard.alerts.fetchError')
+        );
       }
     );
   };
@@ -192,7 +194,10 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
   const handleTrackHabit = async (item: HabitListResponse, isIncrement: boolean) => {
     // 1. Future Date Check
     if (isFutureDate) {
-      Alert.alert('Action Not Allowed', 'You cannot track activity for future dates.');
+      Alert.alert(
+        t('dashboard.alerts.futureDateTitle'),
+        t('dashboard.alerts.futureDateMessage')
+      );
       return;
     }
 
@@ -201,12 +206,18 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
     // 2. Incremental and Decremental Limit Checks
     if (isIncrement) {
       if (item.completedValue >= item.targetValue) {
-        Alert.alert('Goal Reached', 'You have already completed the target for this habit.');
+        Alert.alert(
+          t('dashboard.alerts.goalReachedTitle'),
+          t('dashboard.alerts.goalReachedMessage')
+        );
         return;
       }
     } else {
       if (item.completedValue <= 0) {
-        Alert.alert('Minimum Limit', 'Completed activity cannot be less than 0.');
+        Alert.alert(
+          t('dashboard.alerts.minLimitTitle'),
+          t('dashboard.alerts.minLimitMessage')
+        );
         return;
       }
     }
@@ -244,28 +255,33 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
       (res: ApiResponse<any>) => {
         setTrackingHabitId(null);
         if (!res?.succeeded) {
-          Alert.alert('Error', res?.message || 'Failed to update habit progress.');
+          Alert.alert(
+            t('dashboard.alerts.errorTitle'),
+            res?.message || t('dashboard.alerts.trackError')
+          );
           fetchHabitsByDate(selectedDate); // Revert state on failure
         }
       },
       (err: any) => {
         setTrackingHabitId(null);
-        Alert.alert('Error', err?.message || 'Failed to connect to tracker.');
+        Alert.alert(
+          t('dashboard.alerts.errorTitle'),
+          err?.message || t('dashboard.alerts.connectError')
+        );
         fetchHabitsByDate(selectedDate); // Revert state on failure
       }
     );
   };
 
-  const handleAddHabit = async() => {
+  const handleAddHabit = async () => {
     // 1. Check if user is Basic and reached limit
-  
     if (!userData?.isProUser && (userData?.totalHabits ?? 0) >= 2) {
       Alert.alert(
-        'Limit Reached',
-        'You have reached the free limit of 2 habits. Upgrade to Pro for unlimited access.',
+        t('dashboard.alerts.limitReachedTitle'),
+        t('dashboard.alerts.limitReachedMessage'),
         [
-          { text: 'Cancel' },
-          { text: 'Upgrade', onPress: () => navigation.navigate('Subscription') },
+          { text: t('dashboard.alerts.cancel') },
+          { text: t('dashboard.alerts.upgrade'), onPress: () => navigation.navigate('Subscription') },
         ]
       );
       return;
@@ -289,7 +305,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
   };
 
   return (
-    <AppLayout navigation={navigation} currentRoute="Dashboard" title="Today">
+    <AppLayout navigation={navigation} currentRoute="Dashboard" title={t('dashboard.title')}>
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
@@ -319,7 +335,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
 
         {/* Section Header */}
         <View style={styles.sectionHeaderContainer}>
-          <Text style={styles.sectionTitle}>TASKS & HABITS</Text>
+          <Text style={styles.sectionTitle}>{t('dashboard.sectionTitle')}</Text>
         </View>
 
         {/* Dynamic Habit List */}
@@ -330,7 +346,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
         ) : habits.length === 0 ? (
           <View style={styles.emptyContainer}>
             <Target size={42} color="rgba(255, 255, 255, 0.2)" />
-            <Text style={styles.emptyText}>No habits scheduled for this date.</Text>
+            <Text style={styles.emptyText}>{t('dashboard.emptyHabits')}</Text>
           </View>
         ) : (
           habits.map((item) => {
@@ -372,7 +388,9 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
                         ) : null}
                         <View style={styles.badgeContainer}>
                           <Text style={styles.badgeStar}>★</Text>
-                          <Text style={styles.badgeText}>{item.goalTypeName || 'Daily'}</Text>
+                          <Text style={styles.badgeText}>
+                            {item.goalTypeName || t('dashboard.defaults.goalType')}
+                          </Text>
                         </View>
                       </View>
                     </View>
@@ -383,7 +401,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
                         {item.targetValue}
                       </Text>
                       <Text style={styles.progressUnit}>
-                        {item.valueTypeName || 'times'}
+                        {item.valueTypeName || t('dashboard.defaults.valueType')}
                       </Text>
                     </View>
                   </View>
@@ -403,7 +421,9 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
                 {/* Tracker Actions Row */}
                 <View style={styles.trackerRow}>
                   <Text style={styles.trackingLabel}>
-                    {isFutureDate ? 'Tracking disabled for future dates' : "Track today's activity"}
+                    {isFutureDate
+                      ? t('dashboard.tracking.disabledFuture')
+                      : t('dashboard.tracking.trackToday')}
                   </Text>
 
                   <View style={styles.counterControls}>
