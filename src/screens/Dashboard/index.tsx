@@ -8,10 +8,12 @@ import {
   ScrollView,
   ActivityIndicator,
   Alert,
+  Platform,
+  Linking,
+  Modal,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Plus, Minus, CheckCircle2, Activity, Target } from 'lucide-react-native';
-import * as StoreReview from 'react-native-store-review';
+import { Plus, Minus, CheckCircle2, Activity, Target, Star } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 
 import AppLayout from '../AppLayout';
@@ -60,6 +62,9 @@ interface ApiResponse<T> {
   data: T;
 }
 
+const GOOGLE_PLAY_PACKAGE_NAME = 'com.kegistech.habitly';
+const APPLE_APP_ID = '6804195230';
+
 const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
   const { t } = useTranslation();
 
@@ -106,6 +111,11 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
   const [trackingHabitId, setTrackingHabitId] = useState<number | null>(null);
   const { userData, refreshProfile } = useSubscription();
 
+  // Review Modal States
+  const [isRatingModalVisible, setIsRatingModalVisible] = useState<boolean>(false);
+  const [selectedRating, setSelectedRating] = useState<number>(0);
+  const [isSubmittingRating, setIsSubmittingRating] = useState<boolean>(false);
+
   // Helper to check if selected date is in the future relative to today
   const isFutureDate = useMemo(() => {
     const today = new Date();
@@ -129,40 +139,80 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
 
   // App Store / Play Store Review Prompt Handler
   useEffect(() => {
-    const triggerReview = async () => {
-      try {
-        const shouldAskReview = route.params?.review === 1;
+    const checkReviewPrompt = () => {
+      const shouldAskReview = route.params?.review === 1;
 
-        if (!shouldAskReview) return;
+      if (!shouldAskReview) return;
+      if (userData?.isRateGiven) return;
 
-        // Backend says user already rated
-        if (userData?.isRateGiven) return;
+      // Reset route params to prevent repeated triggers on re-render
+      navigation.setParams({ review: undefined });
 
-        // Request native review dialog
-        await StoreReview.requestReview();
-        putApi(
-          updateRatingAPI,
-          {},
-          (response: any) => {
-            refreshProfile();
-          },
-          (error: any) => {
-            const serverMsg =
-              error?.response?.data?.message || error?.message || 'Network error occurred.';
-          }
-        );
-
-        // Remove review param so effect won't trigger again
-        navigation.setParams({
-          review: undefined,
-        });
-      } catch (error) {
-        console.log('Review Error:', error);
-      }
+      // Open rating modal
+      setSelectedRating(0);
+      setIsRatingModalVisible(true);
     };
 
-    triggerReview();
+    checkReviewPrompt();
   }, [route.params?.review, userData?.isRateGiven]);
+
+  // Open store review URL
+  const openAppStore = async () => {
+    const storeUrl = Platform.select({
+      ios: `https://apps.apple.com/app/id${APPLE_APP_ID}?action=write-review`,
+      android: `market://details?id=${GOOGLE_PLAY_PACKAGE_NAME}`,
+    });
+
+    const webFallbackUrl = Platform.select({
+      ios: `https://apps.apple.com/app/id${APPLE_APP_ID}`,
+      android: `https://play.google.com/store/apps/details?id=${GOOGLE_PLAY_PACKAGE_NAME}`,
+    });
+
+    const targetUrl = storeUrl || webFallbackUrl;
+
+    if (targetUrl) {
+      const canOpen = await Linking.canOpenURL(targetUrl);
+      await Linking.openURL(canOpen ? targetUrl : webFallbackUrl || '');
+    }
+  };
+
+  // Submit Rate Handler
+  const handleRateSubmit = async () => {
+    setIsSubmittingRating(true);
+
+    // Track Rating API
+    putApi(
+      updateRatingAPI,
+      {},
+      () => {
+        setIsSubmittingRating(false);
+        setIsRatingModalVisible(false);
+        refreshProfile();
+
+        // If 4 or 5 stars, redirect to App Store / Play Store
+        if (selectedRating >= 4) {
+          openAppStore();
+        }
+      },
+      (error: any) => {
+        setIsSubmittingRating(false);
+        setIsRatingModalVisible(false);
+        const serverMsg =
+          error?.response?.data?.message || error?.message || 'Network error occurred.';
+        console.error('Rating API error:', serverMsg);
+
+        // Still open store if 4 or 5 stars even if API fails
+        if (selectedRating >= 4) {
+          openAppStore();
+        }
+      }
+    );
+  };
+
+  // Rate Later Handler
+  const handleRateLater = () => {
+    setIsRatingModalVisible(false);
+  };
 
   const fetchHabitsByDate = async (date: Date) => {
     setIsLoading(true);
@@ -481,6 +531,66 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
       >
         <Plus size={28} color="#FFFFFF" />
       </TouchableOpacity>
+
+      {/* 5-Star Rating Modal */}
+      <Modal
+        visible={isRatingModalVisible}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={handleRateLater}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Enjoying Consistent?</Text>
+            <Text style={styles.modalSubtitle}>
+              Tap a star to rate your experience with us!
+            </Text>
+
+            {/* Star Rating Selection */}
+            <View style={styles.starsContainer}>
+              {[1, 2, 3, 4, 5].map((star) => (
+                <TouchableOpacity
+                  key={star}
+                  activeOpacity={0.7}
+                  onPress={() => setSelectedRating(star)}
+                  style={styles.starButton}
+                >
+                  <Star
+                    size={32}
+                    color={star <= selectedRating ? '#FFD700' : '#4A5568'}
+                    fill={star <= selectedRating ? '#FFD700' : 'transparent'}
+                  />
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            {/* Action Buttons */}
+            <View style={styles.modalActions}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={[styles.modalBtn, styles.rateLaterBtn]}
+                onPress={handleRateLater}
+                disabled={isSubmittingRating}
+              >
+                <Text style={styles.rateLaterText}>Rate Later</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={[styles.modalBtn, styles.rateSubmitBtn]}
+                onPress={handleRateSubmit}
+                disabled={isSubmittingRating || selectedRating==0}
+              >
+                {isSubmittingRating ? (
+                  <ActivityIndicator size="small" color="#FFFFFF" />
+                ) : (
+                  <Text style={styles.rateSubmitText}>Rate</Text>
+                )}
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </AppLayout>
   );
 };
@@ -719,6 +829,75 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.4,
     shadowRadius: 8,
+  },
+
+  // Modal Styles
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: scaleWidth(20),
+  },
+  modalContent: {
+    width: '100%',
+    backgroundColor: '#1E222D',
+    borderRadius: moderateScale(20),
+    padding: scaleWidth(24),
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
+  },
+  modalTitle: {
+    fontSize: moderateScale(20),
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: scaleHeight(8),
+    textAlign: 'center',
+  },
+  modalSubtitle: {
+    fontSize: moderateScale(14),
+    color: 'rgba(255, 255, 255, 0.6)',
+    textAlign: 'center',
+    marginBottom: scaleHeight(20),
+  },
+  starsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: scaleWidth(8),
+    marginBottom: scaleHeight(24),
+  },
+  starButton: {
+    padding: scaleWidth(4),
+  },
+  modalActions: {
+    flexDirection: 'row',
+    gap: scaleWidth(12),
+    width: '100%',
+  },
+  modalBtn: {
+    flex: 1,
+    height: scaleHeight(46),
+    borderRadius: moderateScale(12),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rateLaterBtn: {
+    backgroundColor: '#272C3A',
+  },
+  rateLaterText: {
+    fontSize: moderateScale(14),
+    fontWeight: '700',
+    color: 'rgba(255, 255, 255, 0.7)',
+  },
+  rateSubmitBtn: {
+    backgroundColor: '#29B6F6',
+  },
+  rateSubmitText: {
+    fontSize: moderateScale(14),
+    fontWeight: '700',
+    color: '#FFFFFF',
   },
 });
 
