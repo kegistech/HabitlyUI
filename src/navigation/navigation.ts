@@ -30,6 +30,7 @@ export type RootStackParamList = {
   ChangePassword: undefined;
   Help: undefined;
   LanguageSelector:undefined;
+  SelectLanguage: undefined;
 };
 
 export type NavigationProps<T extends keyof RootStackParamList> = {

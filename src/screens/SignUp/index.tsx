@@ -168,7 +168,7 @@ const { t } = useTranslation();
           } catch (storageErr) {
             console.warn('Error storing signup info', storageErr);
           }
-          navigation.replace('Dashboard');
+          navigation.replace('SelectLanguage');
         } else {
           setErrorMessage(response?.message || t('signUp.errors.registrationFailed'));
         }

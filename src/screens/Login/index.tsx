@@ -26,6 +26,8 @@ import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/responsive';
 import { postApi, setAuthToken } from '../../services/commonAPIs';
 import { loginAPI } from '../../services/apiendpoints';
+import { setAppLanguage } from '../../localization/languageService';
+
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
@@ -123,7 +125,9 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
           if (response.data?.userDetail?.id) {
             await AsyncStorage.setItem('id', String(response.data.userDetail?.id));
           }
-
+         if (response.data?.userDetail?.languageCode) {
+          setAppLanguage(response.data?.userDetail?.languageCode)   
+          }
           navigation.replace('Dashboard');
         } else {
           setGeneralError(

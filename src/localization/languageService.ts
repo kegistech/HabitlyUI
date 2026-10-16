@@ -38,3 +38,17 @@ export const changeAppLanguage = async (
     if (onError) onError(error);
   }
 };
+
+export const setAppLanguage = async (
+  languageCode: string
+) => {
+
+    // 1. Update UI language state in i18next
+    await i18n.changeLanguage(languageCode);
+
+    // 2. Persist in AsyncStorage under key 'languageCode'
+    await AsyncStorage.setItem(LANGUAGE_KEY, languageCode);
+
+
+  
+};

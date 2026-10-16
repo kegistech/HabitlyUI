@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getApi } from '../services/commonAPIs'; 
 import { userProfileSummaryAPI } from '../services/apiendpoints';
 import Purchases from 'react-native-purchases';
-import { Alert } from 'react-native';
+
 
 
 const SubscriptionContext = createContext<any>(null);
@@ -57,14 +57,22 @@ export const SubscriptionProvider = ({ children }: any) => {
         }
         return false;
     };
+ const isUserTrialDaysExpired = (createdAtString?: string): boolean => {
+  if (!createdAtString) return false;
 
+  const createdAt = new Date(createdAtString).getTime();
+  const now = new Date().getTime();
+  const diffInDays = (now - createdAt) / (1000 * 60 * 60 * 24);
+
+  return diffInDays >= 10;
+};
     useEffect(() => {
         fetchProfile();
     }, []);
 
     return (
         <SubscriptionContext.Provider value={{
-            userData, loading, refreshProfile: fetchProfile, isProEligible
+            userData, loading, refreshProfile: fetchProfile, isProEligible,isUserTrialDaysExpired
         }}>
             {children}
         </SubscriptionContext.Provider>

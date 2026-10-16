@@ -26,6 +26,7 @@ import HabitDetailsScreen from '../screens/HabitDetail';
 import ChangePasswordScreen from '../screens/Profile/ChangePasswordScreen';
 import HelpScreen from '../screens/Profile/HelpScreen';
 import LanguageSelectorScreen from '../screens/Profile/LanguageSelectorScreen';
+import SelectLanguageScreen from '../screens/SelectLanguage';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -63,6 +64,7 @@ const RootNavigator: React.FC = () => {
       <Stack.Screen name='ChangePassword' component={ChangePasswordScreen}/>
       <Stack.Screen name='Help' component={HelpScreen}/>
       <Stack.Screen name='LanguageSelector' component={LanguageSelectorScreen}/>
+      <Stack.Screen name='SelectLanguage' component={SelectLanguageScreen}/>
     </Stack.Navigator>
   );
 };

@@ -13,7 +13,7 @@ import {
   Modal,
 } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Plus, Minus, CheckCircle2, Activity, Target, Star } from 'lucide-react-native';
+import { Plus, Minus, CheckCircle2, Activity, Target, Star, RotateCcw } from 'lucide-react-native';
 import { useTranslation } from 'react-i18next';
 
 import AppLayout from '../AppLayout';
@@ -109,7 +109,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
   const [habits, setHabits] = useState<HabitListResponse[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [trackingHabitId, setTrackingHabitId] = useState<number | null>(null);
-  const { userData, refreshProfile } = useSubscription();
+  const { userData, refreshProfile, isUserTrialDaysExpired } = useSubscription();
 
   // Review Modal States
   const [isRatingModalVisible, setIsRatingModalVisible] = useState<boolean>(false);
@@ -240,8 +240,29 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
     );
   };
 
+  const checkAccessAndPrompt = (): boolean => {
+    const trialExpired = isUserTrialDaysExpired(userData?.createdOn);
+    // 1. Check if user is Basic and reached limit
+    if (!userData?.isProUser && ((userData?.totalHabits ?? 0) >= 2 || trialExpired)) {
+      Alert.alert(
+        t('dashboard.alerts.limitReachedTitle'),
+        t('dashboard.alerts.limitReachedMessage'),
+        [
+          { text: t('dashboard.alerts.cancel') },
+          { text: t('dashboard.alerts.upgrade'), onPress: () => navigation.navigate('Subscription') },
+        ]
+      );
+      return false;
+    }
+    return true;
+  };
+
   // Track habit handler with validation and API integration
-  const handleTrackHabit = async (item: HabitListResponse, isIncrement: boolean) => {
+  const handleTrackHabit = async (
+    item: HabitListResponse,
+    isIncrement: boolean,
+    amountToTrack: number
+  ) => {
     // 1. Future Date Check
     if (isFutureDate) {
       Alert.alert(
@@ -250,8 +271,6 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
       );
       return;
     }
-
-    const amountToTrack = 1; // Step value
 
     // 2. Incremental and Decremental Limit Checks
     if (isIncrement) {
@@ -309,7 +328,11 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
             t('dashboard.alerts.errorTitle'),
             res?.message || t('dashboard.alerts.trackError')
           );
-          fetchHabitsByDate(selectedDate); // Revert state on failure
+          fetchHabitsByDate(selectedDate);
+        } else {
+          if (isIncrement) {
+            checkAccessAndPrompt();
+          }
         }
       },
       (err: any) => {
@@ -324,18 +347,8 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
   };
 
   const handleAddHabit = async () => {
-    // 1. Check if user is Basic and reached limit
-    if (!userData?.isProUser && (userData?.totalHabits ?? 0) >= 2) {
-      Alert.alert(
-        t('dashboard.alerts.limitReachedTitle'),
-        t('dashboard.alerts.limitReachedMessage'),
-        [
-          { text: t('dashboard.alerts.cancel') },
-          { text: t('dashboard.alerts.upgrade'), onPress: () => navigation.navigate('Subscription') },
-        ]
-      );
-      return;
-    }
+    const canProceed = checkAccessAndPrompt();
+    if (!canProceed) return;
 
     navigation.navigate('CreateHabit');
   };
@@ -485,7 +498,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
                         isDecrementDisabled && styles.disabledActionBtn,
                       ]}
                       disabled={isDecrementDisabled}
-                      onPress={() => handleTrackHabit(item, false)}
+                      onPress={() => handleTrackHabit(item, false, 1)}
                     >
                       <Minus
                         size={16}
@@ -504,7 +517,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
                         isIncrementDisabled && styles.disabledActionBtn,
                       ]}
                       disabled={isIncrementDisabled}
-                      onPress={() => handleTrackHabit(item, true)}
+                      onPress={() => handleTrackHabit(item, true, 1)}
                     >
                       {isHabitTracking ? (
                         <ActivityIndicator size="small" color="#FFFFFF" />
@@ -515,6 +528,40 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
                         />
                       )}
                     </TouchableOpacity>
+
+                    {/* Mark as Done / Undo Button when targetValue > 1 */}
+                    {item.targetValue > 1 && (
+                      <TouchableOpacity
+                        activeOpacity={0.7}
+                        style={[
+                          styles.doneBtn,
+                          item.isCompleted ? styles.undoBtn : styles.markDoneBtn,
+                          (isFutureDate || isHabitTracking) && styles.disabledActionBtn,
+                        ]}
+                        disabled={isFutureDate || isHabitTracking}
+                        onPress={() => {
+                          if (item.isCompleted) {
+                            // Undo: Decrement all completed progress back to 0
+                            handleTrackHabit(item, false, item.completedValue);
+                          } else {
+                            // Mark Done: Increment remaining value to reach targetValue
+                            const remaining = Math.max(0, item.targetValue - item.completedValue);
+                            if (remaining > 0) {
+                              handleTrackHabit(item, true, remaining);
+                            }
+                          }
+                        }}
+                      >
+                        {item.isCompleted ? (
+                          <RotateCcw size={14} color="#FFFFFF" />
+                        ) : (
+                          <CheckCircle2 size={14} color="#FFFFFF" />
+                        )}
+                        <Text style={styles.doneBtnText}>
+                          {item.isCompleted ? 'Undo' : 'Done'}
+                        </Text>
+                      </TouchableOpacity>
+                    )}
                   </View>
                 </View>
               </View>
@@ -579,7 +626,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
                 activeOpacity={0.8}
                 style={[styles.modalBtn, styles.rateSubmitBtn]}
                 onPress={handleRateSubmit}
-                disabled={isSubmittingRating || selectedRating==0}
+                disabled={isSubmittingRating || selectedRating === 0}
               >
                 {isSubmittingRating ? (
                   <ActivityIndicator size="small" color="#FFFFFF" />
@@ -796,6 +843,25 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     minWidth: scaleWidth(20),
     textAlign: 'center',
+  },
+  doneBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: scaleWidth(10),
+    height: scaleWidth(32),
+    borderRadius: scaleWidth(16),
+    gap: scaleWidth(4),
+  },
+  markDoneBtn: {
+    backgroundColor: '#00E676',
+  },
+  undoBtn: {
+    backgroundColor: '#FF5252',
+  },
+  doneBtnText: {
+    fontSize: moderateScale(12),
+    fontWeight: '700',
+    color: '#FFFFFF',
   },
 
   loaderContainer: {
