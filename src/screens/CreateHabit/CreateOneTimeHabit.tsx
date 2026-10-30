@@ -11,7 +11,6 @@ import {
   StatusBar,
   Platform,
   ActivityIndicator,
-  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -23,6 +22,7 @@ import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
 import { getApi, postApi, putApi } from '../../services/commonAPIs';
 import { colorCodesAPI, habitAPI } from '../../services/apiendpoints';
+import { AppModal, ModalType } from '../../components/AppModal';
 
 export enum ValueTypeEnum {
   NumberOfTimes = 1,
@@ -97,6 +97,35 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
   const [showTimePicker, setShowTimePicker] = useState<boolean>(false);
   const [pickerTime, setPickerTime] = useState<Date>(new Date());
 
+  // Modal State Configuration
+  const [modalConfig, setModalConfig] = useState<{
+    visible: boolean;
+    type: ModalType;
+    title: string;
+    message: string;
+    onConfirm?: () => void;
+  }>({
+    visible: false,
+    type: 'success',
+    title: '',
+    message: '',
+  });
+
+  const showAppModal = (
+    type: ModalType,
+    title: string,
+    message: string,
+    onConfirm?: () => void
+  ) => {
+    setModalConfig({
+      visible: true,
+      type,
+      title,
+      message,
+      onConfirm,
+    });
+  };
+
   // Fetch color codes on mount
   useEffect(() => {
     fetchColorCodes();
@@ -123,7 +152,8 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
       },
       (err: any) => {
         setIsColorsLoading(false);
-        Alert.alert(
+        showAppModal(
+          'error',
           t('createOneTimeHabit.alerts.errorTitle'),
           err?.message || t('createOneTimeHabit.alerts.fetchColorsFailed')
         );
@@ -207,7 +237,8 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
 
   const handleSave = async () => {
     if (!habitName.trim()) {
-      Alert.alert(
+      showAppModal(
+        'warning',
         t('createOneTimeHabit.validation.title'),
         t('createOneTimeHabit.validation.emptyName')
       );
@@ -248,18 +279,15 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
         (res: ApiResponse<any>) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
-            Alert.alert(
+            showAppModal(
+              'success',
               t('createOneTimeHabit.alerts.successTitle'),
               t('createOneTimeHabit.alerts.updateSuccess'),
-              [
-                {
-                  text: t('createOneTimeHabit.alerts.ok'),
-                  onPress: () => navigation.navigate('Dashboard', { review: 1 }),
-                },
-              ]
+              () => navigation.navigate('Dashboard', { review: 1 })
             );
           } else {
-            Alert.alert(
+            showAppModal(
+              'error',
               t('createOneTimeHabit.alerts.errorTitle'),
               res?.message || t('createOneTimeHabit.alerts.updateFailed')
             );
@@ -267,7 +295,8 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
         },
         (err: any) => {
           setIsSubmitting(false);
-          Alert.alert(
+          showAppModal(
+            'error',
             t('createOneTimeHabit.alerts.errorTitle'),
             err?.message || t('createOneTimeHabit.alerts.updateError')
           );
@@ -280,18 +309,15 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
         (res: ApiResponse<any>) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
-            Alert.alert(
+            showAppModal(
+              'success',
               t('createOneTimeHabit.alerts.successTitle'),
               t('createOneTimeHabit.alerts.createSuccess'),
-              [
-                {
-                  text: t('createOneTimeHabit.alerts.ok'),
-                  onPress: () => navigation.navigate('Dashboard', { review: 1 }),
-                },
-              ]
+              () => navigation.navigate('Dashboard', { review: 1 })
             );
           } else {
-            Alert.alert(
+            showAppModal(
+              'error',
               t('createOneTimeHabit.alerts.errorTitle'),
               res?.message || t('createOneTimeHabit.alerts.createFailed')
             );
@@ -299,7 +325,8 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
         },
         (err: any) => {
           setIsSubmitting(false);
-          Alert.alert(
+          showAppModal(
+            'error',
             t('createOneTimeHabit.alerts.errorTitle'),
             err?.message || t('createOneTimeHabit.alerts.createError')
           );
@@ -468,6 +495,17 @@ const CreateOneTimeHabitScreen: React.FC<Props> = ({ navigation, route }) => {
           )}
         </View>
       </ScrollView>
+
+      {/* Reusable AppModal Integration */}
+      <AppModal
+        visible={modalConfig.visible}
+        type={modalConfig.type}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onClose={() => setModalConfig((prev) => ({ ...prev, visible: false }))}
+        onConfirm={modalConfig.onConfirm}
+        buttonText={t('createOneTimeHabit.alerts.ok', { defaultValue: 'OK' })}
+      />
     </SafeAreaView>
   );
 };

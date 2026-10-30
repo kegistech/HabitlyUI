@@ -22,6 +22,7 @@ import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
 import { postApi } from '../../services/commonAPIs';
 import { changePasswordAPI } from '../../services/apiendpoints';
+import { AppModal, ModalType } from '../../components/AppModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ChangePassword'>;
 
@@ -49,46 +50,82 @@ const ChangePasswordScreen: React.FC<Props> = ({ navigation }) => {
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
+const [modalConfig, setModalConfig] = useState<{
+  visible: boolean;
+  type: ModalType;
+  title: string;
+  message: string;
+  onConfirm?: () => void;
+}>({
+  visible: false,
+  type: 'success',
+  title: '',
+  message: '',
+});
+
+// Helper function to easily trigger the modal from anywhere in the component
+const showAppModal = (
+  type: ModalType,
+  title: string,
+  message: string,
+  onConfirm?: () => void
+) => {
+  setModalConfig({
+    visible: true,
+    type,
+    title,
+    message,
+    onConfirm,
+  });
+};
 
   const handleChangePassword = async () => {
     // Form Validations
     if (!currentPassword.trim()) {
-      Alert.alert(
-        t('changePassword.validation.errorTitle'),
+      showAppModal(
+  'warning',
+ t('changePassword.validation.errorTitle'),
         t('changePassword.validation.currentPasswordRequired')
-      );
+);
+
       return;
     }
 
     if (!newPassword.trim()) {
-      Alert.alert(
-        t('changePassword.validation.errorTitle'),
+       showAppModal(
+  'warning',
+ t('changePassword.validation.errorTitle'),
         t('changePassword.validation.newPasswordRequired')
-      );
+);
+
       return;
     }
 
     if (newPassword.length < 8) {
-      Alert.alert(
-        t('changePassword.validation.errorTitle'),
+       showAppModal(
+  'warning',
+ t('changePassword.validation.errorTitle'),
         t('changePassword.validation.minLength')
-      );
+);
       return;
     }
 
     if (newPassword === currentPassword) {
-      Alert.alert(
-        t('changePassword.validation.errorTitle'),
+        showAppModal(
+  'warning',
+    t('changePassword.validation.errorTitle'),
         t('changePassword.validation.sameAsCurrent')
-      );
+);
+
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      Alert.alert(
+      showAppModal(
+  'warning',
         t('changePassword.validation.errorTitle'),
         t('changePassword.validation.passwordMismatch')
-      );
+);
       return;
     }
 
@@ -105,31 +142,45 @@ const ChangePasswordScreen: React.FC<Props> = ({ navigation }) => {
       (res: ApiResponse) => {
         setIsLoading(false);
         if (res?.succeeded) {
-          Alert.alert(
-            t('changePassword.alerts.successTitle'),
+          showAppModal(
+  'success',
+ t('changePassword.alerts.successTitle'),
             res?.message || t('changePassword.alerts.successMessage'),
-            [{ text: 'OK', onPress: () => navigation.goBack() }]
-          );
+  () => navigation.goBack() 
+);
+
         } else {
-          Alert.alert(
-            t('changePassword.alerts.errorTitle'),
+          showAppModal(
+  'error',
+ t('changePassword.alerts.errorTitle'),
             res?.message || t('changePassword.alerts.fetchFailed')
-          );
+);
         }
       },
       (err: any) => {
         setIsLoading(false);
-        Alert.alert(
-          t('changePassword.alerts.errorTitle'),
+          showAppModal(
+  'error',
+ t('changePassword.alerts.errorTitle'),
           err?.message || t('changePassword.alerts.genericError')
-        );
+);
+
       }
     );
   };
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right', 'bottom']}>
+<AppModal
+        visible={modalConfig.visible}
+        type={modalConfig.type}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onClose={() => setModalConfig((prev) => ({ ...prev, visible: false }))}
+        onConfirm={modalConfig.onConfirm}
+      />
       <StatusBar barStyle="light-content" backgroundColor="#161820" />
+
 
       {/* Header Bar */}
       <View style={styles.header}>

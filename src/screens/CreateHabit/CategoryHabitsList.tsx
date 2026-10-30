@@ -31,13 +31,13 @@ import {
   Home,
   HeartIcon,
   Flame,
-  CheckSquare,
 } from 'lucide-react-native';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
 import { getApi } from '../../services/commonAPIs';
 import { habitsMasterAPI } from '../../services/apiendpoints';
+import { AppModal, ModalType } from '../../components/AppModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CategoryHabitsList'>;
 
@@ -126,6 +126,35 @@ const CategoryHabitsListScreen: React.FC<Props> = ({ navigation, route }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
 
+  const [modalConfig, setModalConfig] = useState<{
+  visible: boolean;
+  type: ModalType;
+  title: string;
+  message: string;
+  onConfirm?: () => void;
+}>({
+  visible: false,
+  type: 'success',
+  title: '',
+  message: '',
+});
+
+// Helper function to easily trigger the modal from anywhere in the component
+const showAppModal = (
+  type: ModalType,
+  title: string,
+  message: string,
+  onConfirm?: () => void
+) => {
+  setModalConfig({
+    visible: true,
+    type,
+    title,
+    message,
+    onConfirm,
+  });
+};
+
   const fetchHabits = useCallback(
     async (isRefreshingCall = false) => {
       if (isRefreshingCall) {
@@ -157,10 +186,12 @@ const CategoryHabitsListScreen: React.FC<Props> = ({ navigation, route }) => {
 
             setHabits(formattedHabits);
           } else {
-            Alert.alert(
-              t('categoryHabits.alerts.noticeTitle'),
-              res?.message || t('categoryHabits.alerts.fetchError')
-            );
+            showAppModal(
+  'error',
+ t('categoryHabits.alerts.noticeTitle'),
+ res?.message || t('categoryHabits.alerts.fetchError')
+);
+
           }
           setIsLoading(false);
           setIsRefreshing(false);
@@ -168,10 +199,11 @@ const CategoryHabitsListScreen: React.FC<Props> = ({ navigation, route }) => {
         (err: any) => {
           setIsLoading(false);
           setIsRefreshing(false);
-          Alert.alert(
-            t('categoryHabits.alerts.errorTitle'),
-            err?.message || t('categoryHabits.alerts.connectError')
-          );
+          showAppModal(
+  'error',
+   t('categoryHabits.alerts.errorTitle'),
+ err?.message || t('categoryHabits.alerts.connectError')
+);
         }
       );
     },
@@ -199,6 +231,14 @@ const CategoryHabitsListScreen: React.FC<Props> = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right', 'bottom']}>
+      <AppModal
+        visible={modalConfig.visible}
+        type={modalConfig.type}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onClose={() => setModalConfig((prev) => ({ ...prev, visible: false }))}
+        onConfirm={modalConfig.onConfirm}
+      />
       <StatusBar barStyle="light-content" backgroundColor="#161820" />
 
       {/* 1. Header Card with Shadow & Back Button */}

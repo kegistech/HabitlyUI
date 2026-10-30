@@ -1,6 +1,8 @@
 package com.kegistech.habitly
 
 import android.app.Application
+import android.content.Context
+import androidx.multidex.MultiDex
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost
@@ -20,6 +22,11 @@ class MainApplication : Application(), ReactApplication {
     )
   }
 
+override fun attachBaseContext(base: Context) {
+    super.attachBaseContext(base)
+    MultiDex.install(this)
+  }
+  
   override fun onCreate() {
     super.onCreate()
     loadReactNative(this)

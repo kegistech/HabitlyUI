@@ -31,6 +31,7 @@ import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
 import { getApi } from '../../services/commonAPIs';
 import { habitCategoriesAPI } from '../../services/apiendpoints';
+import { AppModal, ModalType } from '../../components/AppModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CreateHabit'>;
 
@@ -100,6 +101,34 @@ const CreateHabitScreen: React.FC<Props> = ({ navigation }) => {
   const [categories, setCategories] = useState<CategoryCard[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+const [modalConfig, setModalConfig] = useState<{
+  visible: boolean;
+  type: ModalType;
+  title: string;
+  message: string;
+  onConfirm?: () => void;
+}>({
+  visible: false,
+  type: 'success',
+  title: '',
+  message: '',
+});
+
+// Helper function to easily trigger the modal from anywhere in the component
+const showAppModal = (
+  type: ModalType,
+  title: string,
+  message: string,
+  onConfirm?: () => void
+) => {
+  setModalConfig({
+    visible: true,
+    type,
+    title,
+    message,
+    onConfirm,
+  });
+};
 
   const fetchCategories = useCallback(
     async (isRefreshingCall = false) => {
@@ -132,10 +161,12 @@ const CreateHabitScreen: React.FC<Props> = ({ navigation }) => {
 
             setCategories(formattedCategories);
           } else {
-            Alert.alert(
-              t('createHabitMenu.alerts.noticeTitle'),
+            showAppModal(
+  'warning',
+ t('createHabitMenu.alerts.noticeTitle'),
               res?.message || t('createHabitMenu.alerts.fetchError')
-            );
+);
+
           }
           setIsLoading(false);
           setIsRefreshing(false);
@@ -143,10 +174,11 @@ const CreateHabitScreen: React.FC<Props> = ({ navigation }) => {
         (err: any) => {
           setIsLoading(false);
           setIsRefreshing(false);
-          Alert.alert(
-            t('createHabitMenu.alerts.errorTitle'),
-            err?.message || t('createHabitMenu.alerts.connectError')
-          );
+          showAppModal(
+  'error',
+  t('createHabitMenu.alerts.errorTitle'),
+ err?.message || t('createHabitMenu.alerts.connectError')
+);
         }
       );
     },
@@ -179,6 +211,14 @@ const CreateHabitScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right', 'bottom']}>
+       <AppModal
+              visible={modalConfig.visible}
+              type={modalConfig.type}
+              title={modalConfig.title}
+              message={modalConfig.message}
+              onClose={() => setModalConfig((prev) => ({ ...prev, visible: false }))}
+              onConfirm={modalConfig.onConfirm}
+            />
       <StatusBar barStyle="light-content" backgroundColor="#161820" />
 
       {/* Header Card with Shadow & Close Button */}

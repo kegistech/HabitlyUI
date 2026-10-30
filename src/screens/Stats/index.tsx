@@ -28,6 +28,7 @@ import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
 import { getApi } from '../../services/commonAPIs';
 import { habitStatsAPI } from '../../services/apiendpoints';
+import { AppModal, ModalType } from '../../components/AppModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Stats'>;
 
@@ -80,6 +81,34 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
 
   const [statsData, setStatsData] = useState<HabitStatsData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+const [modalConfig, setModalConfig] = useState<{
+  visible: boolean;
+  type: ModalType;
+  title: string;
+  message: string;
+  onConfirm?: () => void;
+}>({
+  visible: false,
+  type: 'success',
+  title: '',
+  message: '',
+});
+
+// Helper function to easily trigger the modal from anywhere in the component
+const showAppModal = (
+  type: ModalType,
+  title: string,
+  message: string,
+  onConfirm?: () => void
+) => {
+  setModalConfig({
+    visible: true,
+    type,
+    title,
+    message,
+    onConfirm,
+  });
+};
 
   // Fetch Stats API
   const fetchStats = useCallback(
@@ -100,10 +129,11 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
         (err: any) => {
           setIsLoading(false);
           setStatsData(null);
-          Alert.alert(
-            t('stats.errors.fetchFailedTitle'),
+        showAppModal(
+  'error',
+  t('stats.errors.fetchFailedTitle'),
             err?.message || t('stats.errors.fetchFailedMessage')
-          );
+);
         }
       );
     },
@@ -179,6 +209,14 @@ const StatsScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <AppLayout navigation={navigation} currentRoute="Stats" title={t('stats.title')}>
+    <AppModal
+        visible={modalConfig.visible}
+        type={modalConfig.type}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onClose={() => setModalConfig((prev) => ({ ...prev, visible: false }))}
+        onConfirm={modalConfig.onConfirm}
+      />
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}

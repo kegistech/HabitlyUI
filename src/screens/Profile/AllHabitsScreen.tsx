@@ -19,6 +19,7 @@ import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
 import { getApi } from '../../services/commonAPIs';
 import { upcomingHabitsAPI } from '../../services/apiendpoints';
+import { AppModal, ModalType } from '../../components/AppModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'AllHabits'>;
 
@@ -51,7 +52,34 @@ const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
   const [activeTab, setActiveTab] = useState<TabType>('REGULAR');
   const [allHabits, setAllHabits] = useState<UpcomingHabitResponse[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+const [modalConfig, setModalConfig] = useState<{
+  visible: boolean;
+  type: ModalType;
+  title: string;
+  message: string;
+  onConfirm?: () => void;
+}>({
+  visible: false,
+  type: 'success',
+  title: '',
+  message: '',
+});
 
+// Helper function to easily trigger the modal from anywhere in the component
+const showAppModal = (
+  type: ModalType,
+  title: string,
+  message: string,
+  onConfirm?: () => void
+) => {
+  setModalConfig({
+    visible: true,
+    type,
+    title,
+    message,
+    onConfirm,
+  });
+};
   useEffect(() => {
     fetchUpcomingHabits();
   }, []);
@@ -71,10 +99,11 @@ const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
       (err: any) => {
         setIsLoading(false);
         setAllHabits([]);
-        Alert.alert(
-          t('allHabits.alerts.errorTitle'),
+       showAppModal(
+  'error',
+ t('allHabits.alerts.errorTitle'),
           err?.message || t('allHabits.alerts.fetchFailed')
-        );
+);
       }
     );
   };
@@ -100,6 +129,14 @@ const AllHabitsScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right', 'bottom']}>
+     <AppModal
+        visible={modalConfig.visible}
+        type={modalConfig.type}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onClose={() => setModalConfig((prev) => ({ ...prev, visible: false }))}
+        onConfirm={modalConfig.onConfirm}
+      />
       <StatusBar barStyle="light-content" backgroundColor="#161820" />
 
       {/* 1. Header Bar */}

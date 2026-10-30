@@ -1,5 +1,5 @@
 // src/screens/Settings/HelpScreen.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -17,6 +17,7 @@ import { ArrowLeft, Mail, Globe, HelpCircle, ChevronRight } from 'lucide-react-n
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
+import { AppModal, ModalType } from '../../components/AppModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Help'>;
 
@@ -26,6 +27,34 @@ const DISPLAY_WEBSITE_URL = 'www.kegistech.com';
 
 const HelpScreen: React.FC<Props> = ({ navigation }) => {
   const { t } = useTranslation();
+const [modalConfig, setModalConfig] = useState<{
+  visible: boolean;
+  type: ModalType;
+  title: string;
+  message: string;
+  onConfirm?: () => void;
+}>({
+  visible: false,
+  type: 'success',
+  title: '',
+  message: '',
+});
+
+// Helper function to easily trigger the modal from anywhere in the component
+const showAppModal = (
+  type: ModalType,
+  title: string,
+  message: string,
+  onConfirm?: () => void
+) => {
+  setModalConfig({
+    visible: true,
+    type,
+    title,
+    message,
+    onConfirm,
+  });
+};
 
   const handleOpenEmail = async () => {
     const mailtoUrl = `mailto:${EMAIL_ADDRESS}`;
@@ -34,10 +63,17 @@ const HelpScreen: React.FC<Props> = ({ navigation }) => {
       if (canOpen) {
         await Linking.openURL(mailtoUrl);
       } else {
-        Alert.alert(t('help.alerts.errorTitle'), t('help.alerts.emailError'));
+        showAppModal(
+  'error',
+ t('help.alerts.errorTitle'), t('help.alerts.emailError')
+);
+
       }
     } catch (error) {
-      Alert.alert(t('help.alerts.errorTitle'), t('help.alerts.emailGenericError'));
+       showAppModal(
+  'error',
+ t('help.alerts.errorTitle'), t('help.alerts.emailGenericError')
+);
     }
   };
 
@@ -47,15 +83,30 @@ const HelpScreen: React.FC<Props> = ({ navigation }) => {
       if (canOpen) {
         await Linking.openURL(WEBSITE_URL);
       } else {
-        Alert.alert(t('help.alerts.errorTitle'), t('help.alerts.browserError'));
+         showAppModal(
+  'error',
+ t('help.alerts.errorTitle'), t('help.alerts.browserError')
+);
+
       }
     } catch (error) {
-      Alert.alert(t('help.alerts.errorTitle'), t('help.alerts.websiteGenericError'));
+       showAppModal(
+  'error',
+ t('help.alerts.errorTitle'), t('help.alerts.websiteGenericError')
+);
     }
   };
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right', 'bottom']}>
+     <AppModal
+        visible={modalConfig.visible}
+        type={modalConfig.type}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onClose={() => setModalConfig((prev) => ({ ...prev, visible: false }))}
+        onConfirm={modalConfig.onConfirm}
+      />
       <StatusBar barStyle="light-content" backgroundColor="#161820" />
 
       {/* Header Bar */}

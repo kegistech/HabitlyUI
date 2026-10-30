@@ -11,7 +11,6 @@ import {
   StatusBar,
   Platform,
   ActivityIndicator,
-  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -23,6 +22,7 @@ import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
 import { getApi, postApi, putApi } from '../../services/commonAPIs';
 import { colorCodesAPI, habitAPI } from '../../services/apiendpoints';
+import { AppModal, ModalType } from '../../components/AppModal';
 
 export enum ValueTypeEnum {
   NumberOfTimes = 1,
@@ -117,6 +117,35 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
   const [showPicker, setShowPicker] = useState<boolean>(false);
   const [pickerTime, setPickerTime] = useState<Date>(new Date());
 
+  // Modal State
+  const [modalConfig, setModalConfig] = useState<{
+    visible: boolean;
+    type: ModalType;
+    title: string;
+    message: string;
+    onConfirm?: () => void;
+  }>({
+    visible: false,
+    type: 'success',
+    title: '',
+    message: '',
+  });
+
+  const showAppModal = (
+    type: ModalType,
+    title: string,
+    message: string,
+    onConfirm?: () => void
+  ) => {
+    setModalConfig({
+      visible: true,
+      type,
+      title,
+      message,
+      onConfirm,
+    });
+  };
+
   const dailyDays = [
     t('createRegularHabit.daysOfWeek.sunday'),
     t('createRegularHabit.daysOfWeek.monday'),
@@ -165,7 +194,8 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
       },
       (err: any) => {
         setIsColorsLoading(false);
-        Alert.alert(
+        showAppModal(
+          'error',
           t('createRegularHabit.alerts.errorTitle'),
           err?.message || t('createRegularHabit.alerts.fetchColorsFailed')
         );
@@ -274,7 +304,8 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
 
   const handleSave = async () => {
     if (!habitName.trim()) {
-      Alert.alert(
+      showAppModal(
+        'warning',
         t('createRegularHabit.alerts.validationTitle'),
         t('createRegularHabit.alerts.enterHabitName')
       );
@@ -316,13 +347,15 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
         (res: ApiResponse<any>) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
-            Alert.alert(
+            showAppModal(
+              'success',
               t('createRegularHabit.alerts.successTitle'),
               t('createRegularHabit.alerts.habitUpdatedSuccess'),
-              [{ text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 }) }]
+              () => navigation.navigate('Dashboard', { review: 1 })
             );
           } else {
-            Alert.alert(
+            showAppModal(
+              'error',
               t('createRegularHabit.alerts.errorTitle'),
               res?.message || t('createRegularHabit.alerts.habitUpdateFailed')
             );
@@ -330,7 +363,8 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
         },
         (err: any) => {
           setIsSubmitting(false);
-          Alert.alert(
+          showAppModal(
+            'error',
             t('createRegularHabit.alerts.errorTitle'),
             err?.message || t('createRegularHabit.alerts.updateError')
           );
@@ -343,13 +377,15 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
         (res: ApiResponse<any>) => {
           setIsSubmitting(false);
           if (res?.succeeded) {
-            Alert.alert(
+            showAppModal(
+              'success',
               t('createRegularHabit.alerts.successTitle'),
               t('createRegularHabit.alerts.habitCreatedSuccess'),
-              [{ text: 'OK', onPress: () => navigation.navigate('Dashboard', { review: 1 }) }]
+              () => navigation.navigate('Dashboard', { review: 1 })
             );
           } else {
-            Alert.alert(
+            showAppModal(
+              'error',
               t('createRegularHabit.alerts.errorTitle'),
               res?.message || t('createRegularHabit.alerts.habitCreateFailed')
             );
@@ -357,7 +393,8 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
         },
         (err: any) => {
           setIsSubmitting(false);
-          Alert.alert(
+          showAppModal(
+            'error',
             t('createRegularHabit.alerts.errorTitle'),
             err?.message || t('createRegularHabit.alerts.createError')
           );
@@ -669,6 +706,16 @@ const CreateRegularHabit: React.FC<Props> = ({ navigation, route }) => {
           )}
         </View>
       </ScrollView>
+
+      {/* Reusable Dynamic Modal Integration */}
+      <AppModal
+        visible={modalConfig.visible}
+        type={modalConfig.type}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onClose={() => setModalConfig((prev) => ({ ...prev, visible: false }))}
+        onConfirm={modalConfig.onConfirm}
+      />
     </SafeAreaView>
   );
 };

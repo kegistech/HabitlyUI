@@ -5,6 +5,21 @@
 # directive in build.gradle.
 #
 # For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+#    http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
+
+# React Native & Hermes
+-keep class com.facebook.react.** { *; }
+-keep class com.facebook.hermes.unicode.** { *; }
+-dontwarn com.facebook.react.**
+
+# Yoga Layout Engine
+-keep class com.facebook.yoga.** { *; }
+
+# General AndroidX & Multidex support
+-keep class androidx.multidex.** { *; }
+-dontwarn androidx.multidex.**
+
+# Keep generic React Native packages or third-party native bridges if needed
+# -keep class com.kegistech.** { *; }

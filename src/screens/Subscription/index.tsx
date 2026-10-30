@@ -24,6 +24,7 @@ import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive'
 import { manageSubscriptionAPI } from '../../services/apiendpoints';
 import { postApi } from '../../services/commonAPIs';
 import { useSubscription } from '../../context/SubscriptionContext';
+import { AppModal, ModalType } from '../../components/AppModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Subscription'>;
 type PlanType = 'YEARLY' | 'MONTHLY';
@@ -42,6 +43,34 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
   const [packages, setPackages] = useState<{ yearly?: PurchasesPackage; monthly?: PurchasesPackage }>({});
 
   const features = t('subscription.features', { returnObjects: true }) as string[];
+const [modalConfig, setModalConfig] = useState<{
+  visible: boolean;
+  type: ModalType;
+  title: string;
+  message: string;
+  onConfirm?: () => void;
+}>({
+  visible: false,
+  type: 'success',
+  title: '',
+  message: '',
+});
+
+// Helper function to easily trigger the modal from anywhere in the component
+const showAppModal = (
+  type: ModalType,
+  title: string,
+  message: string,
+  onConfirm?: () => void
+) => {
+  setModalConfig({
+    visible: true,
+    type,
+    title,
+    message,
+    onConfirm,
+  });
+};
 
   useEffect(() => {
     fetchOfferings();
@@ -58,10 +87,12 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
       }
     } catch (error) {
       console.error('Error fetching offerings:', error);
-      Alert.alert(
+      showAppModal(
+  'error',
         t('subscription.alerts.storeErrorTitle'),
         t('subscription.alerts.storeErrorMessage')
-      );
+);
+
     } finally {
       setLoading(false);
     }
@@ -73,16 +104,18 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
       if (supported) {
         await Linking.openURL(url);
       } else {
-        Alert.alert(
-          t('subscription.alerts.errorTitle'),
+        showAppModal(
+  'error',
+      t('subscription.alerts.errorTitle'),
           t('subscription.alerts.cannotOpenLink', { url })
-        );
+);
       }
     } catch (error) {
-      Alert.alert(
-        t('subscription.alerts.errorTitle'),
+       showAppModal(
+  'error',
+         t('subscription.alerts.errorTitle'),
         t('subscription.alerts.failedOpenLink')
-      );
+);
     }
   };
 
@@ -132,10 +165,11 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
     const packageToBuy = selectedPlan === 'YEARLY' ? packages.yearly : packages.monthly;
 
     if (!packageToBuy) {
-      Alert.alert(
-        t('subscription.alerts.errorTitle'),
+      showAppModal(
+  'warning',
+       t('subscription.alerts.errorTitle'),
         t('subscription.alerts.planUnavailable')
-      );
+);
       return;
     }
 
@@ -162,10 +196,11 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
         await trackSubscriptionStatus(2, packageToBuy);
       } else {
         await trackSubscriptionStatus(3, packageToBuy, undefined, error.message);
-        Alert.alert(
-          t('subscription.alerts.paymentFailedTitle'),
+        showAppModal(
+  'error',
+ t('subscription.alerts.paymentFailedTitle'),
           error.message || t('subscription.alerts.unexpectedError')
-        );
+);
       }
     } finally {
       setProcessing(false);
@@ -177,22 +212,27 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
     try {
       const customerInfo = await Purchases.restorePurchases();
       if (customerInfo.entitlements.active['Habitly Pro']?.isActive) {
-        Alert.alert(
-          t('subscription.alerts.restoredTitle'),
+        showAppModal(
+        'success',
+        t('subscription.alerts.restoredTitle'),
           t('subscription.alerts.restoredMessage')
-        );
+            );
+
         navigation.replace('Profile');
       } else {
-        Alert.alert(
-          t('subscription.alerts.noSubscriptionTitle'),
+         showAppModal(
+        'warning',
+      t('subscription.alerts.noSubscriptionTitle'),
           t('subscription.alerts.noSubscriptionMessage')
-        );
+            );
       }
     } catch (e: any) {
-      Alert.alert(
+       showAppModal(
+        'error',
         t('subscription.alerts.errorTitle'),
         `${t('subscription.alerts.restoreFailedPrefix')}${e.message}`
-      );
+            );
+
     } finally {
       setProcessing(false);
     }
@@ -225,10 +265,12 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
                 );
               }
             } catch (err) {
-              Alert.alert(
-                t('subscription.alerts.errorTitle'),
+                 showAppModal(
+        'error',
+        t('subscription.alerts.errorTitle'),
                 t('subscription.alerts.cannotOpenSettings')
-              );
+            );
+
             }
           },
         },
@@ -254,6 +296,14 @@ const SubscriptionScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right', 'bottom']}>
+    <AppModal
+        visible={modalConfig.visible}
+        type={modalConfig.type}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onClose={() => setModalConfig((prev) => ({ ...prev, visible: false }))}
+        onConfirm={modalConfig.onConfirm}
+      />
       <StatusBar barStyle="light-content" backgroundColor="#0B0C10" />
 
       {/* Header with Close & Restore Buttons */}

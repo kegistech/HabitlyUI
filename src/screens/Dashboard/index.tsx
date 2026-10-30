@@ -23,6 +23,8 @@ import { getApi, postApi, putApi } from '../../services/commonAPIs';
 import { habitsByDateAPI, trackHabitAPI, updateRatingAPI } from '../../services/apiendpoints';
 import { useSubscription } from '../../context/SubscriptionContext';
 import { useFocusEffect } from '@react-navigation/native';
+import { AppModal, ModalType } from '../../components/AppModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Dashboard'>;
 
@@ -115,6 +117,35 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
   const [isRatingModalVisible, setIsRatingModalVisible] = useState<boolean>(false);
   const [selectedRating, setSelectedRating] = useState<number>(0);
   const [isSubmittingRating, setIsSubmittingRating] = useState<boolean>(false);
+const [modalConfig, setModalConfig] = useState<{
+  visible: boolean;
+  type: ModalType;
+  title: string;
+  message: string;
+  onConfirm?: () => void;
+}>({
+  visible: false,
+  type: 'success',
+  title: '',
+  message: '',
+});
+
+// Helper function to easily trigger the modal from anywhere in the component
+const showAppModal = (
+  type: ModalType,
+  title: string,
+  message: string,
+  onConfirm?: () => void
+) => {
+  setModalConfig({
+    visible: true,
+    type,
+    title,
+    message,
+    onConfirm,
+  });
+};
+
 
   // Helper to check if selected date is in the future relative to today
   const isFutureDate = useMemo(() => {
@@ -232,10 +263,11 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
       (err: any) => {
         setIsLoading(false);
         setHabits([]);
-        Alert.alert(
-          t('dashboard.alerts.errorTitle'),
+        showAppModal(
+  'error',
+ t('dashboard.alerts.errorTitle'),
           err?.message || t('dashboard.alerts.fetchError')
-        );
+);
       }
     );
   };
@@ -257,6 +289,44 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
     return true;
   };
 
+  useEffect(() => {
+    const checkGlobalPaywallTrigger = async () => {
+    const trialExpired = isUserTrialDaysExpired(userData?.createdOn);
+    // 1. Check if user is Basic and reached limit
+    if (!userData?.isProUser && ((userData?.totalHabits ?? 0) >= 2 || trialExpired)) {
+  
+
+    const todayStr = new Date().toDateString();
+    const lastPromptDate = await AsyncStorage.getItem('last_paywall_prompt_date');
+
+    if (lastPromptDate === todayStr) {
+      // Already checked/prompted today, do not run again
+      return;
+    }
+
+    // Example logic: If the user opens the app 7 days a week, 
+    // pick a random condition or decide whether to trigger it once on the first app launch of the day.
+    const shouldTriggerRandomly = Math.random() < 0.5; // adjust frequency probability if desired
+
+    if (shouldTriggerRandomly) {
+      await AsyncStorage.setItem('last_paywall_prompt_date', todayStr);
+      
+      // Directly navigate to Subscription screen globally
+      // (Ensure you have access to your navigation container or ref here)
+       navigation.navigate('Subscription')
+    }
+  }
+  else{
+    return;
+  }
+  };
+
+  if (userData) {
+    checkGlobalPaywallTrigger();
+  }
+}, [userData]);
+
+
   // Track habit handler with validation and API integration
   const handleTrackHabit = async (
     item: HabitListResponse,
@@ -265,28 +335,32 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
   ) => {
     // 1. Future Date Check
     if (isFutureDate) {
-      Alert.alert(
-        t('dashboard.alerts.futureDateTitle'),
+     showAppModal(
+  'warning',
+ t('dashboard.alerts.futureDateTitle'),
         t('dashboard.alerts.futureDateMessage')
-      );
+);
       return;
     }
 
     // 2. Incremental and Decremental Limit Checks
     if (isIncrement) {
       if (item.completedValue >= item.targetValue) {
-        Alert.alert(
-          t('dashboard.alerts.goalReachedTitle'),
+      showAppModal(
+  'warning',
+  t('dashboard.alerts.goalReachedTitle'),
           t('dashboard.alerts.goalReachedMessage')
-        );
+);
         return;
       }
     } else {
       if (item.completedValue <= 0) {
-        Alert.alert(
+          showAppModal(
+  'warning',
           t('dashboard.alerts.minLimitTitle'),
           t('dashboard.alerts.minLimitMessage')
-        );
+);
+
         return;
       }
     }
@@ -324,24 +398,24 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
       (res: ApiResponse<any>) => {
         setTrackingHabitId(null);
         if (!res?.succeeded) {
-          Alert.alert(
-            t('dashboard.alerts.errorTitle'),
+          showAppModal(
+  'error',
+  t('dashboard.alerts.errorTitle'),
             res?.message || t('dashboard.alerts.trackError')
-          );
+);
+
           fetchHabitsByDate(selectedDate);
-        } else {
-          if (isIncrement) {
-            checkAccessAndPrompt();
-          }
         }
       },
       (err: any) => {
         setTrackingHabitId(null);
-        Alert.alert(
+        showAppModal(
+         'error',
           t('dashboard.alerts.errorTitle'),
           err?.message || t('dashboard.alerts.connectError')
-        );
-        fetchHabitsByDate(selectedDate); // Revert state on failure
+);
+
+        fetchHabitsByDate(selectedDate);
       }
     );
   };
@@ -373,6 +447,14 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
+        <AppModal
+        visible={modalConfig.visible}
+        type={modalConfig.type}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onClose={() => setModalConfig((prev) => ({ ...prev, visible: false }))}
+        onConfirm={modalConfig.onConfirm}
+      />
         {/* Weekly Calendar Header Bar */}
         <View style={styles.calendarContainer}>
           {currentWeekDays.map((item) => {
@@ -490,6 +572,8 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
                   </Text>
 
                   <View style={styles.counterControls}>
+                      {item.targetValue > 1 && (
+                        <>
                     {/* Decrement Button */}
                     <TouchableOpacity
                       activeOpacity={0.7}
@@ -528,9 +612,9 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
                         />
                       )}
                     </TouchableOpacity>
-
-                    {/* Mark as Done / Undo Button when targetValue > 1 */}
-                    {item.targetValue > 1 && (
+                    </>
+   )}
+                  
                       <TouchableOpacity
                         activeOpacity={0.7}
                         style={[
@@ -561,7 +645,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
                           {item.isCompleted ? 'Undo' : 'Done'}
                         </Text>
                       </TouchableOpacity>
-                    )}
+
                   </View>
                 </View>
               </View>

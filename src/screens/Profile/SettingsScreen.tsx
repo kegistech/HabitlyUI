@@ -32,6 +32,7 @@ import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
 import { putApi } from '../../services/commonAPIs';
 import { settingUserAPI } from '../../services/apiendpoints';
+import { AppModal, ModalType } from '../../components/AppModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
@@ -82,6 +83,35 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
   const [vacationMode, setVacationMode] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [updatingField, setUpdatingField] = useState<ToggleField | null>(null);
+
+  const [modalConfig, setModalConfig] = useState<{
+  visible: boolean;
+  type: ModalType;
+  title: string;
+  message: string;
+  onConfirm?: () => void;
+}>({
+  visible: false,
+  type: 'success',
+  title: '',
+  message: '',
+});
+
+// Helper function to easily trigger the modal from anywhere in the component
+const showAppModal = (
+  type: ModalType,
+  title: string,
+  message: string,
+  onConfirm?: () => void
+) => {
+  setModalConfig({
+    visible: true,
+    type,
+    title,
+    message,
+    onConfirm,
+  });
+};
 
   // 1. Hydrate Initial Values from Local Cache
   useEffect(() => {
@@ -171,14 +201,23 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
           // Revert toggle state on failure
           if (field === 'sound') setSoundEnabled(!newValue);
           if (field === 'vacation') setVacationMode(!newValue);
-          Alert.alert(t('common.error'), err?.message || t('settings.errors.failedUpdate'));
+
+           showAppModal(
+  'error',
+ t('common.error'), 
+ err?.message || t('settings.errors.failedUpdate')
+);
         }
       );
     } catch (error) {
       setUpdatingField(null);
       if (field === 'sound') setSoundEnabled(!newValue);
       if (field === 'vacation') setVacationMode(!newValue);
-      Alert.alert(t('common.error'), t('settings.errors.unexpectedNetwork'));
+        showAppModal(
+  'error',
+t('common.error'),
+ t('settings.errors.unexpectedNetwork')
+);
     }
   };
 
@@ -189,10 +228,19 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
       if (supported) {
         await Linking.openURL(url);
       } else {
-        Alert.alert(t('common.error'), errorMessage);
+        showAppModal(
+  'error',
+t('common.error'), 
+errorMessage
+);
       }
     } catch (error) {
-      Alert.alert(t('common.error'), t('settings.errors.genericLink'));
+
+       showAppModal(
+  'error',
+t('common.error'), 
+t('settings.errors.genericLink')
+);
     }
   }, [t]);
 
@@ -222,7 +270,11 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
         await Linking.openURL(webWhatsappUrl);
       }
     } catch (error) {
-      Alert.alert(t('common.error'), t('settings.errors.whatsapp'));
+       showAppModal(
+  'error',
+t('common.error'),
+ t('settings.errors.whatsapp')
+);
     }
   }, [t]);
 

@@ -24,6 +24,7 @@ import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale } from '../../styles/responsive';
 import { getApi, putApi } from '../../services/commonAPIs';
 import { countriesAPI, statesAPI, editProfileAPI } from '../../services/apiendpoints';
+import { AppModal, ModalType } from '../../components/AppModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'EditProfile'>;
 
@@ -57,6 +58,34 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
   const [isStatesLoading, setIsStatesLoading] = useState<boolean>(false);
   const [isSaving, setIsSaving] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
+const [modalConfig, setModalConfig] = useState<{
+  visible: boolean;
+  type: ModalType;
+  title: string;
+  message: string;
+  onConfirm?: () => void;
+}>({
+  visible: false,
+  type: 'success',
+  title: '',
+  message: '',
+});
+
+// Helper function to easily trigger the modal from anywhere in the component
+const showAppModal = (
+  type: ModalType,
+  title: string,
+  message: string,
+  onConfirm?: () => void
+) => {
+  setModalConfig({
+    visible: true,
+    type,
+    title,
+    message,
+    onConfirm,
+  });
+};
 
   // 1. Fetch Initial Data (User Data & Countries)
   useEffect(() => {
@@ -186,12 +215,12 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
             stateId: payload.stateId,
           };
           await AsyncStorage.setItem('userData', JSON.stringify(updatedUserData));
-
-          Alert.alert(
-            t('editProfile.alerts.successTitle'),
+showAppModal(
+  'success',
+  t('editProfile.alerts.successTitle'),
             t('editProfile.alerts.successMessage'),
-            [{ text: 'OK', onPress: () => navigation.goBack() }]
-          );
+  () => navigation.goBack()
+);
         } else {
           setErrorMessage(response?.message || t('editProfile.alerts.updateFailed'));
         }
@@ -209,6 +238,14 @@ const EditProfileScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right', 'bottom']}>
+    <AppModal
+        visible={modalConfig.visible}
+        type={modalConfig.type}
+        title={modalConfig.title}
+        message={modalConfig.message}
+        onClose={() => setModalConfig((prev) => ({ ...prev, visible: false }))}
+        onConfirm={modalConfig.onConfirm}
+      />
       <StatusBar barStyle="light-content" backgroundColor="#161820" />
 
       {/* Header Bar */}
