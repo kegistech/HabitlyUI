@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Consistent</string>
+    <string name="facebook_app_id">2585198061983137</string>
+    <string name="facebook_client_token">ef7ee74931191b598a66b9cc19056330</string>
 </resources>

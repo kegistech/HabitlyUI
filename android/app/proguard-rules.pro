@@ -23,3 +23,10 @@
 
 # Keep generic React Native packages or third-party native bridges if needed
 # -keep class com.kegistech.** { *; }
+
+# Keep your app's BuildConfig so environment variables can be read
+-keep class com.kegistech.habitly.BuildConfig { *; }
+
+# Keep React Native Config native module classes
+-keep class com.lugg.RNCConfig.** { *; }
+-dontwarn com.lugg.RNCConfig.**

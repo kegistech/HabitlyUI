@@ -36,7 +36,8 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:string="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:string="@string/facebook_client_token"/>
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

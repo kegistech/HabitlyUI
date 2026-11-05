@@ -14,6 +14,7 @@ import {
   syncFCMTokenWithBackend,
   setupNotificationListeners,
 } from './services/notificationService';
+import { Settings } from 'react-native-fbsdk-next';
 
 // Create Navigation Reference
 export const navigationRef = createNavigationContainerRef();
@@ -65,6 +66,14 @@ const App = (): React.JSX.Element => {
     }
   };
 
+  useEffect(() => {
+    // Initialize Meta SDK configuration
+    Settings.initializeSDK();
+    
+    // Optional: Auto-log app events (like app activation)
+    Settings.setAdvertiserTrackingEnabled(true);
+  }, []);
+  
   useEffect(() => {
     const initApp = async () => {
       try {
