@@ -1,4 +1,8 @@
 {
   "name": "HabitlyUI",
-  "displayName": "HabitlyUI"
+  "displayName": "HabitlyUI",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-6140620759463529~1117377132",
+     "ios_app_id": "ca-app-pub-6140620759463529~8206548560" 
+  }
 }

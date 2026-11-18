@@ -25,3 +25,4 @@ export const manageSubscriptionAPI='UserSubscription/manage-subscription';
 export const userProfileSummaryAPI = 'Users/profile-summary';
 export const updateRegisterTokenAPI='Users/register-token';
 export const updateLanguageAPI = 'Users/update-language';
+export const userScreenTrackingAPI = 'UserScreenTracking';

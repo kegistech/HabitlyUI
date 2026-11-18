@@ -25,6 +25,8 @@ import { useSubscription } from '../../context/SubscriptionContext';
 import { useFocusEffect } from '@react-navigation/native';
 import { AppModal, ModalType } from '../../components/AppModal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import SmallBannerAds from '../../components/SmallBannerAds';
+import { trackUserActivity } from '../../services/trackingService';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Dashboard'>;
 
@@ -146,7 +148,9 @@ const showAppModal = (
   });
 };
 
-
+  useEffect(() => {
+    trackUserActivity("Dashboard");
+  }, []);
   // Helper to check if selected date is in the future relative to today
   const isFutureDate = useMemo(() => {
     const today = new Date();
@@ -652,6 +656,7 @@ const showAppModal = (
             );
           })
         )}
+      { !userData?.isProUser && <SmallBannerAds />}  
       </ScrollView>
 
       {/* Floating Action Button (FAB) */}

@@ -27,6 +27,7 @@ import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/r
 import { postApi, setAuthToken } from '../../services/commonAPIs';
 import { loginAPI } from '../../services/apiendpoints';
 import { setAppLanguage } from '../../localization/languageService';
+import { trackUserActivity } from '../../services/trackingService';
 
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Login'>;
@@ -50,7 +51,10 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
   // --- Entrance Animations ---
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(25)).current;
-
+ useEffect(() => {
+    trackUserActivity("Login");
+  }, []);
+  
   useEffect(() => {
     Animated.parallel([
       Animated.timing(fadeAnim, {

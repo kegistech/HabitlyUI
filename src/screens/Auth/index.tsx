@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/responsive';
+import { trackUserActivity } from '../../services/trackingService';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Auth'>;
 
@@ -28,7 +29,10 @@ const AuthScreen: React.FC<Props> = ({ navigation }) => {
   const ringOpacity = useRef(new Animated.Value(0.3)).current;
   const contentFade = useRef(new Animated.Value(0)).current; // UI entrance fade
   const contentSlide = useRef(new Animated.Value(30)).current; // UI entrance slide
-
+   useEffect(() => {
+    trackUserActivity("Auth");
+  }, []);
+  
   useEffect(() => {
     // 1. Endless Breathing Animation Loop (Layered Graphic)
     Animated.loop(

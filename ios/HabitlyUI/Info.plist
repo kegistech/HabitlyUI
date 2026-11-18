@@ -63,5 +63,27 @@
 	<false/>
 	<key>FirebaseAppDelegateProxyEnabled</key>
     <true/>
+	<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>fbYOUR_FACEBOOK_APP_ID</string>
+    </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>2585198061983137</string>
+<string>FacebookClientToken</string>
+<key>FacebookClientToken</key>
+<string>ef7ee74931191b598a66b9cc19056330</string>
+<key>FacebookDisplayName</key>
+<string>Habitly</string>
+
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>fbapi</string>
+  <string>fb-messenger-share-api</string>
+</array>
 </dict>
 </plist>

@@ -28,6 +28,7 @@ import { RootStackParamList } from '../../navigation/navigation';
 import { scaleWidth, scaleHeight, moderateScale, isTablet } from '../../styles/responsive';
 import { getApi, postApi } from '../../services/commonAPIs';
 import { accessAPI, countriesAPI } from '../../services/apiendpoints';
+import { trackUserActivity } from '../../services/trackingService';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
@@ -68,7 +69,10 @@ const { t } = useTranslation();
   // --- Entrance Animations ---
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(25)).current;
-
+  useEffect(() => {
+    trackUserActivity("SignUp");
+  }, []);
+  
   useEffect(() => {
     Animated.parallel([
       Animated.timing(fadeAnim, {
